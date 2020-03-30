@@ -1,3 +1,11 @@
+
 body{
-    background-color: plum;
+    background-image: url("/images/cakeballs.jpg");
+}
+.container {
+    background-color: white !important;
+    max-width: 80%;
+}
+.card {
+    display: inline-block;
 }
