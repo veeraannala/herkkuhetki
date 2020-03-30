@@ -9,7 +9,7 @@
         <h2 class="pb-4">Tikkukaramellit</h2>
         <p>Tikkareita kansalle!</p>
         <p>Varastossa</p>
-        <form action="#" method="post">
+        <form>
             <label for="amount">Määrä:</label>
             <input id="amount" name="amount" type="number" step="1" value="1" min="1">
             <button class="btn btn-danger">Lisää ostoskoriin</button>

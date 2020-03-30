@@ -1,5 +1,5 @@
 <div class="card mt-3 mb-1" style="width: 15rem;">
-  <img class="card-img-top" src="images/lolly.jpg" alt="Card image cap">
+  <a href="/show_product" ><img class="card-img-top" src="images/lolly.jpg" alt="Card image cap"></a>
   <div class="card-body text-center">
     <h5 class="card-title">Ostappa halpoja tikkareita!</h5>
     <p class="card-text">Ostappa halpoja tikkareita!</p>
