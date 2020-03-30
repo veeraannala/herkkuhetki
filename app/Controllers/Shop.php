@@ -8,4 +8,14 @@ class Shop extends BaseController
 		echo view('front_page');
         echo view('templates/footer');
 	}
+
+	public function show_product()
+	{
+		echo view('templates/header');
+		echo view('product_info');
+        echo view('templates/footer');
+	}
+
+
+
 	}

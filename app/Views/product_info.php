@@ -1,0 +1,27 @@
+<div class="row">
+
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-3 p-3">
+        <img class="img-fluid" src="images/lolly.jpg">
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-3 p-3">
+        <h2 class="pb-4">Tikkukaramellit</h2>
+        <p>Tikkareita kansalle!</p>
+        <p>Varastossa</p>
+        <form action="#" method="post">
+            <label for="amount">Määrä:</label>
+            <input id="amount" name="amount" type="number" step="1" value="1" min="1">
+            <button class="btn btn-danger">Lisää ostoskoriin</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-lg-9 p-3">
+        <p>Tässä on mahtava määrä tikkareita. Paljon ja herkullisia.</p>
+        <p>Tikkarit sisältävät runsaan määrän sokeria ja kaikkea muuta epäterveellistä. Oikeasti ne ovat myös aika pahoja 
+        ja niillä saa hampaansa rikki, jos niitä puraisee heikolla hampaalla. Lapset kuitenkin yleensä tykkäävät niistä. 
+        Jotkut kokevat tikkukaramellien syömisen seksuaalisesti kiihottavana.</p>
+    </div>
+</div>
