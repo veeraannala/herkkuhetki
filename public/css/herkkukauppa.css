@@ -17,13 +17,12 @@ body{
     border-style: none;
 }
 .carousel {
-    height:400px;
+    height:500px;
 }
     
 .carousel-item img {
-    height:400px;
+    height:500px;
     object-fit: contain;
-}
 }
 .input-group.md-form.form-sm.form-2 input {
     border: 1px solid #bdbdbd;
