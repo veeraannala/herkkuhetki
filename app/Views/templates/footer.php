@@ -1,4 +1,4 @@
-    <div class="footer mt-3 pb-5">
+    <div class="footer mt-3 pb-4">
       <div class="row">
         <div class="col-md-4 text-center">
           <h4>Infoa</h4>

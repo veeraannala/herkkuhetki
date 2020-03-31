@@ -1,7 +1,10 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento+Sans&display=swap');
+
 body{
     background-image: url("/images/lollipopspieni.png");
     background-repeat: repeat;
+    font-family: 'Quattrocento Sans', sans-serif;
 
 }
 .container {
