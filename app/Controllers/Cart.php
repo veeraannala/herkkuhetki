@@ -9,16 +9,17 @@ class Cart extends BaseController
 
 	public function index()
 	{
+        
 		echo view('templates/header');
-		echo view('front_page');
+		echo view('cart_view');
         echo view('templates/footer');
 	}
 
     public function insert() {
-        //$product = $this->request->getPost('product');
-        //echo $product;
-        // ostoskori esimerkki n.30min tehty
-        //echo "lisätty ostoskoriin";
+        $product = "tikkukaramellit";
+
+        echo $product;
+
     }
 
 

@@ -68,6 +68,7 @@
                 </div>
               </li>
             </ul>
+            <?php echo '<div><a href="' . site_url('cart/index') . '">Ostoskori<a/></div>' ?>
              <form class="form-inline my-2 my-lg-0">
               <input class="form-control mr-sm-2" type="" placeholder="Etsi tuotteita" aria-label="Etsi">
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Etsi Tuotteita</button>
