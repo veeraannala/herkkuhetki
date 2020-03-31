@@ -1,6 +1,8 @@
-    <div class="footer mt-3 pb-4">
+    </div>
+    </div>
+    <div class="container footer">
       <div class="row">
-        <div class="col-md-4 text-center">
+        <div class="col-md-4 text-center mt-3 pb-4">
           <h4>Infoa</h4>
           <p class="mb-1"><a href="#">Oma tili</a></p>
           <p class="mb-1"><a href="#">Maksu- ja toimitusehdot</a></p>
@@ -9,11 +11,11 @@
           <p class="mb-1"><a href="#">Rekisteriseloste</a></p>
         </div>
 
-        <div class="col-md-4 text-center">
+        <div class="col-md-4 text-center mt-3 pb-4">
           <img src="/../images/logo.png" alt="logo">
         </div>
 
-        <div class="col-md-4 text-center">
+        <div class="col-md-4 text-center mt-3 pb-4">
           <h4>Tilaa uutiskirje!</h4>
           <p>Tilaa uutiskirjeemme, niin saat tietää uusista 
           tuotteistamme heti ensimmäisten joukossa!</p>

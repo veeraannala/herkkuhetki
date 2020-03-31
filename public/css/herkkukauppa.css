@@ -24,7 +24,7 @@ body{
     height:400px;
     object-fit: contain;
 }
-}
+
 .input-group.md-form.form-sm.form-2 input {
     border: 1px solid #bdbdbd;
     border-top-left-radius: 0.25rem;
@@ -36,4 +36,8 @@ body{
 
 .fa-shopping-cart {
     color: black;
+}
+
+.footer {
+    background-color: #FBD8DB !important;
 }
