@@ -1,3 +1,4 @@
+
 <div class="row">
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
@@ -27,6 +28,14 @@
 </div>
 </div>
 <div class="row">
+<div class="form-group col-3 mb-0 mt-2">
+      <select id="inputState" class="form-control text-center">
+        <option selected>Järjestä</option>
+        <option>...</option>
+      </select>
+    </div>
+    </div>
+    <div class="row">
 <div class="col-lg-3 col-md-4 card mt-3 mb-1">
   <a href="/show_product" ><img class="card-img-top" src="images/lolly.jpg" alt="Card image cap"></a>
   <div class="card-body text-center">

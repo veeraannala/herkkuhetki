@@ -23,7 +23,6 @@ body{
     object-fit: contain;
 }
 
-<<<<<<< HEAD
 .input-group.md-form.form-sm.form-2 input {
     border: 1px solid #bdbdbd;
     border-top-left-radius: 0.25rem;
@@ -32,9 +31,7 @@ body{
   .input-group.md-form.form-sm.form-2 input.red-border {
     border: 1px solid #ef9a9a;
   }
-=======
   
->>>>>>> 3a41c46b44f8aaec572798418f1d86f8dd015b5a
 
 .fa-shopping-cart {
     color: black;
