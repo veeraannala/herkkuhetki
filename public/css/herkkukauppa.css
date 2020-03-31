@@ -4,8 +4,18 @@ body{
 }
 .container {
     background-color: white !important;
-    max-width: 80%;
+    padding-right: 35px;
+    padding-left: 35px;
 }
 .card {
     display: inline-block;
+    border-style: none;
+}
+.carousel {
+    height:400px;
+}
+    
+.carousel-item img {
+    height:400px;
+    object-fit: contain;
 }
