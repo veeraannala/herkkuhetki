@@ -1,6 +1,11 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento+Sans&display=swap');
+
 body{
-    background-image: url("/images/cakeballs.jpg");
+    background-image: url("/images/lollipopspieni.png");
+    background-repeat: repeat;
+    font-family: 'Quattrocento Sans', sans-serif;
+
 }
 .container {
     background-color: white !important;
@@ -17,3 +22,7 @@ body{
   .input-group.md-form.form-sm.form-2 input.red-border {
     border: 1px solid #ef9a9a;
   }
+
+.fa-shopping-cart {
+    color: black;
+}
