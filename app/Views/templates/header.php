@@ -86,6 +86,9 @@
                 </div>
               </li>
             </ul>
+            <div class="mx-3">
+            <i class="fa fa-user mr-2" aria-hidden="true"></i><a href="#">Oma tili</a>
+            </div>
             <?php echo '<div><a href="' . site_url('cart/index') . '"><i class="fa fa-shopping-cart fa-3x" aria-hidden="true"></i><a/></div>' ?>
              
           </div>
