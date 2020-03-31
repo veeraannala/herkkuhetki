@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="<?= base_url('/css/herkkukauppa.css'); ?>">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <title></title>
   </head>
   <body>
@@ -69,7 +70,7 @@
                 </div>
               </li>
             </ul>
-            <?php echo '<div><a href="' . site_url('cart/index') . '">Ostoskori<a/></div>' ?>
+            <?php echo '<div><a href="' . site_url('cart/index') . '"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Ostoskori<a/></div>' ?>
              <form class="form-inline my-2 my-lg-0">
               <input class="form-control mr-sm-2" type="" placeholder="Etsi tuotteita" aria-label="Etsi">
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Etsi Tuotteita</button>
