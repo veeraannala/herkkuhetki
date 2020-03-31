@@ -15,7 +15,7 @@
   <div class="container">
   <div class="row">
       <div class="col-md-6 d-flex justify-content-start">
-        <a href="<?php echo site_url('shop/index')?>"><img src="/../images/logo.png" alt="logo"></a>
+        <a href="<?php echo base_url()?>"><img src="/../images/logo.png" alt="logo"></a>
       </div>
       <div class="col-md-6 d-flex align-items-center justify-content-end">
         <form action="">
@@ -23,7 +23,6 @@
             <input type="text" class="form-control" placeholder="Etsi tuotteita" aria-label="Recipient's username" aria-describedby="basic-addon2">
               <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
-              
               </div>
           </div>
         </form>
