@@ -2,6 +2,11 @@
 
 class Cart extends BaseController
 {
+    public function __construct() {
+        $session = \Config\Services::session();
+        $session->start();
+    }
+
 	public function index()
 	{
 		echo view('templates/header');
@@ -10,9 +15,12 @@ class Cart extends BaseController
 	}
 
     public function insert() {
-        echo "lisätty";
+        //$product = $this->request->getPost('product');
+        //echo $product;
+        // ostoskori esimerkki n.30min tehty
+        //echo "lisätty ostoskoriin";
     }
 
 
 
-	}
+}
