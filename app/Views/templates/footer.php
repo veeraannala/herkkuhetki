@@ -1,4 +1,4 @@
-    <div class="footer mt-3">
+    <div class="footer mt-3 pb-5">
       <div class="row">
         <div class="col-md-4 text-center">
           <h4>Infoa</h4>
@@ -10,7 +10,7 @@
         </div>
 
         <div class="col-md-4 text-center">
-          <img src="images/logo.png" alt="logo">
+          <img src="/../images/logo.png" alt="logo">
         </div>
 
         <div class="col-md-4 text-center">
