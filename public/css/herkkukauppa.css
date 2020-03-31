@@ -11,3 +11,7 @@ body{
 .card {
     display: inline-block;
 }
+
+.fa-shopping-cart {
+    color: black;
+}
