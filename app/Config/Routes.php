@@ -32,6 +32,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Shop::index');
 $routes->get('show_product', 'Shop::show_product');
+$routes->get('cart/index', 'Cart::index');
 $routes->get('cart/insert', 'Cart::insert');
 
 /**
