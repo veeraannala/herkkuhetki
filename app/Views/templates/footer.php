@@ -1,4 +1,36 @@
+    <div class="footer mt-3">
+      <div class="row">
+        <div class="col-md-4 text-center">
+          <h4>Infoa</h4>
+          <p class="mb-1"><a href="#">Oma tili</a></p>
+          <p class="mb-1"><a href="#">Maksu- ja toimitusehdot</a></p>
+          <p class="mb-1"><a href="#">Tietoa meistä</a></p>
+          <p class="mb-1"><a href="#">Yhteystiedot</a></p>
+          <p class="mb-1"><a href="#">Rekisteriseloste</a></p>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <img src="images/logo.png" alt="logo">
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h4>Tilaa uutiskirje!</h4>
+          <p>Tilaa uutiskirjeemme, niin saat tietää uusista 
+          tuotteistamme heti ensimmäisten joukossa!</p>
+          
+          <form>
+            <div class="form-group">
+              <label for="email">Sähköpostiosoite:</label>
+              <input type="email" class="form-control" name="email" placeholder="Syötä sähköpostiosoitteesi">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+
     </div>
+    
+  </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
