@@ -1,6 +1,8 @@
 
 body{
-    background-image: url("/images/cakeballs.jpg");
+    background-image: url("/images/lollipopspieni.png");
+    background-repeat: repeat;
+
 }
 .container {
     background-color: white !important;
