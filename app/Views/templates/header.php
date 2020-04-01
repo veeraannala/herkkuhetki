@@ -16,8 +16,8 @@
 </head>
 
 <body>
-  <div class="container">
-  <div class="row">
+<div class="container">
+<div class="row">
     <div class="col-md-3 d-flex justify-content-center">
       <a href="<?php echo base_url()?>"><img src="/../images/logo.png" alt="logo"></a>
     </div>
@@ -36,7 +36,8 @@
         </div>
       </form>
     </div>
-  </div>
+</div>
+</div>
     <div class="container testi">
       <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
 
