@@ -8,8 +8,6 @@ body{
 }
 .container {
     background-color: white !important;
-    padding-right: 0px;
-    padding-left: 0px;
 }
 .card {
     display: inline-block;
