@@ -31,9 +31,50 @@ body{
 .footer {
     background-color: #FBD8DB !important;
 }
-.testi {
-    background-color: #FBD8DB !important;
+/* ------------Navigation------------- */
+div.navv {
     padding-left: 0;
-    padding-right: 0;
+    padding-right:0;
+    
 }
+
+nav.navbar{
+background-color: #FBD8DB !important;
+
+}
+
+
+.show{
+    background-color: #FBD8DB !important;
+    border: none;
+      
+}
+
+nav
+div
+a {
+    font-weight: bold !important;
+
+}
+
+
+div.dropdown-menu
+a:hover {
+    background-color: #EB8C8C !important;
+    color: black !important;
+}
+
+.search button{
+    background-color: #FBD8DB !important;
+    border-color:#EB8C8C !important;
+}
+
+.search button:hover{
+    background-color: #EB8C8C !important;
+}
+.search input{
+    border-color:#EB8C8C !important;
+}
+
+
 

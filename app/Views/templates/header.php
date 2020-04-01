@@ -24,10 +24,10 @@
     <div class="col-md-6 text-center align-self-center d-none d-sm-block">
       <h2>Tervetuloa herkkujen maailmaan!</h2>
     </div>
-    <div class="col-md-3 align-self-end">
+    <div class="col-md-3 align-self-center">
       <form action="">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Etsi tuotteita" aria-label="Recipient's username"
+        <div class="input-group search">
+          <input type="text" class="form-control" placeholder="Etsi tuotteita" aria-label="etsi"
             aria-describedby="basic-addon2">
           <div class="input-group-append">
             <button class="btn btn-outline-danger" type="button"><i class="fa fa-search"
@@ -38,8 +38,8 @@
     </div>
 </div>
 </div>
-    <div class="container testi">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="container navv">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,8 +54,8 @@
                 aria-haspopup="true" aria-expanded="false">
                 Irtokarkit
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Salmiakit</a>
+              <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item "href="#">Salmiakit</a>
                 <a class="dropdown-item" href="#">Kirpeät karkit</a>
                 <a class="dropdown-item" href="#">Kovat karkit</a>
                 <a class="dropdown-item" href="#">Lakritsit</a>
@@ -104,7 +104,7 @@
           <div class="nav-item mr-2">
             <i class="fa fa-user mr-2" aria-hidden="true"></i><a href="#">Kirjaudu</a>
           </div>
-          <?php echo '<div><a href="' . site_url('cart/index') . '"><i class="fa fa-shopping-cart fa-3x" aria-hidden="true"></i><a/></div>' ?>
+          <?php echo '<div><a href="' . site_url('cart/index') . '"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i><a/></div>' ?>
 
         </div>
       </nav>
