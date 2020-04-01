@@ -13,16 +13,19 @@
   </head>
   <body>
   <div class="container">
-  <div class="row">
-      <div class="col-md-6 d-flex justify-content-start">
+    <div class="row">
+      <div class="col-md-3 d-flex justify-content-center">
         <a href="<?php echo base_url()?>"><img src="/../images/logo.png" alt="logo"></a>
       </div>
-      <div class="col-md-6 d-flex align-items-center justify-content-end">
+      <div class="col-md-6 text-center align-self-center d-none d-sm-block">
+      <h2>Tervetuloa herkkujen maailmaan!</h2>
+      </div>
+      <div class="col-md-3 align-self-end">
         <form action="">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Etsi tuotteita" aria-label="Recipient's username" aria-describedby="basic-addon2">
               <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+                <button class="btn btn-outline-danger" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
               </div>
           </div>
         </form>
@@ -86,11 +89,14 @@
                 </div>
               </li>
             </ul>
+            <div class="nav-item mr-2">
+            <i class="fa fa-user mr-2" aria-hidden="true"></i><a href="#">Kirjaudu</a>
+            </div>
             <?php echo '<div><a href="' . site_url('cart/index') . '"><i class="fa fa-shopping-cart fa-3x" aria-hidden="true"></i><a/></div>' ?>
              
           </div>
       </nav>
 
-      <div class="container">
+      
 
    
