@@ -1,4 +1,4 @@
-
+</div>
     <div class="container footer">
       <div class="row">
         <div class="col-md-4 text-center mt-3 pb-4">
