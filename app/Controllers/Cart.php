@@ -23,7 +23,7 @@ class Cart extends BaseController
         }
 
         array_push($_SESSION['basket'],$product);
-        return redirect('/');
+        return redirect()->to('/Shop');
     }
 
     public function clear() {
