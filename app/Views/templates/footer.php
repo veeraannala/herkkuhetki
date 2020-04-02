@@ -24,7 +24,7 @@
               <label for="email">Sähköpostiosoite:</label>
               <input type="email" class="form-control" name="email" placeholder="Syötä sähköpostiosoitteesi">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn">Submit</button>
           </form>
         </div>
       </div>
