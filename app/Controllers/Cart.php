@@ -16,10 +16,14 @@ class Cart extends BaseController
 	}
 
     public function insert() {
-        $product = "tikkukaramellit";
+        $product = $this->request->getPost('product');
 
-        echo $product;
+        if (!isset($_SESSION['basket'])) {
+            $_SESSION['basket'] = array();
+        }
 
+        array_push($_SESSION['basket'],$product);
+        return redirect('/');
     }
 
 

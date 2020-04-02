@@ -41,31 +41,9 @@
   <div class="card-body text-center">
     <h5 class="card-title">Ostappa halpoja tikkareita!</h5>
     <p class="card-text">Ostappa halpoja tikkareita!</p>
-    <a href="cart/insert" class="btn btn-danger">Lisää ostoskoriin</a>
+    <form method="post" action="<?= site_url('cart/insert')?>">
+      <input type="hidden" name="product" value="200">
+    <button class="btn btn-danger">Lisää ostoskoriin</button>
+    </form>
   </div>
-</div>
-<div class="col-lg-3 col-md-4 card mt-3 mb-1">
-  <a href="/show_product" ><img class="card-img-top" src="images/lolly.jpg" alt="Card image cap"></a>
-  <div class="card-body text-center">
-    <h5 class="card-title">Ostappa halpoja tikkareita!</h5>
-    <p class="card-text">Ostappa halpoja tikkareita!</p>
-    <a href="cart/insert" class="btn btn-danger">Lisää ostoskoriin</a>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 card mt-3 mb-1">
-  <a href="/show_product" ><img class="card-img-top" src="images/lolly.jpg" alt="Card image cap"></a>
-  <div class="card-body text-center">
-    <h5 class="card-title">Ostappa halpoja tikkareita!</h5>
-    <p class="card-text">Ostappa halpoja tikkareita!</p>
-    <a href="cart/insert" class="btn btn-danger">Lisää ostoskoriin</a>
-  </div>
-</div>
-<div class="col-lg-3 col-md-4 card mt-3 mb-1">
-  <a href="/show_product" ><img class="card-img-top" src="images/lolly.jpg" alt="Card image cap"></a>
-  <div class="card-body text-center">
-    <h5 class="card-title">Ostappa halpoja tikkareita!</h5>
-    <p class="card-text">Ostappa halpoja tikkareita!</p>
-    <a href="cart/insert" class="btn btn-danger">Lisää ostoskoriin</a>
-  </div>
-</div>
 </div>
