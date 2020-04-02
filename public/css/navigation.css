@@ -85,3 +85,16 @@ div.dropdown-menu a{
     font-family: 'Merriweather Sans', sans-serif;
     font-size: 18px;
 }
+
+/* -----------FOOTER----------- */
+
+.footer div p a
+,h4 {
+    color:#6c0909;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+.footer div p a:hover {
+   color: #E65959;
+}
+
+

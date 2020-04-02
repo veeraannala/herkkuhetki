@@ -14,7 +14,7 @@
                     <input type="hidden" name="product" value="200">
                     <input class="mb-3" id="amount" name="amount" type="number" step="1" value="1" min="1">
                     <h5>Hinta 1678,56 €</h5>
-                    <button class="btn btn-danger">Lisää ostoskoriin</button>
+                    <button class="btn">Lisää ostoskoriin</button>
                 </form>
             </div>
         </div>
