@@ -109,7 +109,7 @@
             echo '<div><a href="' . site_url('cart/index') . '">' . count($_SESSION['basket']) . '<i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i><a/></div>';
           }
           else {
-            echo '<i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>';
+            echo '<div><a href="' . site_url('cart/index') . '"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i><a/></div>';
           }
           ?>
 
