@@ -24,7 +24,7 @@ nav div a
  {
     font-weight: bold !important;
     font-family: 'Merriweather Sans', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     color:#6c0909;
 }
 nav div a:hover
@@ -44,7 +44,7 @@ nav div a:hover
 
 .mainheader {
     font-family: 'Princess Sofia', cursive;
-    font-size: 3em;
+    font-size: 4em;
     color: #6c0909 !important;
 }
 

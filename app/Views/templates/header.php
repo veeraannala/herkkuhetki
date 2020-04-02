@@ -70,7 +70,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                Suklaat
+                SUKLAAT
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Suklaalevyt</a>
@@ -81,7 +81,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                Teemakarkit
+                TEEMAKARKIT
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Joulu</a>
@@ -102,7 +102,7 @@
             </div>
           </form>
           <div class="nav-item">
-          <a class="mr-2" href="#">Kirjaudu</a><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i>
+          <i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i><a class="mr-2" href="#">Kirjaudu</a>
           </div>
           <?php
           if (isset($_SESSION['basket'])) {
