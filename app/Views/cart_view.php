@@ -5,10 +5,10 @@ if(is_array($purchases) && count($purchases)>0)
 {
 ?>
     <?php foreach ($purchases as $purchase): ?>
-        <p><?= $purchase?></p>
+        <p style="margin-bottom: 0 !important"><?= $purchase?></p>
        <?php endforeach;?>
 <?php
 }else{
-   echo "empty";
+   echo '<div><p style="margin-bottom: 0 !important">Ostoskorisi on tyhjä jatka ostoksille <a href="' . site_url('Shop/index') . '">tästä<a/></p></div>';
 }
 ?>
