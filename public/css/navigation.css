@@ -86,6 +86,13 @@ div.dropdown-menu a{
     font-size: 18px;
 }
 
+.fa-shopping-cart {
+    color:#6c0909;  
+}
+.fa-shopping-cart:hover {
+    color:#E65959;
+}
+
 /* -----------FOOTER----------- */
 .footer {
     background-color: #FBD8DB !important;
