@@ -19,6 +19,8 @@ body{
 }
 .carousel {
     height:400px;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
     
 .carousel-item img {
