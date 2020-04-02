@@ -99,7 +99,7 @@
                 <a class="dropdown-item" href="#">Halloweenkarkit</a>
                 <a class="dropdown-item" href="#">Ystävänpäivä</a>
               </div>
-            </li>
+          </li>
           </ul>
           <div class="nav-item mr-2">
             <i class="fa fa-user mr-2" aria-hidden="true"></i><a href="#">Kirjaudu</a>
@@ -109,7 +109,7 @@
             echo '<div><a href="' . site_url('cart/index') . '">' . count($_SESSION['basket']) . '<i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i><a/></div>';
           }
           else {
-            echo '<p>0</p>';
+            echo '<i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>';
           }
           ?>
 
