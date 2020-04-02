@@ -104,7 +104,14 @@
           <div class="nav-item mr-2">
             <i class="fa fa-user mr-2" aria-hidden="true"></i><a href="#">Kirjaudu</a>
           </div>
-          <?php echo '<div><a href="' . site_url('cart/index') . '"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i><a/></div>' ?>
+          <?php
+          if (isset($_SESSION['basket'])) {
+            echo '<div><a href="' . site_url('cart/index') . '">' . count($_SESSION['basket']) . '<i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i><a/></div>';
+          }
+          else {
+            echo '<p>0</p>';
+          }
+          ?>
 
         </div>
       </nav>

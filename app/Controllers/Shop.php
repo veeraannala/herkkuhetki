@@ -2,6 +2,11 @@
 
 class Shop extends BaseController
 {
+	public function __construct()
+	{
+		$session = \Config\Services::session();
+        $session->start();
+	}
 	public function index()
 	{
 		echo view('templates/header');
