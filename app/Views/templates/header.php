@@ -101,15 +101,15 @@
               </div>
           </li>
           </ul>
-          <div class="nav-item mr-2">
-            <i class="fa fa-user mr-2" aria-hidden="true"></i><a href="#">Kirjaudu</a>
+          <div class="nav-item">
+          <a class="mr-2" href="#">Kirjaudu</a><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i>
           </div>
           <?php
           if (isset($_SESSION['basket'])) {
             echo '<div><a href="' . site_url('cart/index') . '">' . count($_SESSION['basket']) . '<i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i><a/></div>';
           }
           else {
-            echo '<div><a href="' . site_url('cart/index') . '"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i><a/></div>';
+            echo '<div><a href="' . site_url('cart/index') . '"><i class="fa fa-2x fa-shopping-cart" aria-hidden="true"></i><a/></div>';
           }
           ?>
 
