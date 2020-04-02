@@ -20,17 +20,18 @@ background-color: #FBD8DB !important;
       
 }
 
-nav div a
+a
  {
     font-weight: bold !important;
     font-family: 'Merriweather Sans', sans-serif;
     font-size: 16px;
     color:#6c0909;
 }
-nav div a:hover
+a:hover
 { 
     color:#6c0909;
     color:#E65959;
+    text-decoration: none;
 }
 
 #navbarDropdown{
@@ -86,6 +87,13 @@ div.dropdown-menu a{
     font-size: 18px;
 }
 
+.fa-shopping-cart {
+    color:#6c0909;  
+}
+.fa-shopping-cart:hover {
+    color:#E65959;
+}
+
 /* -----------FOOTER----------- */
 .footer {
     background-color: #FBD8DB !important;
@@ -94,6 +102,7 @@ div.dropdown-menu a{
 ,h4 {
     color:#6c0909;
     font-family: 'Merriweather Sans', sans-serif;
+    text-decoration: none;
 }
 .footer div p a:hover {
    color: #E65959;
