@@ -35,6 +35,8 @@ body{
 .footer {
     background-color: #FBD8DB !important;
 }
+
+
 /* ------------Navigation------------- */
 div.navv {
     padding-left: 0;
@@ -56,48 +58,71 @@ background-color: #FBD8DB !important;
 
 nav
 div
-a {
+a
+ {
     font-weight: bold !important;
     font-family: 'Patrick Hand', cursive;
     font-size: 20px;
-    
-
+    color:#6c0909;
 }
+nav
+div
+a:hover
+{ 
+    color:#6c0909;
+    color:#E65959;
+}
+
 #navbarDropdown{
    color:#6c0909;
    
 }
 
-#navbarDropdown:hover {
-    opacity: 0.8;
+ #navbarDropdown:hover {
+    color:#E65959;
     
-}
+} 
 
 
 .mainheader {
     font-family: 'Princess Sofia', cursive;
+    font-size: 3em;
+    color: #6c0909 !important;
 }
 
 div.dropdown-menu
 a:hover {
-    background-color: #EB8C8C !important;
-    color: #6c0909 !important;
+    color: #E65959; 
 }
 div.dropdown-menu
 a{
-   color: #6c0909;   
+    background-color: #FBD8DB !important;
+    color: #6c0909
+    
 }
 
 .search button{
     background-color: #FBD8DB !important;
-    border-color:#EB8C8C !important;
+    border-color:#6c0909 !important;
+    color:#6c0909;
 }
 
 .search button:hover{
-    background-color: #EB8C8C !important;
-}
+    background-color: #E65959 !important;
+    
+
+} 
 .search input{
-    border-color:#EB8C8C !important;
+    border-color:#6c0909 !important;
+    background-color: #FBD8DB !important;
+    font-family: 'Patrick Hand', cursive;
+    border-radius: 0px;  
+}
+
+.search input::placeholder{
+    color:#6c0909;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 18px;
 }
 
 
