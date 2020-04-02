@@ -67,3 +67,6 @@ body{
     }
     
   }
+  .cartminheight {
+      min-height: 415px;
+  }
