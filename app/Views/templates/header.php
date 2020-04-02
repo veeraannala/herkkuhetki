@@ -21,21 +21,10 @@
     <div class="col-md-3 d-flex justify-content-center">
       <a href="<?php echo base_url()?>"><img src="/../images/logo.png" alt="logo"></a>
     </div>
-    <div class="col-md-6 text-center align-self-center d-none d-sm-block">
+    <div class="col-md-9 text-center align-self-center d-none d-sm-block">
       <h2 class="mainheader">Tervetuloa herkkujen maailmaan!</h2>
     </div>
-    <div class="col-md-3 align-self-center">
-      <form action="">
-        <div class="input-group search">
-          <input type="text" class="form-control" placeholder="Etsi tuotteita" aria-label="etsi"
-            aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-outline-danger" type="button"><i class="fa fa-search"
-                aria-hidden="true"></i></button>
-          </div>
-        </div>
-      </form>
-    </div>
+    
 </div>
 </div>
     <div class="container navv">
@@ -101,6 +90,16 @@
               </div>
           </li>
           </ul>
+          <form action="" class="form-inline">
+            <div class="input-group search mr-2">
+              <input type="text" class="form-control" placeholder="Etsi tuotteita" aria-label="etsi"
+                aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-outline-danger" type="button"><i class="fa fa-search"
+                    aria-hidden="true"></i></button>
+              </div>
+            </div>
+          </form>
           <div class="nav-item">
           <a class="mr-2" href="#">Kirjaudu</a><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i>
           </div>

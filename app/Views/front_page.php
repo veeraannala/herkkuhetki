@@ -46,4 +46,3 @@
     <button class="btn btn-danger">Lisää ostoskoriin</button>
     </form>
   </div>
-</div>
