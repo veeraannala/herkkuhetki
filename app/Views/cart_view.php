@@ -9,6 +9,6 @@ if(is_array($purchases) && count($purchases)>0)
        <?php endforeach;?>
 <?php
 }else{
-   echo '<div><p style="margin-bottom: 0 !important">Ostoskorisi on tyhjä jatka ostoksille <a href="' . site_url('Shop/index') . '">tästä<a/></p></div>';
+   echo '<div><p style="margin-bottom: 0 !important">Ostoskorisi on tyhjä jatka ostoksille <a href="' . site_url('') . '">tästä<a/></p></div>';
 }
 ?>
