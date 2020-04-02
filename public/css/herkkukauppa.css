@@ -41,3 +41,20 @@ body{
 .fa-shopping-cart {
     font-size: 34.5px !important;
 }
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+    .carousel {
+        height: 300px;
+    }
+    .carousel-item img {
+        height:300px;
+    }
+    
+  }
+@media (max-width: 767px) {
+  
+    .carousel {
+        display: none;
+    }
+    
+  }
