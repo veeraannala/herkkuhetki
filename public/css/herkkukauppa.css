@@ -58,31 +58,25 @@ background-color: #FBD8DB !important;
       
 }
 
-nav
-div
-a
+nav div a
  {
     font-weight: bold !important;
     font-family: 'Patrick Hand', cursive;
     font-size: 20px;
     color:#6c0909;
 }
-nav
-div
-a:hover
+nav div a:hover
 { 
     color:#6c0909;
     color:#E65959;
 }
 
 #navbarDropdown{
-   color:#6c0909;
-   
+   color:#6c0909; 
 }
 
  #navbarDropdown:hover {
-    color:#E65959;
-    
+    color:#E65959;  
 } 
 
 
@@ -92,12 +86,10 @@ a:hover
     color: #6c0909 !important;
 }
 
-div.dropdown-menu
-a:hover {
+div.dropdown-menu a:hover {
     color: #E65959; 
 }
-div.dropdown-menu
-a{
+div.dropdown-menu a{
     background-color: #FBD8DB !important;
     color: #6c0909
     
@@ -118,7 +110,15 @@ a{
     border-color:#6c0909 !important;
     background-color: #FBD8DB !important;
     font-family: 'Patrick Hand', cursive;
-    border-radius: 0px;  
+    border-radius: 0px;
+    color:#6c0909 !important;
+    
+    font-size: 18px;
+    
+     
+}
+.search input:focus{
+    
 }
 
 .search input::placeholder{
