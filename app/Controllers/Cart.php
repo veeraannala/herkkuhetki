@@ -26,6 +26,9 @@ class Cart extends BaseController
         return redirect('/');
     }
 
-
+    public function clear() {
+        $_SESSION['basket'] = null;
+        return redirect('/');
+    }
 
 }
