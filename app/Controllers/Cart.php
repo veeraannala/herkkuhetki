@@ -17,8 +17,13 @@ class Cart extends BaseController
 
     public function insert() {
         $product = $this->request->getPost('product');
-        echo $product;
-        echo "lisätty";
+
+        if (!isset($_SESSION['basket'])) {
+            $_SESSION['basket'] = array();
+        }
+
+        array_push($_SESSION['basket'],$product);
+        return redirect('/');
     }
 
 
