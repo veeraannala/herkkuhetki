@@ -87,7 +87,9 @@ div.dropdown-menu a{
 }
 
 /* -----------FOOTER----------- */
-
+.footer {
+    background-color: #FBD8DB !important;
+}
 .footer div p a
 ,h4 {
     color:#6c0909;
@@ -98,3 +100,4 @@ div.dropdown-menu a{
 }
 
 
+  
