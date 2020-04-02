@@ -53,8 +53,10 @@ div.dropdown-menu a:hover {
     color: #E65959; 
 }
 div.dropdown-menu a{
+    font-weight: normal !important;
     background-color: #FBD8DB !important;
     color: #6c0909
+    
     
 }
 
