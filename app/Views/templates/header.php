@@ -22,7 +22,7 @@
       <a href="<?php echo base_url()?>"><img src="/../images/logo.png" alt="logo"></a>
     </div>
     <div class="col-md-6 text-center align-self-center d-none d-sm-block">
-      <h2>Tervetuloa herkkujen maailmaan!</h2>
+      <h2 class="mainheader">Tervetuloa herkkujen maailmaan!</h2>
     </div>
     <div class="col-md-3 align-self-center">
       <form action="">
