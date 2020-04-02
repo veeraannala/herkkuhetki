@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Princess+Sofia&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Princess+Sofia&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&display=swap');
 /* ------------Navigation------------- */
 div.navv {
     padding-left: 0;
@@ -23,8 +23,8 @@ background-color: #FBD8DB !important;
 nav div a
  {
     font-weight: bold !important;
-    font-family: 'Patrick Hand', cursive;
-    font-size: 20px;
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 18px;
     color:#6c0909;
 }
 nav div a:hover
@@ -71,7 +71,7 @@ div.dropdown-menu a{
 .search input{
     border-color:#6c0909 !important;
     background-color: #FBD8DB !important;
-    font-family: 'Patrick Hand', cursive;
+    font-family: 'Merriweather Sans', sans-serif;
     border-radius: 0px;
     color:#6c0909 !important;
     
@@ -82,6 +82,6 @@ div.dropdown-menu a{
 
 .search input::placeholder{
     color:#6c0909;
-    font-family: 'Patrick Hand', cursive;
+    font-family: 'Merriweather Sans', sans-serif;
     font-size: 18px;
 }
