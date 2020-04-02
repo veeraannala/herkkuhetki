@@ -102,7 +102,7 @@
             </div>
           </form>
           <div class="nav-item">
-          <a href=""><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i></a><a class="mr-2" href="#">KIRJAUDU</a>
+          <a href=""><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i>KIRJAUDU</a>
           </div>
           <?php
           if (isset($_SESSION['basket'])) {
