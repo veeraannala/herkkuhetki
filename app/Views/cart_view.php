@@ -1,4 +1,4 @@
-
+<div class="cartminheight">
 <?php 
 if(is_array($purchases) && count($purchases)>0)
 {
@@ -12,3 +12,4 @@ if(is_array($purchases) && count($purchases)>0)
    echo '<div><p style="margin-bottom: 0 !important">Ostoskorisi on tyhjä jatka ostoksille <a href="' . site_url('') . '">tästä<a/></p></div>';
 }
 ?>
+</div>
