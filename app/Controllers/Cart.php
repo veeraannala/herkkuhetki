@@ -9,7 +9,7 @@ class Cart extends BaseController
 
 	public function index()
 	{
-        $data['groceries'] = $_SESSION['basket'];
+        $data['purchases'] = $_SESSION['basket'];
 		echo view('templates/header');
 		echo view('cart_view',$data);
         echo view('templates/footer');
