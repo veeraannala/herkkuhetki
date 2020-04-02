@@ -1,5 +1,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Quattrocento+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Princess+Sofia&display=swap');
+
+
 
 body{
     background-image: url("/images/lollipopspieni.png");
@@ -14,12 +18,14 @@ body{
     border-style: none;
 }
 .carousel {
-    height:500px;
+    height:400px;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
     
 .carousel-item img {
-    height:500px;
-    object-fit: contain;
+    height:400px;
+    object-fit: cover;
 }
 
   
@@ -54,14 +60,34 @@ nav
 div
 a {
     font-weight: bold !important;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 20px;
+    
 
 }
+#navbarDropdown{
+   color:#6c0909;
+   
+}
 
+#navbarDropdown:hover {
+    opacity: 0.8;
+    
+}
+
+
+.mainheader {
+    font-family: 'Princess Sofia', cursive;
+}
 
 div.dropdown-menu
 a:hover {
     background-color: #EB8C8C !important;
-    color: black !important;
+    color: #6c0909 !important;
+}
+div.dropdown-menu
+a{
+   color: #6c0909;   
 }
 
 .search button{
@@ -78,3 +104,10 @@ a:hover {
 
 
 
+.btn {
+    background-color: #E65959 !important;
+    border-radius: 0%;
+}
+.fa-shopping-cart {
+    font-size: 34.5px !important;
+}

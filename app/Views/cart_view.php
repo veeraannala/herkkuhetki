@@ -1,6 +1,14 @@
+<a href="<?= site_url('cart/clear')?>">Tyhjennä</a>
+
 <?php 
-
-echo "<h3>ostoskori</h3>";
-echo "1. tikkukaramellit"; 
-
+if(is_array($purchases) && count($purchases)>0)
+{
+?>
+    <?php foreach ($purchases as $purchase): ?>
+        <p><?= $purchase?></p>
+       <?php endforeach;?>
+<?php
+}else{
+   echo "empty";
+}
 ?>

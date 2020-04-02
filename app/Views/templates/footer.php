@@ -1,6 +1,6 @@
 </div>
-    <div class="container footer">
-      <div class="row">
+    <footer>
+      <div class="row footer">
         <div class="col-md-4 text-center mt-3 pb-4">
           <h4>Infoa</h4>
           <p class="mb-1"><a href="#">Oma tili</a></p>
@@ -29,7 +29,7 @@
         </div>
       </div>
 
-    </div>
+</footer>
     
   </div>
 <!-- Optional JavaScript -->

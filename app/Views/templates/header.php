@@ -22,7 +22,7 @@
       <a href="<?php echo base_url()?>"><img src="/../images/logo.png" alt="logo"></a>
     </div>
     <div class="col-md-6 text-center align-self-center d-none d-sm-block">
-      <h2>Tervetuloa herkkujen maailmaan!</h2>
+      <h2 class="mainheader">Tervetuloa herkkujen maailmaan!</h2>
     </div>
     <div class="col-md-3 align-self-center">
       <form action="">
@@ -99,12 +99,19 @@
                 <a class="dropdown-item" href="#">Halloweenkarkit</a>
                 <a class="dropdown-item" href="#">Ystävänpäivä</a>
               </div>
-            </li>
+          </li>
           </ul>
-          <div class="nav-item mr-2">
-            <i class="fa fa-user mr-2" aria-hidden="true"></i><a href="#">Kirjaudu</a>
+          <div class="nav-item">
+          <a class="mr-2" href="#">Kirjaudu</a><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i>
           </div>
-          <?php echo '<div><a href="' . site_url('cart/index') . '"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i><a/></div>' ?>
+          <?php
+          if (isset($_SESSION['basket'])) {
+            echo '<div><a href="' . site_url('cart/index') . '">' . count($_SESSION['basket']) . '<i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i><a/></div>';
+          }
+          else {
+            echo '<div><a href="' . site_url('cart/index') . '"><i class="fa fa-2x fa-shopping-cart" aria-hidden="true"></i><a/></div>';
+          }
+          ?>
 
         </div>
       </nav>
