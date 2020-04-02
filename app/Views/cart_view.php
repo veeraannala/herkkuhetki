@@ -1,9 +1,9 @@
-<a href="<?= site_url('cart/clear')?>">Tyhjennä</a>
 
 <?php 
 if(is_array($purchases) && count($purchases)>0)
 {
 ?>
+    <?php echo '<a href="' . site_url('cart/clear') . '"> Tyhjennä</a>'; ?>
     <?php foreach ($purchases as $purchase): ?>
         <p style="margin-bottom: 0 !important"><?= $purchase?></p>
        <?php endforeach;?>
