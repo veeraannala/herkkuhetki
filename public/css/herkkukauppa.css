@@ -18,12 +18,12 @@ body{
     border-style: none;
 }
 .carousel {
-    height:500px;
+    height:400px;
 }
     
 .carousel-item img {
-    height:500px;
-    object-fit: contain;
+    height:400px;
+    object-fit: cover;
 }
 
   
@@ -104,6 +104,7 @@ a{
 
 .btn {
     background-color: #E65959 !important;
+    border-radius: 0%;
 }
 .fa-shopping-cart {
     font-size: 34.5px !important;
