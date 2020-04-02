@@ -16,10 +16,9 @@ class Cart extends BaseController
 	}
 
     public function insert() {
-        $product = "tikkukaramellit";
-
+        $product = $this->request->getPost('product');
         echo $product;
-
+        echo "lisätty";
     }
 
 
