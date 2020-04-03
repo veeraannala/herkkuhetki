@@ -3,27 +3,30 @@
     <div class="col-12 col-lg-9">
         <div class="row">
             <div class="col-sm-12 col-lg-6 p-3">
-                <img class="img-fluid" src="images/lolly.jpg">
+                <img class="img-fluid" src="<?=base_url('images/lolly.jpg')?>">
             </div>
             <div class="col-sm-12 col-lg-6 p-3">
-                <h2 class="pb-4">Tikkukaramellit</h2>
-                <p>Tikkareita kansalle!</p>
+            <?php foreach ($product as $prod): ?>
+        
+            <h2 class="mb-3"><?= $prod['name'] ?></h2>
+                
                 <p>Varastossa</p>
                 <form class="form-group" method="post" action="<?= site_url('cart/insert')?>">
                     <label for="amount">Määrä:</label>
                     <input type="hidden" name="product" value="200">
                     <input class="form-control mb-3" id="amount" name="amount" type="number" step="1" value="1" min="1">
-                    <h5>Hinta 1678,56 €</h5>
+                    <h5>Hinta <?= $prod['price'] ?> €</h5>
                     <button class="btn">Lisää ostoskoriin</button>
                 </form>
             </div>
         </div>
-
+        
 
         <div class="row">
             <div class="col-12 col-lg-9 p-3">
-
+                <?= $prod['description'] ?>
                 <p>Tässä on mahtava määrä tikkareita. Paljon ja herkullisia.</p>
+                <?php endforeach; ?>
                 <p>Tikkarit sisältävät runsaan määrän sokeria ja kaikkea muuta epäterveellistä. Oikeasti ne ovat myös
                     aika
                     pahoja

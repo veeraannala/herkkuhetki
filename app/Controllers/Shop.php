@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 use App\Models\CategoryModel;
 use App\Models\ThemeModel;
+use App\Models\ProductModel;
 
 class Shop extends BaseController
 {
@@ -25,10 +26,13 @@ class Shop extends BaseController
 	{
 		$model = new CategoryModel();
 		$thememodel = new ThemeModel();
+		$prodmodel = new ProductModel();
 		$data['categories'] = $model->getCategories();
 		$data['themecategories'] = $thememodel->getThemeCategories();
+		$data['product'] = $prodmodel->getProducts();
+		
 		echo view('templates/header',$data);
-		echo view('product_info');
+		echo view('product_info', $data);
         echo view('templates/footer');
 	}
 
