@@ -2,11 +2,32 @@
 
 use CodeIgniter\Model;
 
-    class CategoryModel extends Model{
+    class CategoryModel extends Model
+    {
         protected $table      = 'productcategory';
         protected $primaryKey = 'categoryID';
         protected $returnType = 'array';
 
-        protected $allowedFields = ['categoryID', 'name', 'parentID'];
+        protected $allowedFields = ['categoryID', 'parentID', 'name'];
         
+    
+
+        public function getCategories()
+        {
+            $this->table('productcategory');
+            $this->select('categoryID, parentID, name');
+            $this->where('parentID', NULL);
+            $query = $this->get();
+
+            return $query->getResultArray();
+        }
+
+        public function getSubCategories()
+        {
+            $this->table('productcategory');
+            $this->select('categoryID, parentID, name');
+            $query = $this->get();
+
+            return $query->getResultArray();
+        }
     }
