@@ -4,7 +4,7 @@ use CodeIgniter\Model;
 
     class CategoryModel extends Model
     {
-        protected $table      = 'productcategory';
+        protected $table     = 'productcategory';
         protected $primaryKey = 'categoryID';
         protected $returnType = 'array';
 
@@ -16,18 +16,10 @@ use CodeIgniter\Model;
         {
             $this->table('productcategory');
             $this->select('categoryID, parentID, name');
-            $this->where('parentID', NULL);
             $query = $this->get();
 
             return $query->getResultArray();
         }
 
-        public function getSubCategories()
-        {
-            $this->table('productcategory');
-            $this->select('categoryID, parentID, name');
-            $query = $this->get();
 
-            return $query->getResultArray();
-        }
     }

@@ -115,7 +115,7 @@ insert into productcategory (parentID, name) values (1, 'Viinikumit');
 insert into productcategory (parentID, name) values (1, 'Irtosuklaat');
 insert into productcategory (parentID, name) values (2, 'Karkkipussit');
 insert into productcategory (parentID, name) values (2, 'Karkkilaatikot');
-insert into productcategory (parentID, name) values (2, 'Latupatukat');
+insert into productcategory (parentID, name) values (2, 'Lakupatukat');
 insert into productcategory (parentID, name) values (3, 'Suklaalevyt');
 insert into productcategory (parentID, name) values (3, 'Suklaapatukat');
 insert into productcategory (parentID, name) values (3, 'Suklaamunat');

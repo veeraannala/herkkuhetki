@@ -36,7 +36,9 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
 
-                    <?php foreach ($categories as $category): ?>
+                    <?php foreach ($categories as $category): 
+                        if ($category['parentID'] === null) {
+                            ?>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -45,19 +47,19 @@
 
                         </a>
                         <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
-                            <?php foreach ($subcategories as $subcategory): 
+                            <?php foreach ($categories as $subcategory):
                             
-                              if ($subcategory['parentID'] === $category['categoryID']){ 
-                                ?>
+                              if ($subcategory['parentID'] === $category['categoryID']) {
+                                  ?>
                             <a class="dropdown-item" href="#"><?=$subcategory['name']?></a>
                             <?php
-                            }
-                            ?>
+                              } ?>
 
                         <?php endforeach; ?>
                         </div>
                     </li>
-                    <?php endforeach; ?>
+                    <?php } 
+                        endforeach; ?>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -65,10 +67,14 @@
                             TEEMAKARKIT
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Joulu</a>
-                            <a class="dropdown-item" href="#">Pääsiäinen</a>
-                            <a class="dropdown-item" href="#">Halloweenkarkit</a>
-                            <a class="dropdown-item" href="#">Ystävänpäivä</a>
+
+                        <?php foreach ($themecategories as $themes): ?>
+                          <a class="dropdown-item" href="#"><?=$themes['name']?></a>
+                          
+                      <?php endforeach; ?>
+                            
+                        
+                        
                         </div>
                     </li>
                 </ul>

@@ -1,5 +1,7 @@
 <?php namespace App\Controllers;
 use App\Models\CategoryModel;
+use App\Models\ThemeModel;
+
 class Shop extends BaseController
 {
 	
@@ -11,8 +13,9 @@ class Shop extends BaseController
 	public function index()
 	{
 		$model = new CategoryModel();
+		$thememodel = new ThemeModel();
 		$data['categories'] = $model->getCategories();
-		$data['subcategories'] = $model->getSubCategories();
+		$data['themecategories'] = $thememodel->getThemeCategories();
 		echo view('templates/header',$data);
 		echo view('front_page');
         echo view('templates/footer');
@@ -21,8 +24,9 @@ class Shop extends BaseController
 	public function show_product()
 	{
 		$model = new CategoryModel();
+		$thememodel = new ThemeModel();
 		$data['categories'] = $model->getCategories();
-		$data['subcategories'] = $model->getSubCategories();
+		$data['themecategories'] = $thememodel->getThemeCategories();
 		echo view('templates/header',$data);
 		echo view('product_info');
         echo view('templates/footer');
