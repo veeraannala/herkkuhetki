@@ -9,7 +9,7 @@ body{
 .container {
     background-color: white !important;
     box-shadow: -5px 5px 5px 0px rgba(235,203,225,0.4), 5px 5px 5px 0px rgba(235,203,225,0.4);
-    opacity: 95%;
+    /*opacity: 95%; */
 }
 .card {
     display: inline-block;
