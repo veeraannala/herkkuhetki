@@ -41,58 +41,20 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
 
-            <li class="nav-item dropdown">
+            <?php foreach($cat as $cat_unit): ?>
+              <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <?=print $cat[0]->name?>
+                <?= anchor('category/showcategories/' . $cat['parentID'] . $cat->name ?>
               </a>
               <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item "href="#">Salmiakit</a>
-                <a class="dropdown-item" href="#">Kirpeät karkit</a>
-                <a class="dropdown-item" href="#">Kovat karkit</a>
-                <a class="dropdown-item" href="#">Lakritsit</a>
-                <a class="dropdown-item" href="#">Vaahtokarkit</a>
-                <a class="dropdown-item" href="#">Toffeet</a>
-                <a class="dropdown-item" href="#">Viinikumit</a>
-                <a class="dropdown-item" href="#">Suklaat</a>
-
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <?=print $cat[1]->name?>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <?php foreach($subcat as $sub_unit): ?>
+              <?php foreach($subcat as $sub_unit): ?>
                   <?='<a class="dropdown-item" href="#">'.$sub_unit->name;'</a>'?>
                 <?php endforeach ?>
               </div>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <?=print $cat[2]->name?>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Suklaalevyt</a>
-                <a class="dropdown-item" href="#">Suklaapatukat</a>
-                <a class="dropdown-item" href="#">Suklaamunat</a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                TEEMAKARKIT
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Joulu</a>
-                <a class="dropdown-item" href="#">Pääsiäinen</a>
-                <a class="dropdown-item" href="#">Halloweenkarkit</a>
-                <a class="dropdown-item" href="#">Ystävänpäivä</a>
-              </div>
-              
-          </li>
+            <?php endforeach ?>
+            
           </ul>
           <form action="" class="form-inline">
             <div class="input-group search mr-2">
