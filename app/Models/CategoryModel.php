@@ -6,5 +6,7 @@ use CodeIgniter\Model;
         protected $table      = 'productcategory';
         protected $primaryKey = 'categoryID';
         protected $returnType = 'object';
+
+        protected $allowedFields = ['categoryID', 'name'];
         
     }
