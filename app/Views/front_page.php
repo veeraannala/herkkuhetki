@@ -27,6 +27,20 @@
   </a>
 </div>
 </div>
+
+<div class="row">
+  <div class="col ml-3">
+    <h4>Herkkuhetki</h4>
+    <p class="text-justify">Herkkuhetki on uusi, moderni ja nykyaikainen karkkikauppa. Tarjoamme loistavan valikoiman makeisia joka lähtöön eikä niitä ole hinnalla pilattu. 
+    Mitä et meiltä saa, sitä et elämääsi tarvitse.</p>
+  </div>
+  <div class="col mr-3">
+    <h4>Karkkia joka lähtöön!</h4>
+    <p class="text-justify">Meiltä löydät karkkeja kaikenlaiseen makeannälkään! Olipa kyseessä sitten suklaanhimo tai mässäilyilta, meiltä siihen saa helpotusta! 
+    Selaa tuotteita ja osta niin paljon kuin lompakko sallii!</p>
+  </div>
+</div>
+
 <div class="row">
 <div class="form-group col-3 mb-0 mt-2">
       <select id="inputState" class="form-control text-center">

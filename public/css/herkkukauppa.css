@@ -8,6 +8,8 @@ body{
 }
 .container {
     background-color: white !important;
+    box-shadow: -5px 5px 5px 0px rgba(235,203,225,0.4), 5px 5px 5px 0px rgba(235,203,225,0.4);
+    opacity: 95%;
 }
 .card {
     display: inline-block;
@@ -35,7 +37,7 @@ body{
 .btn {
     color: white;
     background-color: #E65959 !important;
-    border-radius: 0%;
+    border-radius: 2px;
 }
 /* glowing effect for inputs and buttons */
 .btn:focus {
@@ -69,4 +71,8 @@ body{
   }
   .cartminheight {
       min-height: 415px;
+  }
+
+  .header {
+      opacity: 100%;
   }

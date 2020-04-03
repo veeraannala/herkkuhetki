@@ -17,7 +17,7 @@
 </head>
 
 <body>
-<div class="container">
+<div class="container header">
 <div class="row">
     <div class="col-md-3 d-flex justify-content-center">
       <a href="<?php echo base_url()?>"><img src="/../images/logo.png" alt="logo"></a>
