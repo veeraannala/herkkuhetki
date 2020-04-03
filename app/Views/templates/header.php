@@ -28,8 +28,6 @@
     
 </div>
 </div>
-                
-              
     <div class="container navv">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
@@ -44,7 +42,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <?=print $cat[0]->name?>
+                IRTOKARKIT
               </a>
               <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item "href="#">Salmiakit</a>
@@ -61,18 +59,18 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <?=print $cat[1]->name?>
+                PAKATUT MAKEISET
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <?php foreach($subcat as $sub_unit): ?>
-                  <?='<a class="dropdown-item" href="#">'.$sub_unit->name;'</a>'?>
-                <?php endforeach ?>
+                <a class="dropdown-item" href="#">Karkkipussit</a>
+                <a class="dropdown-item" href="#">Karkkilaatikot</a>
+                <a class="dropdown-item" href="#">Lakupatukat</a>
               </div>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <?=print $cat[2]->name?>
+                SUKLAAT
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Suklaalevyt</a>
@@ -91,7 +89,6 @@
                 <a class="dropdown-item" href="#">Halloweenkarkit</a>
                 <a class="dropdown-item" href="#">Ystävänpäivä</a>
               </div>
-              
           </li>
           </ul>
           <form action="" class="form-inline">

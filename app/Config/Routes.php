@@ -35,6 +35,7 @@ $routes->get('show_product', 'Shop::show_product');
 $routes->get('cart/index', 'Cart::index');
 $routes->get('cart/insert', 'Cart::insert');
 $routes->get('cart/clear', 'Cart::clear');
+$routes->get('category/showcategories(:segment)', 'Category::showcategories/$1');
 
 
 /**
