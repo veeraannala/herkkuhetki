@@ -17,13 +17,13 @@ class Category extends BaseController
         echo view('templates/footer');
     }
     
-    public function showcategories($parentID) {
+    public function showcategories() {
 
         $catmodel = new CategoryModel;
         // $data = $catmodel->where('parentId')
         $data = ['cat' => $catmodel->where('parentID', null)
                 ->findAll(),
-                 'subcat'=> $catmodel->where('parentID', $parentID)
+                 'subcat'=> $catmodel->where('parentID', 2)
                  ->findAll()
 		
         ];

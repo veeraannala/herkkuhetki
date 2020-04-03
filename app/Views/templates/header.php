@@ -45,7 +45,7 @@
               <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <?= anchor('category/showcategories/' . $cat['parentID'] . $cat->name ?>
+                <?= $cat['0']->name ?>
               </a>
               <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
               <?php foreach($subcat as $sub_unit): ?>
