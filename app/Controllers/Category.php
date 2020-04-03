@@ -20,14 +20,19 @@ class Category extends BaseController
     public function showcategories() {
 
         $catmodel = new CategoryModel;
-
-        $data = ['cat' => $catmodel->where('parentId', null)
-		    	->findAll()
+        // $data = $catmodel->where('parentId')
+        $data = ['cat' => $catmodel->where('parentID', null)
+                ->findAll(),
+                 'subcat'=> $catmodel->where('parentID', 2)
+                 ->findAll()
 		
         ];
+
         print_r($data);
 
         echo view('templates/header',$data);
+        echo view('front_page');
+        echo view('templates/footer');
 		
 
     }

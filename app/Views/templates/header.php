@@ -64,9 +64,9 @@
                 <?=print $cat[1]->name?>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Karkkipussit</a>
-                <a class="dropdown-item" href="#">Karkkilaatikot</a>
-                <a class="dropdown-item" href="#">Lakupatukat</a>
+                <?php foreach($subcat as $sub_unit): ?>
+                  <?='<a class="dropdown-item" href="#">'.$sub_unit->name;'</a>'?>
+                <?php endforeach ?>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -83,7 +83,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                
+                TEEMAKARKIT
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Joulu</a>
