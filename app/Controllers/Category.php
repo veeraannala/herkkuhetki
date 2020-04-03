@@ -1,6 +1,6 @@
 <?php namespace App\Controllers;
 
- use App\Models\CategoryModel;
+// use App\Models\CategoryModel;
 
 class Category extends BaseController
 {
@@ -17,14 +17,14 @@ class Category extends BaseController
         echo view('templates/footer');
     }
     
-    public function showcategories() {
+    public function showcategories($parentID) {
 
         $catmodel = new CategoryModel;
         // $data = $catmodel->where('parentId')
         $data = ['cat' => $catmodel->where('parentID', null)
                 ->findAll(),
-                 'subcat'=> $catmodel->where('parentID', 2)
-                 ->findAll()
+                 'subcat'=> $catmodel->where('parentID', $parentID)
+                 ->findAll($parentID)
 		
         ];
 

@@ -5,8 +5,8 @@ use CodeIgniter\Model;
     class CategoryModel extends Model{
         protected $table      = 'productcategory';
         protected $primaryKey = 'categoryID';
-        protected $returnType = 'object';
+        protected $returnType = 'array';
 
-        protected $allowedFields = ['categoryID', 'name'];
+        protected $allowedFields = ['categoryID', 'name', 'parentID'];
         
     }
