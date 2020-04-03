@@ -15,7 +15,23 @@ class Category extends BaseController
 		echo view('templates/header');
 		echo view('front_page');
         echo view('templates/footer');
-	}
+    }
+    
+    public function showcategories() {
+
+        $catmodel = new CategoryModel;
+
+        $data = ['cat' => $catmodel->where('parentId', null)
+		    	->findAll()
+		
+				
+        ];
+        print_r($data);
+
+        echo view('templates/header',$data);
+		
+
+    }
 
 
 
