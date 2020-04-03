@@ -24,7 +24,6 @@ class Category extends BaseController
         $data = ['cat' => $catmodel->where('parentId', null)
 		    	->findAll()
 		
-				
         ];
         print_r($data);
 

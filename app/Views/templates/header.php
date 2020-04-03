@@ -28,6 +28,8 @@
     
 </div>
 </div>
+                
+              
     <div class="container navv">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
@@ -42,7 +44,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                IRTOKARKIT
+                <?=print $cat[0]->name?>
               </a>
               <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item "href="#">Salmiakit</a>
@@ -59,7 +61,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                PAKATUT MAKEISET
+                <?=print $cat[1]->name?>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Karkkipussit</a>
@@ -70,7 +72,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                SUKLAAT
+                <?=print $cat[2]->name?>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Suklaalevyt</a>
@@ -81,7 +83,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                TEEMAKARKIT
+                
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Joulu</a>
@@ -89,6 +91,7 @@
                 <a class="dropdown-item" href="#">Halloweenkarkit</a>
                 <a class="dropdown-item" href="#">Ystävänpäivä</a>
               </div>
+              
           </li>
           </ul>
           <form action="" class="form-inline">
