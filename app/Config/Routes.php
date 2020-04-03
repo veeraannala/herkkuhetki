@@ -36,6 +36,7 @@ $routes->get('cart/index', 'Cart::index');
 $routes->get('cart/insert', 'Cart::insert');
 $routes->get('cart/clear', 'Cart::clear');
 
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing

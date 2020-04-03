@@ -30,6 +30,11 @@ create table productCategory (
   name varchar(255) not null unique
 );
 
+create table themeCategory (
+  id int primary key auto_increment,
+  name varchar(255) not null unique
+);
+
 create table product (
   id int primary key auto_increment,
   name varchar(255) not null unique,
@@ -40,7 +45,9 @@ create table product (
   category_id int not null,
   index (category_id),
   foreign key (category_id) references productCategory(categoryID)
-  on delete restrict
+  on delete restrict,
+  theme_id int,
+  foreign key (theme_id) references themeCategory(id)
 );
 
 create table newsletter (
@@ -97,7 +104,7 @@ create table adminUser (
 insert into productcategory (name) values ('Irtokarkit');
 insert into productcategory (name) values ('Pakatut makeiset');
 insert into productcategory (name) values ('Suklaat');
-insert into productcategory (name) values ('Teemakarkit');
+
 insert into productcategory (parentID, name) values (1, 'Salmiakit');
 insert into productcategory (parentID, name) values (1, 'Kirpeät karkit');
 insert into productcategory (parentID, name) values (1, 'Kovat karkit');
@@ -112,8 +119,25 @@ insert into productcategory (parentID, name) values (2, 'Latupatukat');
 insert into productcategory (parentID, name) values (3, 'Suklaalevyt');
 insert into productcategory (parentID, name) values (3, 'Suklaapatukat');
 insert into productcategory (parentID, name) values (3, 'Suklaamunat');
-insert into productcategory (parentID, name) values (4, 'Joulu');
-insert into productcategory (parentID, name) values (4, 'Pääsiäinen');
-insert into productcategory (parentID, name) values (4, 'Halloweenkarkit');
-insert into productcategory (parentID, name) values (4, 'Ystävänpäivä');
+insert into productcategory (parentID, name) values (3, 'Suklaakonvehdit');
 
+insert into themecategory (name) values ('Joulu');
+insert into themecategory (name) values ('Pääsiäinen');
+insert into themecategory (name) values ('Halloweenkarkit');
+insert into themecategory (name) values ('Ystävänpäivä');
+
+insert into product (name,price,description,image,stock,category_id, theme_id) values ('Irtosalmiakki',1.45,'Väkevä ja kova salmiakki. Kestävimmälläkin uroolla nousee vesi silmiin tätä imeskellessä. Ei heikoille!','images/imagenotfound', 67, 4,NULL);
+insert into product (name,price,description,image,stock,category_id, theme_id) values ('Kirpeä hedelmä',1.65,'Aivot räjäyttävä kirpeä hedelmäkaramelli. Tätä maistaessasi tiedät, miltä tuntuu avaruuskävelyllä ilman avaruuspukua.','images/imagenotfound', 643, 5,3);
+insert into product (name,price,description,image,stock,category_id, theme_id) values ('Extrakova karkki',1.65,'Älä puraise, jos hampaasi ovat sinulle mieluisat.','images/imagenotfound', 3, 6,NULL);
+insert into product (name,price,description,image,stock,category_id, theme_id) values ('Pehmeä tuorelaku',1.85,'Laita suuhusi tämä pilvenpehmoinen lakritsi niin mietit, oletko kuollut ja taivaassa, niin herkullista se on.','images/imagenotfound', 34, 7,NULL);
+insert into product (name,price,description,image,stock,category_id, theme_id) values ('Vaaleanpunaiset sydämet',1.15,'Makeaa, pehmeää sokeria. Jos haluat ostaa rakkaallesi romanttisen lahjan, tässä hyvä valinta','images/imagenotfound', 39, 8,4);
+insert into product (name,price,description,image,stock,category_id, theme_id) values ('Ihana kermatoffee',2.15,'Niin kermaista ja pehmeää, että aivan sulaa suussa. Sulattaa myös paatuneimman toffeenvihaajan sydämen.','images/imagenotfound', 76, 9, NULL);
+insert into product (name,price,description,image,stock,category_id, theme_id) values ('Hedelmäinen viinikumi',2.15,'Sitkeä ja teollisen makuinen. Sisältää runsaasti keinotekoisia aromeja, mutta ei mitään luonnollista.','images/imagenotfound', 56, 10, NULL);
+insert into product (name,price,description,image,stock,category_id, theme_id) values ('Toffeetäytesuklaa',1.95,'Pehmeä kermatoffeetäyte suussa sulavan suklaan sisässä. Näitä kannattaa tilata kerralla niin paljon, että oksentaa.','images/imagenotfound', 98, 11, 1);
+insert into product (name,price,description,image,stock,category_id, theme_id) values ('Jättimätti',3.15,'Suurtakin suurempi karkkipussi, tästä riittää (ehkä) kavereillekin.','images/imagenotfound', 23, 12, NULL);
+insert into product (name,price,description,image,stock,category_id, theme_id) values ('Kissimirrin kikkareet',0.99,'Lasten suosiossa oleva pieni salmiakkikarkkilaatikko. Paino 23g.','images/imagenotfound', 34, 13, 2);
+insert into product (name,price,description,image,stock,category_id, theme_id) values ('Lakupatukka',3.56,'Hyvänmakuinen lakupatukka. Mustaa ja makeaa. Tehty Suomessa.','images/imagenotfound', 24, 14, NULL);
+insert into product (name,price,description,image,stock,category_id, theme_id) values ('Se perussininen',3.56,'Tämä ei esittelyjä kaipaa. Tehty Suomessa.','images/imagenotfound', 25, 15, NULL);
+insert into product (name,price,description,image,stock,category_id, theme_id) values ('Paha patukka',3.56,'Jotain ulkomaalaista kakkaa.','images/imagenotfound', 1, 16, NULL);
+insert into product (name,price,description,image,stock,category_id, theme_id) values ('Yllätysmuna',3.56,'Laita suuhusi ja saat yllätyksen, vaikka et ehkä haluaisikaan.','images/imagenotfound', 19, 17, 2);
+insert into product (name,price,description,image,stock,category_id, theme_id) values ('Konvehtirasia',3.56,'Sisältää erilaisia suklaakonvehteja. Suurin osa niistä on todennäköisiä sellaisia, joista et tykkää.','images/imagenotfound', 67, 18, 1);
