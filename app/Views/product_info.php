@@ -27,13 +27,7 @@
                 <?= $prod['description'] ?>
                 <p>Tässä on mahtava määrä tikkareita. Paljon ja herkullisia.</p>
                 <?php endforeach; ?>
-                <p>Tikkarit sisältävät runsaan määrän sokeria ja kaikkea muuta epäterveellistä. Oikeasti ne ovat myös
-                    aika
-                    pahoja
-                    ja niillä saa hampaansa rikki, jos niitä puraisee heikolla hampaalla. Lapset kuitenkin yleensä
-                    tykkäävät
-                    niistä.
-                    Jotkut kokevat tikkukaramellien syömisen seksuaalisesti kiihottavana.</p>
+                
             </div>
         </div>
     </div>

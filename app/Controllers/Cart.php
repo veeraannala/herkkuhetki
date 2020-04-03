@@ -1,5 +1,7 @@
 <?php namespace App\Controllers;
-
+use App\Models\CategoryModel;
+use App\Models\ThemeModel;
+use App\Models\ProductModel;
 class Cart extends BaseController
 {
     public function __construct() {
@@ -10,7 +12,11 @@ class Cart extends BaseController
 	public function index()
 	{
         $data['purchases'] = $_SESSION['basket'];
-		echo view('templates/header');
+		$model = new CategoryModel();
+		$thememodel = new ThemeModel();
+		$data['categories'] = $model->getCategories();
+		$data['themecategories'] = $thememodel->getThemeCategories();
+		echo view('templates/header',$data);
 		echo view('cart_view',$data);
         echo view('templates/footer');
 	}
