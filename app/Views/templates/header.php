@@ -17,16 +17,13 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 d-flex justify-content-center">
-                <a href="<?php echo base_url()?>"><img src="/../images/logo.png" alt="logo"></a>
-            </div>
-            <div class="col-md-9 text-center align-self-center d-none d-sm-block">
-                <h2 class="mainheader">Tervetuloa herkkujen maailmaan!</h2>
-            </div>
-
-        </div>
+<div class="container header">
+<div class="row">
+    <div class="col-md-3 d-flex justify-content-center">
+      <a href="<?php echo base_url()?>"><img src="/../images/logo.png" alt="logo"></a>
+    </div>
+    <div class="col-md-9 text-center align-self-center d-none d-sm-block">
+      <h2 class="mainheader">Tervetuloa herkkujen maailmaan!</h2>
     </div>
     <div class="container navv">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">

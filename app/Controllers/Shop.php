@@ -28,15 +28,6 @@ class Shop extends BaseController
         echo view('templates/footer');
 	}
 
-	public function show_category()
-	{
-		$model = new CategoryModel();
-        $data['subcategories'] = $model->getSubCategories();
-
-		print_r ($data);
-
-	}
-
 
 
 	}
