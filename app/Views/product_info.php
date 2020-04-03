@@ -2,11 +2,12 @@
 
     <div class="col-12 col-lg-9">
         <div class="row">
+         <?php foreach ($product as $prod): ?>
             <div class="col-sm-12 col-lg-6 p-3">
-                <img class="img-fluid" src="<?=base_url('images/lolly.jpg')?>">
+                <img class="img-fluid" src="<?=base_url($prod['image'] . '.png')?>">
             </div>
             <div class="col-sm-12 col-lg-6 p-3">
-            <?php foreach ($product as $prod): ?>
+           
         
             <h2 class="mb-3"><?= $prod['name'] ?></h2>
                 
@@ -25,7 +26,7 @@
         <div class="row">
             <div class="col-12 col-lg-9 p-3">
                 <?= $prod['description'] ?>
-                <p>Tässä on mahtava määrä tikkareita. Paljon ja herkullisia.</p>
+                
                 <?php endforeach; ?>
                 
             </div>
