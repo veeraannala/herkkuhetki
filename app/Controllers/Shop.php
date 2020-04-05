@@ -32,7 +32,7 @@ class Shop extends BaseController
 		$prodmodel = new ProductModel();
 		$data['categories'] = $model->getCategories();
 		$data['themecategories'] = $thememodel->getThemeCategories();
-		$data['product'] = $prodmodel->getProducts();
+		$data['product'] = $prodmodel->getProduct();
 		
 		echo view('templates/header',$data);
 		echo view('product_info', $data);
