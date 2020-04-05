@@ -123,7 +123,7 @@ insert into productcategory (parentID, name) values (3, 'Suklaakonvehdit');
 
 insert into themecategory (name) values ('Joulu');
 insert into themecategory (name) values ('Pääsiäinen');
-insert into themecategory (name) values ('Halloweenkarkit');
+insert into themecategory (name) values ('Halloween');
 insert into themecategory (name) values ('Ystävänpäivä');
 
 insert into product (name,price,description,image,stock,category_id, theme_id) values ('Irtosalmiakki',1.45,'Väkevä ja kova salmiakki. Kestävimmälläkin uroolla nousee vesi silmiin tätä imeskellessä. Ei heikoille!','images/imagenotfound', 67, 4,NULL);
