@@ -42,21 +42,10 @@
 </div>
 
 <div class="row">
-<div class="form-group col-3 mb-0 mt-2">
-      <select id="inputState" class="form-control text-center">
-        <option selected>Järjestä</option>
-        <option>...</option>
-      </select>
-    </div>
-    </div>
-    <div class="row">
-<div class="col-lg-3 col-md-4 card mt-3 mb-1">
-  <a href="/show_product" ><img class="card-img-top" src="images/lolly.jpg" alt="Card image cap"></a>
-  <div class="card-body text-center">
-    <h5 class="card-title">Ostappa halpoja tikkareita!</h5>
-    <p class="card-text">Ostappa halpoja tikkareita!</p>
-    <form method="post" action="<?= site_url('cart/insert')?>">
-      <input type="hidden" name="product" value="200">
-    <button class="btn">Lisää ostoskoriin</button>
-    </form>
+  <div class="form-group col-3 mb-0 mt-2">
+    <select id="inputState" class="form-control text-center">
+      <option selected>Järjestä</option>
+      <option>...</option>
+    </select>
   </div>
+</div>

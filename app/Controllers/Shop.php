@@ -15,10 +15,13 @@ class Shop extends BaseController
 	{
 		$model = new CategoryModel();
 		$thememodel = new ThemeModel();
+		$prodmodel = new ProductModel();
 		$data['categories'] = $model->getCategories();
 		$data['themecategories'] = $thememodel->getThemeCategories();
+		$data['product'] = $prodmodel->ShowProduct();
 		echo view('templates/header',$data);
 		echo view('front_page');
+		echo view('product');
         echo view('templates/footer');
 	}
 

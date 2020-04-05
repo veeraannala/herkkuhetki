@@ -12,11 +12,19 @@ use CodeIgniter\Model;
         
     
 
-        public function getProducts()
+        public function getProduct()
         {
             $this->table('product');
             $this->select('id, name, price, description, image, stock, category_id, theme_id');
             $this->where('id',14);
+            $query = $this->get();
+
+            return $query->getResultArray();
+        }
+        public function ShowProduct()
+        {
+            $this->table('product');
+            $this->select('id, name, price, image, category_id, theme_id');
             $query = $this->get();
 
             return $query->getResultArray();
