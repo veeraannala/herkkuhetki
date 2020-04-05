@@ -1,42 +1,28 @@
 <?php namespace App\Controllers;
-
-// use App\Models\CategoryModel;
+use App\Models\CategoryModel;
+use App\Models\ThemeModel;
+use App\Models\ProductModel;
 
 class Category extends BaseController
 {
-
-    public function __construct() {
+    public function __construct()
+    {
         $session = \Config\Services::session();
         $session->start();
     }
 
-	public function index()
-	{
-		echo view('templates/header');
-		echo view('front_page');
+    public function index($id)
+    {
+        $model = new CategoryModel();
+        $thememodel = new ThemeModel();
+        $prodmodel = new ProductModel();
+        
+        $data['categories'] = $model->getCategories();
+        $data['themecategories'] = $thememodel->getThemeCategories();
+        $data['product'] = $prodmodel->ShowProduct();
+        $data['id'] = $id;
+        echo view('templates/header', $data);
+        echo view('category_view', $data);
         echo view('templates/footer');
     }
-    
-    public function showcategories($parentID) {
-
-        $catmodel = new CategoryModel;
-        // $data = $catmodel->where('parentId')
-        $data = ['cat' => $catmodel->where('parentID', null)
-                ->findAll(),
-                 'subcat'=> $catmodel->where('parentID', $parentID)
-                 ->findAll($parentID)
-		
-        ];
-
-        print_r($data);
-
-        echo view('templates/header',$data);
-        echo view('front_page');
-        echo view('templates/footer');
-		
-
-    }
-
-
-
 }

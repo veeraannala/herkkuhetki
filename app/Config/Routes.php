@@ -31,11 +31,11 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Shop::index');
-$routes->get('show_product', 'Shop::show_product');
+$routes->get('show_product', 'Shop::show_product/$1');
 $routes->get('cart/index', 'Cart::index');
 $routes->get('cart/insert', 'Cart::insert');
 $routes->get('cart/clear', 'Cart::clear');
-$routes->get('category/showcategories(:segment)', 'Category::showcategories/$1');
+$routes->get('category', 'Category::index/$1');
 
 
 /**

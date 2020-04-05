@@ -51,7 +51,7 @@
                             
                               if ($subcategory['parentID'] === $category['categoryID']) {
                                   ?>
-                            <a class="dropdown-item" href="#"><?=$subcategory['name']?></a>
+                            <a class="dropdown-item" href="<?=site_url('category/index/' . $subcategory['categoryID'])?>" ><?=$subcategory['name']?></a>
                             <?php
                               } ?>
 
@@ -69,7 +69,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                         <?php foreach ($themecategories as $themes): ?>
-                          <a class="dropdown-item" href="#"><?=$themes['name']?></a>
+                          <a class="dropdown-item" href=<?=site_url('category/index/' . $themes['id'])?>><?=$themes['name']?></a>
                           
                       <?php endforeach; ?>
                             

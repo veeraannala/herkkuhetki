@@ -25,14 +25,14 @@ class Shop extends BaseController
         echo view('templates/footer');
 	}
 
-	public function show_product()
+	public function show_product($id)
 	{
 		$model = new CategoryModel();
 		$thememodel = new ThemeModel();
 		$prodmodel = new ProductModel();
 		$data['categories'] = $model->getCategories();
 		$data['themecategories'] = $thememodel->getThemeCategories();
-		$data['product'] = $prodmodel->getProduct();
+		$data['product'] = $prodmodel->getProduct($id);
 		
 		echo view('templates/header',$data);
 		echo view('product_info', $data);
