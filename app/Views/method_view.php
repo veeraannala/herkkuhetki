@@ -9,8 +9,9 @@
         <p>Nouto (sovitulta paikalta). Nouto on maksuton.</p>
         <p>Toimitus lähimpään postin toimituspaikkaan 5-12€ per lähetys. Hinta riippuu paketin koosta ja painosta.</p>
         <p>Postin kotiinkuljetus  20,00 € per lähetys.</p>
+        <p>Postin pakettiautomaatti (hinta riippuu paketin koosta) per lähetys.</p>
         <p>Muun kuljetuspalvelun kotiinkuljetus  10,00 € per lähetys.</p>
-        <p>Yli 70 € ostokset veloituksetta lähipostiisi.</p>
+        <p>Yli 70 € ostokset veloituksetta lähinpään postin toimituspaikkaan.</p>
         <p>Yli 120 € ostokset veloituksetta kotiovellesi.</p>
     <h3>Nouto postista</h3>
         <p>Toimitetaan lähimpään postiin, 
