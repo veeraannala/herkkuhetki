@@ -36,10 +36,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Lisää tuoteryhmiä</a>
+                        <a class="nav-link" href="<?=site_url('admin/updateCategory/')?>">Lisää tuoteryhmiä</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Lisää tuotteita</a>
+                        <a class="nav-link" href="<?=site_url('admin/updateProduct/')?>">Lisää tuotteita</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Tee jotain hyödyllistä</a>
