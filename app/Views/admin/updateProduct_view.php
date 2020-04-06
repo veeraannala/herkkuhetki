@@ -28,13 +28,20 @@
             <div class="form-group">
                 <label for="category">Tuotekategoria</label>
                 <select class="form-control" name="category">
-                    <option>Tulosta tuotekategoriat tähän</option>
+                    <?php foreach ($categories as $category): 
+                    if ($category['parentID'] !== null) {
+                    ?>
+                    <option><?=$category['name']?></option>
+                    <?php } endforeach ?>
                 </select>
             </div>
             <div class="form-group">
                 <label for="themecategory">Teemakategoria</label>
                 <select class="form-control" name="themecategory">
-                    <option>Tulosta teemakategoriat tähän</option>
+                    <option>Ei teemakategoriaa</option>
+                    <?php foreach ($themecategories as $themecategory): ?>
+                        <option><?=$themecategory['name']?></option>
+                        <?php endforeach?>
                 </select>
             </div>
 
