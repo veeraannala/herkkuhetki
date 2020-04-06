@@ -12,7 +12,9 @@ class Admin extends BaseController
     }
     
     public function index() {
-
+        // if(!isset($_SESSION['username'])) {
+        //  return redirect()->to('/admin/adminlogin');
+        // }
         echo view('admin/adminHeader');
 		echo view('admin/admin_view');
         echo view('admin/adminFooter');
@@ -91,6 +93,9 @@ class Admin extends BaseController
         
     }
     public function updateCategory() {
+        // if(!isset($_SESSION['username'])) {
+        //     return redirect()->to('/admin/adminlogin');
+        // }
         $model = new CategoryModel();
         $data['categories'] = $model->getCategories();
 
@@ -100,7 +105,9 @@ class Admin extends BaseController
     }
 
     public function updateProduct() {
-
+        //  if(!isset($_SESSION['username'])) {
+        //      return redirect()->to('/admin/adminlogin');
+        //  }
         $category_model = new CategoryModel();
         $product_model = new ProductModel();
         $theme_model = new ThemeModel();
