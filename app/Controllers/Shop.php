@@ -39,6 +39,18 @@ class Shop extends BaseController
         echo view('templates/footer');
 	}
 
+	public function show_methods()
+	{
+		$model = new CategoryModel();
+		$thememodel = new ThemeModel();
+		$prodmodel = new ProductModel();
+		$data['categories'] = $model->getCategories();
+		$data['themecategories'] = $thememodel->getThemeCategories();
+		$data['product'] = $prodmodel->ShowProduct();
+		echo view('templates/header',$data);
+		echo view('method_view');
+        echo view('templates/footer');
+	}
 
 
 	}
