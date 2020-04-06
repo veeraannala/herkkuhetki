@@ -18,7 +18,7 @@
       <h5 class="card-title"><?= $prod['name'] ?></h5>
       <p class="card-text"><?= $prod['price'] . '€/100G' ?></p></a>
       <form method="post" action="<?= site_url('cart/insert')?>">
-      <input type="hidden" name="product" value="<?= $prod['price'] ?>">
+      <input type="hidden" name="product" value="<?= $prod['id'] ?>">
       <button class="btn mt-2">Lisää ostoskoriin</button>
       </form>
     </div>

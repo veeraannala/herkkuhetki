@@ -13,9 +13,11 @@ class Cart extends BaseController
 	{
         $data['purchases'] = $_SESSION['basket'];
 		$model = new CategoryModel();
-		$thememodel = new ThemeModel();
+        $thememodel = new ThemeModel();
+        $Product_Model = new ProductModel();
 		$data['categories'] = $model->getCategories();
-		$data['themecategories'] = $thememodel->getThemeCategories();
+        $data['themecategories'] = $thememodel->getThemeCategories();
+        $data['products'] = $Product_Model->getBasketproducts($_SESSION['basket']);
 		echo view('templates/header',$data);
 		echo view('cart_view',$data);
         echo view('templates/footer');
