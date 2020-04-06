@@ -24,9 +24,10 @@ class Shop extends BaseController
 		$data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
 		$data['product'] = $this->prodmodel->ShowProduct();
+
 		echo view('templates/header',$data);
 		echo view('front_page');
-		echo view('product');
+		echo view('product', $data);
         echo view('templates/footer');
 	}
 
