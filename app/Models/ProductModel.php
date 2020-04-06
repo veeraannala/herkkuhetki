@@ -8,7 +8,7 @@ use CodeIgniter\Model;
         protected $primaryKey = 'id';
         /*protected $returnType = 'array';*/
 
-        protected $allowedFields = ['id','name','price','description','image','stock,category_id','theme_id'];
+        protected $allowedFields = ['id','name','price','description','image','stock','category_id','theme_id'];
         
     
 
