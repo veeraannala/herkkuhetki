@@ -7,9 +7,6 @@ class Cart extends BaseController
     public function __construct() {
         $session = \Config\Services::session();
         $session->start();
-        if (!isset($_SESSION['basket'])) {
-            $_SESSION['basket'] = array();
-        }
     }
 
 	public function index()
