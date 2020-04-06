@@ -1,5 +1,5 @@
 <div class="row">
-<div classs="col">
+<div class="col">
 <h1>Admin</h1>
 
 <p>Adminnäkymä</p>
