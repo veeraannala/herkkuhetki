@@ -8,14 +8,14 @@ use CodeIgniter\Model;
         protected $primaryKey = 'id';
         /*protected $returnType = 'array';*/
 
-        protected $allowedFields = ['id','name','price','description','image','stock','category_id','theme_id'];
+        protected $allowedFields = ['id','name','price','description','image','stock','type','category_id','theme_id'];
         
     
 
         public function getProduct($id)
         {
             $this->table('product');
-            $this->select('id, name, price, description, image, stock, category_id, theme_id');
+            $this->select('id, name, price, description, image, stock, type, category_id, theme_id');
             $this->where('id',$id);
             $query = $this->get();
 
@@ -24,7 +24,7 @@ use CodeIgniter\Model;
         public function ShowProduct()
         {
             $this->table('product');
-            $this->select('id, name, price, image, category_id, theme_id');
+            $this->select('id, name, price, image, type, category_id, theme_id');
             $query = $this->get();
 
             return $query->getResultArray();
