@@ -2,6 +2,7 @@
 <?php
 if(is_array($purchases) && count($purchases)>0)
 {
+    print_r($_SESSION['basket'])
 ?>
     <h3 class="pt-4">Ostoskori</h3>
     <?php echo '<a href="' . site_url('cart/clear') . '"> Tyhjennä</a>'; ?>
