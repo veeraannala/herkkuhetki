@@ -99,6 +99,31 @@ class Admin extends BaseController
         echo view('admin/adminFooter');
     }
 
+    public function updateCat() {
+        $model = new CategoryModel();
+        $data['categories'] = $model->getCategories();
+
+        echo view('admin/adminHeader');
+		echo view('admin/updateCat_view', $data);
+        echo view('admin/adminFooter');
+
+    }
+
+    public function deleteCat() {
+        $model = new CategoryModel();
+        $data['categories'] = $model->getCategories();
+
+        echo view('admin/adminHeader');
+		echo view('admin/updateCat_view', $data);
+        echo view('admin/adminFooter');
+        
+    }
+
+    public function insertCat() {
+
+        
+    }
+
     public function updateProduct() {
 
         $category_model = new CategoryModel();
