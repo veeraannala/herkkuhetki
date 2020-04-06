@@ -41,10 +41,9 @@
     <div class="col-12 col-lg-3">
         <div class="row">
             <div class="col-12 p-3">
-                <p>Tänne voi tulla jotain lisätietoja toimituksesta, toimitusajoista ynnä muusta yleisestä
-                    toiminnasta.
-                </p>
-                <p>Vaikka postikulut tai jotain muuta höpinää.</p>
+                <p>Voit valita toimitustavan useista eri vaihtoehdoista: nouto, toimitus lähimpään postin toimituspaikkaan, kotiinkuljetus, postipaketti automaatti.</p>
+                <p>Tilausten toimitusten hinnat vaihtelevat välillä 5€-20€ toimitustavasta riippuen.</p>
+                <p>Yli 70€ tilaukset toimitetaan ilmaiseksi lähimpään postin toimituspaikkaan ja yli 120€ tilaukset toimitetaan ilmaiseksi suoraan kotiovellesi.</p>
             </div>
         </div>
     </div>
