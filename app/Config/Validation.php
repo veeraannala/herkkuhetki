@@ -31,6 +31,11 @@ class Validation
 	];
 
 	//--------------------------------------------------------------------
-	// Rules
+	public $adminvalidate = [
+        'username'     => 'required|is_unique[adminuser.username]',
+        'password'     => 'required|min_length[8]|max_length[30]',
+        'pass_confirm' => 'required|matches[password]'
+        
+    ];
 	//--------------------------------------------------------------------
 }
