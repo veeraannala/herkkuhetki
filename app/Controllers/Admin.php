@@ -19,5 +19,12 @@ class Admin extends BaseController
         echo view('admin/adminFooter');
     }
 
+    public function updateProduct() {
 
+        echo view('admin/adminHeader');
+        echo view('admin/updateProduct_view');
+        echo view('admin/adminFooter');
+        
+    }
+    
 }
