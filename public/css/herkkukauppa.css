@@ -76,3 +76,7 @@ body{
   .header {
       opacity: 100%;
   }
+.result {
+    font-weight: 600;
+    font-size: 20px;
+}
