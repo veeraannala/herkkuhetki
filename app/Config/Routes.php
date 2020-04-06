@@ -37,7 +37,9 @@ $routes->get('cart/insert', 'Cart::insert');
 $routes->get('cart/clear', 'Cart::clear');
 $routes->get('category', 'Category::index/$1');
 $routes->get('/', 'Admin::index');
+//$routes->get('adminlogin', 'Admin::adminlogin');
 $routes->get('methods/index', 'Methods::index');
+
 
 
 /**

@@ -11,12 +11,21 @@ class Admin extends BaseController
     }
     
     public function index() {
+
         echo view('admin/adminHeader');
 		echo view('admin/admin_view');
         echo view('admin/adminFooter');
     }
+    public function adminlogin() {
+        
+        echo view('admin/adminHeader');
+		echo view('admin/adminlogin_view');
+        echo view('admin/adminFooter');
+    }
+    
+    
 
-    public function adminRegister() {
+        public function adminRegister() {
         $validation =  \Config\Services::validation();
         $model = new AdminModel();
 
@@ -24,6 +33,7 @@ class Admin extends BaseController
             
         ))
         {
+                
                     echo view('admin/adminHeader');
                     echo view('admin/register_view');
                     echo view('admin/adminFooter');        
@@ -44,10 +54,13 @@ class Admin extends BaseController
     public function adminCheck() {
         $validation =  \Config\Services::validation();
         $model = new AdminModel();
-        if (! $this->validate($validation->getRuleGroup('adminvalidate')
+        
+        if (!$this->validate([
+            'username' => 'required|min_length[8]|max_length[30]',
+            'password' => 'required|min_length[8]|max_length[30]',
             
-        ))
-        {
+
+        ])){
             echo view('admin/adminHeader');
             echo view('admin/adminlogin_view');
             echo view('admin/adminFooter');
@@ -58,15 +71,22 @@ class Admin extends BaseController
                 $this->request->getVar('username'),
                 $this->request->getVar('password')  
             );
+            
             if ($adminuser) {
                 $_SESSION['username'] = $adminuser;
-                return redirect('index');
+                return redirect()->to('/admin'); 
+            
             }
             else {
-                return redirect('admin/adminlogin_view');
+                echo 'istunto ei päällä';
             }
         }
         
+        
+    }
+    public function logout() {
+        session_destroy();
+        return redirect()->to('/admin/adminlogin');
         
     }
     public function updateCategory() {
