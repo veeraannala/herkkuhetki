@@ -20,7 +20,7 @@
                 <?php } ?>
                 <form class="form-group" method="post" action="<?= site_url('cart/insert')?>">
                     <label for="amount">Määrä:</label>
-                    <input type="hidden" name="product" value="200">
+                    <input type="hidden" name="product" value="<?= $prod['price'] ?>">
                     <input class="form-control mb-3" id="amount" name="amount" type="number" step="1" value="1" min="1" max="<?= $prod['stock'] ?>">
                     <h5>Hinta <?= $prod['price'] ?> €</h5>
                     <button class="btn">Lisää ostoskoriin</button>

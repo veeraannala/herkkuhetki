@@ -5,34 +5,38 @@ use App\Models\ProductModel;
 
 class Shop extends BaseController
 {
-	
+	private $model = null;
+	private $thememodel = null;
+	private $prodmodel = null;
+
 	public function __construct()
 	{
 		$session = \Config\Services::session();
-        $session->start();
+		$session->start();
+		$this->model = new CategoryModel();
+		$this->thememodel = new ThemeModel();
+		$this->prodmodel = new ProductModel();
 	}
+
 	public function index()
 	{
-		$model = new CategoryModel();
-		$thememodel = new ThemeModel();
-		$prodmodel = new ProductModel();
-		$data['categories'] = $model->getCategories();
-		$data['themecategories'] = $thememodel->getThemeCategories();
-		$data['product'] = $prodmodel->ShowProduct();
+
+		$data['categories'] = $this->model->getCategories();
+		$data['themecategories'] = $this->thememodel->getThemeCategories();
+		$data['product'] = $this->prodmodel->ShowProduct();
+
 		echo view('templates/header',$data);
 		echo view('front_page');
-		echo view('product');
+		echo view('product', $data);
         echo view('templates/footer');
 	}
 
 	public function show_product($id)
 	{
-		$model = new CategoryModel();
-		$thememodel = new ThemeModel();
-		$prodmodel = new ProductModel();
-		$data['categories'] = $model->getCategories();
-		$data['themecategories'] = $thememodel->getThemeCategories();
-		$data['product'] = $prodmodel->getProduct($id);
+
+		$data['categories'] = $this->model->getCategories();
+		$data['themecategories'] = $this->thememodel->getThemeCategories();
+		$data['product'] = $this->prodmodel->getProduct($id);
 		
 		echo view('templates/header',$data);
 		echo view('product_info', $data);
@@ -41,12 +45,9 @@ class Shop extends BaseController
 
 	public function show_methods()
 	{
-		$model = new CategoryModel();
-		$thememodel = new ThemeModel();
-		$prodmodel = new ProductModel();
-		$data['categories'] = $model->getCategories();
-		$data['themecategories'] = $thememodel->getThemeCategories();
-		$data['product'] = $prodmodel->ShowProduct();
+
+		$data['categories'] = $this->model->getCategories();
+		$data['themecategories'] = $this->thememodel->getThemeCategories();
 		echo view('templates/header',$data);
 		echo view('method_view');
         echo view('templates/footer');
