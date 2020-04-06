@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-6">
+    <div class="col-6 mb-3">
         <h1>Lisää tuotteita</h1>
 
         <p>Lisää tuotteita</p>
@@ -12,6 +12,13 @@
             <div class="form-group">
                 <label for="price">Tuotteen hinta €</label>
                 <input type="number" class="form-control" name="price">
+            </div>
+            <div class="form-group">
+                <label for="type">Hinnan tyyppi</label>
+                <select class="form-control" name="type">
+                    <option>100 g</option>
+                    <option>kpl</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="description">Tuotteen kuvaus</label>
@@ -30,9 +37,14 @@
                 <select class="form-control" name="category">
                     <?php foreach ($categories as $category): 
                     if ($category['parentID'] !== null) {
+                        if ($category['parentID'] === "1") {
+                            ?>
+                            <option><?= "Irtokarkit - " . $category['name']?></option>
+                        <?php } else if($category['parentID'] !== "1") {
                     ?>
                     <option><?=$category['name']?></option>
-                    <?php } endforeach ?>
+                        <?php }
+                } endforeach ?>
                 </select>
             </div>
             <div class="form-group">
