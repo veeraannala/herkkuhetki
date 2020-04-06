@@ -47,6 +47,9 @@
 
 
             </div>
+            <div class="nav-item">
+                    <a href="<?php echo base_url('admin/adminlogin')?>"><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i>KIRJAUDU</a>
+                </div>
         </nav>
     </div>
     <div class="container">

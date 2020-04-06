@@ -5,6 +5,10 @@ use App\Models\ProductModel;
 
 class Admin extends BaseController
 {
+    public function __construct() {
+        $session = \Config\Services::session();
+        $session->start();
+    }
     
     public function index() {
         echo view('admin/adminHeader');
@@ -12,7 +16,7 @@ class Admin extends BaseController
         echo view('admin/adminFooter');
     }
 
-    public function adminregister() {
+    public function adminRegister() {
         $validation =  \Config\Services::validation();
         $model = new AdminModel();
 
@@ -34,6 +38,35 @@ class Admin extends BaseController
                     echo view('admin/success_view');
                     echo view('admin/adminFooter'); 
         }
+        
+    }
+
+    public function adminCheck() {
+        $validation =  \Config\Services::validation();
+        $model = new AdminModel();
+        if (! $this->validate($validation->getRuleGroup('adminvalidate')
+            
+        ))
+        {
+            echo view('admin/adminHeader');
+            echo view('admin/adminlogin_view');
+            echo view('admin/adminFooter');
+
+        }
+        else {
+            $adminuser =$model->admincheck(
+                $this->request->getVar('username'),
+                $this->request->getVar('password')  
+            );
+            if ($adminuser) {
+                $_SESSION['username'] = $adminuser;
+                return redirect('index');
+            }
+            else {
+                return redirect('admin/adminlogin_view');
+            }
+        }
+        
         
     }
     public function updateCategory() {
