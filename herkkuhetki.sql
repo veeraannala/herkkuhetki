@@ -63,7 +63,8 @@ create table orders (
   customer_id int not null,
   index (customer_id),
   foreign key (customer_id) references customer(id)
-  on delete restrict
+  on delete restrict,
+  delivery enum('P', 'N') not null
 );
 
 create table orderDetail (
