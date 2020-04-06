@@ -41,6 +41,7 @@
     <div class="col-12 col-lg-3">
         <div class="row">
             <div class="col-12 p-3">
+                <p>Toimitusaika on yleensä 3-5 arkipäivää, mikäli tuotetta ei ole varastossa voi aika kaksinkertaistua.</p>
                 <p>Voit valita toimitustavan useista eri vaihtoehdoista: nouto, toimitus lähimpään postin toimituspaikkaan, kotiinkuljetus, postipaketti automaatti.</p>
                 <p>Tilausten toimitusten hinnat vaihtelevat välillä 5€-20€ toimitustavasta riippuen.</p>
                 <p>Yli 70€ tilaukset toimitetaan ilmaiseksi lähimpään postin toimituspaikkaan ja yli 120€ tilaukset toimitetaan ilmaiseksi suoraan kotiovellesi.</p>
