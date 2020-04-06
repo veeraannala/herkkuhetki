@@ -37,7 +37,7 @@
         <p>Voit halutessasi noutaa tilauksesi varastoltamme tai sovitusta nouto paikasta. 
             Saat ilmoituksen kun voit noutaa tilauksesi. Nouto on maksuton.</p>
         <p>Henkilöllisyys pitää todistaa noudon yhteydessä!</p>
-    <h3>Toimutusaika</h3>
+    <h3>Toimitusaika</h3>
         <p>tilauksesi lähetetään 1-4 arkipäivän kuluessa. 
             Jos tuote on loppunut varastosta otamme sinuun yhteyttä mahdollisimman nopeasti.
         Emme ole vastuussa Postin tai muiden kuljetus firmojen viiveistä tai mahdollisista muutoksista ja niiden seurauksista.</p>
