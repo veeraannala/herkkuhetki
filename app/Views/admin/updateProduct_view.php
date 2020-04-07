@@ -56,5 +56,8 @@
 
         <button type="submit" class="btn btn-danger">Lisää tuote</button>
         </form>
+
+
     </div>
 </div>
+

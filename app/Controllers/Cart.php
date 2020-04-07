@@ -38,13 +38,18 @@ class Cart extends BaseController
         $_SESSION['basket'] = null;
         return redirect()->to('/Shop');
     }
-    public function delete ($basketid) {
-       
+    public function delete ($id) {
         print_r($_SESSION['basket']);
-        array_splice($_SESSION['basket'],$basketid,1);
+        print_r($id);
+        while (array_search($id,$_SESSION['basket'])) {
+           // print_r($_SESSION['basket']);
+            $basketid=array_search($id,$_SESSION['basket']);
+            array_splice($_SESSION['basket'],$basketid,1);
+            print_r('onnistui');
+        }
         print_r($_SESSION['basket']);
 
-       // $Product_Model = new ProductModel();
+       //$Product_Model = new ProductModel();
         //$Product_Model->delete($id);
         //return redirect()->to('/cart');
     }
