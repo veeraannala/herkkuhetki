@@ -37,5 +37,14 @@ use CodeIgniter\Model;
             $query = $builder->get();
             return $query->getResultArray();
         }
+        public function searchLike($searchdata) {
+            $db = db_connect();
+            $builder = $this->table("product");
+            $builder->like('name', $searchdata, 'both')
+            ->orlike('description', $searchdata, 'both');
+
+            $query = $builder->get();
+            return $query->getResultArray();
+        }
 
     }
