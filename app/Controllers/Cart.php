@@ -20,8 +20,13 @@ class Cart extends BaseController
 		$data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
 		$data['product'] = $this->prodmodel->ShowProduct();
-        $data['basketproducts'] = $this->prodmodel->getBasketproducts($_SESSION['basket']);
-		echo view('templates/header',$data);
+        if (!empty($_SESSION['basket'])){
+            $data['basketproducts'] = $this->prodmodel->getBasketproducts($_SESSION['basket']);
+        } else {
+            $data['basketproducts'] = null;
+        }
+        
+        echo view('templates/header',$data);
 		echo view('cart_view',$data);
         echo view('templates/footer');
 	}

@@ -1,6 +1,6 @@
 <div class="cartminheight">
 <?php
-if(is_array($basketproducts) >0)
+if(is_array($basketproducts))
 {
 ?>
     <h3 class="pt-4">Ostoskori</h3>
