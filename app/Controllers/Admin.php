@@ -176,7 +176,7 @@ class Admin extends BaseController
         $product_model = new ProductModel();
         $theme_model = new ThemeModel();
         $data['categories'] = $category_model->getCategories();
-        $data['themecategories'] = $theme_model->getThemeCategories();
+        $data['products'] = $product_model->showProduct();
 
         echo view('admin/adminHeader');
         echo view('admin/editProduct_view', $data);
