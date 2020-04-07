@@ -98,3 +98,6 @@ body{
 .icon-color {
     color: #FFA07A;
 }
+span.required {
+    color:#E65959;
+}

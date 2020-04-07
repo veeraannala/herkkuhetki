@@ -47,12 +47,18 @@
 
 
             </div>
-            <div class="nav-item">
-                    <a href="<?php echo base_url('admin/adminlogin')?>"><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i>Kirjaudu</a>
+             <?php if(isset($_SESSION['username'])) { ?>
+                 <div class="nav-item">
+                 <a href="<?php echo base_url('admin/logout')?>"><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i>Kirjaudu ulos</a>
             </div>
-            <div class="nav-item">
-                    <a href="<?php echo base_url('admin/logout')?>"><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i>KIRJAUDU ulos</a>
-            </div>
+         <?php
+         }
+         else {
+         ?>
+        <a href="<?php echo base_url('admin/adminlogin')?>"><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i>Kirjaudu</a>
+        <?php  
+         }
+         ?>
         </nav>
     </div>
     <div class="container">
