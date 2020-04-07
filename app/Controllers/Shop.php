@@ -53,5 +53,10 @@ class Shop extends BaseController
         echo view('templates/footer');
 	}
 
-
+	public function search_product(){
+		$searchdata = $this->request->getVar('search');
+		$data['searchresult'] = $this->prodmodel->searchLike($searchdata);
+		print_r($data);
 	}
+
+}

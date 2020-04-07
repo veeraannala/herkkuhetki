@@ -83,35 +83,7 @@ class Validation
 		],
 	];
 
-	/*
-	public $admin = [
-		'username' => 'required|min_length[8]|max_length[30]',
-		'password' => 'required|min_length[8]|max_length[30]',
-	];
-
-
-	// public $adminvalidate_errors = [
-    //     'username' => [
-    //         'required'    => 'You must choose a username.',
-    //     ],
-    //     'password'    => [
-    //         'min_length[8]' => 'Salasanassa pitää olla vähintään 8 merkkiä',
-	// 	],
-	// 	'password'    => [
-    //         'max_length[30]' => 'Salasanassa ei voi olla yli 30 merkkiä',
-	// 	],
-	// 	'password'    => [
-    //         'matches[password]' => 'Salasanat eivät ole samat'
-	// 	]
-		
-	// ];
-	*/
-	// public $adminvalidate = [
-    //     'username'     => 'required|is_unique[adminuser.username]',
-    //     'password'     => 'required|min_length[8]|max_length[30]',
-    //     'pass_confirm' => 'required|matches[password]'
-        
-	// ];
+	
 
 	//--------------------------------------------------------------------
 }
