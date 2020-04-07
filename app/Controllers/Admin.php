@@ -106,9 +106,10 @@ class Admin extends BaseController
         echo view('admin/adminFooter');
     }
 
-    public function updateCat() {
+    public function updateCat($id) {
         $model = new CategoryModel();
         $data['categories'] = $model->getCategories();
+        $data['id'] = $id;
 
         echo view('admin/adminHeader');
 		echo view('admin/updateCat_view', $data);
@@ -116,14 +117,28 @@ class Admin extends BaseController
 
     }
 
-    public function deleteCat() {
+    public function update($id) {
         $model = new CategoryModel();
         $data['categories'] = $model->getCategories();
-
-        echo view('admin/adminHeader');
-		echo view('admin/updateCat_view', $data);
-        echo view('admin/adminFooter');
+        $data['id'] = $id;
         
+
+    }
+
+
+    public function deleteCat($categoryID) {
+
+        // toimii toistaiseksi vain kategorioissa jossa ei ole tuotteita
+
+        $category_model = new CategoryModel();
+        $category_model->delete($categoryID);
+        
+        /*echo view('admin/adminHeader');
+		echo view('admin/updateCategory_view');
+        echo view('admin/adminFooter');*/
+
+		return redirect('admin');
+
     }
 
     public function insertCat() {

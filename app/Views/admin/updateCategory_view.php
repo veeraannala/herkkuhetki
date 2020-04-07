@@ -2,7 +2,7 @@
     <div class="col">
         <h3 class="mt-3 mb-3">Muokkaa tuotekategorioita</h3>
         <div class="col-8">
-            <form>
+            
             <table class="table table-striped table-sm">
 
                 <?php foreach ($categories as $category): 
@@ -41,10 +41,9 @@
                 <?php } 
             endforeach; ?>
                 <tr>
-                    <th><?= anchor('admin/insertCat/' . $category['categoryID'], ' <button>Lisää pääkategoria</button>')?></th>
+                    <th><?= anchor('admin/insertCat/' . NULL, ' <button>Lisää pääkategoria</button>')?></th>
                 </tr>
             </table>
-            </form>
         </div>
     </div>
 </div>

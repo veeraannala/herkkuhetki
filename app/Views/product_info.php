@@ -42,10 +42,17 @@
     <div class="col-12 col-lg-3">
         <div class="row">
             <div class="col-12 p-3">
-                <p>Toimitusaika on yleensä 3-5 arkipäivää, mikäli tuotetta ei ole varastossa voi aika kaksinkertaistua.</p>
-                <p>Voit valita toimitustavan useista eri vaihtoehdoista: nouto, toimitus lähimpään postin toimituspaikkaan, kotiinkuljetus, postipaketti automaatti.</p>
-                <p>Tilausten toimitusten hinnat vaihtelevat välillä 5€-20€ toimitustavasta riippuen.</p>
-                <p>Yli 70€ tilaukset toimitetaan ilmaiseksi lähimpään postin toimituspaikkaan ja yli 120€ tilaukset toimitetaan ilmaiseksi suoraan kotiovellesi.</p>
+            <i class="fa-lg fa fa fa-clock-o" aria-hidden="true"></i>
+            <p>Toimitamme tilauksesi viimeistään 2 viikon kuluttua</p>
+            <i class="fa-lg fa fa-archive" aria-hidden="true"></i>
+            <p>Voit valita toimitustavan useista eri vaihtoehdoista</p>
+            <i class="fa-lg fa fa-credit-card" aria-hidden="true"></i>
+            <p>Toimitusten hinnat 5€-20€ toimitustavasta riippuen</p>
+            <i class="fa-lg fa fa-truck" aria-hidden="true"></i>
+            <p>Yli 70€ tilaukset postitamme ilmaiseksi</p>
+            <p>Yli 120€ tilaukset ilmaiseksi suoraan kotiovellesi</p>
+            <i class="fa-lg fa fa-heart" aria-hidden="true"></i>
+            <p>100% laatua</p>
             </div>
         </div>
     </div>
