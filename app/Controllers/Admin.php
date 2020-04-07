@@ -170,4 +170,16 @@ class Admin extends BaseController
         
     }
     
+    public function editProduct() {
+
+        $category_model = new CategoryModel();
+        $product_model = new ProductModel();
+        $theme_model = new ThemeModel();
+        $data['categories'] = $category_model->getCategories();
+        $data['themecategories'] = $theme_model->getThemeCategories();
+
+        echo view('admin/adminHeader');
+        echo view('admin/editProduct_view', $data);
+        echo view('admin/adminFooter');
+    }
 }
