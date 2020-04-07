@@ -38,20 +38,52 @@ class Validation
         'pass_confirm' => 'required|matches[password]'
         
 	];
-	public $adminvalidate_errors = [
-        'username' => [
-            'required'    => 'You must choose a username.',
-        ],
-        'password'    => [
-            'min_length[8]' => 'Salasanassa pitää olla vähintään 8 merkkiä',
+	
+
+	
+	public $adminloginvalidate = [
+		'username' => [
+			'label' => 'Username',
+			'rules' => 'required|min_length[3]|max_length[30]',
+			'errors' => [
+				'required' => 'Käyttäjänimi on pakollinen.',
+				'min_length' => ' Käyttäjänimi on liian lyhyt.'
+			],
 		],
-		'password'    => [
-            'max_length[30]' => 'Salasanassa ei voi olla yli 30 merkkiä',
+		'password' => [
+			'label' => 'password',
+			'rules' => 'required|min_length[8]|max_length[30]',
+			'errors' => [
+				'required' => 'Salasana on pakollinen.',
+				'min_length' => ' Salasana on liian lyhyt.'
+			]
+		 
 		],
-		'password'    => [
-            'matches[password]' => 'Salasanat eivät ole samat'
-		]
+	];
+
+	/*
+	public $admin = [
+		'username' => 'required|min_length[8]|max_length[30]',
+		'password' => 'required|min_length[8]|max_length[30]',
+	];
+
+
+	// public $adminvalidate_errors = [
+    //     'username' => [
+    //         'required'    => 'You must choose a username.',
+    //     ],
+    //     'password'    => [
+    //         'min_length[8]' => 'Salasanassa pitää olla vähintään 8 merkkiä',
+	// 	],
+	// 	'password'    => [
+    //         'max_length[30]' => 'Salasanassa ei voi olla yli 30 merkkiä',
+	// 	],
+	// 	'password'    => [
+    //         'matches[password]' => 'Salasanat eivät ole samat'
+	// 	]
 		
-    ];
+	// ];
+	*/
+
 	//--------------------------------------------------------------------
 }
