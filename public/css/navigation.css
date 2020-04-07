@@ -11,6 +11,7 @@ div.navv {
 nav.navbar{
 background-color: #FBD8DB !important;
 
+
 }
 
 
@@ -35,7 +36,8 @@ a:hover
 }
 
 #navbarDropdown{
-   color:#6c0909; 
+   color:#6c0909;
+   text-transform: uppercase;
 }
 
 #navbarDropdown:hover {
