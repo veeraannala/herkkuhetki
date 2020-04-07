@@ -40,8 +40,8 @@ $routes->get('/', 'Admin::index');
 //$routes->get('adminlogin', 'Admin::adminlogin');
 $routes->get('methods/index', 'Methods::index');
 $routes->get('admin/updateCat_view(:segment)', 'Admin::updateCat/$1');
-
-
+$routes->get('admin/deleteCat_view(:segment)', 'Admin::deleteCat/$1');
+$routes->get('admin', 'Admin::updateCategory');
 
 
 /**
