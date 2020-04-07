@@ -11,7 +11,7 @@ if(is_array($purchases) && count($purchases)>0)
     foreach ($products as $product):
         ?>
         <div class="col-md-3 mt-3 cart-card">
-        <form class="form-group" method="post" action="<?= site_url('cart/delete/' . $product['id'])?>">
+        <form class="form-group" method="post" action="<?= site_url('cart/delete/' . $basketid)?>">
             <img class="img-fluid" src="<?=base_url($product['image'] . '.png')?>">
             <p style="margin-bottom: 0rem;">Nimi: <?= $product['name'] ?></p>
             <p><?php

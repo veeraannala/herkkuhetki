@@ -117,11 +117,19 @@ class Admin extends BaseController
 
     }
 
-    public function update($id) {
+    public function update() {
         $model = new CategoryModel();
-        $data['categories'] = $model->getCategories();
-        $data['id'] = $id;
         
+        $id = $this->request->getVar('id');
+
+        $data = [
+            'name' => $this->request->getVar('newname'),
+            'parentID' => $this->request->getVar('category')
+        ];
+        //print_r($id);
+        //print_r($data);
+        $model->update($id, $data);
+        return redirect()->to('/admin/updateCategory');
 
     }
 
