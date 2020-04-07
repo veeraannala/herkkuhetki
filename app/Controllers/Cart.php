@@ -38,9 +38,13 @@ class Cart extends BaseController
         $_SESSION['basket'] = null;
         return redirect()->to('/Shop');
     }
-    public function delete ($id) {
-        $Product_Model = new ProductModel();
-        $Product_Model->delete($id);
-        return redirect()->to('/cart');
+    public function delete ($basketid) {
+        print_r($_SESSION['basket']);
+        array_splice($_SESSION['basket'],$basketid,1);
+        print_r($_SESSION['basket']);
+
+       // $Product_Model = new ProductModel();
+        //$Product_Model->delete($id);
+        //return redirect()->to('/cart');
     }
 }
