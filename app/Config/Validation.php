@@ -35,10 +35,11 @@ class Validation
 	public $adminregistervalidate = [
 		'username' => [
 			'label' => 'Username',
-			'rules' => 'required|min_length[3]|max_length[30]',
+			'rules' => 'required|min_length[3]|max_length[30]|is_unique[adminuser.username]',
 			'errors' => [
 				'required' => 'Käyttäjänimi on pakollinen.',
-				'min_length' => ' Käyttäjänimi on liian lyhyt.'
+				'min_length' => 'Käyttäjänimi on liian lyhyt.',
+				'is_unique' => 'Käyttäjä on jo olemassa.'
 			],
 		],
 		'password' => [
