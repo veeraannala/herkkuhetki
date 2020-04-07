@@ -20,6 +20,5 @@ use CodeIgniter\Model;
 
             return $query->getResultArray();
         }
-
-
+        
     }

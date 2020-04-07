@@ -1,5 +1,6 @@
 <?php namespace App\Models;
 
+use CodeIgniter\Database\MySQLi\Builder;
 use CodeIgniter\Model;
 
     class ProductModel extends Model
@@ -27,6 +28,13 @@ use CodeIgniter\Model;
             $this->select('id, name, price, image, type, category_id, theme_id');
             $query = $this->get();
 
+            return $query->getResultArray();
+        }
+        public function getBasketproducts($basket) {
+            $db = db_connect();
+            $builder = $this->table("product");
+            $builder->whereIn("id", $basket);
+            $query = $builder->get();
             return $query->getResultArray();
         }
 
