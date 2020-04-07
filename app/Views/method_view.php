@@ -3,7 +3,7 @@
         
     <h3>Toimitus</h3>
         <p>Hyvä asiakas, saat vahvistuksen tilauksestasi sähköpostiisi heti tilauksen jälkeen.
-         <p>   Jos tuotetta on varastossa lähetämme tilauksesi seuraavana arkipäivänä. Kun tilaamme tuotetta lisää varastoomme lähetys aika saattaa olla 3-5 arkipäivää. </p>
+         <p>   Jos tuotetta on varastossa lähetämme tilauksesi seuraavana arkipäivänä. Kun tilaamme tuotetta lisää varastoomme lähetys aika saattaa olla 5-8 arkipäivää. </p>
         </p>
         <p>Toimitustavat ja toimituskulut (€):</p>
         <p>Nouto (sovitulta paikalta). Nouto on maksuton.</p>
@@ -37,8 +37,8 @@
         <p>Henkilöllisyys pitää todistaa noudon yhteydessä.</p>
     <h3>Toimitusaika</h3>
         <p>tilauksesi lähetetään 1-4 arkipäivän kuluessa. 
-            Jos tuote on loppunut varastosta, otamme sinuun yhteyttä mahdollisimman nopeasti.
-        Emme ole vastuussa Postin tai muiden kuljetus firmojen viiveistä tai mahdollisista muutoksista ja niiden seurauksista.</p>
+            Jos tuote on loppunut varastosta, otamme sinuun yhteyttä mahdollisimman nopeasti.</p>
+        <p>Emme ole vastuussa Postin tai muiden kuljetus firmojen viiveistä tai mahdollisista muutoksista ja niiden seurauksista.</p>
     <h3>Ostoskori</h3>
         <p>Verkkokauppamme toimii ostoskori-periaatteella. Ostoskori näkyy aina selaimessa oikeassa ylälaidassa.</p>
         <p>Ostoskorissa voit:<p>
@@ -54,11 +54,11 @@
         <p>Tietyissä tilanteissa kun tuote tai tilaus on viallinen, niin palautus tai vaihtaminen on maksutonta.</p>
         <p>Mikäli paketti tai sen sisältö on kuljetuksessa vioittunut, tee siitä ilmoitus postille vastaanottaessasi pakettia, jonka jälkeen ota yhteys asiakaspalveluumme!</p>
     <h3>Tilaaminen</h3>
-        <p>Verkkokauppaamme voit halutessasi rekisteröityä/kirjautua, mutta tilaaminen onnistuu myös ilman kirjautumista.
-            Kun olet lisännyt ostoskoriin kaiken haluamasi paina ostoskori painiketta selaimessa oikealla ylhäällä.
+        <p>Verkkokauppaamme voit halutessasi rekisteröityä/kirjautua, mutta tilaaminen onnistuu myös ilman kirjautumista.</p>
+            <p>Kun olet lisännyt ostoskoriin kaiken haluamasi paina ostoskori painiketta selaimessa oikealla ylhäällä.</p>
             Varmista, että haluamasi tuotteet ovat ostoskorissa. Paina sitten tilaa painiketta ja täytä tilauslomakkeeseen tarvittavat tiedot (toimitustapa, maksutapa, omat tiedot).
             Tämän jälkeen voit maksaa ostoksesi. </p>
-            <p>HUOM hinnat ovat euroissa.</p>
+            <p>HUOM hinnat ovat euroissa(€).</p>
         <p>Tuotteiden saatavuustiedot löydät tuotteiden omilta sivuilta. 
             Mikäli tilattua tuotetta ei ole varastossa otamme asiakkaaseen yhteyttä mahdollisimman pian ja korjaamme tilauksen asiakkaan haluamalla tavalla.</p>
         <p>Kaikki tuotteitamme on saatavilla vain rajattu määrä.</p>

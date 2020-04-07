@@ -8,7 +8,7 @@
             ?>
             <h3 class="mt-3 mb-3">Muokkaa tuotekategoriaa "<?=$category['name']?>"</h3>
         <div class="col-5">
-            <form class="mb-5">
+            <form method="post" action="<?= site_url('admin/update')?>" class="mb-5">
                 <div class="form-row">
                     <div class="col">
                         <label class="m-3" for="newname">Uusi nimi: </label>
@@ -19,6 +19,7 @@
                 </div>
 
                 <div class="form-row">
+                    <input type="hidden" name="id" value="<?=$category['categoryID']?>">
                     <div class="col">
                         <label class="m-3" for="newparentID">Yläkategoria: </label>
                     </div>
@@ -28,14 +29,14 @@
                     if ($parcategory['parentID'] === null) {
                         
                     ?>
-                            <option><?=$parcategory['name']?></option>
+                            <option name="newparent" value="<?=$parcategory['categoryID']?>"><?=$parcategory['name']?></option>
                             <?php 
                     }
                      endforeach; ?>
                         </select>
                     </div>
                 </div>
-                <?= anchor('admin/update/' . $category['categoryID'], ' <button>Muokkaa</button>')?>
+                <button>Muokkaa</button>
                 <?php } 
             endforeach; ?>
 
