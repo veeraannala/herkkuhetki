@@ -41,6 +41,6 @@ class Cart extends BaseController
     public function delete ($id) {
         $Product_Model = new ProductModel();
         $Product_Model->delete($id);
-        return redirect()->to('/cart');
+        return redirect()->to('/Shop');
     }
 }
