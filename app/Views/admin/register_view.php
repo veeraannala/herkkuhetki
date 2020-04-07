@@ -1,16 +1,20 @@
 <div class="row">
-   
-    <form action="/admin/adminregister" method="post">
-    <?=\Config\Services::validation()->listErrors(); ?>
-        <div>
-            <div class="form-group col">
+    
+    
+    
+    <div class="col-md-4">
+            <div>
+            <?=\Config\Services::validation()->listErrors(); ?>
+            </div>
+        <form action="/admin/adminregister" method="post">
+            <div class="form-group">
                 <label>Adminkäyttäjä</label>
                 <input class="form-control"
                 name="username"
                 placeholder="Syötä adminkäyttäjä"
                 maxlength="30">
             </div>
-            <div class="form-group col">
+            <div class="form-group">
                 <label>Salasana</label>
                 <input class="form-control"
                 name="password"
@@ -18,7 +22,7 @@
                 placeholder="Syötä salasana"
                 maxlength="30">
             </div>
-            <div class="form-group col">
+            <div class="form-group">
                 <label>Salasana uudestaan</label>
                 <input class="form-control"
                 name="pass_confirm" type="password"
@@ -26,10 +30,8 @@
                 maxlength="30">
             </div>
             
-            <div class="col"><button class="btn btn-danger mb-2">rekisteröidy</button></div>
-        </div>
-            
-            
-        
-    </form>
+            <div class="col"><button class="btn btn mb-2">rekisteröidy</button></div>
+            </div>
+        </form>
+    </div>
 </div>

@@ -2,7 +2,6 @@
 <?php
 if(is_array($purchases) && count($purchases)>0)
 {
-    print_r($_SESSION['basket'])
 ?>
     <h3 class="pt-4">Ostoskori</h3>
     <?php echo '<a href="' . site_url('cart/clear') . '"> Tyhjennä</a>'; ?>
@@ -10,11 +9,20 @@ if(is_array($purchases) && count($purchases)>0)
     <?php
     foreach ($products as $product):
         ?>
-        <div class="col-md-3 mt-3">
+        <div class="col-md-2 mt-3">
         <div>
             <img class="img-fluid cart-image" src="<?=base_url($product['image'] . '.png')?>">
             <p style="margin-bottom: 0rem">Nimi: <?= $product['name'] ?></p>
             <p style="margin-bottom: 0rem">Hinta: <?= $product['price'] ?>€</p>
+            <p><?php
+            $amount = 0;
+            foreach ($_SESSION['basket'] as $key => $value):
+                if ($value == $product['id'])
+                    $amount++;
+
+            endforeach;
+            print 'Määrä: ' . $amount;
+            ?></p>
             <button class="btn delete mt-1">Poista</button>
         </div>
         </div>

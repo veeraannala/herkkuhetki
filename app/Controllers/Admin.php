@@ -73,7 +73,11 @@ class Admin extends BaseController
             
             }
             else {
-                echo 'istunto ei päällä';
+                $data['message'] = 'Käyttäjänimi tai salasana on väärin';
+            
+                echo view('admin/adminHeader');
+                echo view('admin/adminlogin_view',$data);
+                echo view('admin/adminFooter');
             }
         }
     }
