@@ -99,9 +99,10 @@ class Admin extends BaseController
         echo view('admin/adminFooter');
     }
 
-    public function updateCat() {
+    public function updateCat($id) {
         $model = new CategoryModel();
         $data['categories'] = $model->getCategories();
+        $data['id'] = $id;
 
         echo view('admin/adminHeader');
 		echo view('admin/updateCat_view', $data);
@@ -114,7 +115,7 @@ class Admin extends BaseController
         $data['categories'] = $model->getCategories();
 
         echo view('admin/adminHeader');
-		echo view('admin/updateCat_view', $data);
+		echo view('admin/deleteCat_view', $data);
         echo view('admin/adminFooter');
         
     }
