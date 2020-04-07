@@ -42,7 +42,6 @@ class Cart extends BaseController
         print_r($_SESSION['basket']);
         print_r($id);
         while (array_search($id,$_SESSION['basket'])) {
-           // print_r($_SESSION['basket']);
             $basketid=array_search($id,$_SESSION['basket']);
             array_splice($_SESSION['basket'],$basketid,1);
             print_r('onnistui');
