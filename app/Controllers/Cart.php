@@ -31,7 +31,7 @@ class Cart extends BaseController
         }
 
         array_push($_SESSION['basket'],$product);
-        return redirect()->to('/Shop');
+        return redirect()->to(previous_url());
     }
 
     public function clear() {
