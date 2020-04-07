@@ -25,7 +25,7 @@ class Cart extends BaseController
         } else {
             $data['basketproducts'] = null;
         }
-        
+
         echo view('templates/header',$data);
 		echo view('cart_view',$data);
         echo view('templates/footer');
@@ -54,5 +54,30 @@ class Cart extends BaseController
             }
         }
         return redirect()->to('/cart');
+    }
+
+    public function updateAmount($id) {
+        
+        $amount = $this->request->getVar('updAmount');
+        if ($amount < 0) {
+            for ($i=0; $i > $amount; $i--) {
+                
+                        $basketid=array_search($id, $_SESSION['basket']);
+                        array_splice($_SESSION['basket'], $basketid, 1);
+                        if (count($_SESSION['basket'])===0) {
+                            $this->clear();
+                        }
+                    
+                
+            }
+        } else {
+            for ($i=0; $i < $amount; $i++) {
+                array_push($_SESSION['basket'],$id);
+            }
+        }
+        return redirect()->to('/cart');
+        /*print_r($_SESSION['basket']);
+        print_r($id);
+        print_r($amount);*/
     }
 }

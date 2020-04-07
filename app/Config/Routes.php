@@ -35,6 +35,7 @@ $routes->get('show_product', 'Shop::show_product/$1');
 $routes->get('cart/index', 'Cart::index');
 $routes->get('cart/insert', 'Cart::insert');
 $routes->get('cart/clear', 'Cart::clear');
+$routes->get('cart/updateAmount(:segment)', 'Cart::upDateAmount/$1');
 $routes->get('category', 'Category::index/$1');
 $routes->get('/', 'Admin::index');
 //$routes->get('adminlogin', 'Admin::adminlogin');
