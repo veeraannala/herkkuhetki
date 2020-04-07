@@ -7,17 +7,20 @@ class Cart extends BaseController
     public function __construct() {
         $session = \Config\Services::session();
         $session->start();
+        $this->model = new CategoryModel();
+		$this->thememodel = new ThemeModel();
+        $this->prodmodel = new ProductModel();
     }
 
 	public function index()
-	{
-        $data['purchases'] = $_SESSION['basket'];
-		$model = new CategoryModel();
-        $thememodel = new ThemeModel();
-        $Product_Model = new ProductModel();
-		$data['categories'] = $model->getCategories();
-        $data['themecategories'] = $thememodel->getThemeCategories();
-        $data['products'] = $Product_Model->getBasketproducts($_SESSION['basket']);
+	{   
+        if (!isset($_SESSION['basket'])) {
+            $_SESSION['basket'] = array();
+        }
+		$data['categories'] = $this->model->getCategories();
+		$data['themecategories'] = $this->thememodel->getThemeCategories();
+		$data['product'] = $this->prodmodel->ShowProduct();
+        $data['basketproducts'] = $this->prodmodel->getBasketproducts($_SESSION['basket']);
 		echo view('templates/header',$data);
 		echo view('cart_view',$data);
         echo view('templates/footer');
@@ -25,10 +28,6 @@ class Cart extends BaseController
 
     public function insert() {
         $product = $this->request->getPost('product');
-
-        if (!isset($_SESSION['basket'])) {
-            $_SESSION['basket'] = array();
-        }
 
         array_push($_SESSION['basket'],$product);
         return redirect()->to('/Shop');

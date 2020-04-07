@@ -1,6 +1,6 @@
 <div class="cartminheight">
 <?php
-if(is_array($purchases) && count($purchases)>0)
+if(is_array($basketproducts) >0)
 {
 ?>
     <h3 class="pt-4">Ostoskori</h3>
@@ -8,7 +8,7 @@ if(is_array($purchases) && count($purchases)>0)
     <div class="row mb-3">
     <?php
     $total_sum = 0;
-    foreach ($products as $product):
+    foreach ($basketproducts as $product):
         ?>
         <div class="col-md-3 mt-3 cart-card">
         <form class="form-group" method="post" action="<?= site_url('cart/delete/' . $product['id'])?>">
@@ -21,7 +21,7 @@ if(is_array($purchases) && count($purchases)>0)
                     $amount++;
             endforeach;
             $total_sum += $amount * $product['price'];
-            print 'Määrä: ' . $amount . ' / ' .  $product['type'] . '<br>';
+            print 'Määrä: ' . $amount . ' x ' .  $product['type'] . '<br>';
             print 'Hinta: ' . $amount * $product['price'] . '€' ;
             ?></p>
             <button class="btn mt-1">Poista</button>
