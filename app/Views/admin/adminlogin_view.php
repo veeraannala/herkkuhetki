@@ -10,21 +10,22 @@
             </div>
             <form action="/admin/admincheck" method="post">
                 <div class="form-group">
-                    <label>Adminkäyttäjä</label>
+                    <label>Adminkäyttäjä</label><span class="required">*</span>
                     <input class="form-control"
                     name="username"
                     placeholder="Syötä adminkäyttäjä"
                     maxlength="30">
                 </div>
                 <div class="form-group">
-                    <label>Salasana</label>
+                    <label>Salasana</label><span class="required">*</span>
                     <input class="form-control"
                     name="password"
                     type="password"
                     placeholder="Syötä salasana"
                     maxlength="30">
                 </div>
-                <div><button class="btn btn mb-2">Kirjaudu Adminina</button>
+                <div>
+                <button class="btn btn mb-2">Kirjaudu Adminina</button>
                 </div>
             <form action="/admin/admincheck" method="post">
             <div><?= anchor('admin/adminregister','Rekisteröi admin') ?>
