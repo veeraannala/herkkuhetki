@@ -30,7 +30,7 @@ class Cart extends BaseController
         $product = $this->request->getPost('product');
 
         array_push($_SESSION['basket'],$product);
-        return redirect()->to('/Shop');
+        return redirect()->to(previous_url());
     }
 
     public function clear() {
