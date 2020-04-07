@@ -42,7 +42,7 @@
                         <a class="nav-link" href="<?=site_url('admin/updateProduct/')?>">Lisää tuotteita</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tee jotain hyödyllistä</a>
+                        <a class="nav-link" href="<?=site_url('admin/editProduct/')?>">Muokkaa tuotteita</a>
                     </li>
 
 
