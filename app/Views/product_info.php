@@ -42,16 +42,16 @@
     <div class="col-12 col-lg-3">
         <div class="row">
             <div class="col-12 p-3">
-            <i class="fa-2x fa fa fa-clock-o" aria-hidden="true"></i>
+            <i class="fa-lg fa fa fa-clock-o" aria-hidden="true"></i>
             <p>Toimitamme tilauksesi viimeistään 2 viikon kuluttua</p>
-            <i class="fa-2x fa fa-archive" aria-hidden="true"></i>
+            <i class="fa-lg fa fa-archive" aria-hidden="true"></i>
             <p>Voit valita toimitustavan useista eri vaihtoehdoista</p>
-            <i class="fa-2x fa fa-credit-card" aria-hidden="true"></i>
+            <i class="fa-lg fa fa-credit-card" aria-hidden="true"></i>
             <p>Toimitusten hinnat 5€-20€ toimitustavasta riippuen</p>
-            <i class="fa-2x fa fa-truck" aria-hidden="true"></i>
+            <i class="fa-lg fa fa-truck" aria-hidden="true"></i>
             <p>Yli 70€ tilaukset postitamme ilmaiseksi</p>
             <p>Yli 120€ tilaukset ilmaiseksi suoraan kotiovellesi</p>
-            <i class="fa-2x fa fa-heart" aria-hidden="true"></i>
+            <i class="fa-lg fa fa-heart" aria-hidden="true"></i>
             <p>100% laatua</p>
             </div>
         </div>
