@@ -109,8 +109,8 @@ class Admin extends BaseController
 
     }
 
-    public function deleteCat() {
-        $model = new CategoryModel();
+    public function deleteCat($categoryID) {
+        $category_model = new CategoryModel();
         $data['categories'] = $model->getCategories();
 
         echo view('admin/adminHeader');
