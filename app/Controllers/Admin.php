@@ -16,60 +16,52 @@ class Admin extends BaseController
         //  return redirect()->to('/admin/adminlogin');
         // }
         echo view('admin/adminHeader');
-		echo view('admin/admin_view');
+        echo view('admin/admin_view');
         echo view('admin/adminFooter');
     }
-    public function adminlogin() {
-        
-        echo view('admin/adminHeader');
-		echo view('admin/adminlogin_view');
-        echo view('admin/adminFooter');
-    }
-    
-    
 
-        public function adminRegister() {
+    public function adminlogin() {
+        echo view('admin/adminHeader');
+        echo view('admin/adminlogin_view');
+        echo view('admin/adminFooter');
+    }
+
+    public function adminRegister() {
         $validation =  \Config\Services::validation();
         $model = new AdminModel();
 
-        if (! $this->validate($validation->getRuleGroup('adminvalidate')
-            
-        ))
+        if (! $this->validate($validation->getRuleGroup('adminvalidate')))
         {
-                
-                    echo view('admin/adminHeader');
-                    echo view('admin/register_view');
-                    echo view('admin/adminFooter');        
+            echo view('admin/adminHeader');
+            echo view('admin/register_view');
+            echo view('admin/adminFooter');
         }
         else
         {
-                    $model->save([
-                        'username' => $this->request->getVar('username'),
-                        'password' => password_hash($this->request->getPost('password'),PASSWORD_DEFAULT)
-                    ]);
-                    echo view('admin/adminHeader');
-                    echo view('admin/success_view');
-                    echo view('admin/adminFooter'); 
+            $model->save([
+                'username' => $this->request->getVar('username'),
+                'password' => password_hash($this->request->getPost('password'),PASSWORD_DEFAULT)
+            ]);
+            echo view('admin/adminHeader');
+            echo view('admin/success_view');
+            echo view('admin/adminFooter');
         }
-        
     }
 
     public function adminCheck() {
         $validation =  \Config\Services::validation();
         $model = new AdminModel();
         
-        if (!$this->validate([
-            'username' => 'required|min_length[8]|max_length[30]',
-            'password' => 'required|min_length[8]|max_length[30]',
+        if (!$this->validate($validation->getRuleGroup('adminloginvalidate')))
+        {
             
 
-        ])){
             echo view('admin/adminHeader');
             echo view('admin/adminlogin_view');
             echo view('admin/adminFooter');
-
         }
-        else {
+        else
+        {
             $adminuser =$model->admincheck(
                 $this->request->getVar('username'),
                 $this->request->getVar('password')  
@@ -84,14 +76,13 @@ class Admin extends BaseController
                 echo 'istunto ei päällä';
             }
         }
-        
-        
     }
+
     public function logout() {
         session_destroy();
         return redirect()->to('/admin/adminlogin');
-        
     }
+
     public function updateCategory() {
         // if(!isset($_SESSION['username'])) {
         //     return redirect()->to('/admin/adminlogin');
