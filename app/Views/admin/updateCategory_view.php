@@ -44,7 +44,6 @@
                     <th><?= anchor('admin/insertCat/' . NULL, ' <button>Lisää pääkategoria</button>')?></th>
                 </tr>
             </table>
-            
         </div>
     </div>
 </div>

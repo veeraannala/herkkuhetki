@@ -110,6 +110,14 @@ class Admin extends BaseController
 
     }
 
+    public function update($id) {
+        $model = new CategoryModel();
+        $data['categories'] = $model->getCategories();
+        $data['id'] = $id;
+        
+
+    }
+
     public function deleteCat() {
         $model = new CategoryModel();
         $data['categories'] = $model->getCategories();
