@@ -14,7 +14,7 @@
       <a href="<?=site_url('shop/show_product/' . $prod['id'])?>" ><img class="img-fluid" src="<?=base_url($prod['image'] . '.png')?>">
     <div class="card-body text-center">
       <h5 class="card-title"><?= $prod['name'] ?></h5>
-      <p class="card-text"><?= $prod['price'] . ' / ' .  $prod['type'] ?></p></a>
+      <p class="card-text"><?= $prod['price'] .'€' . ' / ' .  $prod['type'] ?></p></a>
       <form method="post" action="<?= site_url('cart/insert')?>">
       <input type="hidden" name="product" value="<?= $prod['id'] ?>">
       <button class="btn mt-2">Lisää ostoskoriin</button>

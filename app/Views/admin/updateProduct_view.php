@@ -37,14 +37,10 @@
                 <select class="form-control" name="category">
                     <?php foreach ($categories as $category): 
                     if ($category['parentID'] !== null) {
-                        if ($category['parentID'] === "1") {
                             ?>
-                            <option><?= "Irtokarkit - " . $category['name']?></option>
-                        <?php } else if($category['parentID'] !== "1") {
-                    ?>
-                    <option><?=$category['name']?></option>
-                        <?php }
-                } endforeach ?>
+                            <option><?= $category['parentID'] . " - " . $category['name']?></option>
+                       <?php } endforeach ?>
+                    
                 </select>
             </div>
             <div class="form-group">

@@ -25,12 +25,17 @@ class Admin extends BaseController
         echo view('admin/adminlogin_view');
         echo view('admin/adminFooter');
     }
+    public function adminregister(){
+            echo view('admin/adminHeader');
+            echo view('admin/register_view');
+            echo view('admin/adminFooter');
+    }
 
-    public function adminRegister() {
+    public function adminRegistration() {
         $validation =  \Config\Services::validation();
         $model = new AdminModel();
 
-        if (! $this->validate($validation->getRuleGroup('adminvalidate')))
+        if (!$this->validate($validation->getRuleGroup('adminregistervalidate')))
         {
             echo view('admin/adminHeader');
             echo view('admin/register_view');
@@ -73,8 +78,10 @@ class Admin extends BaseController
             
             }
             else {
-                $data['message'] = 'Käyttäjänimi tai salasana on väärin';
-            
+                $data = [
+                'message' => 'Käyttäjänimi tai salasana on väärin'
+                ];
+               
                 echo view('admin/adminHeader');
                 echo view('admin/adminlogin_view',$data);
                 echo view('admin/adminFooter');
