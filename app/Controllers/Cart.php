@@ -32,6 +32,9 @@ class Cart extends BaseController
 	}
 
     public function insert() {
+        if (!isset($_SESSION['basket'])) {
+            $_SESSION['basket'] = array();
+        }
         $product = $this->request->getPost('product');
 
         array_push($_SESSION['basket'],$product);
@@ -61,14 +64,11 @@ class Cart extends BaseController
         $amount = $this->request->getVar('updAmount');
         if ($amount < 0) {
             for ($i=0; $i > $amount; $i--) {
-                
-                        $basketid=array_search($id, $_SESSION['basket']);
-                        array_splice($_SESSION['basket'], $basketid, 1);
-                        if (count($_SESSION['basket'])===0) {
-                            $this->clear();
-                        }
-                    
-                
+                $basketid=array_search($id, $_SESSION['basket']);
+                array_splice($_SESSION['basket'], $basketid, 1);
+                if (count($_SESSION['basket'])===0) {
+                    $this->clear();
+                }
             }
         } else {
             for ($i=0; $i < $amount; $i++) {
@@ -76,8 +76,5 @@ class Cart extends BaseController
             }
         }
         return redirect()->to('/cart');
-        /*print_r($_SESSION['basket']);
-        print_r($id);
-        print_r($amount);*/
     }
 }
