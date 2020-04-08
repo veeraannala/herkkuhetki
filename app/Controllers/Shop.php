@@ -54,9 +54,15 @@ class Shop extends BaseController
 	}
 
 	public function search_product(){
+
+		$data['categories'] = $this->model->getCategories();
+		$data['themecategories'] = $this->thememodel->getThemeCategories();
+		$data['product'] = $this->prodmodel->ShowProduct();
+
 		$searchdata = $this->request->getVar('search');
-		 $cutsearchdata = substr($searchdata, 0, -1);
+		$cutsearchdata = substr($searchdata, 0, -1);
 		$data1['CategoryIDs'] = $this->model->searchCat($cutsearchdata);
+		 if (!empty($data1['CategoryIDs'])) {
 
 		$catIDs = [];
 
@@ -66,7 +72,19 @@ class Shop extends BaseController
 		endforeach;
 		
 		$data2['searchresult'] = $this->prodmodel->searchLike($catIDs);
-		print_r($data2);
+		//print_r($data2);
+
+		echo view('templates/header',$data);
+		echo view('search_view',$data2);
+		echo view('templates/footer');
+
+		} else {
+			echo view('templates/header',$data);
+			echo view('searchfail_view');
+			echo view('templates/footer');
+		}
+			
+		
 		
 		
 		

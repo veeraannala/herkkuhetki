@@ -3,16 +3,14 @@
         <h1>Muokkaa tuotteiden määrää varastossa</h1>
 
         <table class="table table-striped table-sm">
-            <?php foreach ($products as $product):
+            <?php foreach ($products as $product):?>
                             
-                    if ($product['id'] === $product['id']) {
-            ?>
+            
                 <tr>
                     
                     <th><?=$product['name']?></th>
-                <th><?=$product['stock']?></th> 
-                    <?php
-                              } ?>
+                    <th><?=$product['stock']?></th>
+                    
                 </tr>
 
               

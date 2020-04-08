@@ -25,7 +25,7 @@ use CodeIgniter\Model;
         public function ShowProduct()
         {
             $this->table('product');
-            $this->select('id, name, price, image, type, category_id, theme_id');
+            $this->select('id, name, price, image, stock, type, category_id, theme_id');
             $query = $this->get();
 
             return $query->getResultArray();
