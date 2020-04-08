@@ -6,9 +6,18 @@ use App\Models\ThemeModel;
 
 class Admin extends BaseController
 {
+
+	private $categorymodel = null;
+	private $thememodel = null;
+	private $prodmodel = null;
+
+
     public function __construct() {
         $session = \Config\Services::session();
         $session->start();
+        $this->categorymodel = new CategoryModel();
+		$this->thememodel = new ThemeModel();
+		$this->prodmodel = new ProductModel();
     }
     
     public function index() {
@@ -95,11 +104,12 @@ class Admin extends BaseController
     }
 
     public function updateCategory() {
+        //For category update. Shows all categories and gives a change to update, delete or add new categories.
+        
         // if(!isset($_SESSION['username'])) {
         //     return redirect()->to('/admin/adminlogin');
         // }
-        $model = new CategoryModel();
-        $data['categories'] = $model->getCategories();
+        $data['categories'] = $this->categorymodel->getCategories();
 
         echo view('admin/adminHeader');
 		echo view('admin/updateCategory_view', $data);
@@ -107,8 +117,8 @@ class Admin extends BaseController
     }
 
     public function updateCat($id) {
-        $model = new CategoryModel();
-        $data['categories'] = $model->getCategories();
+        //Shows one category to update name and parent category
+        $data['categories'] = $this->categorymodel->getCategories();
         $data['id'] = $id;
 
         echo view('admin/adminHeader');
@@ -118,17 +128,13 @@ class Admin extends BaseController
     }
 
     public function update() {
-        $model = new CategoryModel();
-        
+        //Updates name and parentID for chosen category
         $id = $this->request->getVar('id');
-
         $data = [
             'name' => $this->request->getVar('newname'),
             'parentID' => $this->request->getVar('category')
         ];
-        //print_r($id);
-        //print_r($data);
-        $model->update($id, $data);
+        $this->categorymodel->update($id, $data);
         return redirect()->to('/admin/updateCategory');
 
     }
@@ -149,20 +155,39 @@ class Admin extends BaseController
 
     }
 
-    public function insertCat() {
+    public function insertCat($parentid) {
+        // Shows view where user gives name to new subcategory 
+        $data['categories'] = $this->categorymodel->getCategories();
+        $data['id'] = $parentid;
 
+        echo view('admin/adminHeader');
+		echo view('admin/insertCat_view', $data);
+        echo view('admin/adminFooter');
+    }
+
+    public function addCat() {
+        // Inserts new category with chosen parentID. 
+        if ($this->request->getVar('parentid') === 'NULL') {
+            $this->categorymodel->save([
+                'name' => $this->request->getVar('name'),
+            ]);
+        } else {
         
+            $this->categorymodel->save([
+                'name' => $this->request->getVar('name'),
+                'parentID' => $this->request->getVar('parentid')
+            ]);
+        }
+        return redirect()->to('/admin/updateCategory');
     }
 
     public function updateProduct() {
         //  if(!isset($_SESSION['username'])) {
         //      return redirect()->to('/admin/adminlogin');
         //  }
-        $category_model = new CategoryModel();
-        $product_model = new ProductModel();
-        $theme_model = new ThemeModel();
-        $data['categories'] = $category_model->getCategories();
-        $data['themecategories'] = $theme_model->getThemeCategories();
+
+        $data['categories'] = $this->categorymodel->getCategories();
+        $data['themecategories'] = $this->thememodel->getThemeCategories();
 
         echo view('admin/adminHeader');
         echo view('admin/updateProduct_view', $data);
@@ -172,22 +197,20 @@ class Admin extends BaseController
     
     public function editProduct() {
 
-        $category_model = new CategoryModel();
-        $product_model = new ProductModel();
-        $theme_model = new ThemeModel();
-        $data['categories'] = $category_model->getCategories();
-        $data['products'] = $product_model->showProduct();
+        $data['categories'] = $this->categorymodel->getCategories();
+        $data['products'] = $this->productmodel->showProduct();
 
         echo view('admin/adminHeader');
         echo view('admin/editProduct_view', $data);
         echo view('admin/adminFooter');
     }
 
-    public function editAmount() {
+    public function editAmount(/*$id*/) {
         $category_model = new CategoryModel();
         $product_model = new ProductModel();
         $theme_model = new ThemeModel();
         $data['products'] = $product_model->showProduct();
+       // $data['products'] = $product_model->getProduct();
 
         echo view('admin/adminHeader');
         echo view('admin/editAmount_view', $data);
