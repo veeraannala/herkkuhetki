@@ -10,7 +10,7 @@
                 <tr>
                     
                     <th><?=$product['name']?></th>
-                <!--    <th>//$product['stock']</th> -->
+                <th><?=$product['stock']?></th> 
                     <?php
                               } ?>
                 </tr>
