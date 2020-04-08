@@ -55,8 +55,24 @@ class Shop extends BaseController
 
 	public function search_product(){
 		$searchdata = $this->request->getVar('search');
-		$data['searchresult'] = $this->prodmodel->searchLike($searchdata);
-		print_r($data);
+		 $cutsearchdata = substr($searchdata, 0, -1);
+		$data1['CategoryIDs'] = $this->model->searchCat($cutsearchdata);
+
+		$catIDs = [];
+
+		foreach($data1['CategoryIDs'] as $catID):
+		$categoryID = $catID->categoryID;
+		array_push($catIDs,$categoryID);
+		endforeach;
+		
+		$data2['searchresult'] = $this->prodmodel->searchLike($catIDs);
+		print_r($data2);
+		
+		
+		
+		
+		
+		 
 	}
 
 }

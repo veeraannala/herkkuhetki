@@ -37,14 +37,13 @@ use CodeIgniter\Model;
             $query = $builder->get();
             return $query->getResultArray();
         }
-        public function searchLike($searchdata) {
+        public function searchLike($catIDs) {
             $db = db_connect();
             $builder = $this->table("product");
-            $builder->like('name', $searchdata, 'both')
-            ->orlike('description', $searchdata, 'both');
-
+            $builder->WhereIn('category_id', $catIDs);
             $query = $builder->get();
             return $query->getResultArray();
         }
+       
 
     }
