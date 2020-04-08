@@ -77,4 +77,11 @@ class Cart extends BaseController
         }
         return redirect()->to('/cart');
     }
+    /*
+        Aloitus, jolla olisi tarkoitus puskea monta kappaletta koriin.
+
+        public function insertxamount () {
+        $value = $this->request->getVar('amount');
+        print $value;
+    }*/
 }
