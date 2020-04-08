@@ -41,7 +41,7 @@
                 <?php } 
             endforeach; ?>
                 <tr>
-                    <th><?= anchor('admin/insertCat/' . 0, ' <button>Lisää pääkategoria</button>')?></th>
+                    <th><?= anchor('admin/insertCat/' . 'X', ' <button>Lisää pääkategoria</button>')?></th>
                 </tr>
             </table>
         </div>

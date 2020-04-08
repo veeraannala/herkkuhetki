@@ -149,9 +149,30 @@ class Admin extends BaseController
 
     }
 
-    public function insertCat() {
+    public function insertCat($parentid) {
+        $category_model = new CategoryModel();
+        $data['categories'] = $category_model->getCategories();
+        $data['id'] = $parentid;
 
+        echo view('admin/adminHeader');
+		echo view('admin/insertCat_view', $data);
+        echo view('admin/adminFooter');
+    }
+
+    public function addCat() {
+        $category_model = new CategoryModel();
+        if ($this->request->getVar('parentid') === 'NULL') {
+            $category_model->save([
+                'name' => $this->request->getVar('name'),
+            ]);
+        } else {
         
+            $category_model->save([
+                'name' => $this->request->getVar('name'),
+                'parentID' => $this->request->getVar('parentid')
+            ]);
+        }
+        return redirect()->to('/admin/updateCategory');
     }
 
     public function updateProduct() {
