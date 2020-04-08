@@ -45,5 +45,17 @@ use CodeIgniter\Model;
             return $query->getResultArray();
         }
        
+        public function getProductsCat() {
+            // $this->db->query('SELECT product.name AS "tuotenimi", productcategory.name AS "kategorianimi" FROM product, productcategory
+            // WHERE product.category_ID = productcategory.categoryID');
+
+            $builder = $this->table("product");
+            $builder->select("product.id, product.name AS productName, price, image, type, productCategory.name AS category, themeCategory.name as theme");
+            $builder->join("productCategory", "product.category_ID = productCategory.categoryID", "inner");
+            $builder->join("themeCategory", "product.theme_ID = themeCategory.id", "left");
+            $query = $builder->get();
+
+            return $query->getResultArray();
+        }
 
     }
