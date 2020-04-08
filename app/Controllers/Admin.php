@@ -15,7 +15,7 @@ class Admin extends BaseController
     public function __construct() {
         $session = \Config\Services::session();
         $session->start();
-        $this->model = new CategoryModel();
+        $this->categorymodel = new CategoryModel();
 		$this->thememodel = new ThemeModel();
 		$this->prodmodel = new ProductModel();
     }
@@ -104,6 +104,8 @@ class Admin extends BaseController
     }
 
     public function updateCategory() {
+        //For category update. 
+        
         // if(!isset($_SESSION['username'])) {
         //     return redirect()->to('/admin/adminlogin');
         // }
