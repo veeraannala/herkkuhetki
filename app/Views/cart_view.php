@@ -10,7 +10,7 @@ if(is_array($basketproducts))
     $total_sum = 0;
     foreach ($basketproducts as $product):
         ?>
-        <div class="col-md-3 mt-3 cart-card">
+        <div class="col-lg-3 col-md-6 mt-3 cart-card">
             <form class="form-group mb-0" method="post" action="<?= site_url('cart/updateAmount/' . $product['id'])?>">
 
                 <img class="img-fluid" src="<?=base_url($product['image'] . '.png')?>">
