@@ -154,7 +154,7 @@ class Admin extends BaseController
 		echo view('admin/updateCategory_view');
         echo view('admin/adminFooter');*/
 
-		return redirect('admin');
+		return redirect()->to('/admin/updateCategory');
 
     }
 
@@ -198,8 +198,8 @@ class Admin extends BaseController
     
     public function editProduct() {
 
-        $data['categories'] = $this->categorymodel->getCategories();
-        $data['products'] = $this->productmodel->showProduct();
+        //$data['categories'] = $this->categorymodel->getCategories();
+        $data['products'] = $this->prodmodel->ShowProduct();
 
         echo view('admin/adminHeader');
         echo view('admin/editProduct_view', $data);

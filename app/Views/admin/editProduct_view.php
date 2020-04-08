@@ -3,30 +3,30 @@
         <h1>Muokkaa tuotteita</h1>
 
         <table class="table table-striped table-sm">
-        <?php foreach ($categories as $category): 
-                if ($category['parentID'] === null) {
+
+        <tr>
+            <th>Id</th>
+            <th>Nimi</th>
+            <th>Hinta</th>
+            <th>Kuva</th>
+            <th>Hinnoittelu</th>
+            <th>Kategoria</th>
+            <th>Teemakategoria</th>
+            </tr>
+        <?php foreach ($products as $product): 
             ?>
                 <tr>
-                    <th class="m-3"><?=$category['categoryID'] . " - " .$category['name']?></th>
+                    <th class="m-3"><?=$product['id'] ?></th>
+                    <th class="m-3"><?=$product['name'] ?></th>
+                    <th class="m-3"><?=$product['price'] ?></th>
+                    <th class="m-3"><?=$product['image'] ?></th>
+                    <th class="m-3"><?=$product['type'] ?></th>
+                    <th class="m-3"><?=$product['category_id'] ?></th>
+                    <th class="m-3"><?=$product['theme_id'] ?></th>
                 </tr>
-
-                <?php foreach ($categories as $subcategory):
-                            
-                    if ($subcategory['parentID'] === $category['categoryID']) {
-            ?>
-                <tr>
-                    
-                    <th><?=$subcategory['name']?></th>
-                    
-                    <?php
-                              } ?>
-                </tr>
-
+                
               
-                <?php  endforeach; ?>
-              
-                <?php } 
-            endforeach; ?>
+                <?php endforeach; ?>
 
         </table>
 
