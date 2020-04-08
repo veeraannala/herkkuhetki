@@ -145,7 +145,7 @@ class Admin extends BaseController
 		echo view('admin/updateCategory_view');
         echo view('admin/adminFooter');*/
 
-		return redirect('admin');
+		return redirect()->to('/admin/updateCategory');
 
     }
 

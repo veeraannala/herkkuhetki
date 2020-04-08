@@ -11,7 +11,7 @@
                     </div>
                     <div class="col">
                         <input id="name" name="name" type="text" class="form-control"></input>
-                        <input name="parentid" type="hidden" value="NULL">
+                        <input name="parentid" type="hidden" value="NULL"></input>
                     </div>
                 </div>
                 <button>Lisää</button>
@@ -33,7 +33,7 @@
                     </div>
                     <div class="col">
                         <input id="name" name="name"  type="text" class="form-control" ></input>
-                        <input name="parentid" type="hidden" value="<?=$category['categoryID']?>">
+                        <input name="parentid" type="hidden" value="<?=$category['categoryID']?>"></input>
                     </div>
                 </div>
 
