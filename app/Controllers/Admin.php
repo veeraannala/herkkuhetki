@@ -104,7 +104,7 @@ class Admin extends BaseController
     }
 
     public function updateCategory() {
-        //For category update. 
+        //For category update. Shows all categories and gives a change to update, delete or add new categories.
         
         // if(!isset($_SESSION['username'])) {
         //     return redirect()->to('/admin/adminlogin');
@@ -117,6 +117,7 @@ class Admin extends BaseController
     }
 
     public function updateCat($id) {
+        //Shows one category to update name and parent category
         $data['categories'] = $this->categorymodel->getCategories();
         $data['id'] = $id;
 
@@ -127,16 +128,12 @@ class Admin extends BaseController
     }
 
     public function update() {
-        
-        
+        //Updates name and parentID for chosen category
         $id = $this->request->getVar('id');
-
         $data = [
             'name' => $this->request->getVar('newname'),
             'parentID' => $this->request->getVar('category')
         ];
-        //print_r($id);
-        //print_r($data);
         $this->categorymodel->update($id, $data);
         return redirect()->to('/admin/updateCategory');
 
@@ -159,6 +156,7 @@ class Admin extends BaseController
     }
 
     public function insertCat($parentid) {
+        // Shows view where user gives name to new subcategory 
         $data['categories'] = $this->categorymodel->getCategories();
         $data['id'] = $parentid;
 
@@ -168,6 +166,7 @@ class Admin extends BaseController
     }
 
     public function addCat() {
+        // Inserts new category with chosen parentID. 
         if ($this->request->getVar('parentid') === 'NULL') {
             $this->categorymodel->save([
                 'name' => $this->request->getVar('name'),
