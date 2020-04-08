@@ -205,7 +205,7 @@ class Admin extends BaseController
         echo view('admin/adminFooter');
     }
 
-    public function editAmount(/*$id*/) {
+    public function editAmount() {
         $category_model = new CategoryModel();
         $product_model = new ProductModel();
         $theme_model = new ThemeModel();
