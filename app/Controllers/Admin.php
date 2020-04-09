@@ -213,10 +213,31 @@ class Admin extends BaseController
         $product_model = new ProductModel();
         $theme_model = new ThemeModel();
         $data['products'] = $product_model->showProduct();
-       // $data['products'] = $product_model->getProduct();
 
         echo view('admin/adminHeader');
         echo view('admin/editAmount_view', $data);
         echo view('admin/adminFooter');
     }
+
+    public function updateAmo($id) {
+        $data['products'] = $this->prodmodel->showProduct();
+        $data['id'] = $id;
+
+        echo view('admin/adminHeader');
+		echo view('admin/updateAmount_view', $data);
+        echo view('admin/adminFooter');
+
+    }
+
+    public function update2() {
+        $id = $this->request->getVar('id');
+        $stock = $this->request->getVar('stock');
+        $data = [
+            'stock' => $this->request->getVar('newAmount')
+        ];
+        $this->prodmodel->update($stock, $data);
+        return redirect()->to('/admin/editAmount');
+
+    }
+
 }

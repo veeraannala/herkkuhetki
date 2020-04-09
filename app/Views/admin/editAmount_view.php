@@ -10,6 +10,7 @@
                     
                     <th><?=$product['name']?></th>
                     <th><?=$product['stock']?></th>
+                    <td><?= anchor('admin/updateAmo/' . $product['id'], ' <button>Muuta</button>')?></td>
                     
                 </tr>
 
