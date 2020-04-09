@@ -16,11 +16,11 @@ if(is_array($basketproducts))
                 <img class="img-fluid" src="<?=base_url($product['image'] . '.png')?>">
                 <p style="margin-bottom: 0rem;">Nimi: <?= $product['name'] ?></p>
                 <p><?php
-            $amount = 0;
-            foreach ($_SESSION['basket'] as $key => $value):
-                if ($value == $product['id'])
-                    $amount++;
-            endforeach;
+      $amount = 0;
+      foreach ($_SESSION['basket'] as $key => $value):
+          if ($value == $product['id'])
+              $amount++;
+      endforeach;
 
             $total_sum += $amount * $product['price'];
             print 'Määrä: ' . $amount . ' x ' .  $product['type'] . '<br>';
