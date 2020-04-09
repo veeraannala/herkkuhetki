@@ -60,8 +60,9 @@ class Shop extends BaseController
 		$data['product'] = $this->prodmodel->ShowProduct();
 
 		$searchdata = $this->request->getVar('search');
-		$cutsearchdata = substr($searchdata, 0, -1);
-		$data1['CategoryIDs'] = $this->model->searchCat($cutsearchdata);
+		$searchdata = substr($searchdata, 0, -2);
+		$data1['CategoryIDs'] = $this->model->searchCat($searchdata);
+		print $searchdata;
 		 if (!empty($data1['CategoryIDs'])) {
 
 		$catIDs = [];
