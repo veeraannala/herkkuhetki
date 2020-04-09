@@ -19,7 +19,15 @@
       <p class="card-text"><?= $prod['price'] . '€/100G' ?></p></a>
       <form method="post" action="<?= site_url('cart/insert')?>">
       <input type="hidden" name="product" value="<?= $prod['id'] ?>">
+      <input type="hidden" name="amount" value="1">
+      <?php if ($prod['stock'] < 1) {?>
+      <button class="btn mt-2" disabled>Ei varastossa</button>
+      <?php
+    } else {?>
       <button class="btn mt-2">Lisää ostoskoriin</button>
+      <?php
+    }
+    ?>
       </form>
     </div>
   </div>

@@ -36,9 +36,12 @@ class Cart extends BaseController
             $_SESSION['basket'] = array();
         }
         $product = $this->request->getPost('product');
-
-        array_push($_SESSION['basket'],$product);
-        return redirect()->to(previous_url());
+        $amount = $this->request->getPost('amount');
+        for ($i=0; $i < $amount; $i++) {
+        array_push($_SESSION['basket'], $product);
+                
+        }
+        return redirect()->to(previous_url());    
     }
 
     public function clear() {
