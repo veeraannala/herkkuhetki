@@ -38,9 +38,34 @@ class Shop extends BaseController
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
 		$data['product'] = $this->prodmodel->getProduct($id);
 		
-		echo view('templates/header',$data);
-		echo view('product_info', $data);
-        echo view('templates/footer');
+		if (is_array($_SESSION['basket'])) {
+		  	$amount = 0;
+		  	foreach ($_SESSION['basket'] as $key => $value):
+		  	if ($value == $prod['id']) {
+			  	$amount++;
+		  	}
+		  	endforeach;
+		  	if (($prod['stock'] - $amount) < 1) {
+				echo view('templates/header',$data);
+				echo view('product_outstock', $data);
+        		echo view('templates/footer');
+		   } 
+		  	else {
+				return;
+		  
+		   }
+	  	}
+	  	else if ($prod['stock'] < 1){ 
+		  	echo view('templates/header',$data);
+			echo view('product_outstock', $data);
+        	echo view('templates/footer');
+  
+		} 
+		else {
+			echo view('templates/header',$data);
+			echo view('product_instock', $data);
+        	echo view('templates/footer');
+
 	}
 
 	public function show_methods()

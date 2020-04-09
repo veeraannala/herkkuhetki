@@ -10,6 +10,7 @@
            
         
             <h2 class="mb-3"><?= $prod['name'] ?></h2>
+
                 <?php
                 if ($prod['stock'] > 0) {
                     ?>
