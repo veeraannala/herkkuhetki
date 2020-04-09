@@ -7,7 +7,7 @@
         <tr>
             <th>Id</th>
             <th>Nimi</th>
-            <th>Hinta</th>
+            <th>Hinta €</th>
             <th>Kuva</th>
             <th>Hinnoittelu</th>
             <th>Kategoria</th>
@@ -17,12 +17,12 @@
             ?>
                 <tr>
                     <th class="m-3"><?=$product['id'] ?></th>
-                    <th class="m-3"><?=$product['name'] ?></th>
+                    <th class="m-3"><?=$product['productName'] ?></th>
                     <th class="m-3"><?=$product['price'] ?></th>
                     <th class="m-3"><?=$product['image'] ?></th>
                     <th class="m-3"><?=$product['type'] ?></th>
-                    <th class="m-3"><?=$product['category_id'] ?></th>
-                    <th class="m-3"><?=$product['theme_id'] ?></th>
+                    <th class="m-3"><?=$product['category'] ?></th>
+                    <th class="m-3"><?=$product['theme'] ?></th>
                 </tr>
                 
               
