@@ -24,7 +24,7 @@ if(is_array($basketproducts))
 
             $total_sum += $amount * $product['price'];
             print 'Määrä: ' . $amount . ' x ' .  $product['type'] . '<br>';
-            print 'Hinta: ' . $amount * $product['price'] . '€' ;
+            print 'Hinta: ' . number_format($amount * $product['price'],2) . '€' ;
             ?></p>
 
                 <div class="form-row">
