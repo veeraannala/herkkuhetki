@@ -9,7 +9,8 @@ class Admin extends BaseController
 
 	private $categorymodel = null;
 	private $thememodel = null;
-	private $prodmodel = null;
+    private $prodmodel = null;
+    private $adminmodel = null;
 
 
     public function __construct() {
@@ -17,7 +18,8 @@ class Admin extends BaseController
         $session->start();
         $this->categorymodel = new CategoryModel();
 		$this->thememodel = new ThemeModel();
-		$this->prodmodel = new ProductModel();
+        $this->prodmodel = new ProductModel();
+        $this->adminmodel = new AdminModel();
     }
     
     public function index() {
@@ -42,7 +44,7 @@ class Admin extends BaseController
 
     public function adminRegistration() {
         $validation =  \Config\Services::validation();
-        $model = new AdminModel();
+        //$adminmodel = new AdminModel();
 
         if (!$this->validate($validation->getRuleGroup('adminregistervalidate')))
         {
@@ -52,7 +54,7 @@ class Admin extends BaseController
         }
         else
         {
-            $model->save([
+            $this->adminmodel->save([
                 'username' => $this->request->getVar('username'),
                 'password' => password_hash($this->request->getPost('password'),PASSWORD_DEFAULT)
             ]);
@@ -64,7 +66,7 @@ class Admin extends BaseController
 
     public function adminCheck() {
         $validation =  \Config\Services::validation();
-        $model = new AdminModel();
+        //$adminmodel = new AdminModel();
         
         if (!$this->validate($validation->getRuleGroup('adminloginvalidate')))
         {
@@ -76,7 +78,7 @@ class Admin extends BaseController
         }
         else
         {
-            $adminuser =$model->admincheck(
+            $adminuser = $this->adminmodel->admincheck(
                 $this->request->getVar('username'),
                 $this->request->getVar('password')  
             );

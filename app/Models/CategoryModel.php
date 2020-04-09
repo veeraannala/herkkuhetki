@@ -21,10 +21,10 @@ use CodeIgniter\Model;
             return $query->getResultArray();
         }
 
-        public function searchCat($cutsearchdata) {
+        public function searchCat($searchdata) {
             $db = db_connect();
             $builder = $this->table("productcategory");
-            $builder->like('name', $cutsearchdata, 'both');
+            $builder->like('name', $searchdata, 'both');
             $query = $builder->get();
             return $query->getResult();
         }

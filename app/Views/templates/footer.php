@@ -11,7 +11,7 @@
         </div>
 
         <div class="col-md-4 text-center mt-3 pb-4">
-          <img src="/../images/logo.png" alt="logo">
+          <a href="<?php echo base_url()?>"><img src="/../images/logo.png" alt="logo"></a>
         </div>
 
         <div class="col-md-4 text-center mt-3 pb-4">
