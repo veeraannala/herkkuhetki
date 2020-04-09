@@ -14,10 +14,6 @@
                 if ($prod['stock'] > 0) {
                     ?>
                 <p>Varastossa <?=$prod['stock'] ?> kpl</p>
-                <?php
-                } else {?>
-                <p>Ei varastossa :(</p> 
-                <?php } ?>
                 <form class="form-group" method="post" action="<?= site_url('cart/insert')?>">
                     <label for="amount">Määrä:</label>
                     <input type="hidden" name="product" value="<?= $prod['price'] ?>">
@@ -26,6 +22,11 @@
                     <input type="hidden" name="product" value="<?= $prod['id'] ?>">
                     <button class="btn">Lisää ostoskoriin</button>
                 </form>
+                <?php
+                } else {?>
+                <p>Ei varastossa :(</p> 
+                <?php } ?>
+                
             </div>
         </div>
         
