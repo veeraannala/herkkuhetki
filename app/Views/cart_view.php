@@ -21,6 +21,7 @@ if(is_array($basketproducts))
                 if ($value == $product['id'])
                     $amount++;
             endforeach;
+
             $total_sum += $amount * $product['price'];
             print 'Määrä: ' . $amount . ' x ' .  $product['type'] . '<br>';
             print 'Hinta: ' . $amount * $product['price'] . '€' ;
