@@ -231,13 +231,11 @@ class Admin extends BaseController
 
     public function update2() {
         $id = $this->request->getVar('id');
-        $stock = $this->request->getVar('stock');
         $data = [
             'stock' => $this->request->getVar('newAmount')
         ];
-        $this->prodmodel->update($stock, $data);
+        $this->prodmodel->update($id, $data);
         return redirect()->to('/admin/editAmount');
 
     }
-
 }
