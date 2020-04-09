@@ -29,20 +29,19 @@
           endforeach;
           if (($prod['stock'] - $amount) < 1) {?>
             <button class="btn mt-2" disabled>Ei varastossa</button>
-            <?php } else {
-        return;
-      }
-      }
-        else if ($prod['stock'] < 1){ ?>
-            <button class="btn mt-2" disabled>Ei varastossa</button>
-
-
-            <?php
-    } else {?>
+          <?php } 
+          else {?>
             <button class="btn mt-2">Lisää ostoskoriin</button>
-            <?php
-    }
-    ?>
+          <?php
+           }
+      }
+      else if ($prod['stock'] < 1){ ?>
+          <button class="btn mt-2" disabled>Ei varastossa</button>
+<?php
+      } else {?>
+            <button class="btn mt-2">Lisää ostoskoriin</button>
+ <?php
+      }?>
         </form>
     </div>
   </div>
