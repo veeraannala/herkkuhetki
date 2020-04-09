@@ -33,40 +33,42 @@ class Shop extends BaseController
 
 	public function show_product($id)
 	{
-
-		$data['categories'] = $this->model->getCategories();
-		$data['themecategories'] = $this->thememodel->getThemeCategories();
-		$data['product'] = $this->prodmodel->getProduct($id);
+        $data['categories'] = $this->model->getCategories();
+        $data['themecategories'] = $this->thememodel->getThemeCategories();
+        $data['product'] = $this->prodmodel->getProduct($id);
 		
-		if (is_array($_SESSION['basket'])) {
-		  	$amount = 0;
-		  	foreach ($_SESSION['basket'] as $key => $value):
-		  	if ($value == $prod['id']) {
-			  	$amount++;
-		  	}
-		  	endforeach;
-		  	if (($prod['stock'] - $amount) < 1) {
-				echo view('templates/header',$data);
-				echo view('product_outstock', $data);
-        		echo view('templates/footer');
-		   } 
-		  	else {
-				return;
-		  
-		   }
-	  	}
-	  	else if ($prod['stock'] < 1){ 
-		  	echo view('templates/header',$data);
-			echo view('product_outstock', $data);
-        	echo view('templates/footer');
-  
-		} 
-		else {
-			echo view('templates/header',$data);
-			echo view('product_instock', $data);
-        	echo view('templates/footer');
-
-	}
+		foreach ($data['product'] as $prod):
+            if ($prod['id'] == $id) {
+				$stock = $prod['stock'];
+				
+            }
+            endforeach;
+        if (is_array($_SESSION['basket'])) {
+            $amount = 0;
+            foreach ($_SESSION['basket'] as $key => $value):
+            if ($value == $id) {
+				$amount++;
+            }
+            endforeach;
+            if (($stock[0]-$amount) < 1) {
+                echo view('templates/header', $data);
+                echo view('product_outstock', $data);
+                echo view('templates/footer');
+            } else {
+                echo view('templates/header', $data);
+            	echo view('product_instock', $data);
+            	echo view('templates/footer');
+            }
+        } else if ($stock < 1) {
+            echo view('templates/header', $data);
+            echo view('product_outstock', $data);
+            echo view('templates/footer');
+        } else {
+            echo view('templates/header', $data);
+            echo view('product_instock', $data);
+            echo view('templates/footer');
+        }
+    }
 
 	public function show_methods()
 	{

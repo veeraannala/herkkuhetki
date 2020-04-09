@@ -10,23 +10,8 @@
            
         
             <h2 class="mb-3"><?= $prod['name'] ?></h2>
-
-                <?php
-                if ($prod['stock'] > 0) {
-                    ?>
-                <p>Varastossa <?=$prod['stock'] ?> kpl</p>
-                <form class="form-group" method="post" action="<?= site_url('cart/insert')?>">
-                    <label for="amount">Määrä:</label>
-                    <input type="hidden" name="product" value="<?= $prod['price'] ?>">
-                    <input class="form-control mb-3" id="amount" name="amount" type="number" step="1" value="1" min="1" max="<?= $prod['stock'] ?>">
-                    <h5>Hinta <?= $prod['price'] ?> €</h5>
-                    <input type="hidden" name="product" value="<?= $prod['id'] ?>">
-                    <button class="btn">Lisää ostoskoriin</button>
-                </form>
-                <?php
-                } else {?>
-                <p>Ei varastossa :(</p> 
-                <?php } ?>
+                
+                <p>Tuote on valitettavasti loppunut.</p>
                 
             </div>
         </div>

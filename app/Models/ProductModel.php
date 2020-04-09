@@ -30,6 +30,16 @@ use CodeIgniter\Model;
 
             return $query->getResultArray();
         }
+
+        public function getStock($id){
+            $this->table('product');
+            $this->select('stock');
+            $this->where('id',$id);
+            $query = $this->get();
+
+            return $query->getResultArray();
+        }
+
         public function getBasketproducts($basket) {
             $db = db_connect();
             $builder = $this->table("product");
