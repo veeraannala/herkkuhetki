@@ -145,6 +145,7 @@ class Admin extends BaseController
     public function deleteCat($categoryID) {
 
         // toimii toistaiseksi vain kategorioissa jossa ei ole tuotteita
+        
 
         $category_model = new CategoryModel();
         $category_model->delete($categoryID);
@@ -273,6 +274,44 @@ class Admin extends BaseController
 
 
 		return redirect()->to('/admin/editProduct');
+
+    }
+
+    public function alterProduct($id) {
+        $product = $this->prodmodel->getProduct($id);
+        $data['product'] = $product[0];
+        $data['categories'] = $this->categorymodel->getCategories();
+        $data['themecategories'] = $this->thememodel->getThemeCategories();
+        $data['id'] = $id;
+
+        echo view('admin/adminHeader');
+		echo view('admin/alterProduct_view', $data);
+        echo view('admin/adminFooter');
+    }
+
+    public function changeProduct() {
+
+        $id = $this->request->getVar('id');
+        $data = [
+            'name' => $this->request->getVar('newname'),
+            'price' => $this->request->getVar('newprice'),
+            'description' => $this->request->getVar('newdescription'),
+            'image' => $this->request->getVar('newimage'),
+            'type' => $this->request->getVar('newtype'),
+            'category_id' => $this->request->getVar('newcategory'),
+            'theme_id' => $this->request->getVar('newthemecategory')
+        ];
+
+        if ($data["theme_id"] === "NULL") {
+            $data['theme_id'] = NULL;
+        }
+        if ($this->request->getVar('newimage') === "") {
+            $data['image'] = 'images/imagenotfound';
+        }
+
+        $this->prodmodel->update($id, $data);
+        return redirect()->to('/admin/editProduct');
+
 
     }
 }

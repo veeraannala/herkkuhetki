@@ -37,8 +37,14 @@
                 <select class="form-control" name="category" required>
                     <?php foreach ($categories as $category): 
                     if ($category['parentID'] !== null) {
+                        $categoryParent = "";
+                        foreach ($categories as $parentcategory): 
+                            if ($category['parentID'] === $parentcategory['categoryID']){
+                                $categoryParent = $parentcategory['name'];
+                            }
+                        endforeach;
                             ?>
-                            <option value="<?= $category['categoryID']?>"><?= $category['parentID'] . " - " . $category['name']?></option>
+                            <option value="<?= $category['categoryID']?>"><?= $categoryParent . " - " . $category['name']?></option>
                        <?php } endforeach ?>
                     
                 </select>
