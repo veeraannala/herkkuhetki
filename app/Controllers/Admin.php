@@ -238,4 +238,27 @@ class Admin extends BaseController
         return redirect()->to('/admin/editAmount');
 
     }
+
+    public function addProduct() {
+
+        $newproduct = [
+            'name' => $this->request->getVar('name'),
+            'price' => $this->request->getVar('price'),
+            'type' => $this->request->getVar('type'),
+            'description' => $this->request->getVar('description'),
+            'image' => $this->request->getVar('image'),
+            'stock' => $this->request->getVar('stock'),
+            'category_id' => $this->request->getVar('category'),
+        ];
+        if ($this->request->getVar('themecategory') !== "NULL") {
+            $newproduct += ['theme_id' => $this->request->getVar('themecategory')];
+        }
+        if ($this->request->getVar('image') === "") {
+            $newproduct['image'] = 'images/imagenotfound';
+        }
+
+        $this->prodmodel->save($newproduct);
+
+        return redirect()->to('/admin/updateProduct');
+    }
 }

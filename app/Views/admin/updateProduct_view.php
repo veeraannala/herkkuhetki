@@ -4,20 +4,20 @@
 
         <p>Lisää tuotteita</p>
         
-        <form>
+        <form method="post" action="<?= site_url('admin/addProduct/')?>">
             <div class="form-group">
                 <label for="name">Tuotteen nimi</label>
-                <input type="text" class="form-control" name="name">
+                <input type="text" class="form-control" name="name" required>
             </div>
             <div class="form-group">
                 <label for="price">Tuotteen hinta €</label>
-                <input type="number" class="form-control" name="price">
+                <input type="number" class="form-control" name="price" required>
             </div>
             <div class="form-group">
                 <label for="type">Hinnan tyyppi</label>
-                <select class="form-control" name="type">
-                    <option>100 g</option>
-                    <option>kpl</option>
+                <select class="form-control" name="type" required>
+                    <option value="100 g">100 g</option>
+                    <option value="kpl">kpl</option>
                 </select>
             </div>
             <div class="form-group">
@@ -30,15 +30,15 @@
             </div>
             <div class="form-group">
                 <label for="stock">Tuotteen varastomäärä</label>
-                <input type="number" class="form-control" name="stock">
+                <input type="number" class="form-control" name="stock" required>
             </div>
             <div class="form-group">
                 <label for="category">Tuotekategoria</label>
-                <select class="form-control" name="category">
+                <select class="form-control" name="category" required>
                     <?php foreach ($categories as $category): 
                     if ($category['parentID'] !== null) {
                             ?>
-                            <option><?= $category['parentID'] . " - " . $category['name']?></option>
+                            <option value="<?= $category['categoryID']?>"><?= $category['parentID'] . " - " . $category['name']?></option>
                        <?php } endforeach ?>
                     
                 </select>
@@ -46,9 +46,9 @@
             <div class="form-group">
                 <label for="themecategory">Teemakategoria</label>
                 <select class="form-control" name="themecategory">
-                    <option>Ei teemakategoriaa</option>
+                    <option value="NULL">Ei teemakategoriaa</option>
                     <?php foreach ($themecategories as $themecategory): ?>
-                        <option><?=$themecategory['name']?></option>
+                        <option value="<?= $themecategory['id'] ?>"><?=$themecategory['name']?></option>
                         <?php endforeach?>
                 </select>
             </div>
