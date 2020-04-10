@@ -60,7 +60,7 @@ use CodeIgniter\Model;
             // WHERE product.category_ID = productcategory.categoryID');
 
             $builder = $this->table("product");
-            $builder->select("product.id, product.name AS productName, price, image, type, category_id, theme_id, productCategory.parentID as parentID,  productCategory.name AS category, themeCategory.name as theme");
+            $builder->select("product.id as id, product.name AS productName, price, image, type, category_id, theme_id, productCategory.parentID as parentID,  productCategory.name AS category, themeCategory.name as theme");
             $builder->join("productCategory", "product.category_ID = productCategory.categoryID", "inner");
             $builder->join("themeCategory", "product.theme_ID = themeCategory.id", "left");
             $builder->orderby("category");

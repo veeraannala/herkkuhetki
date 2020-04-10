@@ -262,4 +262,17 @@ class Admin extends BaseController
 
         return redirect()->to('/admin/updateProduct');
     }
+
+    public function deleteProduct($id) {
+
+        // toimii toistaiseksi vain kategorioissa jossa ei ole tuotteita
+
+        $product_model = new ProductModel();
+        $product_model->delete($id);
+        
+
+
+		return redirect()->to('/admin/editProduct');
+
+    }
 }

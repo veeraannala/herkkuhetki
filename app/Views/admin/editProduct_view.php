@@ -15,6 +15,8 @@
             <th>Kuva</th>
             <th>Hinnoittelu</th> 
             <th>Teemakategoria</th>
+            <th></th>
+            <th></th>
             </tr>
             
         <?php foreach ($products as $product): 
@@ -22,12 +24,14 @@
             if ($product['parentID'] == $category['categoryID']) {    
             ?>
                 <tr>
-                <td class="m-3"><?=$product['category'] ?></td>
+                    <td class="m-3"><?=$product['category'] ?></td>
                     <td class="m-3"><?=$product['productName'] ?></td>
                     <td class="m-3"><?=$product['price'] ?></td>
                     <td class="m-3"><?=$product['image'] ?></td>
                     <td class="m-3"><?=$product['type'] ?></td>
                     <td class="m-3"><?=$product['theme'] ?></td>
+                    <td class="m-3"><?= anchor('admin/alterProduct/' . $product['id'], ' <button>Muokkaa</button>')?></td>
+                    <td class="m-3"><?= anchor('admin/deleteProduct/' . $product['id'], ' <button>Poista</button>')?></td>
                 </tr>
                 
               
