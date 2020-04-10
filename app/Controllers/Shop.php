@@ -20,7 +20,10 @@ class Shop extends BaseController
 
 	public function index()
 	{
-
+		if (!isset($_SESSION['basket'])) {
+            $_SESSION['basket'] = array();
+		} 
+		
 		$data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
 		$data['product'] = $this->prodmodel->ShowProduct();
