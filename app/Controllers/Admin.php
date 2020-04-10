@@ -202,6 +202,7 @@ class Admin extends BaseController
         //$data['categories'] = $this->categorymodel->getCategories();
         // $data['products'] = $this->prodmodel->ShowProduct();
         $data['products'] = $this->prodmodel->getProductsCat();
+        $data['categories'] = $this->categorymodel->getParentCategories();
 
         echo view('admin/adminHeader');
         echo view('admin/editProduct_view', $data);

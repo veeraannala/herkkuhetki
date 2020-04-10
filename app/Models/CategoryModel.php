@@ -29,5 +29,14 @@ use CodeIgniter\Model;
             return $query->getResult();
         }
 
+        public function getParentCategories() {
+            $builder = $this->table('productcategory');
+            $builder->select('categoryID, parentID, name');
+            $builder->where('parentID', null);
+
+            $query = $builder->get();
+
+            return $query->getResultArray();
+        }
 
     }

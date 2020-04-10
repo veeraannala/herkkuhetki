@@ -2,6 +2,10 @@
     <div class="col">
         <h1>Muokkaa tuotteita</h1>
 
+        <?php foreach ($categories as $category):
+        ?>
+            <h2><?=$category['name'] ?></h2>
+
         <table class="table table-striped table-sm">
 
         <tr>
@@ -14,20 +18,22 @@
             </tr>
             
         <?php foreach ($products as $product): 
+            
+            if ($product['parentID'] == $category['categoryID']) {    
             ?>
                 <tr>
-                <th class="m-3"><?=$product['category'] ?></th>
-                    <th class="m-3"><?=$product['productName'] ?></th>
-                    <th class="m-3"><?=$product['price'] ?></th>
-                    <th class="m-3"><?=$product['image'] ?></th>
-                    <th class="m-3"><?=$product['type'] ?></th>
-                    <th class="m-3"><?=$product['theme'] ?></th>
+                <td class="m-3"><?=$product['category'] ?></td>
+                    <td class="m-3"><?=$product['productName'] ?></td>
+                    <td class="m-3"><?=$product['price'] ?></td>
+                    <td class="m-3"><?=$product['image'] ?></td>
+                    <td class="m-3"><?=$product['type'] ?></td>
+                    <td class="m-3"><?=$product['theme'] ?></td>
                 </tr>
                 
               
-                <?php endforeach; ?>
-
+                <?php } endforeach ?>
+                
         </table>
-
+    <?php endforeach ?>
     </div>
 </div>
