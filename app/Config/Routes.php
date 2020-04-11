@@ -44,7 +44,7 @@ $routes->get('admin/updateCat_view(:segment)', 'Admin::updateCat/$1');
 $routes->get('admin/deleteCat_view(:segment)', 'Admin::deleteCat/$1');
 $routes->get('admin', 'Admin::index');
 $routes->get('admin/updateAmount_view(:segment)', 'Admin::updateAm/$1');
-
+$routes->get('admin/updateCategory', 'Admin::updateCategory');
 
 /**
  * --------------------------------------------------------------------

@@ -2,7 +2,7 @@
     <div class="col">
         <h3 class="mt-3 mb-3">Muokkaa tuotekategorioita</h3>
         <div class="col-8">
-            
+       
             <table class="table table-striped table-sm">
 
                 <?php foreach ($categories as $category): 

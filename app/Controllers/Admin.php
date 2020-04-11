@@ -143,19 +143,20 @@ class Admin extends BaseController
 
 
     public function deleteCat($categoryID) {
-
-        // toimii toistaiseksi vain kategorioissa jossa ei ole tuotteita
-        
-
-        $category_model = new CategoryModel();
-        $category_model->delete($categoryID);
-        
-        /*echo view('admin/adminHeader');
-		echo view('admin/updateCategory_view');
-        echo view('admin/adminFooter');*/
-
-		return redirect()->to('/admin/updateCategory');
-
+        //Deletes chosen category or gives an error message if cannot delete
+        try {
+            $category_model = new CategoryModel();
+            $category_model->delete($categoryID);
+            return redirect()->to('/admin/updateCategory');
+        }
+        catch (\Exception $e)
+        {   
+            $data['errormessage'] = ($e->getMessage());
+            echo view('admin/adminHeader');
+            echo view('admin/adminError_view', $data);
+            echo view('admin/adminFooter');
+            
+        }
     }
 
     public function insertCat($parentid) {

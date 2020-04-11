@@ -36,7 +36,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="<?=site_url('admin/updateCategory/')?>">Lisää tuoteryhmiä</a>
+                        <a class="nav-link" href="<?=site_url('admin/updateCategory/')?>">Muokkaa tuoteryhmiä</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?=site_url('admin/updateProduct/')?>">Lisää tuotteita</a>
@@ -45,7 +45,7 @@
                         <a class="nav-link" href="<?=site_url('admin/editProduct/')?>">Muokkaa tuotteita</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=site_url('admin/editAmount/')?>">Varastossa</a>
+                        <a class="nav-link" href="<?=site_url('admin/editAmount/')?>">Varastosaldot</a>
                     </li>
 
 
