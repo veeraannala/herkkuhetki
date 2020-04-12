@@ -2,9 +2,22 @@
     <div class="col">
         <h3 class="mt-3 mb-3">Muokkaa tuotekategorioita</h3>
         <div class="col-8">
-       
+        <?php
+        if (isset($errormessage)){
+            if ($errormessage === 'Cannot delete or update a parent row: a foreign key constraint fails (`herkkuhetki`.`product`, CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `productcategory` (`categoryID`))') {
+                ?>
+                <p class="errormessage">Et voi poistaa tuotekategoriaa, joka sisältää tuotteita.</p>
+            <?php
+            } else if ($errormessage === 'Cannot delete or update a parent row: a foreign key constraint fails (`herkkuhetki`.`productcategory`, CONSTRAINT `productcategory_ibfk_1` FOREIGN KEY (`parentID`) REFERENCES `productcategory` (`categoryID`))') {
+                ?>
+                <p class="errormessage">Et voi poistaa kategoriaa, jolla on alikategorioita.</p>
+            <?php 
+            }
+        }
+        
+        ?>
             <table class="table table-striped table-sm">
-
+                
                 <?php foreach ($categories as $category): 
                 if ($category['parentID'] === null) {
             ?>

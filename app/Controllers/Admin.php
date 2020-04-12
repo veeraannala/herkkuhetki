@@ -107,12 +107,13 @@ class Admin extends BaseController
 
     public function updateCategory() {
         //For category update. Shows all categories and gives a change to update, delete or add new categories.
+        //If cannot delete, gives an error message. 
         
         // if(!isset($_SESSION['username'])) {
         //     return redirect()->to('/admin/adminlogin');
         // }
         $data['categories'] = $this->categorymodel->getCategories();
-
+       
         echo view('admin/adminHeader');
 		echo view('admin/updateCategory_view', $data);
         echo view('admin/adminFooter');
@@ -144,6 +145,7 @@ class Admin extends BaseController
 
     public function deleteCat($categoryID) {
         //Deletes chosen category or gives an error message if cannot delete
+        $data['categories'] = $this->categorymodel->getCategories();
         try {
             $category_model = new CategoryModel();
             $category_model->delete($categoryID);
@@ -153,7 +155,7 @@ class Admin extends BaseController
         {   
             $data['errormessage'] = ($e->getMessage());
             echo view('admin/adminHeader');
-            echo view('admin/adminError_view', $data);
+            echo view('admin/updateCategory_view', $data);
             echo view('admin/adminFooter');
             
         }

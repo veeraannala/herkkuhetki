@@ -31,7 +31,11 @@ body{
     color: black;
 }
 
-
+.errormessage {
+    color:#E65959; 
+    font-size: larger;
+    font-weight: bold;
+}
 
 
 .btn {

@@ -63,7 +63,7 @@ class Cart extends BaseController
     }
 
     public function updateAmount($id) {
-        
+        //Updates the amount of chosen product in the cart.
         $amount = $this->request->getVar('updAmount');
         if ($amount < 0) {
             for ($i=0; $i > $amount; $i--) {
@@ -80,11 +80,4 @@ class Cart extends BaseController
         }
         return redirect()->to('/cart');
     }
-    /*
-        Aloitus, jolla olisi tarkoitus puskea monta kappaletta koriin.
-
-        public function insertxamount () {
-        $value = $this->request->getVar('amount');
-        print $value;
-    }*/
 }

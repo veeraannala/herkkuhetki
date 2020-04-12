@@ -36,6 +36,8 @@ class Shop extends BaseController
 
 	public function show_product($id)
 	{
+		//Shows detailed information of one product. 
+		 
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         $data['product'] = $this->prodmodel->getProduct($id);
