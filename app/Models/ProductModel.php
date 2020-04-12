@@ -12,7 +12,7 @@ use CodeIgniter\Model;
         protected $allowedFields = ['id','name','price','description','image','stock','type','category_id','theme_id'];
         
     
-
+        // gets only one certain product
         public function getProduct($id)
         {
             $this->table('product');
@@ -22,6 +22,7 @@ use CodeIgniter\Model;
 
             return $query->getResultArray();
         }
+        // gets all the products and their information
         public function ShowProduct()
         {
             $this->table('product');

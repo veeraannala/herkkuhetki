@@ -4,6 +4,7 @@
         <div class="col-md-4 text-center mt-3 pb-4">
           <h4>Infoa</h4>
           <p class="mb-1"><a href="#">Oma tili</a></p>
+          <!-- By pressing the link you can browse payment and delivery terms -->
           <p class="mb-1"><a href="<?= site_url('/Shop/show_methods') ?>">Maksu- ja toimitusehdot</a></p>
           <p class="mb-1"><a href="#">Tietoa meistä</a></p>
           <p class="mb-1"><a href="#">Yhteystiedot</a></p>

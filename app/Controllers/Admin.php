@@ -215,17 +215,21 @@ class Admin extends BaseController
         $category_model = new CategoryModel();
         $product_model = new ProductModel();
         $theme_model = new ThemeModel();
+        // gets product and its information form product models function
         $data['products'] = $product_model->showProduct();
 
+        //prints views for page + takes the data to the page
         echo view('admin/adminHeader');
         echo view('admin/editAmount_view', $data);
         echo view('admin/adminFooter');
     }
 
     public function updateAmo($id) {
+        // gets product and its information form product models function
         $data['products'] = $this->prodmodel->showProduct();
         $data['id'] = $id;
 
+        //prints views for page + takes the data to the page
         echo view('admin/adminHeader');
 		echo view('admin/updateAmount_view', $data);
         echo view('admin/adminFooter');
@@ -233,11 +237,15 @@ class Admin extends BaseController
     }
 
     public function update2() {
+        // gets only one certain products id
         $id = $this->request->getVar('id');
+        // changes amount of products in stock
         $data = [
             'stock' => $this->request->getVar('newAmount')
         ];
+        // checks which products amount its gonna change
         $this->prodmodel->update($id, $data);
+        // redirects admin to page where all the products are printed
         return redirect()->to('/admin/editAmount');
 
     }
