@@ -37,10 +37,10 @@ use CodeIgniter\Model;
             $query = $builder->get();
             return $query->getResultArray();
         }
-        public function searchProduct( array $CategoryIDarray) {
+        public function searchProduct( array $CategoryID) {
             $this->table('product');
             $this->select('id, name, price, description, image, stock, type, category_id, theme_id');
-            $this->WhereIn('category_id',$CategoryIDarray);
+            $this->WhereIn('category_id',$CategoryID);
             $query = $this->get();
             return $query->getResultArray();
         }

@@ -72,11 +72,13 @@ class Shop extends BaseController
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
 		$data['product'] = $this->prodmodel->ShowProduct();
 		# 1.parsitaan ylimääräiset merkit
-		# $keywords =
+		# luodaan $keywords array.
 		# 2.looppaa jokainen keyword(esim ["suklaa", "karkki"])
 		# tarkista onko keyword kategoria
 		# jos keyword on kategoria niin etsi CategoryID.
+		# jos keyword on kategoria niin etsi name.
 		# 3. Muodosta tietokantahaku
+
 
 		$searchQuery = $this->request->getVar('search',FILTER_SANITIZE_STRING);
 			if(isset($searchQuery)) {
@@ -86,7 +88,8 @@ class Shop extends BaseController
 				$keywords = explode(" ", $string);
 				//print_r($keywords);
 				$data['searchresult'] = $this->prodmodel->searchLike($keywords);
-				//print_r($data1);
+				$data['categoryname'] = $this->model->getCategoryName($keywords);
+				
 				$CategoryIDarray = [];
 				foreach($keywords as $key => $value){
 				

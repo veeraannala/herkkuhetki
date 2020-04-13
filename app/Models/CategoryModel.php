@@ -25,19 +25,25 @@ use CodeIgniter\Model;
         public function getCategoryID($value) {
             $db = db_connect();
             $builder = $this->table("productCategory");
-            $builder->Like('name', $value, 'both');
+            $builder->Like('name', $value);
             $query = $builder->get();
             foreach ($query->getResultArray() as  $row)
-            {       
+            {               
             return $row['categoryID'];
             }
-                    
-                    
-                    
-                        
-                      
-                    
+       
         }
+        public function getCategoryName( array $keywords) {
+            $db = db_connect();
+            $builder = $this->table("productCategory");
+            $builder->whereIn('name', $keywords);
+            $query = $builder->get();
+             return $query->getResult();
+            
+       
+        }
+       
+        
                 
                    
                 
