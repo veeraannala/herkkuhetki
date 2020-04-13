@@ -79,41 +79,45 @@ class Shop extends BaseController
 		# 3. Muodosta tietokantahaku
 
 		$searchQuery = $this->request->getVar('search',FILTER_SANITIZE_STRING);
-		$string = str_replace(' ', ' ',$searchQuery);
-		$string = preg_replace('/[^A-Za-z0-9\-]/', ' ', $string);
-		//echo $string; 
-		$keywords = explode(" ", $string);
-		//print_r($keywords);
-		
-		foreach($keywords as $key => $value){
-			$CategoryID = $this->model->getCategoryID($value);
-			print_r($CategoryID);
-			$data1['searchresult'] = $this->prodmodel->searchLike($value);
-		}
-		$data2['Product'] = $this->prodmodel->searchProduct($CategoryID);
-		
-		//print $CategoryID;
-		
-		//print_r($data1);
-		//print_r($data2);
-		
-		 if (!empty($data1['searchresult'])) {
+			if(isset($searchQuery)) {
+				$string = str_replace(' ', ' ',$searchQuery);
+				$string = preg_replace('/[^A-Za-z0-9\-]/', ' ', $string);
+				//echo $string; 
+				$keywords = explode(" ", $string);
+				//print_r($keywords);
+				$data['searchresult'] = $this->prodmodel->searchLike($keywords);
+				//print_r($data1);
+				$CategoryIDarray = [];
+				foreach($keywords as $key => $value){
+				
+				$CategoryID = $this->model->getCategoryID($value);
+					array_push($CategoryIDarray,$CategoryID);
+				}
+				$data['searchproduct'] = $this->prodmodel->searchProduct($CategoryIDarray);
+				
 
-		echo view('templates/header',$data);
-		echo view('search_view',$data1);
-		echo view('templates/footer');
+					if (!empty($data)) {
 
-		} else {
-			echo view('templates/header',$data);
-			echo view('searchfail_view');
-			echo view('templates/footer');
-		}
+					echo view('templates/header',$data);
+					echo view('search_view',$data);
+					echo view('templates/footer');
+
+					} else {
+						echo view('templates/header',$data);
+						echo view('searchfail_view');
+						echo view('templates/footer');
+					}
+
+			} else {
+				return redirect()->to('/Shop');
+			}
+			
 			
 		
 		
 		
 		
-		
+			
 		
 		 
 	}

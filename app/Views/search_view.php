@@ -6,9 +6,10 @@
     </select>
   </div>
 </div>
+
 <div class="row">
     <?php foreach ($searchresult as $prod): ?>
-        <?php if (is_array($searchresult)) { ?>
+        <?php if (isset($searchresult)) { ?>
         <div class="col-lg-3 col-md-4 card mt-3 mb-1">
           <a href="<?=site_url('shop/show_product/' . $prod['id'])?>" ><img class="img-fluid" src="<?=base_url($prod['image'] . '.png')?>">
           <div class="card-body text-center">
@@ -22,4 +23,26 @@
       </div>
     <?php } endforeach; ?>
 </div>
+
+<div class="row">
+<h1>kategoriat</h1>
+</div>
+
+<div class="row">
+
+    <?php foreach ($searchproduct as $catprod): ?>
+        <?php if (isset($searchproduct)) { ?>
+        <div class="col-lg-3 col-md-4 card mt-3 mb-1">
+          <a href="<?=site_url('shop/show_product/' . $catprod['id'])?>" ><img class="img-fluid" src="<?=base_url($catprod['image'] . '.png')?>">
+          <div class="card-body text-center">
+            <h5 class="card-title"><?= $catprod['name'] ?></h5>
+            <p class="card-text"><?= $catprod['price'] . '€/100G' ?></p></a>
+            <form method="post" action="<?= site_url('cart/insert')?>">
+            <input type="hidden" name="product" value="<?= $catprod['id'] ?>">
+            <button class="btn mt-2">Lisää ostoskoriin</button>
+            </form>
+          </div>
+      </div>
+    <?php } endforeach; ?>
+</div>'
 

@@ -25,7 +25,7 @@ use CodeIgniter\Model;
         public function getCategoryID($value) {
             $db = db_connect();
             $builder = $this->table("productCategory");
-            $builder->Like('name', $value);
+            $builder->Like('name', $value, 'both');
             $query = $builder->get();
             foreach ($query->getResultArray() as  $row)
             {       

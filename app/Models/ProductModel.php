@@ -37,21 +37,23 @@ use CodeIgniter\Model;
             $query = $builder->get();
             return $query->getResultArray();
         }
-        public function searchProduct($CategoryID) {
+        public function searchProduct( array $CategoryIDarray) {
             $this->table('product');
             $this->select('id, name, price, description, image, stock, type, category_id, theme_id');
-            $this->where('category_id',$CategoryID);
+            $this->WhereIn('category_id',$CategoryIDarray);
             $query = $this->get();
             return $query->getResultArray();
         }
-        public function searchLike($value) {
+        public function searchLike( array $keywords) {
+            foreach ($keywords as $value) {
             $db = db_connect();
             $builder = $this->table("productCategory");
-            $builder->like('name', $value, 'both')
+            $builder->orlike('name', $value, 'both')
                     ->orLike('description',$value,'both');
+            }
             $query = $builder->get();
-            $query->getResult();
             return $query->getResultArray();
+            
         }
       
        
