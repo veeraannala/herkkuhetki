@@ -52,31 +52,55 @@ class Shop extends BaseController
 		echo view('method_view');
         echo view('templates/footer');
 	}
+	/*
+	tämän function tarkoitus on:
+	-etsiä tuotteita annetuilla hakusanoilla. Annettuja hakusanoja verrataan tuotteiden nimikenttiin
+	ja kuvauksiin ja tuotteen kategorioihin
 
+	-esimerkkihakuja:
+	- "suklaa"
+	- "suklaa*" ei tuettu
+	- "suklaa karkki"
+	
+	specsi
+	-kaikki hakulausekkeessa esiintyvät erikoismerkit hylätään/ei käsitellä
+	-mikäli hakulausekkeessa on useampi kuin yksi sana: tulee kaikkien yksittäisten hakusanojen löytyä
+	tuotteen nimestä tai kuvauksesta.
+	*/
 	public function search_product(){
-
 		$data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
 		$data['product'] = $this->prodmodel->ShowProduct();
+		# 1.parsitaan ylimääräiset merkit
+		# $keywords =
+		# 2.looppaa jokainen keyword(esim ["suklaa", "karkki"])
+		# tarkista onko keyword kategoria
+		# jos keyword on kategoria niin etsi CategoryID.
+		# 3. Muodosta tietokantahaku
 
-		$searchdata = $this->request->getVar('search');
-		$searchdata = substr($searchdata, 0, -2);
-		$data1['CategoryIDs'] = $this->model->searchCat($searchdata);
-		print $searchdata;
-		 if (!empty($data1['CategoryIDs'])) {
-
-		$catIDs = [];
-
-		foreach($data1['CategoryIDs'] as $catID):
-		$categoryID = $catID->categoryID;
-		array_push($catIDs,$categoryID);
-		endforeach;
+		$searchQuery = $this->request->getVar('search',FILTER_SANITIZE_STRING);
+		$string = str_replace(' ', ' ',$searchQuery);
+		$string = preg_replace('/[^A-Za-z0-9\-]/', ' ', $string);
+		//echo $string; 
+		$keywords = explode(" ", $string);
+		//print_r($keywords);
 		
-		$data2['searchresult'] = $this->prodmodel->searchLike($catIDs);
+		foreach($keywords as $key => $value){
+			$CategoryID = $this->model->getCategoryID($value);
+			print_r($CategoryID);
+			$data1['searchresult'] = $this->prodmodel->searchLike($value);
+		}
+		$data2['Product'] = $this->prodmodel->searchProduct($CategoryID);
+		
+		//print $CategoryID;
+		
+		//print_r($data1);
 		//print_r($data2);
+		
+		 if (!empty($data1['searchresult'])) {
 
 		echo view('templates/header',$data);
-		echo view('search_view',$data2);
+		echo view('search_view',$data1);
 		echo view('templates/footer');
 
 		} else {

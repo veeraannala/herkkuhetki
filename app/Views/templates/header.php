@@ -38,7 +38,7 @@
 
                     <?php foreach ($categories as $category): 
                         if ($category['parentID'] === null) {
-                            ?>
+                    ?>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -78,9 +78,9 @@
                         </div>
                     </li>
                 </ul>
-                <form action="/shop/search_product" class="form-inline" method="post">
+                <form action="<?=site_url('shop/search_product')?>" class="form-inline" method="post">
                     <div class="input-group search mr-2">
-                        <input type="text" class="form-control" name="search" minlength="4" placeholder="Etsi tuotteita" aria-label="etsi"
+                        <input type="text" class="form-control" name="search" minlength="1" placeholder="Etsi tuotteita" aria-label="etsi"
                             aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-outline-danger"><i class="fa fa-search"

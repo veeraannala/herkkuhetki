@@ -4,7 +4,7 @@ use CodeIgniter\Model;
 
     class AdminModel extends Model{
 
-        protected $table = 'adminuser';
+        protected $table = 'adminUser';
         protected $allowedFields = ['username', 'password'];
         
     public function admincheck($username,$password) {

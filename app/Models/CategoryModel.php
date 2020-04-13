@@ -4,30 +4,54 @@ use CodeIgniter\Model;
 
     class CategoryModel extends Model
     {
-        protected $table     = 'productcategory';
+        protected $table     = 'productCategory';
         protected $primaryKey = 'categoryID';
         protected $returnType = 'array';
 
-        protected $allowedFields = ['categoryID', 'parentID', 'name'];
+        protected $allowedFields = ['categoryID', 'parentID', 'name', 'category_id'];
         
     
 
         public function getCategories()
         {
-            $this->table('productcategory');
+            $this->table('productCategory');
             $this->select('categoryID, parentID, name');
             $query = $this->get();
 
             return $query->getResultArray();
         }
 
-        public function searchCat($searchdata) {
+        
+        public function getCategoryID($value) {
             $db = db_connect();
-            $builder = $this->table("productcategory");
-            $builder->like('name', $searchdata, 'both');
+            $builder = $this->table("productCategory");
+            $builder->Like('name', $value);
             $query = $builder->get();
-            return $query->getResult();
+            foreach ($query->getResultArray() as  $row)
+            {       
+            return $row['categoryID'];
+            }
+                    
+                    
+                    
+                        
+                      
+                    
         }
+                
+                   
+                
+                
+
+            
+            
+             
+
+        
 
 
     }
+
+
+
+    

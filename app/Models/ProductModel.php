@@ -37,13 +37,23 @@ use CodeIgniter\Model;
             $query = $builder->get();
             return $query->getResultArray();
         }
-        public function searchLike($catIDs) {
-            $db = db_connect();
-            $builder = $this->table("product");
-            $builder->WhereIn('category_id', $catIDs);
-            $query = $builder->get();
+        public function searchProduct($CategoryID) {
+            $this->table('product');
+            $this->select('id, name, price, description, image, stock, type, category_id, theme_id');
+            $this->where('category_id',$CategoryID);
+            $query = $this->get();
             return $query->getResultArray();
         }
+        public function searchLike($value) {
+            $db = db_connect();
+            $builder = $this->table("productCategory");
+            $builder->like('name', $value, 'both')
+                    ->orLike('description',$value,'both');
+            $query = $builder->get();
+            $query->getResult();
+            return $query->getResultArray();
+        }
+      
        
         public function getProductsCat() {
             // $this->db->query('SELECT product.name AS "tuotenimi", productcategory.name AS "kategorianimi" FROM product, productcategory
@@ -56,6 +66,8 @@ use CodeIgniter\Model;
             $query = $builder->get();
 
             return $query->getResultArray();
+
+            
         }
 
     }

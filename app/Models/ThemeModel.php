@@ -4,7 +4,7 @@ use CodeIgniter\Model;
 
     class ThemeModel extends Model
     {
-        protected $table     = 'themecategory';
+        protected $table     = 'themeCategory';
         protected $primaryKey = 'id';
         protected $returnType = 'array';
 
@@ -14,7 +14,7 @@ use CodeIgniter\Model;
 
         public function getThemeCategories()
         {
-            $this->table('productcategory');
+            $this->table('productCategory');
             $this->select('id, name');
             $query = $this->get();
 

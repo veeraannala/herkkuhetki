@@ -35,12 +35,12 @@ create table themeCategory (
   name varchar(255) not null unique
 );
 
-alter table themecategory AUTO_INCREMENT=1000;
+alter table themeCategory AUTO_INCREMENT=1000;
 
 create table product (
   id int primary key auto_increment,
   name varchar(255) not null unique,
-  price decimal(5,2) not null,
+  price decimal(6,2) not null,
   description text,
   image varchar(50),
   stock int not null,
@@ -105,30 +105,30 @@ create table adminUser (
   password varchar(255)
 );
 
-insert into productcategory (name) values ('Irtokarkit');
-insert into productcategory (name) values ('Pakatut makeiset');
-insert into productcategory (name) values ('Suklaat');
+insert into productCategory (name) values ('Irtokarkit');
+insert into productCategory (name) values ('Pakatut makeiset');
+insert into productCategory (name) values ('Suklaat');
 
-insert into productcategory (parentID, name) values (1, 'Salmiakit');
-insert into productcategory (parentID, name) values (1, 'Kirpeät karkit');
-insert into productcategory (parentID, name) values (1, 'Kovat karkit');
-insert into productcategory (parentID, name) values (1, 'Lakritsit');
-insert into productcategory (parentID, name) values (1, 'Vaahtokarkit');
-insert into productcategory (parentID, name) values (1, 'Toffeet');
-insert into productcategory (parentID, name) values (1, 'Viinikumit');
-insert into productcategory (parentID, name) values (1, 'Irtosuklaat');
-insert into productcategory (parentID, name) values (2, 'Karkkipussit');
-insert into productcategory (parentID, name) values (2, 'Karkkilaatikot');
-insert into productcategory (parentID, name) values (2, 'Lakupatukat');
-insert into productcategory (parentID, name) values (3, 'Suklaalevyt');
-insert into productcategory (parentID, name) values (3, 'Suklaapatukat');
-insert into productcategory (parentID, name) values (3, 'Suklaamunat');
-insert into productcategory (parentID, name) values (3, 'Suklaakonvehdit');
+insert into productCategory (parentID, name) values (1, 'Salmiakit');
+insert into productCategory (parentID, name) values (1, 'Kirpeät karkit');
+insert into productCategory (parentID, name) values (1, 'Kovat karkit');
+insert into productCategory (parentID, name) values (1, 'Lakritsit');
+insert into productCategory (parentID, name) values (1, 'Vaahtokarkit');
+insert into productCategory (parentID, name) values (1, 'Toffeet');
+insert into productCategory (parentID, name) values (1, 'Viinikumit');
+insert into productCategory (parentID, name) values (1, 'Irtosuklaat');
+insert into productCategory (parentID, name) values (2, 'Karkkipussit');
+insert into productCategory (parentID, name) values (2, 'Karkkilaatikot');
+insert into productCategory (parentID, name) values (2, 'Lakupatukat');
+insert into productCategory (parentID, name) values (3, 'Suklaalevyt');
+insert into productCategory (parentID, name) values (3, 'Suklaapatukat');
+insert into productCategory (parentID, name) values (3, 'Suklaamunat');
+insert into productCategory (parentID, name) values (3, 'Suklaakonvehdit');
 
-insert into themecategory (name) values ('Joulu');
-insert into themecategory (name) values ('Pääsiäinen');
-insert into themecategory (name) values ('Halloween');
-insert into themecategory (name) values ('Ystävänpäivä');
+insert into themeCategory (name) values ('Joulu');
+insert into themeCategory (name) values ('Pääsiäinen');
+insert into themeCategory (name) values ('Halloween');
+insert into themeCategory (name) values ('Ystävänpäivä');
 
 insert into product (name,price,description,image,stock,type,category_id, theme_id) values ('Irtosalmiakki',1.45,'Väkevä ja kova salmiakki. Kestävimmälläkin uroolla nousee vesi silmiin tätä imeskellessä. Ei heikoille!','images/imagenotfound', 67,'100 g', 4,NULL);
 insert into product (name,price,description,image,stock,type,category_id, theme_id) values ('Kirpeä hedelmä',1.65,'Aivot räjäyttävä kirpeä hedelmäkaramelli. Tätä maistaessasi tiedät, miltä tuntuu avaruuskävelyllä ilman avaruuspukua.','images/imagenotfound', 643,'100 g', 5,1002);
