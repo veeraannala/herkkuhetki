@@ -42,6 +42,7 @@ create table product (
   name varchar(255) not null unique,
   price decimal(5,2) not null,
   description text,
+  tag text,
   image varchar(50),
   stock int not null,
   type enum('kpl', '100 g') not null,
