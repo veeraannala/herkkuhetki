@@ -82,11 +82,10 @@ class Shop extends BaseController
 
 		$searchQuery = $this->request->getVar('search',FILTER_SANITIZE_STRING);
 			if(isset($searchQuery)) {
-				$string = str_replace(' ', ' ',$searchQuery);
-				$string = preg_replace('/[^A-Za-z0-9\-]/', ' ', $string);
-				//echo $string; 
-				$keywords = explode(" ", $string);
-				//print_r($keywords);
+				$searchQuery = strtolower($searchQuery);
+    			$searchQuery = preg_replace('/[^A-Öa-ö0-9]+/', ',', $searchQuery);
+    			$keywords = explode(',', $searchQuery);
+				print_r($keywords);
 				$data['searchresult'] = $this->prodmodel->searchLike($keywords);
 				$data['categoryname'] = $this->model->getCategoryName($keywords);
 				
