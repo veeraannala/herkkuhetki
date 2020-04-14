@@ -130,4 +130,21 @@ class Shop extends BaseController
 		return redirect()->to('/Shop');
 
 	}
+
+	//saves new review to database
+	public function review($id) {
+		$ReviewModel = new ReviewModel();
+		
+		$data['product'] = $this->prodmodel->getProduct($id);
+		$data['id'] = $id;
+		
+		$this->ReviewModel->save([
+					
+			'product_id' => $this->request->getVar('product_id'),
+			'review' => $this->request->getVar('review'),
+			'stars' => $this->request->getVar('stars')
+		]);
+			return redirect()->to('/');
+		}
+
 }
