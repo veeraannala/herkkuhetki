@@ -46,6 +46,8 @@ $routes->get('admin', 'Admin::index');
 $routes->get('admin/updateAmount_view(:segment)', 'Admin::updateAm/$1');
 $routes->get('admin/updateCategory', 'Admin::updateCategory');
 
+$routes->get('login', 'Login::index');
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing

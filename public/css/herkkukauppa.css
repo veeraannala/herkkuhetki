@@ -80,6 +80,9 @@ body{
   .centerminheight {
       min-height: 415px;
   }
+  .customer label {
+      font-weight: bold;
+  }
 
   .header {
       opacity: 100%;
