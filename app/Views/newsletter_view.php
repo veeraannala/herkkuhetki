@@ -1,5 +1,5 @@
 <div class="row">
-<div class="col-6 cartminheight">
+<div class="col-6 centerminheight">
 <h2 class="mt-3">Uutiskirjeen tilaus</h2>
 
 <?php if (isset($success)){ ?>
