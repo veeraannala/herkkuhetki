@@ -8,7 +8,7 @@
             </div>
             <div class="col-sm-12 col-lg-6 p-3">
            
-        
+        <!-- review form -->
             <h2 class="mb-3"><?= $prod['name'] ?></h2>
                 <p>Varastossa <?=$prod['stock'] ?> kpl</p>
                 <form class="form-group" method="post" action="<?= site_url('cart/insert')?>">
