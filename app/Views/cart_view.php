@@ -49,9 +49,10 @@ if(is_array($basketproducts))
         </div>
         <?php endforeach;?>
     </div>
+    <form action="<?= site_url('cart/placeOrder/')?>" method="post">
     <div class="row total_sum">
         <div class="col-12">
-            <h3>Yhteensä: <?php echo number_format($total_sum,2)?>€<button class="btn btn-order">Tilaa</button></h3>
+            <h3>Yhteensä: <?php echo number_format($total_sum,2)?>€<button class="btn btn-order">Kassalle</button></h3>
         </div>
     </div>
     <?php

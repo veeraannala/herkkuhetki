@@ -37,7 +37,7 @@
             ?>
                 <tr>
                     <td></td>
-                    <th><?=$subcategory['name']?></th>
+                    <td><?=$subcategory['name']?></td>
                     <td><?= anchor('admin/updateCat/' . $subcategory['categoryID'], ' <button>Muokkaa</button>')?></td>
                     <td><?= anchor('admin/deleteCat/' . $subcategory['categoryID'], ' <button>Poista</button>')?></td>
                     <?php

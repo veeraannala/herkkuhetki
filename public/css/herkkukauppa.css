@@ -38,6 +38,10 @@ body{
 }
 
 
+.table-striped tr:nth-of-type(odd) {
+    background-color: rgb(251,216,219,0.25) !important;
+  }
+
 .btn {
     color: white;
     background-color: #E65959 !important;
