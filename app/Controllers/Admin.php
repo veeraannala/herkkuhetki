@@ -328,17 +328,17 @@ class Admin extends BaseController
 
 
     }
-    public function  showOrders() {
+    public function showOrders() {
         $data['orders'] = $this->ordermodel->getOrders();
 
         echo view('admin/adminHeader');
 		echo view('admin/Orders_view', $data);
         echo view('admin/adminFooter');
     }
-    public function  showOrder() {
-
+    public function showOrder($id) {
+        $data['orderdetails'] = $this->ordermodel->getOrderDetails($id);
         echo view('admin/adminHeader');
-		echo view('admin/Order_view');
+		echo view('admin/Order_view', $data);
         echo view('admin/adminFooter');
     }
     
