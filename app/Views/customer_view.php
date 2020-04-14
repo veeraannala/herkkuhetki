@@ -1,4 +1,4 @@
-<div class="cartminheight">
+<div class="centerminheight customer">
     <div class="row col">
         <h1>Kirjaudu</h1>
         
