@@ -33,6 +33,7 @@
             <h5>Arvosteltava tuote: <?= $prod['name'] ?></h5>
             <p>Tähdet:</p>
             <input type="hidden" value="2" name="stars" id="stars">
+            <input type="hidden" value="14" name="id" id="id">
             <label for="review">Kommentti:</label>
             <textarea class="form-control" rows="5" cols="1" id="review" name="review"></textarea>
             <button class="btn">Lähetä</button>
