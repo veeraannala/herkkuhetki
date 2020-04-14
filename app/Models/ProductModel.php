@@ -9,7 +9,7 @@ use CodeIgniter\Model;
         protected $primaryKey = 'id';
         /*protected $returnType = 'array';*/
 
-        protected $allowedFields = ['id','name','price','description','image','stock','type','category_id','theme_id'];
+        protected $allowedFields = ['id','name','price','description','tag','image','stock','type','category_id','theme_id'];
         
     
         // gets only one certain product
@@ -49,13 +49,26 @@ use CodeIgniter\Model;
             return $query->getResultArray();
         }
         
-        public function searchLike($catIDs) {
+        public function searchLike($keywords) {
             $db = db_connect();
             $builder = $this->table("product");
-            $builder->WhereIn('category_id', $catIDs);
+            foreach ($keywords as $values) {
+            $builder->Like('name', $values)
+                    ->orLike('description',$values)
+                    ->orLike('tag',$values,'both');
+            }
             $query = $builder->get();
             return $query->getResultArray();
         }
+        // public function searchProduct($catIDs) {
+        //     $db = db_connect();
+        //     $builder = $this->table("product");
+        //     $builder->whereIn('category_id', $catIDs);
+        //     $query = $builder->get();
+        //     return $query->getResultArray();
+        // }
+
+
        
         public function getProductsCat() {
             // $this->db->query('SELECT product.name AS "tuotenimi", productcategory.name AS "kategorianimi" FROM product, productcategory

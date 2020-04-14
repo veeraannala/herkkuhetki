@@ -96,33 +96,38 @@ class Shop extends BaseController
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
 		$data['product'] = $this->prodmodel->ShowProduct();
 
-		$searchdata = $this->request->getVar('search');
-		$searchdata = substr($searchdata, 0, -2);
-		$data1['CategoryIDs'] = $this->model->searchCat($searchdata);
-		print $searchdata;
-		 if (!empty($data1['CategoryIDs'])) {
-
-		$catIDs = [];
-
-		foreach($data1['CategoryIDs'] as $catID):
-		$categoryID = $catID->categoryID;
-		array_push($catIDs,$categoryID);
-		endforeach;
-		
-		$data2['searchresult'] = $this->prodmodel->searchLike($catIDs);
-		//print_r($data2);
-
-		echo view('templates/header',$data);
-		echo view('search_view',$data2);
-		echo view('templates/footer');
-
-		} else {
+		$searchQuery = $this->request->getVar('search',);
+		if(isset($searchQuery)) {
+			$searchQuery = strtolower($searchQuery);
+			$searchQuery = preg_replace('/[^A-Öa-ö0-9]+/', ',', $searchQuery);
+			$keywords = explode(',', $searchQuery);
+			//print_r($keywords);
+			$catIDs =[];
+			$data['searchresult'] = $this->prodmodel->searchLike($keywords);
+			//  //print_r($data);
+			// foreach ($data['searchresult'] as $key => $values) {
+			//  //$values['category_id'];	
+			// 	array_push($catIDs,$values['category_id']);
+			// }
+			// print_r($catIDs);
+			// $data2['searchproduct'] = $this->prodmodel->searchProduct($catIDs);
+			// print_r($data2);
+			$data2['searchcategory'] = $this->model->searchCategory();
+			//print_r($data2);
+			if (!empty($data)) {
 			echo view('templates/header',$data);
-			echo view('searchfail_view');
+			echo view('search_view',$data);
 			echo view('templates/footer');
+
+			} else {
+				echo view('templates/header',$data);
+				echo view('searchfail_view');
+				echo view('templates/footer');
+			}
 		}
-		 
 	}
+		 
+	
 
 	public function addToNewsletter(){
 
