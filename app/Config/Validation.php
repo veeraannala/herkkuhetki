@@ -91,7 +91,7 @@ class Validation
 			'required' => 'Etunimi on pakollinen.',
 			'min_length' => ' Etunimi on liian lyhyt.',
 			'max_length' => ' Etunimi on liian pitkä.',
-		]
+		],
 	],
 
 		'lastname' => 	[
@@ -101,7 +101,7 @@ class Validation
 				'required' => 'Sukunimi on pakollinen.',
 				'min_length' => ' Sukunimi on liian lyhyt.',
 				'max_length' => ' Sukunimi on liian pitkä.',
-			]
+			],
 		],
 		'address' => 	[
 			'label' => 'address',
@@ -110,7 +110,7 @@ class Validation
 				'required' => 'Osoite on pakollinen.',
 				'min_length' => ' Osoite on liian lyhyt.',
 				'max_length' => ' Osoite on liian pitkä.',
-			]
+			],
 			],
 		'postcode' =>  [
 			'label' => 'postcode',
@@ -119,26 +119,26 @@ class Validation
 				'required' => 'Postinumero on pakollinen.',
 				'min_length' => ' Postinumero on liian lyhyt.',
 				'max_length' => ' Postinumero on liian pitkä.',
-			]
+			],
 			],
 		'town' =>  [
-			'label' => 'postcode',
+			'label' => 'town',
 			'rules' => 'required|min_length[2]|max_length[100]',
 			'errors' => [
 				'required' => 'Postitoimipaikka on pakollinen.',
 				'min_length' => ' Postitoimipaikka on liian lyhyt.',
 				'max_length' => ' Postitoimipaikka on liian pitkä.',
-			]
+			],
 			],
 		'email' =>  [
-			'label' => 'postcode',
+			'label' => 'email',
 			'rules' => 'required|min_length[2]|max_length[100]|valid_email',
 			'errors' => [
 				'required' => 'Sähköpostiosoite on pakollinen.',
 				'min_length' => ' Sähköpostiosoite on liian lyhyt.',
 				'max_length' => ' Sähköpostiosoite on liian pitkä.',
 				'valid_email' => ' Syötä sähköposti oikeassa muodossa.'
-			]
+			],
 			],
 
 	];

@@ -102,27 +102,17 @@ class Cart extends BaseController
     public function order() {
         $data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
-		$data['product'] = $this->prodmodel->ShowProduct();
-        
+        $data['product'] = $this->prodmodel->ShowProduct();
         $data['basketproducts'] = $this->prodmodel->getBasketproducts($_SESSION['basket']);
+
         $validation =  \Config\Services::validation();
         if (!$this->validate($validation->getRuleGroup('customerValidate')))
         {
             echo view('templates/header',$data);
-            print("<p>Tallennus ei onnistunut</p>");
             echo view('cartOrder_view');
-            echo view('templates/footer');
+            echo view('templates/footer'); 
 
         } else {
-            $customer = ([
-                'firstname' => $this->request->getVar('firstname'),
-                'lastname' => $this->request->getVar('lastname'),
-                'address' => $this->request->getVar('address'),
-                'postcode' => $this->request->getVar('postcode'),
-                'town' => $this->request->getVar('town'),
-                'email' => $this->request->getVar('email'),
-                'phone' => $this->request->getVar('phone'),
-            ]);
 
        /* $this->customermodel->save([
             'firstname' => $this->request->getVar('name'),
@@ -134,12 +124,10 @@ class Cart extends BaseController
             'phone' => $this->request->getVar('phone'),
         ]);*/
 
-
-        //insert into orders (status, orderDate, customer_id,delivery) values ('shipped',CURRENT_TIMESTAMP,(SELECT max(id) FROM customer),'N');
         $customerid = $this->customermodel->getCustId();
         $customerid = $customerid[0];
         $customerid = $customerid['max(id)'];
-        
+        //insert into orders (status, orderDate, customer_id,delivery) values ('shipped',CURRENT_TIMESTAMP,(SELECT max(id) FROM customer),'N');
       /*  $this->customermodel->save([
             'status' => 'ordered',
             'orderDate' => 'current_timestamp',

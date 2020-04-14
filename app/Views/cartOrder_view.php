@@ -40,6 +40,9 @@
         </table>
     </div>
     <div class="col-6">
+        <div>
+            <?=\Config\Services::validation()->listErrors(); ?>
+        </div>
         <form method="post" action="<?= site_url('cart/order/')?>">
             <div class="form-row">
                 <div class="form-group col-md-6">
