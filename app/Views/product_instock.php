@@ -27,6 +27,18 @@
             <div class="col-12 col-lg-9 p-3">
                 <?= $prod['description'] ?>
                 
+        <div class="col-12 p-5">
+            <h3>Arvostelut</h3>
+        <form class="form-group" method="post" action="<?= site_url('shop/review/' . $prod['id'])?>">
+            <h5>Arvosteltava tuote: <?= $prod['name'] ?></h5>
+            <p>Tähdet:</p>
+            <input type="hidden" value="2" name="stars" id="stars">
+            <label for="review">Kommentti:</label>
+            <textarea class="form-control" rows="5" cols="1" id="review" name="review"></textarea>
+            <button class="btn">Lähetä</button>
+        </form>
+        </div>
+
                 <?php endforeach; ?>
                 
             </div>

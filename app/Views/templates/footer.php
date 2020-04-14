@@ -20,7 +20,7 @@
           <p>Tilaa uutiskirjeemme, niin saat tietää uusista 
           tuotteistamme heti ensimmäisten joukossa!</p>
           
-          <form>
+          <form method="post" action="<?= site_url('shop/addToNewsletter/')?>">
             <div class="form-group">
               <label for="email">Sähköpostiosoite:</label>
               <input type="email" class="form-control" name="email" placeholder="Syötä sähköpostiosoitteesi">

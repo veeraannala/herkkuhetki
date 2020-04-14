@@ -80,4 +80,18 @@ class Cart extends BaseController
         }
         return redirect()->to('/cart');
     }
+
+    public function placeOrder() {
+        
+		$data['categories'] = $this->model->getCategories();
+		$data['themecategories'] = $this->thememodel->getThemeCategories();
+		$data['product'] = $this->prodmodel->ShowProduct();
+        
+        $data['basketproducts'] = $this->prodmodel->getBasketproducts($_SESSION['basket']);
+        
+
+        echo view('templates/header',$data);
+		echo view('cartOrder_view');
+        echo view('templates/footer');
+    }
 }
