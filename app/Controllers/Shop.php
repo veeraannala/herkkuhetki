@@ -3,12 +3,14 @@ use App\Models\CategoryModel;
 use App\Models\ThemeModel;
 use App\Models\ProductModel;
 use App\Models\NewsletterModel;
+use App\Models\ReviewModel;
 
 class Shop extends BaseController
 {
 	private $model = null;
 	private $thememodel = null;
 	private $prodmodel = null;
+	private $reviewmodel = null;
 
 	public function __construct()
 	{
@@ -18,6 +20,7 @@ class Shop extends BaseController
 		$this->thememodel = new ThemeModel();
 		$this->prodmodel = new ProductModel();
 		$this->newsmodel = new NewsletterModel();
+		$this->reviewmodel = new ReviewModel();
 	}
 
 	public function index()
@@ -133,14 +136,12 @@ class Shop extends BaseController
 
 	//saves new review to database
 	public function review($id) {
-		$ReviewModel = new ReviewModel();
 		
 		$data['product'] = $this->prodmodel->getProduct($id);
-		$data['id'] = $id;
+		//$data['id'] = $id;
 		
-		$this->ReviewModel->save([
-					
-			'product_id' => $this->request->getVar('product_id'),
+		$this->reviewmodel->save([		
+			'product_id' => $this->request->getVar('id'),
 			'review' => $this->request->getVar('review'),
 			'stars' => $this->request->getVar('stars')
 		]);
