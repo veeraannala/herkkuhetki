@@ -83,6 +83,22 @@ class Validation
 		],
 	];
 
+	public $customerValidate = [
+		'firstname' => 'required|min_length[2]|max_length[50]',
+		'lastname' =>  'required|min_length[2]|max_length[100]',
+		'address' =>  'required|min_length[2]|max_length[100]',
+		'postcode' =>  'required|min_length[5]',
+		'town' =>  'required|min_length[2]|max_length[100]',
+		'email' =>  'required|min_length[2]|max_length[255]|valid_email|is_unique[customer.email]'
+
+	];
+
+	public $customerRegisterValidate = [
+		'username' => 'required|min_length[3]|max_length[30]|is_unique[registeredcustomer.username]',
+		'password' => 'required|min_length[8]|max_length[30]',
+		'passconfirm' => 'required|min_length[8]|max_length[30]|required|matches[password]'
+	];
+
 	
 
 	//--------------------------------------------------------------------
