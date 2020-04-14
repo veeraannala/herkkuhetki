@@ -15,4 +15,24 @@ class Login extends BaseController
 
     }
 
+    public function index() {
+
+		$data['categories'] = $this->model->getCategories();
+		$data['themecategories'] = $this->thememodel->getThemeCategories();
+		
+
+		echo view('templates/header',$data);
+		echo view('customer_view');
+        echo view('templates/footer');
+
+    }
+    public function register() {
+        $data['categories'] = $this->model->getCategories();
+        $data['themecategories'] = $this->thememodel->getThemeCategories();
+        
+        echo view('templates/header',$data);
+		echo view('register_view');
+        echo view('templates/footer');
+    }
+
 }
