@@ -3,12 +3,14 @@ use App\Models\CategoryModel;
 use App\Models\ThemeModel;
 use App\Models\ProductModel;
 use App\Models\NewsletterModel;
+use App\Models\ReviewModel;
 
 class Shop extends BaseController
 {
 	private $model = null;
 	private $thememodel = null;
 	private $prodmodel = null;
+	private $ReviewModel = null;
 
 	public function __construct()
 	{
@@ -138,8 +140,7 @@ class Shop extends BaseController
 		$data['product'] = $this->prodmodel->getProduct($id);
 		$data['id'] = $id;
 		
-		$this->ReviewModel->save([
-					
+		$this->ReviewModel->save([		
 			'product_id' => $this->request->getVar('product_id'),
 			'review' => $this->request->getVar('review'),
 			'stars' => $this->request->getVar('stars')
