@@ -2,6 +2,7 @@
 use App\Models\CategoryModel;
 use App\Models\ThemeModel;
 use App\Models\ProductModel;
+use App\Models\NewsletterModel;
 
 class Shop extends BaseController
 {
@@ -16,6 +17,7 @@ class Shop extends BaseController
 		$this->model = new CategoryModel();
 		$this->thememodel = new ThemeModel();
 		$this->prodmodel = new ProductModel();
+		$this->newsmodel = new NewsletterModel();
 	}
 
 	public function index()
@@ -116,14 +118,16 @@ class Shop extends BaseController
 			echo view('searchfail_view');
 			echo view('templates/footer');
 		}
-			
-		
-		
-		
-		
-		
-		
 		 
 	}
 
+	public function addToNewsletter(){
+
+		$this->newsmodel->save([
+			'email' => $this->request->getVar('email')
+		]);
+
+		return redirect()->to('/Shop');
+
+	}
 }
