@@ -4,6 +4,7 @@ use App\Models\ThemeModel;
 use App\Models\ProductModel;
 use App\Models\CustomerModel;
 use App\Models\OrderModel;
+use App\Models\OrderdetailModel;
 class Cart extends BaseController
 {
     public function __construct() {
@@ -14,6 +15,7 @@ class Cart extends BaseController
         $this->prodmodel = new ProductModel();
         $this->customermodel = new CustomerModel();
         $this->ordermodel = new OrderModel();
+        $this->orderdetailmodel = new OrderdetailModel();
     }
 
 	public function index()
@@ -85,7 +87,9 @@ class Cart extends BaseController
         return redirect()->to('/cart');
     }
 
-    public function placeOrder() {
+
+    //shows all products, total sum and a form for user to give delivery information
+    public function showOrder() {
         
 		$data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
@@ -99,6 +103,7 @@ class Cart extends BaseController
         echo view('templates/footer');
     }
 
+    //Saves the customer, order and order details in the database. Not working yet.
     public function order() {
         $data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
@@ -114,32 +119,44 @@ class Cart extends BaseController
 
         } else {
 
-       /* $this->customermodel->save([
-            'firstname' => $this->request->getVar('name'),
-            'lastname' => $this->request->getVar('last'),
+        $this->customermodel->save([
+            'firstname' => $this->request->getVar('firstname'),
+            'lastname' => $this->request->getVar('lastname'),
             'address' => $this->request->getVar('address'),
             'postcode' => $this->request->getVar('postcode'),
             'town' => $this->request->getVar('town'),
             'email' => $this->request->getVar('email'),
             'phone' => $this->request->getVar('phone'),
-        ]);*/
+        ]);
 
         $customerid = $this->customermodel->getCustId();
         $customerid = $customerid[0];
         $customerid = $customerid['max(id)'];
         //insert into orders (status, orderDate, customer_id,delivery) values ('shipped',CURRENT_TIMESTAMP,(SELECT max(id) FROM customer),'N');
-      /*  $this->customermodel->save([
+        $this->ordermodel->save([
             'status' => 'ordered',
-            'orderDate' => 'current_timestamp',
+            'orderDate' => date('Y-m-d H:i:s'),
             'customer_id' => $customerid,
             'delivery' => $this->request->getVar('delivery'),
-        ]);*/
-        $orderid = $this->customermodel->getCustId();
+        ]);
+        $orderid = $this->ordermodel->getOrderId();
         $orderid = $orderid[0];
         $orderid = $orderid['max(id)'];
-        print_r($customer);
-        print ("<p></p>");
-        print_r($_SESSION['order']);
+
+        foreach ($_SESSION['order'] as $item => $value) {
+            
+            $this->orderdetailmodel->save([
+                'product_id' => $item,
+                'order_id' => $orderid,
+                'amount' => $value
+            ]);
+            
+        //print_r($item['amount']);
+        }
+
+        $this->clear();
+        print ("<p>Tilaus onnistui</p>");
+        print ("<a href='/'>Etusivulle</a>");
       }
     }
 }
