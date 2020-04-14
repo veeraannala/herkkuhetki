@@ -139,6 +139,7 @@ class Shop extends BaseController
 		
 		$data['product'] = $this->prodmodel->getProduct($id);
 		//$data['id'] = $id;
+		$id = $this->prodmodel->showProduct($id);
 		
 		$this->reviewmodel->save([		
 			'product_id' => $this->request->getVar('id'),

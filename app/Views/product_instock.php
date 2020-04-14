@@ -31,12 +31,12 @@
             <h3>Arvostelut</h3>
         <form class="form-group" method="post" action="<?= site_url('shop/review/' . $prod['id'])?>">
             <h5>Arvosteltava tuote: <?= $prod['name'] ?></h5>
-            <p>Tähdet:</p>
-            <input type="hidden" value="2" name="stars" id="stars">
-            <input type="hidden" value="14" name="id" id="id">
-            <label for="review">Kommentti:</label>
+            <label class="mt-2" for="stars">Tähdet:</label>
+            <input type="number" name="stars" id="stars" min="0" max="5">
+            <br><label class="mt-2" for="review">Kommentti:</label></br>
             <textarea class="form-control" rows="5" cols="1" id="review" name="review"></textarea>
-            <button class="btn">Lähetä</button>
+            <input type="hidden" value="<?= $prod['id'] ?>" name="id" id="id">
+            <button class="btn mt-3">Lähetä</button>
         </form>
         </div>
 
