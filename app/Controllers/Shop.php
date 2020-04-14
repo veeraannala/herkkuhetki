@@ -153,7 +153,6 @@ class Shop extends BaseController
 	public function review($id) {
 		
 		$data['product'] = $this->prodmodel->getProduct($id);
-		//$data['id'] = $id;
 		$id = $this->prodmodel->showProduct($id);
 		
 		$this->reviewmodel->save([		

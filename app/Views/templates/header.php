@@ -89,7 +89,7 @@
                     </div>
                 </form>
                 <div class="nav-item">
-                    <a href=""><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i>KIRJAUDU</a>
+                    <a href="<?=site_url('login/index')?>"><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i>KIRJAUDU</a>
                 </div>
                 <?php
           if (isset($_SESSION['basket'])) {
