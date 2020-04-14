@@ -124,13 +124,28 @@ class Shop extends BaseController
 		 
 	}
 
+	//adds email to newsletter database
 	public function addToNewsletter(){
 
-		$this->newsmodel->save([
-			'email' => $this->request->getVar('email')
-		]);
+		$data['categories'] = $this->model->getCategories();
+		$data['themecategories'] = $this->thememodel->getThemeCategories();
+		$data['product'] = $this->prodmodel->ShowProduct();
 
-		return redirect()->to('/Shop');
+		try {
+			$this->newsmodel->save([
+			'email' => $this->request->getVar('email')
+			]);
+
+			$data["success"] = "Uutiskirjeen tilaus onnistui!";
+
+		}
+		catch (\Exception $e) {
+			$data['errormessage'] = ($e->getMessage());
+		}
+
+		echo view('templates/header', $data);
+		echo view('newsletter_view', $data);
+		echo view('templates/footer');
 
 	}
 
@@ -138,7 +153,6 @@ class Shop extends BaseController
 	public function review($id) {
 		
 		$data['product'] = $this->prodmodel->getProduct($id);
-		//$data['id'] = $id;
 		$id = $this->prodmodel->showProduct($id);
 		
 		$this->reviewmodel->save([		
