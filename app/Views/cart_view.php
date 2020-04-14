@@ -1,4 +1,4 @@
-<div class="cartminheight">
+<div class="centerminheight">
     <?php
 if(is_array($basketproducts))
 {

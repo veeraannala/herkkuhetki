@@ -147,3 +147,13 @@ insert into product (name,price,description,image,stock,type,category_id, theme_
 insert into product (name,price,description,image,stock,type,category_id, theme_id) values ('Yllätysmuna',3.56,'Laita suuhusi ja saat yllätyksen, vaikka et ehkä haluaisikaan.','images/imagenotfound', 19,'kpl', 17, 1001);
 insert into product (name,price,description,image,stock,type,category_id, theme_id) values ('Konvehtirasia',3.56,'Sisältää erilaisia suklaakonvehteja. Suurin osa niistä on todennäköisiä sellaisia, joista et tykkää.','images/imagenotfound', 67,'kpl', 18, 1000);
 insert into product (name,price,description,image,stock,type,category_id, theme_id) values ('Tepolla on asiaa',1000.0,'Koska Teppo soitti Jounille.','images/tepollaonasiaa', 1,'kpl', 12, NULL) 
+
+insert into customer (firstname,lastname,address,postcode,town,email,phone) values ('Teppo','Mattinen','Jounintie 12','90100', 'Oulu','teppo@jouni.fi', 0401234567); 
+insert into customer (firstname,lastname,address,postcode,town,email,phone) values ('Matti','Tepponen','Jounintie 12','90100', 'Oulu','teppo@jouni.fi', 0401234567);
+insert into orders (status, orderDate, customer_id,delivery) values ('ordered',CURRENT_TIMESTAMP,1,'P');
+insert into orders (status, orderDate, customer_id,delivery) values ('shipped',CURRENT_TIMESTAMP,2,'N');
+insert into orderdetail (order_id, product_id, amount) values (1,12,2);
+insert into orderdetail (order_id, product_id, amount) values (1,11,2);
+insert into orderdetail (order_id, product_id, amount) values (1,8,3);
+insert into orderdetail (order_id, product_id, amount) values (1,2,15);
+insert into orderdetail (order_id, product_id, amount) values (1,9,1);

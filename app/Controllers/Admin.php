@@ -3,6 +3,7 @@ use App\Models\AdminModel;
 use App\Models\CategoryModel;
 use App\Models\ProductModel;
 use App\Models\ThemeModel;
+use App\Models\OrderModel;
 
 class Admin extends BaseController
 {
@@ -11,6 +12,7 @@ class Admin extends BaseController
 	private $thememodel = null;
     private $prodmodel = null;
     private $adminmodel = null;
+    private $ordermodel = null;
 
 
     public function __construct() {
@@ -20,6 +22,7 @@ class Admin extends BaseController
 		$this->thememodel = new ThemeModel();
         $this->prodmodel = new ProductModel();
         $this->adminmodel = new AdminModel();
+        $this->ordermodel = new OrderModel();
     }
     
     public function index() {
@@ -325,4 +328,18 @@ class Admin extends BaseController
 
 
     }
+    public function  showOrders() {
+        $data['orders'] = $this->ordermodel->getOrders();
+
+        echo view('admin/adminHeader');
+		echo view('admin/Orders_view', $data);
+        echo view('admin/adminFooter');
+    }
+    public function  showOrder() {
+
+        echo view('admin/adminHeader');
+		echo view('admin/Order_view');
+        echo view('admin/adminFooter');
+    }
+    
 }

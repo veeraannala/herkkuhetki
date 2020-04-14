@@ -94,4 +94,18 @@ class Cart extends BaseController
 		echo view('cartOrder_view');
         echo view('templates/footer');
     }
+
+    public function order() {
+        $customer = [
+            'firstname' => $this->request->getVar('firstname'),
+            'lastname' => $this->request->getVar('last'),
+            'address' => $this->request->getVar('address'),
+            'postcode' => $this->request->getVar('postcode'),
+            'town' => $this->request->getVar('town'),
+            'email' => $this->request->getVar('email'),
+            'phone' => $this->request->getVar('phone'),
+        ];
+        print_r($customer);
+        print_r($_SESSION['order']);
+    }
 }

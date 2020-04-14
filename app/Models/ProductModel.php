@@ -48,6 +48,7 @@ use CodeIgniter\Model;
             $query = $builder->get();
             return $query->getResultArray();
         }
+        
         public function searchLike($catIDs) {
             $db = db_connect();
             $builder = $this->table("product");

@@ -7,6 +7,7 @@
         <th>Hinta yhteensä</th>
         </tr>
     <?php
+    $order = array();
     $sum = 0;
     foreach ($basketproducts as $product):
         $amount = 0;
@@ -15,6 +16,7 @@
                 $amount++;
                 $sum += $product['price'];
             }
+           
         endforeach;
     ?>
         <tr>
@@ -25,8 +27,10 @@
       </tr>
     <?php    
     
-
-    endforeach; ?>
+    $order[$product['id']] = $amount;
+    endforeach; 
+    $_SESSION['order'] = $order;
+    ?>
     <tr>
         <th>Summa yhteensä</th>
         <th></th>
