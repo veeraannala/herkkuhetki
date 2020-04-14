@@ -2,6 +2,7 @@
 use App\Models\CategoryModel;
 use App\Models\ThemeModel;
 use App\Models\ProductModel;
+use App\Models\CustomerModel;
 class Cart extends BaseController
 {
     public function __construct() {
@@ -10,6 +11,8 @@ class Cart extends BaseController
         $this->model = new CategoryModel();
 		$this->thememodel = new ThemeModel();
         $this->prodmodel = new ProductModel();
+        $this->customermodel = new CustomerModel();
+      //  $this->ordermodel = new OrderModel();
     }
 
 	public function index()
@@ -96,16 +99,26 @@ class Cart extends BaseController
     }
 
     public function order() {
-        $customer = [
-            'firstname' => $this->request->getVar('firstname'),
+
+       /* $this->customermodel->save([
+            'firstname' => $this->request->getVar('name'),
             'lastname' => $this->request->getVar('last'),
             'address' => $this->request->getVar('address'),
             'postcode' => $this->request->getVar('postcode'),
             'town' => $this->request->getVar('town'),
             'email' => $this->request->getVar('email'),
             'phone' => $this->request->getVar('phone'),
-        ];
-        print_r($customer);
+        ]);*/
+
+
+        //insert into orders (status, orderDate, customer_id,delivery) values ('shipped',CURRENT_TIMESTAMP,(SELECT max(id) FROM customer),'N');
+        $customerid = $this->customermodel->getCustId();
+        $customerid = $customerid[0];
+        $customerid = $customerid['max(id)'];
+        
+       
+        print_r($customerid);
+        print ("<p></p>");
         print_r($_SESSION['order']);
     }
 }
