@@ -17,7 +17,7 @@ create table registeredCustomer (
   id int primary key auto_increment,
   username varchar(30) not null,
   password varchar(255) not null,
-  customer_id int not null,
+  customer_id int,
   index (customer_id),
   foreign key (customer_id) references customer(id)
 );
