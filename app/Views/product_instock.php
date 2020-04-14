@@ -28,11 +28,12 @@
                 <?= $prod['description'] ?>
                 
         <div class="col-12 p-5">
-            <h3>Arvostelut</h3>
+            <h3 class="mb-3">Arvostelut</h3>
         <form class="form-group" method="post" action="<?= site_url('shop/review/' . $prod['id'])?>">
-            <h5>Arvosteltava tuote: <?= $prod['name'] ?></h5>
-            <label class="mt-2" for="stars">Tähdet:</label>
-            <input type="number" name="stars" id="stars" min="0" max="5">
+            <h5 class="mt-4">Arvosteltava tuote: <?= $prod['name'] ?></h5>
+            <label class="mt-2" for="stars"><i class="fa fa-star-o" aria-hidden="true"></i> Tähdet:</label>
+            <input class="mt-2 mr-2" type="number" name="stars" id="stars" min="0" max="5"></input>
+            
             <br><label class="mt-2" for="review">Kommentti:</label></br>
             <textarea class="form-control" rows="5" cols="1" id="review" name="review"></textarea>
             <input type="hidden" value="<?= $prod['id'] ?>" name="id" id="id">
