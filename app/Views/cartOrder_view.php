@@ -55,15 +55,15 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md-12">
-                    <label for="custEmail">Sähköpostiosoite</label>
-                    <input type="email" class="form-control" id="custEmail" name="custEmail"
+                    <label for="email">Sähköpostiosoite</label>
+                    <input type="email" class="form-control" id="email" name="email"
                         placeholder="Sähköpostiosoite" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="phone">Puhelinnumero</label>
-                    <input type="email" class="form-control" id="phone" name="phone" placeholder="Puhelinnumero"
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Puhelinnumero"
                         required>
                 </div>
             </div>
@@ -80,8 +80,8 @@
                         required>
                 </div>
                 <div class="form-group col-md-8">
-                    <label for="lastname">Postitoimipaikka</label>
-                    <input type="text" class="form-control" id="postaddress" name="postaddress"
+                    <label for="town">Postitoimipaikka</label>
+                    <input type="text" class="form-control" id="town" name="town"
                         placeholder="Postitoimipaikka" required>
                 </div>
             </div>

@@ -100,6 +100,29 @@ class Cart extends BaseController
     }
 
     public function order() {
+        $data['categories'] = $this->model->getCategories();
+		$data['themecategories'] = $this->thememodel->getThemeCategories();
+		$data['product'] = $this->prodmodel->ShowProduct();
+        
+        $data['basketproducts'] = $this->prodmodel->getBasketproducts($_SESSION['basket']);
+        $validation =  \Config\Services::validation();
+        if (!$this->validate($validation->getRuleGroup('customerValidate')))
+        {
+            echo view('templates/header',$data);
+            print("<p>Tallennus ei onnistunut</p>");
+            echo view('cartOrder_view');
+            echo view('templates/footer');
+
+        } else {
+            $customer = ([
+                'firstname' => $this->request->getVar('firstname'),
+                'lastname' => $this->request->getVar('lastname'),
+                'address' => $this->request->getVar('address'),
+                'postcode' => $this->request->getVar('postcode'),
+                'town' => $this->request->getVar('town'),
+                'email' => $this->request->getVar('email'),
+                'phone' => $this->request->getVar('phone'),
+            ]);
 
        /* $this->customermodel->save([
             'firstname' => $this->request->getVar('name'),
@@ -126,8 +149,9 @@ class Cart extends BaseController
         $orderid = $this->customermodel->getCustId();
         $orderid = $orderid[0];
         $orderid = $orderid['max(id)'];
-        print_r($orderid);
+        print_r($customer);
         print ("<p></p>");
         print_r($_SESSION['order']);
+      }
     }
 }
