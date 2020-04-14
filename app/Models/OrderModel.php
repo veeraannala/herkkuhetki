@@ -18,5 +18,14 @@ use CodeIgniter\Model;
             $query = $builder->get();
             return $query->getResultArray();
         }
+
+        //Returns last order's id number
+        public function getOrderId() {
+            $builder = $this->table("order");
+            $builder->select("max(id)");
+            $query = $builder->get();
+
+            return $query->getResultArray();
+        }
 }
     
