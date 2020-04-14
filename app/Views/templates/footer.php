@@ -19,7 +19,7 @@
           <h4>Tilaa uutiskirje!</h4>
           <p>Tilaa uutiskirjeemme, niin saat tietää uusista 
           tuotteistamme heti ensimmäisten joukossa!</p>
-          
+                    
           <form method="post" action="<?= site_url('shop/addToNewsletter/')?>">
             <div class="form-group">
               <label for="email">Sähköpostiosoite:</label>
