@@ -124,6 +124,7 @@ class Shop extends BaseController
 		 
 	}
 
+	//adds email to newsletter database
 	public function addToNewsletter(){
 
 		$data['categories'] = $this->model->getCategories();

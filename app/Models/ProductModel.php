@@ -58,9 +58,7 @@ use CodeIgniter\Model;
         }
        
         public function getProductsCat() {
-            // $this->db->query('SELECT product.name AS "tuotenimi", productcategory.name AS "kategorianimi" FROM product, productcategory
-            // WHERE product.category_ID = productcategory.categoryID');
-
+            // gets products and their categories and themecategories joined
             $builder = $this->table("product");
             $builder->select("product.id as id, product.name AS productName, price, image, type, category_id, theme_id, productCategory.parentID as parentID,  productCategory.name AS category, themeCategory.name as theme");
             $builder->join("productCategory", "product.category_ID = productCategory.categoryID", "inner");

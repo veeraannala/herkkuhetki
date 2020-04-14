@@ -206,8 +206,7 @@ class Admin extends BaseController
     
     public function editProduct() {
 
-        //$data['categories'] = $this->categorymodel->getCategories();
-        // $data['products'] = $this->prodmodel->ShowProduct();
+        //shows all products in one view
         $data['products'] = $this->prodmodel->getProductsCat();
         $data['categories'] = $this->categorymodel->getParentCategories();
 
@@ -255,8 +254,9 @@ class Admin extends BaseController
 
     }
 
+    
     public function addProduct() {
-
+    //saves new product to the database. replaces empty image with imagenotfound-file
         $newproduct = [
             'name' => $this->request->getVar('name'),
             'price' => $this->request->getVar('price'),
@@ -280,8 +280,6 @@ class Admin extends BaseController
 
     public function deleteProduct($id) {
 
-        // toimii toistaiseksi vain kategorioissa jossa ei ole tuotteita
-
         $product_model = new ProductModel();
         $product_model->delete($id);
         
@@ -291,7 +289,9 @@ class Admin extends BaseController
 
     }
 
+    
     public function alterProduct($id) {
+        //gets chosen product's information from the database so it can be changed
         $product = $this->prodmodel->getProduct($id);
         $data['product'] = $product[0];
         $data['categories'] = $this->categorymodel->getCategories();
@@ -303,8 +303,9 @@ class Admin extends BaseController
         echo view('admin/adminFooter');
     }
 
+    
     public function changeProduct() {
-
+    //changes product information in the database
         $id = $this->request->getVar('id');
         $data = [
             'name' => $this->request->getVar('newname'),
