@@ -10,17 +10,10 @@ create table customer (
   postcode char(5) not null,
   town varchar(100) not null,
   email varchar(255) not null,
-  phone varchar(20)
+  phone varchar(20),
+  assword varchar(255) not null,
 );
 
-create table registeredCustomer (
-  id int primary key auto_increment,
-  username varchar(30) not null,
-  password varchar(255) not null,
-  customer_id int,
-  index (customer_id),
-  foreign key (customer_id) references customer(id)
-);
 
 create table productCategory (
   categoryID int primary key auto_increment,
@@ -60,7 +53,7 @@ create table newsletter (
 
 create table orders (
   id int primary key auto_increment,
-  status enum ('ordered','shipped'),
+  status enum ('ordered', 'paid', 'shipped'),
   orderDate timestamp default current_timestamp,
   customer_id int not null,
   index (customer_id),

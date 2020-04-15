@@ -29,7 +29,7 @@ use CodeIgniter\Model;
             return $query->getResultArray();
         }
         public function getOrderStatus($id) {
-            $builder = $this->table('order');
+            $builder = $this->table('orders');
             $builder->select('status,id',$id);
             $query = $this->get();
             return $query->getResultArray();
@@ -37,7 +37,7 @@ use CodeIgniter\Model;
         
         //Returns last order's id number
         public function getOrderId() {
-            $builder = $this->table("order");
+            $builder = $this->table("orders");
             $builder->select("max(id)");
             $query = $builder->get();
 
