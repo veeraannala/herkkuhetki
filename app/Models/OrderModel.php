@@ -14,15 +14,15 @@ use CodeIgniter\Model;
 
             $builder = $this->table("orders");
             $builder->select("orders.id as id, status, orderDate, customer_id, delivery, customer.id as customerid, firstname, lastname");
-            $builder->join("Customer", "orders.id = customer.id", "inner");
+            $builder->join("Customer", "orders.customer_id = customer.id", "inner");
             $query = $builder->get();
             return $query->getResultArray();
         }
         public function getOrderDetails($id) {
             $builder = $this->table("orders");
             $builder->select("orders.id, product.name, amount AS määrä, price, type, status,firstname,lastname,phone, address, postcode, town, email");
-            $builder->join("Customer", "orders.id = customer.id", "inner");
-            $builder->join("orderdetail", "orders.id = orderdetail.order_id", "inner");
+            $builder->join("Customer", "orders.customer_id = customer.id", "inner");
+            $builder->join("orderdetail", "orders.customer_id = orderdetail.order_id", "inner");
             $builder->join("product","orderdetail.product_id = product.id");
             $builder->where('orders.id',$id);
             $query = $builder->get();
