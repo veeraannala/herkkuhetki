@@ -7,8 +7,6 @@
 
         <?php
         if ($order['id'] === $id) {
-            
-            print_r($order);
         ?>
         <h3 class="mt-3 mb-3">Muokkaa tilauksen tila: <?=$order['status']?></h3>
         <div class="col-5">
