@@ -90,30 +90,43 @@ class Shop extends BaseController
         echo view('templates/footer');
 	}
 
+	/*
+	tämän function tarkoitus on:
+	-etsiä tuotteita annetuilla hakusanoilla. Annettuja hakusanoja verrataan tuotteiden nimikenttiin
+	ja kuvauksiin ja tuotteen tageihin
+
+	-esimerkkihakuja:
+	- "suklaa"
+	- "suklaa*" ei tuettu
+	- "suklaa karkki"
+	
+	specsi
+	-kaikki hakulausekkeessa esiintyvät erikoismerkit hylätään/ei käsitellä
+	ps. ainakaan merkin; ¤ poisto ei toimi toistaiseksi. Selvitellään.
+	-mikäli hakulausekkeessa on useampi kuin yksi sana: tulee kaikkien yksittäisten hakusanojen löytyä
+	tuotteen nimestä, kuvauksesta tai tagista.
+	*/
 	public function search_product(){
 
 		$data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
 		$data['product'] = $this->prodmodel->ShowProduct();
 
-		$searchQuery = $this->request->getVar('search',);
-		if(isset($searchQuery)) {
-			$searchQuery = strtolower($searchQuery);
+		$searchQuery = $this->request->getVar('search',FILTER_SANITIZE_STRING);
+		//echo $searchQuery;
+		if(!empty($searchQuery)) {
+			# muutetaan annettu haku pieniksi kirjaimiksi.
+			$searchQuery = mb_convert_case($searchQuery, MB_CASE_LOWER, "UTF-8");
+			# parsitaan ylimääräiset merkit.
 			$searchQuery = preg_replace('/[^A-Öa-ö0-9]+/', ',', $searchQuery);
+			# Luodaan sanoista taulukko.
 			$keywords = explode(',', $searchQuery);
-			//print_r($keywords);
-			$catIDs =[];
+			print_r($keywords);
+			# lähetetään taulukko $keywords searchLike metodille.
 			$data['searchresult'] = $this->prodmodel->searchLike($keywords);
-			//  //print_r($data);
-			// foreach ($data['searchresult'] as $key => $values) {
-			//  //$values['category_id'];	
-			// 	array_push($catIDs,$values['category_id']);
-			// }
-			// print_r($catIDs);
-			// $data2['searchproduct'] = $this->prodmodel->searchProduct($catIDs);
-			// print_r($data2);
-			$data2['searchcategory'] = $this->model->searchCategory();
-			//print_r($data2);
+			//$data['keywords'] = $keywords;
+			//print_r($data1);
+
 			if (!empty($data)) {
 			echo view('templates/header',$data);
 			echo view('search_view',$data);
@@ -124,7 +137,10 @@ class Shop extends BaseController
 				echo view('searchfail_view');
 				echo view('templates/footer');
 			}
+		} else {
+			return redirect()->to(previous_url()); 
 		}
+
 	}
 		 
 	

@@ -32,14 +32,5 @@ use CodeIgniter\Model;
             return $query->getResultArray();
         }
 
-        public function searchCategory() {
-            $builder = $this->table('productcategory');
-            $builder->select('productcategory.categoryID, productcategory.parentID, productcategory.name');
-            $builder->join("product", "productcategory.categoryID = product.category_id", "inner");
-            
-            $query = $builder->get();
-            return $query->getResultArray();
-
-        }
 
     }

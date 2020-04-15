@@ -81,13 +81,13 @@ class Admin extends BaseController
         }
         else
         {
-            $adminuser = $this->adminmodel->admincheck(
+            $adminUser = $this->adminmodel->admincheck(
                 $this->request->getVar('username'),
                 $this->request->getVar('password')  
             );
             
-            if ($adminuser) {
-                $_SESSION['username'] = $adminuser;
+            if ($adminUser) {
+                $_SESSION['username'] = $adminUser;
                 return redirect()->to('/admin'); 
             
             }

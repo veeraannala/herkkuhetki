@@ -49,27 +49,18 @@ use CodeIgniter\Model;
             return $query->getResultArray();
         }
         
-        public function searchLike($keywords) {
+        public function searchLike( array $keywords) {
             $db = db_connect();
             $builder = $this->table("product");
             foreach ($keywords as $values) {
-            $builder->Like('name', $values)
-                    ->orLike('description',$values)
-                    ->orLike('tag',$values,'both');
+            $builder->orLike('name', $values,'both')
+                    ->orLike('description',$values,'both')
+                    ->orlike('tag',$values);
             }
             $query = $builder->get();
             return $query->getResultArray();
         }
-        // public function searchProduct($catIDs) {
-        //     $db = db_connect();
-        //     $builder = $this->table("product");
-        //     $builder->whereIn('category_id', $catIDs);
-        //     $query = $builder->get();
-        //     return $query->getResultArray();
-        // }
-
-
-       
+        
         public function getProductsCat() {
             // $this->db->query('SELECT product.name AS "tuotenimi", productcategory.name AS "kategorianimi" FROM product, productcategory
             // WHERE product.category_ID = productcategory.categoryID');
