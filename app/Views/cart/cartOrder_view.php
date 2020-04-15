@@ -59,8 +59,8 @@
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="email">Sähköpostiosoite</label>
-                    <input type="email" class="form-control" id="email" name="email"
-                        placeholder="Sähköpostiosoite" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Sähköpostiosoite"
+                        required>
                 </div>
             </div>
             <div class="form-row">
@@ -84,16 +84,15 @@
                 </div>
                 <div class="form-group col-md-8">
                     <label for="town">Postitoimipaikka</label>
-                    <input type="text" class="form-control" id="town" name="town"
-                        placeholder="Postitoimipaikka" required>
+                    <input type="text" class="form-control" id="town" name="town" placeholder="Postitoimipaikka"
+                        required>
                 </div>
             </div>
             <div class="form-row">
                 <legend class="col-form-label col-sm-2 pt-0">Toimitustapa</legend>
                 <div class="col-sm-10">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="delivery" id="deliveryP" value="P"
-                            checked>
+                        <input class="form-check-input" type="radio" name="delivery" id="deliveryP" value="P" checked>
                         <label class="form-check-label" for="gridRadios1">
                             Postitse
                         </label>
@@ -105,9 +104,12 @@
                         </label>
                     </div>
                 </div>
-                <div class="form-row float-right">
-                    <button type="submit" class="btn">Tilaa tuotteet</button>
+
+                <div class="col">
+                    <button type="submit" class="btn float-right">Tilaa tuotteet</button>
                 </div>
+
+            </div>
         </form>
     </div>
 </div>

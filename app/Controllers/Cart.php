@@ -33,7 +33,7 @@ class Cart extends BaseController
         }
 
         echo view('templates/header',$data);
-		echo view('cart_view',$data);
+		echo view('cart/cart_view',$data);
         echo view('templates/footer');
 	}
 
@@ -87,6 +87,9 @@ class Cart extends BaseController
         return redirect()->to('/cart');
     }
 
+    public function checkout() {
+
+    }
 
     //shows all products, total sum and a form for user to give delivery information
     public function showOrder() {
@@ -99,7 +102,7 @@ class Cart extends BaseController
         
 
         echo view('templates/header',$data);
-		echo view('cartOrder_view');
+		echo view('cart/cartOrder_view');
         echo view('templates/footer');
     }
 
@@ -114,7 +117,7 @@ class Cart extends BaseController
         if (!$this->validate($validation->getRuleGroup('customerValidate')))
         {
             echo view('templates/header',$data);
-            echo view('cartOrder_view');
+            echo view('cart/cartOrder_view');
             echo view('templates/footer'); 
 
         } else {
