@@ -25,7 +25,7 @@
                     </div>
                     <div class="col">
                         <select class="form-control" id="newparentID" name="category">
-                            <option name="newparent" value="null">Ei yläkategoriaa</option>
+                            
                             <?php foreach ($categories as $parcategory): 
                     if ($parcategory['parentID'] === null) {
                         

@@ -10,17 +10,10 @@ create table customer (
   postcode char(5) not null,
   town varchar(100) not null,
   email varchar(255) not null,
-  phone varchar(20)
+  phone varchar(20),
+  assword varchar(255) not null,
 );
 
-create table registeredCustomer (
-  id int primary key auto_increment,
-  username varchar(30) not null,
-  password varchar(255) not null,
-  customer_id int,
-  index (customer_id),
-  foreign key (customer_id) references customer(id)
-);
 
 create table productCategory (
   categoryID int primary key auto_increment,
@@ -60,7 +53,7 @@ create table newsletter (
 
 create table orders (
   id int primary key auto_increment,
-  status enum ('ordered','shipped'),
+  status enum ('ordered', 'paid', 'shipped'),
   orderDate timestamp default current_timestamp,
   customer_id int not null,
   index (customer_id),
@@ -152,6 +145,7 @@ insert into customer (firstname,lastname,address,postcode,town,email,phone) valu
 insert into customer (firstname,lastname,address,postcode,town,email,phone) values ('Matti','Tepponen','Jounintie 12','90100', 'Oulu','teppo@jouni.fi', 0401234567);
 insert into orders (status, orderDate, customer_id,delivery) values ('ordered',CURRENT_TIMESTAMP,1,'P');
 insert into orders (status, orderDate, customer_id,delivery) values ('shipped',CURRENT_TIMESTAMP,2,'N');
+insert into orders (status, orderDate, customer_id,delivery) values ('paid',CURRENT_TIMESTAMP,2,'N');
 insert into orderdetail (order_id, product_id, amount) values (1,12,2);
 insert into orderdetail (order_id, product_id, amount) values (1,11,2);
 insert into orderdetail (order_id, product_id, amount) values (1,8,3);
