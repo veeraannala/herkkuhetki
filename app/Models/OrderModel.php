@@ -28,8 +28,13 @@ use CodeIgniter\Model;
             $query = $builder->get();
             return $query->getResultArray();
         }
-
-
+        public function getOrderStatus($id) {
+            $builder = $this->table('order');
+            $builder->select('status,id',$id);
+            $query = $this->get();
+            return $query->getResultArray();
+        }
+        
         //Returns last order's id number
         public function getOrderId() {
             $builder = $this->table("order");

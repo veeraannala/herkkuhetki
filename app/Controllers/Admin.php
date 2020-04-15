@@ -342,5 +342,20 @@ class Admin extends BaseController
 		echo view('admin/Order_view', $data);
         echo view('admin/adminFooter');
     }
-    
+    public function updateStatus($id) {
+        $data['orderstatus'] = $this->ordermodel->getOrderStatus($id);
+        $data['testit'] = $this->ordermodel->getstatus();
+        $data['id'] = $id;
+        echo view('admin/adminHeader');
+		echo view('admin/changestatus_view.php', $data);
+        echo view('admin/adminFooter');
+    }
+    public function updatestat() {
+        $id = $this->request->getVar('id');
+        $data = [
+            'status' => $this->request->getVar('newstatus'),
+        ];
+        $this->ordermodel->update($id, $data);
+        return redirect()->to('/admin/showOrders');
+    }
 }
