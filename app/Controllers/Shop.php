@@ -160,7 +160,7 @@ class Shop extends BaseController
 			'review' => $this->request->getVar('review'),
 			'stars' => $this->request->getVar('stars')
 		]);
-			return redirect()->to('/');
+		return redirect()->to(previous_url());
 		}
 
 }
