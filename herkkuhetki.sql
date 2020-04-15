@@ -10,16 +10,8 @@ create table customer (
   postcode char(5) not null,
   town varchar(100) not null,
   email varchar(255) not null,
-  phone varchar(20)
-);
-
-create table registeredCustomer (
-  id int primary key auto_increment,
-  username varchar(30) not null,
-  password varchar(255) not null,
-  customer_id int,
-  index (customer_id),
-  foreign key (customer_id) references customer(id)
+  phone varchar(20),
+  password varchar(255) not null
 );
 
 create table productCategory (
