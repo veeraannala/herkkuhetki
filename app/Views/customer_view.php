@@ -9,13 +9,13 @@
         <hr>
         <form action="" method="post">
             <div class="form-group row">
-                <label for="inputEmail" class="col-sm-3 col-form-label pr-1">Käyttäjänimi <span class="required">*</span></label>
+                <label for="inputEmail" class="col-sm-3 col-form-label pr-1">Sähköposti<span class="required">*</span></label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="username">
+                    <input type="text" class="form-control" name="email">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="inputPassword3" class="col-sm-3 col-form-label">Salasana <span class="required">*</span></label>
+                <label for="inputPassword3" class="col-sm-3 col-form-label">Salasana<span class="required">*</span></label>
                 <div class="col-sm-8">
                     <input type="password" class="form-control" name="password">
                 </div>
