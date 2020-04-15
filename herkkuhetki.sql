@@ -60,7 +60,7 @@ create table newsletter (
 
 create table orders (
   id int primary key auto_increment,
-  status enum ('ordered','shipped'),
+  status enum ('ordered', 'paid', 'shipped'),
   orderDate timestamp default current_timestamp,
   customer_id int not null,
   index (customer_id),
@@ -156,4 +156,8 @@ insert into orderdetail (order_id, product_id, amount) values (1,12,2);
 insert into orderdetail (order_id, product_id, amount) values (1,11,2);
 insert into orderdetail (order_id, product_id, amount) values (1,8,3);
 insert into orderdetail (order_id, product_id, amount) values (1,2,15);
-insert into orderdetail (order_id, product_id, amount) values (1,9,1);
+insert into orderdetail (order_id, product_id, amount) values (1,9,3);
+insert into orderdetail (order_id, product_id, amount) values (2,2,2);
+insert into orderdetail (order_id, product_id, amount) values (2,4,5);
+insert into orderdetail (order_id, product_id, amount) values (2,7,12);
+insert into orderdetail (order_id, product_id, amount) values (2,12,15);

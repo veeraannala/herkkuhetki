@@ -135,7 +135,6 @@ class Cart extends BaseController
         //insert into orders (status, orderDate, customer_id,delivery) values ('shipped',CURRENT_TIMESTAMP,(SELECT max(id) FROM customer),'N');
         $this->ordermodel->save([
             'status' => 'ordered',
-            'orderDate' => date('Y-m-d H:i:s'),
             'customer_id' => $customerid,
             'delivery' => $this->request->getVar('delivery'),
         ]);
