@@ -8,7 +8,7 @@ foreach ($orderdetails as $orderdetail) {
             if (++$i == 1) break;
             } ?>
 <div class="row">
-    <div class="col-4" style="padding-right: 0px;">
+    <div class="col-md-4 col-sm-12" style="padding-right: 0px;">
         <table class="table table-striped table-sm">
             <?php
             $i = 0;
@@ -37,7 +37,7 @@ foreach ($orderdetails as $orderdetail) {
             } ?>
         </table>
     </div>
-        <div class="col-8" style="padding-left: 0px;">
+        <div class="col-md-8 col-sm-12" style="padding-left: 0px;">
             <table class="table table-striped table-sm">
                 <th>Tuote</th>
                 <th>Määrä</th>

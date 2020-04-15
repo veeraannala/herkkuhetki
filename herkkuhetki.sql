@@ -10,8 +10,16 @@ create table customer (
   postcode char(5) not null,
   town varchar(100) not null,
   email varchar(255) not null,
-  phone varchar(20),
-  password varchar(255) not null
+  phone varchar(20)
+);
+
+create table registeredCustomer (
+  id int primary key auto_increment,
+  username varchar(30) not null,
+  password varchar(255) not null,
+  customer_id int,
+  index (customer_id),
+  foreign key (customer_id) references customer(id)
 );
 
 create table productCategory (
@@ -52,7 +60,7 @@ create table newsletter (
 
 create table orders (
   id int primary key auto_increment,
-  status enum ('ordered', 'paid', 'shipped'),
+  status enum ('ordered','shipped'),
   orderDate timestamp default current_timestamp,
   customer_id int not null,
   index (customer_id),
@@ -140,8 +148,8 @@ insert into product (name,price,description,image,stock,type,category_id, theme_
 insert into product (name,price,description,image,stock,type,category_id, theme_id) values ('Konvehtirasia',3.56,'Sisältää erilaisia suklaakonvehteja. Suurin osa niistä on todennäköisiä sellaisia, joista et tykkää.','images/imagenotfound', 67,'kpl', 18, 1000);
 insert into product (name,price,description,image,stock,type,category_id, theme_id) values ('Tepolla on asiaa',1000.0,'Koska Teppo soitti Jounille.','images/tepollaonasiaa', 1,'kpl', 12, NULL); 
 
-insert into customer (firstname,lastname,address,postcode,town,email,phone) values ('Teppo','Mattinen','Jounintie 12','90100', 'Oulu','teppo@jouni.fi', '0401234567'); 
-insert into customer (firstname,lastname,address,postcode,town,email,phone) values ('Matti','Tepponen','Jounintie 12','90100', 'Oulu','teppo@jouni.fi', '0401234567');
+insert into customer (firstname,lastname,address,postcode,town,email,phone) values ('Teppo','Mattinen','Jounintie 12','90100', 'Oulu','teppo@jouni.fi', 0401234567); 
+insert into customer (firstname,lastname,address,postcode,town,email,phone) values ('Matti','Tepponen','Jounintie 12','90100', 'Oulu','teppo@jouni.fi', 0401234567);
 insert into orders (status, orderDate, customer_id,delivery) values ('ordered',CURRENT_TIMESTAMP,1,'P');
 insert into orders (status, orderDate, customer_id,delivery) values ('shipped',CURRENT_TIMESTAMP,2,'N');
 insert into orders (status, orderDate, customer_id,delivery) values ('paid',CURRENT_TIMESTAMP,2,'N');
@@ -149,8 +157,9 @@ insert into orderdetail (order_id, product_id, amount) values (1,12,2);
 insert into orderdetail (order_id, product_id, amount) values (1,11,2);
 insert into orderdetail (order_id, product_id, amount) values (1,8,3);
 insert into orderdetail (order_id, product_id, amount) values (1,2,15);
-insert into orderdetail (order_id, product_id, amount) values (1,9,3);
-insert into orderdetail (order_id, product_id, amount) values (2,2,2);
-insert into orderdetail (order_id, product_id, amount) values (2,4,5);
-insert into orderdetail (order_id, product_id, amount) values (2,7,12);
-insert into orderdetail (order_id, product_id, amount) values (2,12,15);
+insert into orderdetail (order_id, product_id, amount) values (1,9,1);
+insert into orderdetail (order_id, product_id, amount) values (2,12,2);
+insert into orderdetail (order_id, product_id, amount) values (2,11,2);
+insert into orderdetail (order_id, product_id, amount) values (2,8,3);
+insert into orderdetail (order_id, product_id, amount) values (2,2,1);
+insert into orderdetail (order_id, product_id, amount) values (2,9,1);
