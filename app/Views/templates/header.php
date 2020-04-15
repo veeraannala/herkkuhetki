@@ -80,8 +80,19 @@
                 </ul>
                 <form action="/shop/search_product" class="form-inline" method="post">
                     <div class="input-group search mr-2">
-                        <input type="text" class="form-control" name="search" minlength="4" placeholder="Etsi tuotteita" aria-label="etsi"
+                        <?php if (isset($keywords)) { ?>
+                        <?php foreach ($keywords as $words):?>
+                        <input type="text" class="form-control" name="search" value="<?=$words?>" minlength="4" placeholder="Etsi tuotteita" aria-label="etsi"
                             aria-describedby="basic-addon2">
+                        <?php endforeach; ?>
+                        <?php
+                        } else {  
+                        ?>
+                         <input type="text" class="form-control" name="search" value="" minlength="4" placeholder="Etsi tuotteita" aria-label="etsi"
+                            aria-describedby="basic-addon2">
+                        <?php
+                        }
+                        ?>
                         <div class="input-group-append">
                             <button class="btn btn-outline-danger"><i class="fa fa-search"
                                     aria-hidden="true"></i></button>

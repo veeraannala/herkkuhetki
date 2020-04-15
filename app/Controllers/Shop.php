@@ -124,8 +124,7 @@ class Shop extends BaseController
 			print_r($keywords);
 			# lähetetään taulukko $keywords searchLike metodille.
 			$data['searchresult'] = $this->prodmodel->searchLike($keywords);
-			//$data['keywords'] = $keywords;
-			//print_r($data1);
+			$data['keywords'] = $keywords;
 
 			if (!empty($data)) {
 			echo view('templates/header',$data);
@@ -138,7 +137,7 @@ class Shop extends BaseController
 				echo view('templates/footer');
 			}
 		} else {
-			return redirect()->to(previous_url()); 
+			//return redirect()->to(previous_url()); 
 		}
 
 	}
