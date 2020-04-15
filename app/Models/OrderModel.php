@@ -22,9 +22,9 @@ use CodeIgniter\Model;
             $builder = $this->table("orders");
             $builder->select("orders.id, product.name, amount AS määrä, price, type, status,firstname,lastname,phone, address, postcode, town, email");
             $builder->join("Customer", "orders.customer_id = customer.id", "inner");
-            $builder->join("orderdetail", "orders.customer_id = orderdetail.order_id", "inner");
+            $builder->join("orderdetail", "orders.id = orderdetail.order_id", "inner");
             $builder->join("product","orderdetail.product_id = product.id");
-            $builder->where('orders.id',$id);
+            $builder->where('orderdetail.order_id',$id);
             $query = $builder->get();
             return $query->getResultArray();
         }

@@ -10,6 +10,7 @@ class Cart extends BaseController
     public function __construct() {
         $session = \Config\Services::session();
         $session->start();
+        $this->db = db_connect();
         $this->model = new CategoryModel();
 		$this->thememodel = new ThemeModel();
         $this->prodmodel = new ProductModel();
@@ -121,16 +122,17 @@ class Cart extends BaseController
             echo view('templates/footer'); 
 
         } else {
-
-        $this->customermodel->save([
-            'firstname' => $this->request->getVar('firstname'),
-            'lastname' => $this->request->getVar('lastname'),
-            'address' => $this->request->getVar('address'),
-            'postcode' => $this->request->getVar('postcode'),
-            'town' => $this->request->getVar('town'),
-            'email' => $this->request->getVar('email'),
-            'phone' => $this->request->getVar('phone'),
-        ]);
+            
+            $this->db->transStart();
+            $this->customermodel->save([
+                'firstname' => $this->request->getVar('firstname'),
+                'lastname' => $this->request->getVar('lastname'),
+                'address' => $this->request->getVar('address'),
+                'postcode' => $this->request->getVar('postcode'),
+                'town' => $this->request->getVar('town'),
+                'email' => $this->request->getVar('email'),
+                'phone' => $this->request->getVar('phone'),
+            ]);
 
         $customerid = $this->customermodel->getCustId();
         $customerid = $customerid[0];
@@ -152,9 +154,16 @@ class Cart extends BaseController
                 'order_id' => $orderid,
                 'amount' => $value
             ]);
-            
+            $stock = $this->prodmodel->getStock($item);
+            $stock =$stock[0];
+            $stock = $stock['stock'] - $value;
+            $this->prodmodel->save([
+                'id' => $item,
+                'stock' => $stock
+            ]);
         //print_r($item['amount']);
         }
+        $this->db->transComplete();
 
         $this->clear();
         print ("<p>Tilaus onnistui</p>");
