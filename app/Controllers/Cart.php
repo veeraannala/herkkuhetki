@@ -87,6 +87,9 @@ class Cart extends BaseController
         return redirect()->to('/cart');
     }
 
+    public function checkout() {
+        
+    }
 
     //shows all products, total sum and a form for user to give delivery information
     public function showOrder() {

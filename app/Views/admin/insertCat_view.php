@@ -4,7 +4,7 @@
     if ($id === 'X'){?>
         <h3 class="mt-3 mb-3">Lisää yläkategoria</h3>
         <div class="col-5">
-            <form method="post" action="<?= site_url('admin/addCat/')?>" class="mb-5">
+            <form method="post" action="<?= site_url('AdminCat/addCat/')?>" class="mb-5">
                 <div class="form-row">
                     <div class="col">
                         <label class="m-3" for="name">Nimi: </label>
@@ -26,7 +26,7 @@
                     ?>
             <h3 class="mt-3 mb-3">Lisää alikategoria yläkategoriaan "<?=$category['name']?>"</h3>
         <div class="col-5">
-            <form method="post" action="<?= site_url('admin/addCat')?>" class="mb-5">
+            <form method="post" action="<?= site_url('AdminCat/addCat')?>" class="mb-5">
                 <div class="form-row">
                     <div class="col">
                         <label class="m-3" for="name">Nimi: </label>
