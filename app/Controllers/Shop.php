@@ -164,6 +164,7 @@ class Shop extends BaseController
 		return redirect()->to(previous_url());
 		}
 
+	// gets information of all reviews 
 	public function showReview($product_id) {
 
 		$data['categories'] = $this->model->getCategories();

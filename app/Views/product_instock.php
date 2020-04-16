@@ -43,9 +43,8 @@
         </div>
 
                 <?php endforeach; ?>
+                <!-- Prints 3 reviews -->
                 <h3>Arvostelut</h3>
-
-
                 <?php $i = 0; foreach ($review as $re):{
                     $i++; if ($i > 3) {
                     break;        }  } 
