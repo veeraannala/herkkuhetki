@@ -52,9 +52,9 @@
                 <form class="form-group" method="post" action="<?= site_url('shop/showReview/' . $re['product_id'])?>">
             <div>
                     <tr>
-                    <th><?=$re['reviewDate']?></th>
+                    <th><?= date_format (new DateTime($re['reviewDate']), 'd/m/Y');?></th>
                     <th><?=$re['review']?></th>
-                    <th><?=$re['stars']?></th>
+                    <th><?= $re['stars']?></th>
                     </tr>
 
             </div>
