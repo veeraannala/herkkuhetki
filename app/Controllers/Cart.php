@@ -116,64 +116,159 @@ class Cart extends BaseController
         echo view('templates/footer');
     }
 
-    //Collect users contact information and save them to session variables for later use.
-    public function collectInfo(){
+    //Collect users contact information and save order, order detail and customer to the database.
+    public function saveOrder(){
         $data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
         $data['product'] = $this->prodmodel->ShowProduct();
         $data['basketproducts'] = $this->prodmodel->getBasketproducts($_SESSION['basket']);
 
+        $sum = 0;
+        foreach ($data['basketproducts'] as $product):
+            foreach ($_SESSION['basket'] as $key => $value):
+                if ($value == $product['id']) {
+                    $sum += $product['price'];
+                }
+            endforeach;
+        endforeach;
+        $data['sum'] = $sum;
+
         $validation =  \Config\Services::validation();
-        
+        $customer = array();
         if (!isset($_POST['register'])) {
             if (!$this->validate($validation->getRuleGroup('customerValidate'))) {
                 echo view('templates/header', $data);
                 echo view('cart/cartContact_view');
                 echo view('templates/footer');
             } else {
-                $customer = array();
-                $customer['firstname'] = $this->request->getVar('firstname');
-                $customer['lastname'] = $this->request->getVar('lastname');
-                $customer['address'] = $this->request->getVar('address');
-                $customer['postcode'] = $this->request->getVar('postcode');
-                $customer['town'] = $this->request->getVar('town');
-                $customer['email'] = $this->request->getVar('email');
-                $customer['phone'] = $this->request->getVar('phone');
+                $this->db->transStart();
+                $this->customermodel->save([
+                    'firstname' => $this->request->getVar('firstname'),
+                    'lastname' => $this->request->getVar('lastname'),
+                    'address' => $this->request->getVar('address'),
+                    'postcode' => $this->request->getVar('postcode'),
+                    'town' => $this->request->getVar('town'),
+                    'email' => $this->request->getVar('email'),
+                    'phone' => $this->request->getVar('phone'),
+                ]);
 
-                $_SESSION['customer'] = $customer;
+                $customerid = $this->customermodel->getCustId();
+                $customerid = $customerid[0];
+                $customerid = $customerid['max(id)'];
+
+                $this->ordermodel->save([
+                    'status' => 'ordered',
+                    'customer_id' => $customerid,
+                    'delivery' => $this->request->getVar('delivery'),
+                ]);
+
+                $orderid = $this->ordermodel->getOrderId();
+                $orderid = $orderid[0];
+                $orderid = $orderid['max(id)'];
+
+                foreach ($_SESSION['order'] as $item => $value) {
+                
+                    $this->orderdetailmodel->save([
+                        'product_id' => $item,
+                        'order_id' => $orderid,
+                        'amount' => $value
+                    ]);
+                    $stock = $this->prodmodel->getStock($item);
+                    $stock =$stock[0];
+                    $stock = $stock['stock'] - $value;
+                    $this->prodmodel->save([
+                        'id' => $item,
+                        'stock' => $stock
+                    ]);
+                    //print_r($item['amount']);
+                }
+                $this->clear();
+
+                $this->db->transComplete();
+            
+
+                $data['register'] = "Rekisteröinti onnistui";
+                $data['payment'] = $this->request->getVar('payment');
+                $data['delivery'] = $this->request->getVar('delivery');
                 echo view('templates/header', $data);
-                echo view('cart/placeOrder_view');
+                echo view('cart/payOrder_view', $data);
                 echo view('templates/footer');
             }
+
         } else {
             if (!$this->validate($validation->getRuleGroup('customerValidate')) || !$this->validate($validation->getRuleGroup('customerRegisterValidate'))) {
                 echo view('templates/header', $data);
                 echo view('cart/cartContact_view');
                 echo view('templates/footer');
+            
             } else {
-                $customer = array();
-                $customer['firstname'] = $this->request->getVar('firstname');
-                $customer['lastname'] = $this->request->getVar('lastname');
-                $customer['address'] = $this->request->getVar('address');
-                $customer['postcode'] = $this->request->getVar('postcode');
-                $customer['town'] = $this->request->getVar('town');
-                $customer['email'] = $this->request->getVar('email');
-                $customer['phone'] = $this->request->getVar('phone');
-                if ($this->request->getVar('password')) {
-                    $customer['password'] = $this->request->getVar('password');
-                }
-                $_SESSION['customer'] = $customer;
-                $data['register'] = 'Rekisteröinti onnistui';
-                echo view('templates/header', $data);
-                echo view('cart/placeOrder_view');
-                echo view('templates/footer');
+                $this->db->transStart();
+                $this->customermodel->save([
+                    'firstname' => $this->request->getVar('firstname'),
+                    'lastname' => $this->request->getVar('lastname'),
+                    'address' => $this->request->getVar('address'),
+                    'postcode' => $this->request->getVar('postcode'),
+                    'town' => $this->request->getVar('town'),
+                    'email' => $this->request->getVar('email'),
+                    'phone' => $this->request->getVar('phone'),
+                    'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+                ]);
+            
 
+                $customerid = $this->customermodel->getCustId();
+                $customerid = $customerid[0];
+                $customerid = $customerid['max(id)'];
+
+                $this->ordermodel->save([
+                    'status' => 'ordered',
+                    'customer_id' => $customerid,
+                    'delivery' => $this->request->getVar('delivery'),
+                ]);
+
+                $orderid = $this->ordermodel->getOrderId();
+                $orderid = $orderid[0];
+                $orderid = $orderid['max(id)'];
+
+                foreach ($_SESSION['order'] as $item => $value) {
+                    $this->orderdetailmodel->save([
+                        'product_id' => $item,
+                        'order_id' => $orderid,
+                        'amount' => $value
+                    ]);
+                    $stock = $this->prodmodel->getStock($item);
+                    $stock =$stock[0];
+                    $stock = $stock['stock'] - $value;
+                    $this->prodmodel->save([
+                        'id' => $item,
+                        'stock' => $stock
+                    ]);
+                    //print_r($item['amount']);
+                }
+                $this->clear();
+                $this->db->transComplete();
+        
+
+                $data['register'] = "Rekisteröinti onnistui";
+                $data['payment'] = $this->request->getVar('payment');
+                $data['delivery'] = $this->request->getVar('delivery');
+                echo view('templates/header', $data);
+                echo view('cart/payOrder_view', $data);
+                echo view('templates/footer');
             }
         }
     }
 
+    public function payconfirm(){
+        $data['categories'] = $this->model->getCategories();
+        $data['themecategories'] = $this->thememodel->getThemeCategories();
+        $data['product'] = $this->prodmodel->ShowProduct();
+        echo view('templates/header', $data);
+        echo view('cart/payconfirm', $data);
+        echo view('templates/footer');
+    }
+    
     //Saves the customer, order and order details in the database.
-    public function order() {
+    /*public function order() {
         $data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
         $data['product'] = $this->prodmodel->ShowProduct();
@@ -234,5 +329,5 @@ class Cart extends BaseController
         print ("<p>Tilaus onnistui</p>");
         print ("<a href='/'>Etusivulle</a>");
       }
-    }
+    }*/
 }
