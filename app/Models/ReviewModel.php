@@ -10,7 +10,7 @@ use CodeIgniter\Model;
         protected $allowedFields = ['product_id', 'review', 'stars'];
 
 
-        public function ShowReview()
+        public function ShowReviews()
         {
             $this->table('review');
             $this->select('id, product_id, reviewDate, review, stars');

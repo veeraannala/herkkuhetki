@@ -48,6 +48,7 @@ $routes->get('admin/insertCat/(:segment)', 'AdminCat::insertCat/$1');
 $routes->get('admin', 'Admin::index');
 $routes->get('admin/updateAmount_view(:segment)', 'Admin::updateAm/$1');
 
+$routes->get('shop/AllReviews_view(:segment)', 'Shop::showReview/$1');
 
 $routes->get('login', 'Login::index');
 
