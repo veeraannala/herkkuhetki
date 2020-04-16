@@ -27,8 +27,7 @@ class Validation
 	 */
 	public $templates = [
 		'list'   => 'CodeIgniter\Validation\Views\list',
-		'single' => 'CodeIgniter\Validation\Views\single',
-		
+		'single' => 'CodeIgniter\Validation\Views\single'
 	];
 
 	//--------------------------------------------------------------------
@@ -40,16 +39,15 @@ class Validation
 				'required' => 'Käyttäjänimi on pakollinen.',
 				'min_length' => 'Käyttäjänimi on liian lyhyt.',
 				'is_unique' => 'Käyttäjä on jo olemassa.'
-			],
+			]
 		],
 		'password' => [
 			'label' => 'password',
 			'rules' => 'required|min_length[8]|max_length[30]',
 			'errors' => [
 				'required' => 'Salasana on pakollinen.',
-				'min_length' => ' Salasana on liian lyhyt.'
+				'min_length' => 'Salasana on liian lyhyt.'
 			]
-		 
 		],
 		'passconfirm' => [
 			'label' => 'passconfirm',
@@ -58,7 +56,7 @@ class Validation
 				'required' => 'Salasana pitää syöttää uudestaan.',
 				'matches' => 'Salasanojen pitää vastata toisiaan.'
 			]
-		],
+		]
 	];
 	
 
@@ -69,101 +67,173 @@ class Validation
 			'rules' => 'required|min_length[3]|max_length[30]',
 			'errors' => [
 				'required' => 'Käyttäjänimi on pakollinen.',
-				'min_length' => ' Käyttäjänimi on liian lyhyt.'
-			],
+				'min_length' => 'Käyttäjänimi on liian lyhyt.'
+			]
 		],
 		'password' => [
 			'label' => 'password',
 			'rules' => 'required|min_length[8]|max_length[30]',
 			'errors' => [
 				'required' => 'Salasana on pakollinen.',
-				'min_length' => ' Salasana on liian lyhyt.'
+				'min_length' => 'Salasana on liian lyhyt.'
 			]
-		 
 		],
 	];
 
 	public $customerValidate = [
 		'firstname' => 	[
-		'label' => 'firstname',
-		'rules' => 'required|min_length[2]|max_length[50]',
-		'errors' => [
-			'required' => 'Etunimi on pakollinen.',
-			'min_length' => ' Etunimi on liian lyhyt.',
-			'max_length' => ' Etunimi on liian pitkä.',
+			'label' => 'firstname',
+			'rules' => 'required|min_length[2]|max_length[50]',
+			'errors' => [
+				'required' => 'Etunimi on pakollinen.',
+				'min_length' => 'Etunimi on liian lyhyt.',
+				'max_length' => 'Etunimi on liian pitkä.',
+			]
 		],
-	],
-
 		'lastname' => 	[
 			'label' => 'lastname',
 			'rules' => 'required|min_length[2]|max_length[100]',
 			'errors' => [
 				'required' => 'Sukunimi on pakollinen.',
-				'min_length' => ' Sukunimi on liian lyhyt.',
-				'max_length' => ' Sukunimi on liian pitkä.',
-			],
+				'min_length' => 'Sukunimi on liian lyhyt.',
+				'max_length' => 'Sukunimi on liian pitkä.',
+			]
 		],
 		'address' => 	[
 			'label' => 'address',
 			'rules' => 'required|min_length[2]|max_length[100]',
 			'errors' => [
 				'required' => 'Osoite on pakollinen.',
-				'min_length' => ' Osoite on liian lyhyt.',
-				'max_length' => ' Osoite on liian pitkä.',
-			],
-			],
+				'min_length' => 'Osoite on liian lyhyt.',
+				'max_length' => 'Osoite on liian pitkä.',
+			]
+		],
 		'postcode' =>  [
 			'label' => 'postcode',
 			'rules' => 'required|min_length[5]|max_length[5]',
 			'errors' => [
 				'required' => 'Postinumero on pakollinen.',
-				'min_length' => ' Postinumero on liian lyhyt.',
-				'max_length' => ' Postinumero on liian pitkä.',
-			],
-			],
+				'min_length' => 'Postinumero on liian lyhyt.',
+				'max_length' => 'Postinumero on liian pitkä.',
+			]
+		],
 		'town' =>  [
 			'label' => 'town',
 			'rules' => 'required|min_length[2]|max_length[100]',
 			'errors' => [
 				'required' => 'Postitoimipaikka on pakollinen.',
-				'min_length' => ' Postitoimipaikka on liian lyhyt.',
-				'max_length' => ' Postitoimipaikka on liian pitkä.',
-			],
-			],
+				'min_length' => 'Postitoimipaikka on liian lyhyt.',
+				'max_length' => 'Postitoimipaikka on liian pitkä.',
+			]
+		],
 		'email' =>  [
 			'label' => 'email',
 			'rules' => 'required|min_length[2]|max_length[100]|valid_email',
 			'errors' => [
 				'required' => 'Sähköpostiosoite on pakollinen.',
-				'min_length' => ' Sähköpostiosoite on liian lyhyt.',
-				'max_length' => ' Sähköpostiosoite on liian pitkä.',
-				'valid_email' => ' Syötä sähköposti oikeassa muodossa.'
-			],
-			],
-
+				'min_length' => 'Sähköpostiosoite on liian lyhyt.',
+				'max_length' => 'Sähköpostiosoite on liian pitkä.',
+				'valid_email' => 'Syötä sähköposti oikeassa muodossa.'
+			]
+		]
 	];
 
 	public $customerRegisterValidate = [
-		'password' => [	
+		'email' =>  [
+			'label' => 'email',
+			'rules' => 'required|min_length[2]|max_length[100]|valid_email',
+			'errors' => [
+				'required' => 'Sähköpostiosoite on pakollinen.',
+				'min_length' => 'Sähköpostiosoite on liian lyhyt.',
+				'max_length' => 'Sähköpostiosoite on liian pitkä.',
+				'valid_email' => 'Syötä sähköposti oikeassa muodossa.'
+			]
+		],
+		'password' => [
 			'label' => 'password',
 			'rules' => 'required|min_length[8]|max_length[30]',
 			'errors' => [
 				'required' => 'Salasana on pakollinen.',
-				'min_length' => ' Salasana on liian lyhyt.',
-				'max_length' => ' Salasana on liian pitkä.'
-			],
+				'min_length' => 'Salasana on liian lyhyt.'
+			]
 		],
 		'passconfirm' => [
 			'label' => 'passconfirm',
-			'rules' => 'matches[password]',
+			'rules' => 'required|matches[password]',
 			'errors' => [
-				'matches[password]' => 'Salasana ei täsmää.'
-			],
+				'required' => 'Salasana pitää syöttää uudestaan.',
+				'matches' => 'Salasanojen pitää vastata toisiaan.'
+			]
+		],
+		'firstname' => 	[
+			'label' => 'firstname',
+			'rules' => 'required|min_length[2]|max_length[50]',
+			'errors' => [
+				'required' => 'Etunimi on pakollinen.',
+				'min_length' => 'Etunimi on liian lyhyt.',
+				'max_length' => 'Etunimi on liian pitkä.',
+			]
+		],
+		'lastname' => 	[
+			'label' => 'lastname',
+			'rules' => 'required|min_length[2]|max_length[100]',
+			'errors' => [
+				'required' => 'Sukunimi on pakollinen.',
+				'min_length' => 'Sukunimi on liian lyhyt.',
+				'max_length' => 'Sukunimi on liian pitkä.',
+			]
+		],
+		'address' => 	[
+			'label' => 'address',
+			'rules' => 'required|min_length[2]|max_length[100]',
+			'errors' => [
+				'required' => 'Osoite on pakollinen.',
+				'min_length' => 'Osoite on liian lyhyt.',
+				'max_length' => 'Osoite on liian pitkä.',
+			]
+		],
+		'postcode' =>  [
+			'label' => 'postcode',
+			'rules' => 'required|min_length[5]|max_length[5]',
+			'errors' => [
+				'required' => 'Postinumero on pakollinen.',
+				'min_length' => 'Postinumero on liian lyhyt.',
+				'max_length' => 'Postinumero on liian pitkä.',
+			]
+		],
+		'town' =>  [
+			'label' => 'town',
+			'rules' => 'required|min_length[2]|max_length[100]',
+			'errors' => [
+				'required' => 'Postitoimipaikka on pakollinen.',
+				'min_length' => 'Postitoimipaikka on liian lyhyt.',
+				'max_length' => 'Postitoimipaikka on liian pitkä.',
+			]
 		]
-		];
+	];
 
+	public $customerLoginValidate = [
+		'email' =>  [
+			'label' => 'email',
+			'rules' => 'required|min_length[2]|max_length[100]|valid_email',
+			'errors' => [
+				'required' => 'Sähköpostiosoite on pakollinen.',
+				'min_length' => 'Sähköpostiosoite on liian lyhyt.',
+				'max_length' => 'Sähköpostiosoite on liian pitkä.',
+				'valid_email' => 'Syötä sähköposti oikeassa muodossa.'
+			]
+		],
+		'password' => [
+			'label' => 'password',
+			'rules' => 'required|min_length[8]|max_length[30]',
+			'errors' => [
+				'required' => 'Salasana on pakollinen.',
+				'min_length' => 'Salasana on liian lyhyt.'
+			]
+		]
+	];
 
 	
 
-	//--------------------------------------------------------------------
+	//--------------------------------------------------------------------//
 }

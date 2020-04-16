@@ -87,10 +87,18 @@ h4 {
   .customer label {
       font-weight: bold;
   }
+   .customercard{
+      background-color:#FBD8DB !important;
+      font-weight: bold;
+  }
+  .customercard h5 {
+    font-weight: bold
+  }
+    
 
   .header {
       opacity: 100%;
-  }
+  } 
 .result {
     font-weight: 600;
     font-size: 20px;
