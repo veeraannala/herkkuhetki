@@ -121,11 +121,11 @@ class Shop extends BaseController
 			$searchQuery = preg_replace('/[^A-Öa-ö0-9]+/', ',', $searchQuery);
 			# Luodaan sanoista taulukko.
 			$keywords = explode(',', $searchQuery);
-			print_r($keywords);
+			
 			# lähetetään taulukko $keywords searchLike metodille.
 			$data['searchresult'] = $this->prodmodel->searchLike($keywords);
-			$data['keywords'] = $keywords;
-
+			$data1['keywords'] = $keywords;
+			
 			if (!empty($data)) {
 			echo view('templates/header',$data);
 			echo view('search_view',$data);
@@ -137,7 +137,7 @@ class Shop extends BaseController
 				echo view('templates/footer');
 			}
 		} else {
-			//return redirect()->to(previous_url()); 
+			return redirect()->to('/shop'); 
 		}
 
 	}
