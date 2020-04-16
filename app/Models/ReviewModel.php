@@ -14,6 +14,7 @@ use CodeIgniter\Model;
         {
             $this->table('review');
             $this->select('id, product_id, reviewDate, review, stars');
+            $this->orderby('id', 'DESC');
             $query = $this->get();
 
             return $query->getResultArray();
