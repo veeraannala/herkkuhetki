@@ -4,7 +4,7 @@
 
         <p>Lisää tuotteita</p>
         
-        <form method="post" action="<?= site_url('admin/addProduct/')?>">
+        <form method="post" enctype="multipart/form-data" action="<?= site_url('admin/addProduct/')?>">
             <div class="form-group">
                 <label for="name">Tuotteen nimi</label>
                 <input type="text" class="form-control" name="name" required>
