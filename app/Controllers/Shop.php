@@ -46,7 +46,7 @@ class Shop extends BaseController
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
 		$data['product'] = $this->prodmodel->getProduct($id);
-		$data['review'] = $this->reviewmodel->ShowReviews();
+		$data['review'] = $this->reviewmodel->ShowReviews($id);
 		
 		foreach ($data['product'] as $prod):
             if ($prod['id'] == $id) {
@@ -194,9 +194,5 @@ class Shop extends BaseController
 		echo view('templates/header', $data);
 		echo view('AllReviews_view', $data);
 		echo view('templates/footer');
-	}
-
-	public function BackToProduct($product_id) {
-		return redirect('show_product($id)');
 	}
 }

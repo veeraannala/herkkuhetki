@@ -13,7 +13,7 @@ if(is_array($basketproducts))
         <div class="col-lg-3 col-md-4 col-6 mt-3 cart-card">
             <form class="form-group mb-0" method="post" action="<?= site_url('cart/updateAmount/' . $product['id'])?>">
 
-            <a href="<?=site_url('shop/show_product/' . $product['id'])?>" ><img class="img-fluid" src="<?=base_url($product['image'] . '.png')?>"></a>
+            <a href="<?=site_url('shop/show_product/' . $product['id'])?>" ><img class="img-fluid" src="<?=base_url($product['image'])?>"></a>
                 <p style="margin-bottom: 0rem;">Nimi: <?= $product['name'] ?></p>
                 <p><?php
       $amount = 0;

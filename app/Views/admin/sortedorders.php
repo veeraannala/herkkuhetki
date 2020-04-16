@@ -1,3 +1,4 @@
+<div class="centerminheight2">
 <table class="table table-striped table-sm">
         <tr>
             <th>Etunimi</th>
@@ -31,4 +32,3 @@
                 <?php endforeach; ?>     
         </table>
     </div>
-</div>
