@@ -24,7 +24,7 @@
                 <tr>
                     <th class="m-3"><?=$category['name']?></th>
                     <td></td>
-                    <td><?= anchor('admin/updateCat/' . $category['categoryID'], ' <button>Muokkaa</button>')?></td>
+                    <td></td>
                     <td><?= anchor('admin/deleteCat/' . $category['categoryID'], ' <button>Poista</button>')?></td>
                 </tr>
 
@@ -55,6 +55,9 @@
             endforeach; ?>
                 <tr>
                     <th><?= anchor('admin/insertCat/' . 'X', ' <button>Lisää pääkategoria</button>')?></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
             </table>
         </div>

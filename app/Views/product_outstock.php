@@ -20,7 +20,8 @@
         <div class="row">
             <div class="col-12 col-lg-9 p-3">
                 <?= $prod['description'] ?>
-                
+
+        <!-- Review form -->      
         <div class="col-12 p-5">
             <h3 class="mb-3">Arvostelut</h3>
         <form class="form-group" method="post" action="<?= site_url('shop/review/' . $prod['id'])?>">

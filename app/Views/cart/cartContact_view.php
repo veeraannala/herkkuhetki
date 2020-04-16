@@ -22,7 +22,7 @@
             <tr>
                 <td><?=$product['name']?></th>
                 <td><?=$amount?></th>
-                <td><?=$product['price'] * $amount?></th>
+                <td><?=$product['price'] * $amount?> €</th>
 
             </tr>
             <?php    
@@ -31,10 +31,11 @@
     endforeach; 
     $_SESSION['order'] = $order;
     ?>
+
             <tr>
                 <th>Summa yhteensä</th>
                 <th></th>
-                <td><?=$sum?></td>
+                <th><?php printf("%.2f", $sum);?> €</th>
 
             </tr>
         </table>
@@ -43,7 +44,7 @@
         <div>
             <?=\Config\Services::validation()->listErrors(); ?>
         </div>
-        <form method="post" action="<?= site_url('cart/order/')?>">
+        <form method="post" action="<?= site_url('cart/collectInfo/')?>">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="firstname">Etunimi</label>
@@ -57,21 +58,21 @@
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-12">
+                <div class="form-group col-12">
                     <label for="email">Sähköpostiosoite</label>
-                    <input type="email" class="form-control" id="email" name="email"
-                        placeholder="Sähköpostiosoite" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Sähköpostiosoite"
+                        required>
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-12">
+                <div class="form-group col-12">
                     <label for="phone">Puhelinnumero</label>
                     <input type="text" class="form-control" id="phone" name="phone" placeholder="Puhelinnumero"
                         required>
                 </div>
             </div>
             <div class="form-row">
-                <div class="form-group col-md-12">
+                <div class="form-group col-12">
                     <label for="address">Osoite</label>
                     <input type="text" class="form-control" id="address" name="address" placeholder="Osoite" required>
                 </div>
@@ -84,30 +85,39 @@
                 </div>
                 <div class="form-group col-md-8">
                     <label for="town">Postitoimipaikka</label>
-                    <input type="text" class="form-control" id="town" name="town"
-                        placeholder="Postitoimipaikka" required>
+                    <input type="text" class="form-control" id="town" name="town" placeholder="Postitoimipaikka"
+                        required>
                 </div>
             </div>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input register" type="checkbox" name="register" id="register" value="1">
+                <label class="form-check-label" for="register">Rekisteröidy</label>
+            </div>
             <div class="form-row">
-                <legend class="col-form-label col-sm-2 pt-0">Toimitustapa</legend>
-                <div class="col-sm-10">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="delivery" id="deliveryP" value="P"
-                            checked>
-                        <label class="form-check-label" for="gridRadios1">
-                            Postitse
-                        </label>
+                <div class="not_visible form-group col-12" id="passwordshow">
+                    <div class="form-group col-md-8">
+                    <label for="password">Salasana</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Salasana">
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="delivery" id="deliveryN" value="N">
-                        <label class="form-check-label" for="gridRadios2">
-                            Nouto varastolta
-                        </label>
+                    <div class="form-group col-md-8">
+                        <label for="passconfirm">Varmista salasana</label>
+                        <input type="password" class="form-control" id="passconfirm" name="passconfirm"
+                            placeholder="Salasana">
                     </div>
                 </div>
-                <div class="form-row float-right">
-                    <button type="submit" class="btn">Tilaa tuotteet</button>
+            </div>
+
+            <div class="form-row">
+                <div class="col-12">
+                    <button type="submit" class="not_visible btn float-right" id="regOrder">Rekisteröidy ja
+                        tilaa</button>
                 </div>
+                <div class="col-12">
+                    <button type="submit" class="btn float-right" id="order">Tilaa tuotteet</button>
+                </div>
+
+            </div>
         </form>
     </div>
 </div>
