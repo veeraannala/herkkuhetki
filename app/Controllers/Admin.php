@@ -290,4 +290,13 @@ class Admin extends BaseController
         $this->ordermodel->update($id, $data);
         return redirect()->to('/admin/showOrders');
     }
+    public function sortbystatus () {
+        $data = [
+            'status' => $this->request->getVar('status'),
+        ];
+        $data['sortedorders'] = $this->ordermodel->SortOrders($data);
+        echo view('admin/adminHeader');
+		echo view('admin/sortedorders',$data);
+        echo view('admin/adminFooter');
+    }
 }
