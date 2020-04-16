@@ -25,6 +25,10 @@
                 <textarea class="form-control" name="description" rows="3"></textarea>
             </div>
             <div class="form-group">
+                <label for="keywords">Tuotteen avainsanat</label>
+                <textarea class="form-control" name="keywords" rows="1"></textarea>
+            </div>
+            <div class="form-group">
                 <label for="image">Tuotteen kuva</label>
                 <input type="file" class="form-control-file" name="image">
             </div>

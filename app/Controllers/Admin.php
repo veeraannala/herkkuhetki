@@ -179,7 +179,7 @@ class Admin extends BaseController
     //saves new product to the database. replaces empty image with imagenotfound-file
          
 
-        /*if (!$this->validate([
+        if (!$this->validate([
             'image' => [
                 'uploaded[image]',
                 'mime_in[image,image/jpg,image/jpeg,image/gif,image/png]',
@@ -194,6 +194,7 @@ class Admin extends BaseController
             'price' => $this->request->getVar('price'),
             'type' => $this->request->getVar('type'),
             'description' => $this->request->getVar('description'),
+            'keywords' => $this->request->getVar('keywords'),
             'image' => $this->request->getFile('image'),
             'stock' => $this->request->getVar('stock'),
             'category_id' => $this->request->getVar('category'),
@@ -217,7 +218,7 @@ class Admin extends BaseController
         
 
 
-		return redirect()->to('/admin/editProduct'); */
+		return redirect()->to('/admin/editProduct');
 
     }
 
