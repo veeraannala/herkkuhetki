@@ -6,6 +6,7 @@
             <div class="form-group col-3 mt-2" style="margin-bottom: 0rem;">
                 <p>Rajaa tilan mukaan:
                 <select class="form-control" id="limitbystatus" name="status"></p>
+                    <option disabled selected>Valitse tila</option>
                     <option value="ordered">Tilattu</option>
                     <option value="paid">Maksettu</option>
                     <option value="shipped">Toimitettu</option>
