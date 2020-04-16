@@ -42,7 +42,14 @@ use CodeIgniter\Model;
             $query = $builder->get();
             return $query->getResultArray();
         }
-        
+public function SortOrdersbyMonth($data) {
+            $builder = $this->table("orders");
+            $builder->select("orders.id as id, status, MONTH(orderDate), orderDate, customer_id, delivery, customer.id as customerid, firstname, lastname");
+            $builder->join("Customer", "orders.customer_id = customer.id", "inner");
+            $builder->where('MONTH(orderDate)', $data);
+            $query = $builder->get();
+            return $query->getResultArray();
+        }
         //Returns last order's id number
         public function getOrderId() {
             $builder = $this->table("orders");
