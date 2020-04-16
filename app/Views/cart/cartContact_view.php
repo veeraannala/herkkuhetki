@@ -1,50 +1,96 @@
-<div class="row mt-5 mb-5">
-    <div class="col-md-6">
-        <table class="table table-striped table-sm">
-            <tr>
-                <th>Tuote</th>
-                <th>Määrä</th>
-                <th>Hinta yhteensä</th>
-            </tr>
-            <?php
-    $order = array();
-    $sum = 0;
-    foreach ($basketproducts as $product):
-        $amount = 0;
-        foreach ($_SESSION['basket'] as $key => $value):
-            if ($value == $product['id']){
-                $amount++;
-                $sum += $product['price'];
-            }
-           
-        endforeach;
-    ?>
-            <tr>
-                <td><?=$product['name']?></th>
-                <td><?=$amount?></th>
-                <td><?=$product['price'] * $amount?> €</th>
+<div class=" mt-5 mb-5">
+    <form class="row" method="post" action="<?= site_url('cart/saveOrder/')?>">
+        <div class="col-md-6">
+            <div>
 
-            </tr>
-            <?php    
+                <table class="table table-striped table-sm">
+                    <tr>
+                        <th>Tuote</th>
+                        <th>Määrä</th>
+                        <th>Hinta yhteensä</th>
+                    </tr>
+                    <?php
+            $order = array();
+            $sum = 0;
+            foreach ($basketproducts as $product):
+                $amount = 0;
+                foreach ($_SESSION['basket'] as $key => $value):
+                    if ($value == $product['id']) {
+                        $amount++;
+                        $sum += $product['price'];
+                    }
+                
+                endforeach;
+            ?>
+                    <tr>
+                        <td><?=$product['name']?></th>
+                        <td><?=$amount?></th>
+                        <td><?=$product['price'] * $amount?> €</th>
+
+                    </tr>
+                    <?php
     
-    $order[$product['id']] = $amount;
-    endforeach; 
-    $_SESSION['order'] = $order;
-    ?>
+            $order[$product['id']] = $amount;
+            endforeach;
+            $_SESSION['order'] = $order;
+            ?>
+                    <tr>
+                        <th>Postikulut</th>
+                        <th></th>
+                        <td id="post">5.90</td>
 
-            <tr>
-                <th>Summa yhteensä</th>
-                <th></th>
-                <th><?php printf("%.2f", $sum);?> €</th>
+                    </tr>
+                    <script type="text/javascript">
+                    <?php
+                        echo "var phpsum = '{$sum}';" ?>
+                    </script>
+                    <tr>
+                        <th>Summa yhteensä</th>
+                        <th></th>
+                        <th id="sum"><?php printf("%.2f", ($sum+5.9));?> €</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="mt-5">
 
-            </tr>
-        </table>
-    </div>
-    <div class="col-6">
-        <div>
-            <?=\Config\Services::validation()->listErrors(); ?>
+                <h4 class="col-form-label col-12 pt-0 ">Valitse toimitustapa</h4>
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="delivery" id="deliveryP" value="P" checked>
+                        <label class="form-check-label" for="deliveryP">
+                            Postitse
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="delivery" id="deliveryN" value="N">
+                        <label class="form-check-label" for="deliveryN">
+                            Nouto varastolta
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mt-3">
+
+                <h4 class="col-form-label col-12 pt-0 ">Valitse maksutapa</h4>
+                <div class="col-12">
+                    <select class="form-control" id="payment" name="payment">
+                        <option name="paymethod" value="klarna">Klarna</option>
+                        <option name="paymethod" value="bank">Verkkopankki</option>
+                        <option name="paymethod" value="credit">Luottokortti</option>
+                        <option name="paymethod" value="mobilepay">Mobilepay</option>
+                    </select>
+                </div>
+
+
+            </div>
         </div>
-        <form method="post" action="<?= site_url('cart/collectInfo/')?>">
+
+        <div class="col-6">
+            <div>
+                <?=\Config\Services::validation()->listErrors(); ?>
+            </div>
+
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="firstname">Etunimi</label>
@@ -97,8 +143,9 @@
             <div class="form-row">
                 <div class="not_visible form-group col-12" id="passwordshow">
                     <div class="form-group col-md-8">
-                    <label for="password">Salasana</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Salasana">
+                        <label for="password">Salasana</label>
+                        <input type="password" class="form-control" id="password" name="password"
+                            placeholder="Salasana">
                     </div>
                     <div class="form-group col-md-8">
                         <label for="passconfirm">Varmista salasana</label>
@@ -118,6 +165,6 @@
                 </div>
 
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 </div>
