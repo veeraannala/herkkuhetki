@@ -129,7 +129,7 @@ class Shop extends BaseController
 
 		$data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
-		$data['product'] = $this->prodmodel->ShowProduct();
+		//$data['product'] = $this->prodmodel->ShowProduct();
 
 		try {
 			$this->newsmodel->save([
