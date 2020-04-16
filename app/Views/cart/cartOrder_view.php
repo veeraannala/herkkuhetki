@@ -42,7 +42,7 @@
     </div>
     <div class="col-6">
         <div>
-            <p>Kirjaudu sisään</p>
+            <h4>Kirjaudu sisään</h4>
         </div>
         <div>
             <form action="/" method="post">
@@ -61,7 +61,7 @@
             </form>
         </div>
         <div>
-        <?= anchor(site_url('cart/custContact/'), 'Tilaa kirjautumatta')?>
+        <?php print("<a href='/cart/custContact/'>Tilaa kirjautumatta</a>")?>
         </div>
 
     </div>

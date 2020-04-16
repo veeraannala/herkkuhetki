@@ -116,6 +116,62 @@ class Cart extends BaseController
         echo view('templates/footer');
     }
 
+    //Collect users contact information and save them to session variables for later use.
+    public function collectInfo(){
+        $data['categories'] = $this->model->getCategories();
+		$data['themecategories'] = $this->thememodel->getThemeCategories();
+        $data['product'] = $this->prodmodel->ShowProduct();
+        $data['basketproducts'] = $this->prodmodel->getBasketproducts($_SESSION['basket']);
+
+        $validation =  \Config\Services::validation();
+        
+        if (!isset($_POST['register'])) {
+            if (!$this->validate($validation->getRuleGroup('customerValidate'))) {
+                echo view('templates/header', $data);
+                echo view('cart/cartContact_view');
+                echo view('templates/footer');
+            } else {
+                $customer = array();
+                $customer['firstname'] = $this->request->getVar('firstname');
+                $customer['lastname'] = $this->request->getVar('lastname');
+                $customer['address'] = $this->request->getVar('address');
+                $customer['postcode'] = $this->request->getVar('postcode');
+                $customer['town'] = $this->request->getVar('town');
+                $customer['email'] = $this->request->getVar('email');
+                $customer['phone'] = $this->request->getVar('phone');
+
+                $_SESSION['customer'] = $customer;
+                echo view('templates/header', $data);
+                echo view('cart/placeOrder_view');
+                echo view('templates/footer');
+            }
+        } else {
+            if (!$this->validate($validation->getRuleGroup('customerValidate')) || !$this->validate($validation->getRuleGroup('customerRegisterValidate'))) {
+                echo view('templates/header', $data);
+                echo view('cart/cartContact_view');
+                echo view('templates/footer');
+            } else {
+                $customer = array();
+                $customer['firstname'] = $this->request->getVar('firstname');
+                $customer['lastname'] = $this->request->getVar('lastname');
+                $customer['address'] = $this->request->getVar('address');
+                $customer['postcode'] = $this->request->getVar('postcode');
+                $customer['town'] = $this->request->getVar('town');
+                $customer['email'] = $this->request->getVar('email');
+                $customer['phone'] = $this->request->getVar('phone');
+                if ($this->request->getVar('password')) {
+                    $customer['password'] = $this->request->getVar('password');
+                }
+                $_SESSION['customer'] = $customer;
+                $data['register'] = 'Rekisteröinti onnistui';
+                echo view('templates/header', $data);
+                echo view('cart/placeOrder_view');
+                echo view('templates/footer');
+
+            }
+        }
+    }
+
     //Saves the customer, order and order details in the database.
     public function order() {
         $data['categories'] = $this->model->getCategories();

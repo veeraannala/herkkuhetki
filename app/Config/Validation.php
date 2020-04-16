@@ -144,10 +144,24 @@ class Validation
 	];
 
 	public $customerRegisterValidate = [
-		'username' => 'required|min_length[3]|max_length[30]|is_unique[registeredcustomer.username]',
-		'password' => 'required|min_length[8]|max_length[30]',
-		'passconfirm' => 'required|min_length[8]|max_length[30]|required|matches[password]'
-	];
+		'password' => [	
+			'label' => 'password',
+			'rules' => 'required|min_length[8]|max_length[30]',
+			'errors' => [
+				'required' => 'Salasana on pakollinen.',
+				'min_length' => ' Salasana on liian lyhyt.',
+				'max_length' => ' Salasana on liian pitkä.'
+			],
+		],
+		'passconfirm' => [
+			'label' => 'passconfirm',
+			'rules' => 'matches[password]',
+			'errors' => [
+				'matches[password]' => 'Salasana ei täsmää.'
+			],
+		]
+		];
+
 
 	
 

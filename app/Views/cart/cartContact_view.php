@@ -44,7 +44,7 @@
         <div>
             <?=\Config\Services::validation()->listErrors(); ?>
         </div>
-        <form method="post" action="<?= site_url('cart/order/')?>">
+        <form method="post" action="<?= site_url('cart/collectInfo/')?>">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="firstname">Etunimi</label>
@@ -89,25 +89,32 @@
                         required>
                 </div>
             </div>
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input register" type="checkbox" name="register" id="register" value="1">
+                <label class="form-check-label" for="register">Rekisteröidy</label>
+            </div>
             <div class="form-row">
-                <legend class="col-form-label col-12 pt-0 ">Toimitustapa</legend>
-                <div class="col-12">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="delivery" id="deliveryP" value="P" checked>
-                        <label class="form-check-label" for="deliveryP">
-                            Postitse
-                        </label>
+                <div class="not_visible form-group col-12" id="passwordshow">
+                    <div class="form-group col-md-8">
+                    <label for="password">Salasana</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Salasana">
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="delivery" id="deliveryN" value="N">
-                        <label class="form-check-label" for="deliveryN">
-                            Nouto varastolta
-                        </label>
+                    <div class="form-group col-md-8">
+                        <label for="passconfirm">Varmista salasana</label>
+                        <input type="password" class="form-control" id="passconfirm" name="passconfirm"
+                            placeholder="Salasana">
                     </div>
                 </div>
+            </div>
 
+            <div class="form-row">
                 <div class="col-12">
-                    <button type="submit" class="btn float-right">Tilaa tuotteet</button>
+                    <button type="submit" class="not_visible btn float-right" id="regOrder">Rekisteröidy ja
+                        tilaa</button>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn float-right" id="order">Tilaa tuotteet</button>
                 </div>
 
             </div>

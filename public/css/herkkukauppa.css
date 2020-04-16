@@ -116,3 +116,7 @@ h4 {
 span.required {
     color:#E65959;
 }
+
+.not_visible {
+    display: none;
+}
