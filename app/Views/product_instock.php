@@ -29,39 +29,66 @@
                 <?= $prod['description'] ?>
 
         <!-- review form -->        
-        <div class="col-12 p-5">
+        <div class="col-12 p-3 mt-5">
             <h3 class="mb-3">Arvostelut</h3>
         <form class="form-group" method="post" action="<?= site_url('shop/review/' . $prod['id'])?>">
             <h5 class="mt-4">Arvosteltava tuote: <?= $prod['name'] ?></h5>
-            <label class="mt-2" for="stars"><i class="fa fa-star-o" aria-hidden="true"></i> Tähdet:</label>
-            <input class="mt-2 mr-2" type="number" name="stars" id="stars" min="0" max="5"></input>
-            
-            <br><label class="mt-2" for="review">Kommentti:</label></br>
+
+            <input class="ml-3 mt-3" id="stars" type="radio" name="stars" <?php if (isset($stars) && $stars=="1") echo "checked";?> value="1">
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <input class="ml-3 mt-3" id="stars" type="radio" name="stars" <?php if (isset($stars) && $stars=="2") echo "checked";?> value="2">
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <input class="ml-3 mt-3" id="stars" type="radio" name="stars" <?php if (isset($stars) && $stars=="3") echo "checked";?> value="3">
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <input class="ml-3 mt-3" id="stars" type="radio" name="stars" <?php if (isset($stars) && $stars=="3") echo "checked";?> value="4">
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <input class="ml-3 mt-3" id="stars" type="radio" name="stars" <?php if (isset($stars) && $stars=="3") echo "checked";?> value="5">
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+            <i class="fa fa-star star" aria-hidden="true"></i>
+
+            <br><label class="mt-2 mt-3" for="review">Kommentti:</label></br>
             <textarea class="form-control" rows="5" cols="1" id="review" name="review"></textarea>
             <input type="hidden" value="<?= $prod['id'] ?>" name="id" id="id">
             <button class="btn mt-3">Lähetä</button>
         </form>
         </div>
-
+            <div class="row"> 
+              <div class="col-12">
                 <?php endforeach; ?>
                 <!-- Prints 3 reviews -->
+                
                 <h3>Arvostelut</h3>
+                <table class="table table-striped">
+                        <th>Päivämäärä</th>
+                        <th>Kommentti</th>
+                        <th>Tähdet</th>
                 <?php $i = 0; foreach ($review as $re):{
                     $i++; if ($i > 3) {
                     break;        }  } 
                 ?>
                 <form class="form-group" method="post" action="<?= site_url('shop/showReview/' . $re['product_id'])?>">
-            <div>
-                    <tr>
-                    <th><?= date_format (new DateTime($re['reviewDate']), 'd/m/Y');?></th>
-                    <th><?=$re['review']?></th>
-                    <th><?= $re['stars']?><i class="fa fa-star" aria-hidden="true"></i></th>
+                 
+                <tr>
+                    <td><?= date_format (new DateTime($re['reviewDate']), 'd/m/Y');?></td>
+                    <td><?=$re['review']?></td>
+                    <td><?= $re['stars']?> <i class="fa fa-star star" aria-hidden="true"></i></td>
                     </tr>
 
-            </div>
                 <?php endforeach; ?>
+                </table>
                 <button class="btn mt-3">Kaikki Arvostelut</button>
                 </form>
+              </div>
+            </div>
             </div>
         </div>
     </div>
