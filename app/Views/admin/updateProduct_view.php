@@ -4,7 +4,7 @@
 
         <p>Lisää tuotteita</p>
         
-        <form method="post" action="<?= site_url('admin/addProduct/')?>">
+        <form method="post" enctype="multipart/form-data" action="<?= site_url('admin/addProduct/')?>">
             <div class="form-group">
                 <label for="name">Tuotteen nimi</label>
                 <input type="text" class="form-control" name="name" required>
@@ -23,6 +23,10 @@
             <div class="form-group">
                 <label for="description">Tuotteen kuvaus</label>
                 <textarea class="form-control" name="description" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="keywords">Tuotteen avainsanat</label>
+                <textarea class="form-control" name="keywords" rows="1"></textarea>
             </div>
             <div class="form-group">
                 <label for="image">Tuotteen kuva</label>
