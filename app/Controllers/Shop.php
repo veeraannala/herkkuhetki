@@ -175,8 +175,4 @@ class Shop extends BaseController
 		echo view('AllReviews_view', $data);
 		echo view('templates/footer');
 	}
-
-	public function BackToProduct($product_id) {
-		return redirect('show_product($id)');
-	}
 }
