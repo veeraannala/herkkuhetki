@@ -88,12 +88,21 @@ class Cart extends BaseController
         return redirect()->to('/cart');
     }
 
+    //shows all products, and gives user choice to log in or order without logging in. 
     public function checkout() {
-
+        $data['categories'] = $this->model->getCategories();
+		$data['themecategories'] = $this->thememodel->getThemeCategories();
+		$data['product'] = $this->prodmodel->ShowProduct();
+        
+        $data['basketproducts'] = $this->prodmodel->getBasketproducts($_SESSION['basket']);
+        
+        echo view('templates/header',$data);
+		echo view('cart/cartOrder_view');
+        echo view('templates/footer');
     }
 
     //shows all products, total sum and a form for user to give delivery information
-    public function showOrder() {
+    public function custContact() {
         
 		$data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
@@ -103,11 +112,11 @@ class Cart extends BaseController
         
 
         echo view('templates/header',$data);
-		echo view('cart/cartOrder_view');
+		echo view('cart/cartContact_view');
         echo view('templates/footer');
     }
 
-    //Saves the customer, order and order details in the database. Not working yet.
+    //Saves the customer, order and order details in the database.
     public function order() {
         $data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();

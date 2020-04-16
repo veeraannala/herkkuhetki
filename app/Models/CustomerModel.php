@@ -7,7 +7,7 @@ use CodeIgniter\Model;
     {
         protected $table     = 'customer';
         protected $primaryKey = 'id';
-        protected $allowedFields = ['id','firstname','lastname','address','postcode','town','email','phone'];
+        protected $allowedFields = ['id','firstname','lastname','address','postcode','town','email','phone','password'];
         
         //Returns last customer's id number
         public function getCustId() {
