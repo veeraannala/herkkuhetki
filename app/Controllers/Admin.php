@@ -177,20 +177,41 @@ class Admin extends BaseController
     
     public function addProduct() {
     //saves new product to the database. replaces empty image with imagenotfound-file
+         
         $newproduct = [
             'name' => $this->request->getVar('name'),
             'price' => $this->request->getVar('price'),
             'type' => $this->request->getVar('type'),
             'description' => $this->request->getVar('description'),
-            'image' => $this->request->getVar('image'),
+            'keywords' => $this->request->getVar('keywords'),
             'stock' => $this->request->getVar('stock'),
             'category_id' => $this->request->getVar('category'),
         ];
+
         if ($this->request->getVar('themecategory') !== "NULL") {
             $newproduct += ['theme_id' => $this->request->getVar('themecategory')];
         }
-        if ($this->request->getVar('image') === "") {
-            $newproduct['image'] = 'images/imagenotfound';
+    
+        if ($_FILES['image']['size'] > 0) {
+           if (!$this->validate([
+            'image' => [
+                'uploaded[image]',
+                'mime_in[image,image/jpg,image/jpeg,image/gif,image/png]',
+                'max_size[image,4096]'
+            ]
+        ])) {
+                //virhe
+            } else {
+                // works
+                $image = $this->request->getFile('image');
+                $path = APPPATH;
+                $path = str_replace('app','public/images',$path);
+                $image->move($path);
+
+                $newproduct['image'] = 'images/' . $image->getName();
+            } 
+        } else {
+            $newproduct['image'] = 'images/imagenotfound.png';
         }
 
         $this->prodmodel->save($newproduct);
@@ -231,7 +252,7 @@ class Admin extends BaseController
             'name' => $this->request->getVar('newname'),
             'price' => $this->request->getVar('newprice'),
             'description' => $this->request->getVar('newdescription'),
-            'image' => $this->request->getVar('newimage'),
+            'image' => $this->request->getFile('newimage'),
             'type' => $this->request->getVar('newtype'),
             'category_id' => $this->request->getVar('newcategory'),
             'theme_id' => $this->request->getVar('newthemecategory')
@@ -273,9 +294,27 @@ class Admin extends BaseController
     public function updatestat() {
         $id = $this->request->getVar('id');
         $data = [
-            'status' => $this->request->getVar('newstatus'),
+            'status' => $this->request->getVar('newstatus')
         ];
         $this->ordermodel->update($id, $data);
         return redirect()->to('/admin/showOrders');
+    }
+    public function sortbystatus () {
+        $data = [
+            'status' => $this->request->getVar('status')
+        ];
+        $data['sortedorders'] = $this->ordermodel->SortOrders($data);
+        echo view('admin/adminHeader');
+		echo view('admin/sortedorders',$data);
+        echo view('admin/adminFooter');
+    }
+    public function sortbymonth() {
+        $data = [
+            'month' => $this->request->getVar('month')
+        ];
+            $data['sortedorderbymonth'] = $this->ordermodel->SortOrdersbyMonth($data);
+            echo view('admin/adminHeader');
+            echo view('admin/sortedordersbymonth',$data);
+            echo view('admin/adminFooter');
     }
 }
