@@ -8,7 +8,7 @@
             ?>
             <h3 class="mt-3 mb-3">Muokkaa tuotekategoriaa "<?=$category['name']?>"</h3>
         <div class="col-5">
-            <form method="post" action="<?= site_url('admin/update')?>" class="mb-5">
+            <form method="post" action="<?= site_url('AdminCat/update')?>" class="mb-5">
                 <div class="form-row">
                     <div class="col">
                         <label class="m-3" for="newname">Uusi nimi: </label>
@@ -25,7 +25,7 @@
                     </div>
                     <div class="col">
                         <select class="form-control" id="newparentID" name="category">
-                            <option name="newparent" value="null">Ei yläkategoriaa</option>
+                            
                             <?php foreach ($categories as $parcategory): 
                     if ($parcategory['parentID'] === null) {
                         

@@ -21,14 +21,7 @@ use CodeIgniter\Model;
             return $query->getResultArray();
         }
 
-        public function searchCat($searchdata) {
-            $db = db_connect();
-            $builder = $this->table("productcategory");
-            $builder->like('name', $searchdata, 'both');
-            $query = $builder->get();
-            return $query->getResult();
-        }
-
+        
         public function getParentCategories() {
             $builder = $this->table('productcategory');
             $builder->select('categoryID, parentID, name');
@@ -38,5 +31,6 @@ use CodeIgniter\Model;
 
             return $query->getResultArray();
         }
+
 
     }

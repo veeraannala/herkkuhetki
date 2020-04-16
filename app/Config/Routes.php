@@ -40,11 +40,15 @@ $routes->get('category', 'Category::index/$1');
 $routes->get('/', 'Admin::index');
 //$routes->get('adminlogin', 'Admin::adminlogin');
 $routes->get('methods/index', 'Methods::index');
-$routes->get('admin/updateCat_view(:segment)', 'Admin::updateCat/$1');
-$routes->get('admin/deleteCat_view(:segment)', 'Admin::deleteCat/$1');
+$routes->get('admin/updateCategory', 'AdminCat::updateCategory');
+$routes->get('admin/updateCat/(:segment)', 'AdminCat::updateCat/$1');
+$routes->get('admin/deleteCat/(:segment)', 'AdminCat::deleteCat/$1');
+$routes->get('admin/insertCat/(:segment)', 'AdminCat::insertCat/$1');
+
 $routes->get('admin', 'Admin::index');
 $routes->get('admin/updateAmount_view(:segment)', 'Admin::updateAm/$1');
-$routes->get('admin/updateCategory', 'Admin::updateCategory');
+
+$routes->get('shop/AllReviews_view(:segment)', 'Shop::showReview/$1');
 
 $routes->get('login', 'Login::index');
 

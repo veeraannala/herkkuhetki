@@ -9,14 +9,14 @@ use CodeIgniter\Model;
         protected $primaryKey = 'id';
         /*protected $returnType = 'array';*/
 
-        protected $allowedFields = ['id','name','price','description','image','stock','type','category_id','theme_id'];
+        protected $allowedFields = ['id','name','price','description','image','stock','type', 'keywords', 'category_id','theme_id'];
         
     
         // gets only one certain product
         public function getProduct($id)
         {
             $this->table('product');
-            $this->select('id, name, price, description, image, stock, type, category_id, theme_id');
+            $this->select('id, name, price, description, image, stock, type, keywords, category_id, theme_id');
             $this->where('id',$id);
             $query = $this->get();
 
@@ -26,7 +26,7 @@ use CodeIgniter\Model;
         public function ShowProduct()
         {
             $this->table('product');
-            $this->select('id, name, price, image, stock, type, category_id, theme_id');
+            $this->select('id, name, price, image, stock, type, keywords, category_id, theme_id');
             $query = $this->get();
 
             return $query->getResultArray();
@@ -49,18 +49,22 @@ use CodeIgniter\Model;
             return $query->getResultArray();
         }
         
-        public function searchLike($catIDs) {
+        public function searchLike( array $keywords) {
             $db = db_connect();
             $builder = $this->table("product");
-            $builder->WhereIn('category_id', $catIDs);
+            foreach ($keywords as $values) {
+            $builder->orLike('name', $values,'both')
+                    ->orLike('description',$values,'both')
+                    ->orlike('tag',$values);
+            }
             $query = $builder->get();
             return $query->getResultArray();
         }
-       
+        
         public function getProductsCat() {
             // gets products and their categories and themecategories joined
             $builder = $this->table("product");
-            $builder->select("product.id as id, product.name AS productName, price, image, type, category_id, theme_id, productCategory.parentID as parentID,  productCategory.name AS category, themeCategory.name as theme");
+            $builder->select("product.id as id, product.name AS productName, price, image, type, keywords, category_id, theme_id, productCategory.parentID as parentID,  productCategory.name AS category, themeCategory.name as theme");
             $builder->join("productCategory", "product.category_ID = productCategory.categoryID", "inner");
             $builder->join("themeCategory", "product.theme_ID = themeCategory.id", "left");
             $builder->orderby("category");
