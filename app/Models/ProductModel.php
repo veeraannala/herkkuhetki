@@ -49,14 +49,18 @@ use CodeIgniter\Model;
             return $query->getResultArray();
         }
         
-        public function searchLike($catIDs) {
+        public function searchLike( array $keywords) {
             $db = db_connect();
             $builder = $this->table("product");
-            $builder->WhereIn('category_id', $catIDs);
+            foreach ($keywords as $values) {
+            $builder->orLike('name', $values,'both')
+                    ->orLike('description',$values,'both')
+                    ->orlike('tag',$values);
+            }
             $query = $builder->get();
             return $query->getResultArray();
         }
-       
+        
         public function getProductsCat() {
             // gets products and their categories and themecategories joined
             $builder = $this->table("product");

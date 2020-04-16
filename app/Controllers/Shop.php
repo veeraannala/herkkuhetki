@@ -91,39 +91,59 @@ class Shop extends BaseController
         echo view('templates/footer');
 	}
 
+	/*
+	tämän function tarkoitus on:
+	-etsiä tuotteita annetuilla hakusanoilla. Annettuja hakusanoja verrataan tuotteiden nimikenttiin
+	ja kuvauksiin ja tuotteen tageihin
+
+	-esimerkkihakuja:
+	- "suklaa"
+	- "suklaa*" ei tuettu
+	- "suklaa karkki"
+	
+	specsi
+	-kaikki hakulausekkeessa esiintyvät erikoismerkit hylätään/ei käsitellä
+	ps. ainakaan merkin; ¤ poisto ei toimi toistaiseksi. Selvitellään.
+	-mikäli hakulausekkeessa on useampi kuin yksi sana: tulee kaikkien yksittäisten hakusanojen löytyä
+	tuotteen nimestä, kuvauksesta tai tagista.
+	*/
 	public function search_product(){
 
 		$data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
 		$data['product'] = $this->prodmodel->ShowProduct();
 
-		$searchdata = $this->request->getVar('search');
-		$searchdata = substr($searchdata, 0, -2);
-		$data1['CategoryIDs'] = $this->model->searchCat($searchdata);
-		print $searchdata;
-		 if (!empty($data1['CategoryIDs'])) {
-
-		$catIDs = [];
-
-		foreach($data1['CategoryIDs'] as $catID):
-		$categoryID = $catID->categoryID;
-		array_push($catIDs,$categoryID);
-		endforeach;
-		
-		$data2['searchresult'] = $this->prodmodel->searchLike($catIDs);
-		//print_r($data2);
-
-		echo view('templates/header',$data);
-		echo view('search_view',$data2);
-		echo view('templates/footer');
-
-		} else {
+		$searchQuery = $this->request->getVar('search',FILTER_SANITIZE_STRING);
+		//echo $searchQuery;
+		if(!empty($searchQuery)) {
+			# muutetaan annettu haku pieniksi kirjaimiksi.
+			$searchQuery = mb_convert_case($searchQuery, MB_CASE_LOWER, "UTF-8");
+			# parsitaan ylimääräiset merkit.
+			$searchQuery = preg_replace('/[^A-Öa-ö0-9]+/', ',', $searchQuery);
+			# Luodaan sanoista taulukko.
+			$keywords = explode(',', $searchQuery);
+			
+			# lähetetään taulukko $keywords searchLike metodille.
+			$data['searchresult'] = $this->prodmodel->searchLike($keywords);
+			$data1['keywords'] = $keywords;
+			
+			if (!empty($data)) {
 			echo view('templates/header',$data);
-			echo view('searchfail_view');
+			echo view('search_view',$data);
 			echo view('templates/footer');
+
+			} else {
+				echo view('templates/header',$data);
+				echo view('searchfail_view');
+				echo view('templates/footer');
+			}
+		} else {
+			return redirect()->to('/shop'); 
 		}
-		 
+
 	}
+		 
+	
 
 	//adds email to newsletter database
 	public function addToNewsletter(){
