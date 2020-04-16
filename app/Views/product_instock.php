@@ -45,7 +45,11 @@
                 <?php endforeach; ?>
                 <h3>Arvostelut</h3>
 
-                <?php foreach($review as $re): ?>
+
+                <?php $i = 0; foreach ($review as $re):{
+                    $i++; if ($i > 3) {
+                    break;        }  } 
+                ?>
                 <form class="form-group" method="post" action="<?= site_url('shop/showReview/' . $re['product_id'])?>">
             <div>
                     <tr>
