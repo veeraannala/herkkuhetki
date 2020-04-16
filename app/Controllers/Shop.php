@@ -46,7 +46,7 @@ class Shop extends BaseController
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
 		$data['product'] = $this->prodmodel->getProduct($id);
-		$data['review'] = $this->reviewmodel->ShowReviews();
+		$data['review'] = $this->reviewmodel->ShowReviews($id);
 		
 		foreach ($data['product'] as $prod):
             if ($prod['id'] == $id) {

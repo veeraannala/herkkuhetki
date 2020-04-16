@@ -2,6 +2,7 @@
 
     <div class="col-12 col-lg-9">
         <div class="row">
+        <?php $prodID = 0; ?>
          <?php foreach ($product as $prod): ?>
             <div class="col-sm-12 col-lg-6 p-3">
                 <img class="img-fluid" src="<?=base_url($prod['image'] . '.png')?>">
@@ -21,7 +22,7 @@
                 </form>
             </div>
         </div>
-        
+        <?php $prodID = $prod['id']; ?>
 
         <div class="row">
             <div class="col-12 col-lg-9 p-3">
@@ -54,11 +55,10 @@
                     <tr>
                     <th><?= date_format (new DateTime($re['reviewDate']), 'd/m/Y');?></th>
                     <th><?=$re['review']?></th>
-                    <th><?= $re['stars']?></th>
+                    <th><?= $re['stars']?><i class="fa fa-star" aria-hidden="true"></i></th>
                     </tr>
 
             </div>
-
                 <?php endforeach; ?>
                 <button class="btn mt-3">Kaikki Arvostelut</button>
                 </form>
