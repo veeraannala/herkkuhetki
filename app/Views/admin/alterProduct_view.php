@@ -33,6 +33,10 @@
                 <textarea class="form-control" name="newdescription" rows="3" ><?= $product['description'] ?></textarea>
             </div>
             <div class="form-group">
+                <label for="newkeywords">Tuotteen avainsanat</label>
+                <textarea class="form-control" name="newkeywords" rows="3" ><?= $product['keywords'] ?></textarea>
+            </div>
+            <div class="form-group">
                 <label for="newimage">Tuotteen kuva</label>
                 <input type="file" class="form-control-file" name="newimage">
             </div>

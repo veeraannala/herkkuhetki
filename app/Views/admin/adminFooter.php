@@ -1,8 +1,9 @@
 </div>
     <div class="container footer">
       <div class="row footer col-12">
-        <div class="col">
-          <p>Jotakin</p>
+        <div class="col text-center mt-3">
+          <p><a href="/admin">Palaa adminsivulle</a></p>
+          <p><a href="/shop">Palaa kauppasivulle</a></p>
         </div>
       </div>
 

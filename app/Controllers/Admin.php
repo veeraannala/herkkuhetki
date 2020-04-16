@@ -108,87 +108,7 @@ class Admin extends BaseController
         return redirect()->to('/admin/adminlogin');
     }
 
-    public function updateCategory() {
-        //For category update. Shows all categories and gives a change to update, delete or add new categories.
-        //If cannot delete, gives an error message. 
-        
-        // if(!isset($_SESSION['username'])) {
-        //     return redirect()->to('/admin/adminlogin');
-        // }
-        $data['categories'] = $this->categorymodel->getCategories();
-       
-        echo view('admin/adminHeader');
-		echo view('admin/updateCategory_view', $data);
-        echo view('admin/adminFooter');
-    }
-
-    public function updateCat($id) {
-        //Shows one category to update name and parent category
-        $data['categories'] = $this->categorymodel->getCategories();
-        $data['id'] = $id;
-
-        echo view('admin/adminHeader');
-		echo view('admin/updateCat_view', $data);
-        echo view('admin/adminFooter');
-
-    }
-
-    public function update() {
-        //Updates name and parentID for chosen category
-        $id = $this->request->getVar('id');
-        $data = [
-            'name' => $this->request->getVar('newname'),
-            'parentID' => $this->request->getVar('category')
-        ];
-        $this->categorymodel->update($id, $data);
-        return redirect()->to('/admin/updateCategory');
-
-    }
-
-
-    public function deleteCat($categoryID) {
-        //Deletes chosen category or gives an error message if cannot delete
-        $data['categories'] = $this->categorymodel->getCategories();
-        try {
-            $category_model = new CategoryModel();
-            $category_model->delete($categoryID);
-            return redirect()->to('/admin/updateCategory');
-        }
-        catch (\Exception $e)
-        {   
-            $data['errormessage'] = ($e->getMessage());
-            echo view('admin/adminHeader');
-            echo view('admin/updateCategory_view', $data);
-            echo view('admin/adminFooter');
-            
-        }
-    }
-
-    public function insertCat($parentid) {
-        // Shows view where user gives name to new subcategory 
-        $data['categories'] = $this->categorymodel->getCategories();
-        $data['id'] = $parentid;
-
-        echo view('admin/adminHeader');
-		echo view('admin/insertCat_view', $data);
-        echo view('admin/adminFooter');
-    }
-
-    public function addCat() {
-        // Inserts new category with chosen parentID. 
-        if ($this->request->getVar('parentid') === 'NULL') {
-            $this->categorymodel->save([
-                'name' => $this->request->getVar('name'),
-            ]);
-        } else {
-        
-            $this->categorymodel->save([
-                'name' => $this->request->getVar('name'),
-                'parentID' => $this->request->getVar('parentid')
-            ]);
-        }
-        return redirect()->to('/admin/updateCategory');
-    }
+   
 
     public function updateProduct() {
         //  if(!isset($_SESSION['username'])) {
@@ -206,8 +126,7 @@ class Admin extends BaseController
     
     public function editProduct() {
 
-        //$data['categories'] = $this->categorymodel->getCategories();
-        // $data['products'] = $this->prodmodel->ShowProduct();
+        //shows all products in one view
         $data['products'] = $this->prodmodel->getProductsCat();
         $data['categories'] = $this->categorymodel->getParentCategories();
 
@@ -255,21 +174,35 @@ class Admin extends BaseController
 
     }
 
+    
     public function addProduct() {
+    //saves new product to the database. replaces empty image with imagenotfound-file
+         
 
+        if (!$this->validate([
+            'image' => [
+                'uploaded[image]',
+                'mime_in[image,image/jpg,image/jpeg,image/gif,image/png]',
+                'max_size[image,4096]'
+            ]
+        ])) {
+
+        }
+    
         $newproduct = [
             'name' => $this->request->getVar('name'),
             'price' => $this->request->getVar('price'),
             'type' => $this->request->getVar('type'),
             'description' => $this->request->getVar('description'),
-            'image' => $this->request->getVar('image'),
+            'keywords' => $this->request->getVar('keywords'),
+            'image' => $this->request->getFile('image'),
             'stock' => $this->request->getVar('stock'),
             'category_id' => $this->request->getVar('category'),
         ];
         if ($this->request->getVar('themecategory') !== "NULL") {
             $newproduct += ['theme_id' => $this->request->getVar('themecategory')];
         }
-        if ($this->request->getVar('image') === "") {
+        if ($this->request->getFile('image') === "") {
             $newproduct['image'] = 'images/imagenotfound';
         }
 
@@ -280,8 +213,6 @@ class Admin extends BaseController
 
     public function deleteProduct($id) {
 
-        // toimii toistaiseksi vain kategorioissa jossa ei ole tuotteita
-
         $product_model = new ProductModel();
         $product_model->delete($id);
         
@@ -291,7 +222,9 @@ class Admin extends BaseController
 
     }
 
+    
     public function alterProduct($id) {
+        //gets chosen product's information from the database so it can be changed
         $product = $this->prodmodel->getProduct($id);
         $data['product'] = $product[0];
         $data['categories'] = $this->categorymodel->getCategories();
@@ -303,14 +236,15 @@ class Admin extends BaseController
         echo view('admin/adminFooter');
     }
 
+    
     public function changeProduct() {
-
+    //changes product information in the database
         $id = $this->request->getVar('id');
         $data = [
             'name' => $this->request->getVar('newname'),
             'price' => $this->request->getVar('newprice'),
             'description' => $this->request->getVar('newdescription'),
-            'image' => $this->request->getVar('newimage'),
+            'image' => $this->request->getFile('newimage'),
             'type' => $this->request->getVar('newtype'),
             'category_id' => $this->request->getVar('newcategory'),
             'theme_id' => $this->request->getVar('newthemecategory')
@@ -328,18 +262,42 @@ class Admin extends BaseController
 
 
     }
-    public function  showOrders() {
+    public function showOrders() {
         $data['orders'] = $this->ordermodel->getOrders();
 
         echo view('admin/adminHeader');
 		echo view('admin/Orders_view', $data);
         echo view('admin/adminFooter');
     }
-    public function  showOrder() {
-
+    public function showOrder($id) {
+        $data['orderdetails'] = $this->ordermodel->getOrderDetails($id);
         echo view('admin/adminHeader');
-		echo view('admin/Order_view');
+		echo view('admin/Order_view', $data);
         echo view('admin/adminFooter');
     }
-    
+    public function updateStatus($id) {
+        $data['orderstatus'] = $this->ordermodel->getOrderStatus($id);
+        $data['testit'] = $this->ordermodel->getstatus();
+        $data['id'] = $id;
+        echo view('admin/adminHeader');
+		echo view('admin/changestatus_view.php', $data);
+        echo view('admin/adminFooter');
+    }
+    public function updatestat() {
+        $id = $this->request->getVar('id');
+        $data = [
+            'status' => $this->request->getVar('newstatus'),
+        ];
+        $this->ordermodel->update($id, $data);
+        return redirect()->to('/admin/showOrders');
+    }
+    public function sortbystatus () {
+        $data = [
+            'status' => $this->request->getVar('status'),
+        ];
+        $data['sortedorders'] = $this->ordermodel->SortOrders($data);
+        echo view('admin/adminHeader');
+		echo view('admin/sortedorders',$data);
+        echo view('admin/adminFooter');
+    }
 }

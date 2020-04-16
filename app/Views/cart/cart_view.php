@@ -10,7 +10,7 @@ if(is_array($basketproducts))
     $total_sum = 0;
     foreach ($basketproducts as $product):
         ?>
-        <div class="col-lg-3 col-md-6 mt-3 cart-card">
+        <div class="col-lg-3 col-md-4 col-6 mt-3 cart-card">
             <form class="form-group mb-0" method="post" action="<?= site_url('cart/updateAmount/' . $product['id'])?>">
 
             <a href="<?=site_url('shop/show_product/' . $product['id'])?>" ><img class="img-fluid" src="<?=base_url($product['image'] . '.png')?>"></a>
@@ -49,7 +49,7 @@ if(is_array($basketproducts))
         </div>
         <?php endforeach;?>
     </div>
-    <form action="<?= site_url('cart/placeOrder/')?>" method="post">
+    <form action="<?= site_url('cart/checkout/')?>" method="post">
     <div class="row total_sum">
         <div class="col-12">
             <h3>Yhteensä: <?php echo number_format($total_sum,2)?>€<button class="btn btn-order">Kassalle</button></h3>

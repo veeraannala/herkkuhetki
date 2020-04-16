@@ -1,9 +1,4 @@
 <div class="row">
-  <?php
-  if (!empty($searchresult)) {
-      
-  }
-  ?> 
 <?php foreach ($searchresult as $prod):?>
     <div class="col-lg-3 col-md-4 card mt-3 mb-1">
         <a href="<?=site_url('shop/show_product/' . $prod['id'])?>"><img class="img-fluid"
