@@ -120,3 +120,6 @@ span.required {
 .not_visible {
     display: none;
 }
+.centerminheight2 {
+    min-height: 275px;
+}

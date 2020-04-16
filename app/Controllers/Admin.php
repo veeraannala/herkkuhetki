@@ -286,18 +286,27 @@ class Admin extends BaseController
     public function updatestat() {
         $id = $this->request->getVar('id');
         $data = [
-            'status' => $this->request->getVar('newstatus'),
+            'status' => $this->request->getVar('newstatus')
         ];
         $this->ordermodel->update($id, $data);
         return redirect()->to('/admin/showOrders');
     }
     public function sortbystatus () {
         $data = [
-            'status' => $this->request->getVar('status'),
+            'status' => $this->request->getVar('status')
         ];
         $data['sortedorders'] = $this->ordermodel->SortOrders($data);
         echo view('admin/adminHeader');
 		echo view('admin/sortedorders',$data);
         echo view('admin/adminFooter');
+    }
+    public function sortbymonth() {
+        $data = [
+            'month' => $this->request->getVar('month')
+        ];
+            $data['sortedorderbymonth'] = $this->ordermodel->SortOrdersbyMonth($data);
+            echo view('admin/adminHeader');
+            echo view('admin/sortedordersbymonth',$data);
+            echo view('admin/adminFooter');
     }
 }
