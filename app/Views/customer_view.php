@@ -7,7 +7,15 @@
         <div class="col-md-6">
         <h3>Rekisteröityneet asiakkaat</h3>
         <hr>
-        <form action="" method="post">
+        <div>
+        <?=\Config\Services::validation()->listErrors(); ?>
+        </div>
+        <?php
+            if(isset($message)) {
+                echo $message;
+            }
+        ?>
+        <form action="<?= site_url('login/loginCheck/')?>" method="post">
             <div class="form-group row">
                 <label for="inputEmail" class="col-sm-3 col-form-label pr-1">Sähköposti<span class="required">*</span></label>
                 <div class="col-sm-8">
