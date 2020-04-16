@@ -4,6 +4,7 @@ use App\Models\CategoryModel;
 use App\Models\ProductModel;
 use App\Models\ThemeModel;
 use App\Models\OrderModel;
+use App\Models\ReviewModel;
 
 class Admin extends BaseController
 {
@@ -13,6 +14,7 @@ class Admin extends BaseController
     private $prodmodel = null;
     private $adminmodel = null;
     private $ordermodel = null;
+    private $reviewmodel = null;
 
 
     public function __construct() {
@@ -23,6 +25,7 @@ class Admin extends BaseController
         $this->prodmodel = new ProductModel();
         $this->adminmodel = new AdminModel();
         $this->ordermodel = new OrderModel();
+        $this->reviewmodel = new ReviewModel();
     }
     
     public function index() {
@@ -316,5 +319,13 @@ class Admin extends BaseController
             echo view('admin/adminHeader');
             echo view('admin/sortedordersbymonth',$data);
             echo view('admin/adminFooter');
+    }
+
+    public function editReview($id) {
+        $data['reviews'] = $this->reviewmodel->ShowReviews($id);
+
+        echo view('admin/adminHeader');
+        echo view('admin/editReview_view', $data);
+        echo view('admin/adminFooter');
     }
 }
