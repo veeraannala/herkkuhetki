@@ -78,7 +78,7 @@
                         </div>
                     </li>
                 </ul>
-                <form action="/shop/search_product" class="form-inline" method="post">
+                <form action="/shop/search_product" class="form-inline" method="get">
                     <div class="input-group search mr-2">
                         <?php if (isset($keywords)) { ?>
                         <?php foreach ($keywords as $words):?>
