@@ -5,7 +5,14 @@
     </div> 
     <div class="row">
         <div class="col-md-6">
-        <h3>Rekisteröityneet asiakkaat</h3>
+        <?php
+            if(isset($registermessage)) {
+                echo '<h3>'.$registermessage.'</h3>';
+            } else { ?>
+            <h3>Rekisteröityneet asiakkaat</h3>
+        <?php
+        }
+        ?>
         <hr>
         <div>
         <?=\Config\Services::validation()->listErrors(); ?>

@@ -38,7 +38,7 @@ class Login extends BaseController
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         
         echo view('templates/header',$data);
-		echo view('customerRegister_view');
+		echo view('customerregister_view');
         echo view('templates/footer');
     }
 
@@ -50,9 +50,9 @@ class Login extends BaseController
         if (!$this->validate($validation->getRuleGroup('customerRegisterValidate')))
         {
             
-            echo view('templates/header,',$data);
-            echo view('customerRegister_view');
-            echo view('templates/footer');;
+            echo view('templates/header',$data);
+            echo view('customerregister_view');
+            echo view('templates/footer');
         }
         else
         {
@@ -66,7 +66,15 @@ class Login extends BaseController
                 'town' => $this->request->getVar('town'),
                 'phone' => $this->request->getVar('phone')
             ]);
-            return redirect()->to('/login/index');
+            
+            $data = [
+                'registermessage' => 'Voit nyt kirjautua sisään'
+            ];
+            $data['categories'] = $this->model->getCategories();
+            $data['themecategories'] = $this->thememodel->getThemeCategories();
+            echo view('templates/header',$data);
+            echo view('customer_view',$data);
+            echo view('templates/footer');
         }
     }
 
@@ -97,7 +105,7 @@ class Login extends BaseController
                 $data['userdata'] = $this->customermodel->find($loggedCustomer->id);
                 //print_r($data1);
                 echo view('templates/header',$data);
-		        echo view('customerDetail_view',$data);
+		        echo view('customerdetail_view',$data);
                 echo view('templates/footer'); 
             
             }
