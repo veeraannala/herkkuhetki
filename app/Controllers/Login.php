@@ -2,14 +2,14 @@
 use App\Models\CategoryModel;
 use App\Models\ThemeModel;
 use App\Models\ProductModel;
-use App\Models\LoginModel;
+use App\Models\CustomerModel;
 class Login extends BaseController
 {
 
     private $model = null;
 	private $thememodel = null;
 	private $prodmodel = null;
-    private $loginmodel = null;
+    private $customermodel = null;
     
 
     public function __construct() {
@@ -18,7 +18,7 @@ class Login extends BaseController
         $this->model = new CategoryModel();
 		$this->thememodel = new ThemeModel();
         $this->prodmodel = new ProductModel();
-        $this->loginmodel = new LoginModel();
+        $this->customermodel = new CustomerModel();
 
     }
 
@@ -47,7 +47,7 @@ class Login extends BaseController
         $data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
 
-        if (!$this->validate($validation->getRuleGroup('customerValidate')))
+        if (!$this->validate($validation->getRuleGroup('customerRegisterValidate')))
         {
             echo view('templates/header,',$data);
             echo view('customerRegister_view');
@@ -55,7 +55,7 @@ class Login extends BaseController
         }
         else
         {
-            $this->loginmodel->save([
+            $this->customermodel->save([
                 'firstname' => $this->request->getVar('firstname'),
                 'lastname' => $this->request->getVar('lastname'),
                 'address' => $this->request->getVar('address'),
@@ -84,7 +84,7 @@ class Login extends BaseController
         }
         else
         {
-            $loggedCustomer = $this->loginmodel->loginCheck(
+            $loggedCustomer = $this->customermodel->loginCheck(
                 $this->request->getVar('email'),
                 $this->request->getVar('password')  
             );

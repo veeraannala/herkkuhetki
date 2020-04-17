@@ -326,11 +326,21 @@ class Admin extends BaseController
             echo view('admin/adminFooter');
     }
 
-    public function editReview($id) {
-        $data['reviews'] = $this->reviewmodel->ShowReviews($id);
+    //prints all reviews to admin page
+    public function editReview() {
+        $data['reviews'] = $this->reviewmodel->allReviews();
 
         echo view('admin/adminHeader');
         echo view('admin/editReview_view', $data);
         echo view('admin/adminFooter');
     }
+
+    // when you clik the "poista" button, removes that review 
+    public function deleteReview($id) {
+        $re_model = new ReviewModel();
+        $re_model->delete($id);
+
+        return redirect()->to(previous_url());
+    }
+    
 }
