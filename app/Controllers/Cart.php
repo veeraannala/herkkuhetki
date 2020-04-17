@@ -303,7 +303,7 @@ class Cart extends BaseController
         if (!$this->validate($validation->getRuleGroup('customerLoginValidate')))
         {
             echo view('templates/header',$data);
-		    echo view('cartOrder_view');
+		    echo view('cart/cartOrder_view');
             echo view('templates/footer');
         }
         else
@@ -326,7 +326,7 @@ class Cart extends BaseController
                 $data['message'] = 'Kirjautuminen epäonnistui';
 
                 echo view('templates/header',$data);
-                echo view('cartOrder_view',$data);
+                echo view('cart/cartOrder_view',$data);
                 echo view('templates/footer');
             }
         }
