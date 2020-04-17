@@ -370,6 +370,8 @@ class Admin extends BaseController
 
     //prints all reviews to admin page
     public function editReview() {
+        $product_model = new ProductModel();
+        $data['products'] = $product_model->showProduct();
         $data['reviews'] = $this->reviewmodel->allReviews();
 
         echo view('admin/adminHeader');

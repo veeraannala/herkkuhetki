@@ -130,7 +130,7 @@ class Cart extends BaseController
 
     //Collect users contact information and save order, order detail and customer to the database.
     public function saveOrder()
-    {
+    { //print_r($_SESSION['customer']);
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         $data['product'] = $this->prodmodel->ShowProduct();
@@ -145,7 +145,7 @@ class Cart extends BaseController
         endforeach;
         endforeach;
         $data['sum'] = $sum;
-
+        $data['orderid'] = null;
         $validation =  \Config\Services::validation();
         $customer = array();
         if (!isset($_POST['register'])) {
@@ -155,20 +155,27 @@ class Cart extends BaseController
                 echo view('templates/footer');
             } else {
                 $this->db->transStart();
-                $this->customermodel->save([
-                    'firstname' => $this->request->getVar('firstname'),
-                    'lastname' => $this->request->getVar('lastname'),
-                    'address' => $this->request->getVar('address'),
-                    'postcode' => $this->request->getVar('postcode'),
-                    'town' => $this->request->getVar('town'),
-                    'email' => $this->request->getVar('email'),
-                    'phone' => $this->request->getVar('phone'),
-                ]);
+                $customerid = null;
+                if(isset($_SESSION['customer'])){
+                    foreach ($_SESSION['customer'] as $key => $value):
+                        $customerid = $value;
+                    endforeach;
+                } else {
+                    $this->customermodel->save([
+                        'firstname' => $this->request->getVar('firstname'),
+                        'lastname' => $this->request->getVar('lastname'),
+                        'address' => $this->request->getVar('address'),
+                        'postcode' => $this->request->getVar('postcode'),
+                        'town' => $this->request->getVar('town'),
+                        'email' => $this->request->getVar('email'),
+                        'phone' => $this->request->getVar('phone'),
+                    ]);
+                    $customerid = $this->customermodel->getCustId();
+                    $customerid = $customerid[0];
+                    $customerid = $customerid['max(id)'];
+                }
 
-                $customerid = $this->customermodel->getCustId();
-                $customerid = $customerid[0];
-                $customerid = $customerid['max(id)'];
-
+                
                 $this->ordermodel->save([
                     'status' => 'ordered',
                     'customer_id' => $customerid,
@@ -178,7 +185,7 @@ class Cart extends BaseController
                 $orderid = $this->ordermodel->getOrderId();
                 $orderid = $orderid[0];
                 $orderid = $orderid['max(id)'];
-
+                $data['orderid'] = $orderid;
                 foreach ($_SESSION['order'] as $item => $value) {
                     $this->orderdetailmodel->save([
                         'product_id' => $item,
@@ -194,6 +201,7 @@ class Cart extends BaseController
                     ]);
                     //print_r($item['amount']);
                 }
+                
                 $this->clear();
 
                 $this->db->transComplete();
@@ -268,56 +276,57 @@ class Cart extends BaseController
         }
     }
 
-    public function payconfirm()
+    public function payconfirm($orderid)
     {
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         $data['product'] = $this->prodmodel->ShowProduct();
+        $data1 = [
+            'id'       => $orderid,
+            'status' => 'paid'
+        ];
+        $this->ordermodel->save($data1);
+
         echo view('templates/header', $data);
         echo view('cart/payconfirm', $data);
         echo view('templates/footer');
     }
 
+    //Log in registered customer
     public function loginCheck() {
         $validation =  \Config\Services::validation();
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
+        $data['product'] = $this->prodmodel->ShowProduct();      
+        $data['basketproducts'] = $this->prodmodel->getBasketproducts($_SESSION['basket']);
         
         if (!$this->validate($validation->getRuleGroup('customerLoginValidate')))
         {
-            
-
             echo view('templates/header',$data);
-		    echo view('customer_view');
+		    echo view('cart/cartOrder_view');
             echo view('templates/footer');
         }
         else
         {
             $loggedCustomer = $this->customermodel->loginCheck(
                 $this->request->getVar('email'),
-                $this->request->getVar('password')  
+                $this->request->getVar('password')
             );
-            
+
             if ($loggedCustomer) {
-                $_SESSION['customer'] = $loggedCustomer;
-                $userdata = [];
-                foreach ($_SESSION['customer'] as $values) {
-                    array_push($userdata, $values);
-                }
-                $data['userdata'] = $userdata;
-               
-                echo view('templates/header',$data);
-		        echo view('customerDetail_view',$data);
-                echo view('templates/footer'); 
-            
+                $_SESSION['customer'] = array();
+                array_push($_SESSION['customer'],$loggedCustomer->id);
+                $data['customers'] = $this->customermodel->getCustomer();
+
+                return redirect()->to('/cart/checkout');
+
             }
-            else {  
-                $data = [
-                'message' => 'sähköposti tai salasana on väärin'
-                ];
-               
+            else {
+
+                $data['message'] = 'Kirjautuminen epäonnistui';
+
                 echo view('templates/header',$data);
-		        echo view('customer_view',$data);
+                echo view('cart/cartOrder_view',$data);
                 echo view('templates/footer');
             }
         }

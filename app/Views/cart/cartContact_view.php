@@ -41,8 +41,8 @@
 
                     </tr>
                     <script type="text/javascript">
-                    < ? php
-                    echo "var phpsum = '{$sum}';" ? >
+                    <?php
+                    echo "var phpsum = '{$sum}';" ?>
                     </script>
                     <tr>
                         <th>Summa yhteensä</th>
@@ -167,6 +167,7 @@
             </div>
             <?php } else { ?>
             <div class="form-row">
+
             <?php 
                 $customer = ($_SESSION['customer']); 
                 $customer[0];

@@ -30,13 +30,13 @@ use CodeIgniter\Model;
             $this->where('email', $email);
             $query = $this->get();
             $row = $query->getRow();
-                if($row) {
-                    if(password_verify($password,$row->password)) {
-                        return $row;
-                    }
+            if($row) {
+                if(password_verify($password,$row->password)) {
+                    return $row;
                 }
+            }
                     return null;
-                }
+        }
             
 
     }
