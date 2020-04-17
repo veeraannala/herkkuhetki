@@ -39,6 +39,15 @@ class Shop extends BaseController
         echo view('templates/footer');
 	}
 
+	public function gdprregister(){
+
+		$data['categories'] = $this->model->getCategories();
+		$data['themecategories'] = $this->thememodel->getThemeCategories();
+		echo view('templates/header',$data);
+		echo view('gdprregister');
+        echo view('templates/footer');
+	}
+
 	public function show_product($id)
 	{
 		//Shows detailed information of one product. 

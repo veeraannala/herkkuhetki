@@ -8,7 +8,7 @@
           <p class="mb-1"><a href="<?= site_url('/Shop/show_methods') ?>">Maksu- ja toimitusehdot</a></p>
           <p class="mb-1"><a href="#">Tietoa meistä</a></p>
           <p class="mb-1"><a href="#">Yhteystiedot</a></p>
-          <p class="mb-1"><a href="#">Rekisteriseloste</a></p>
+          <p class="mb-1"><a href="<?= site_url('/Shop/gdprregister') ?>">Rekisteriseloste</a></p>
         </div>
 
         <div class="col-md-4 text-center mt-3 pb-4">
