@@ -330,6 +330,7 @@ class Admin extends BaseController
         echo view('admin/adminFooter');
     }
 
+    // when you clik the "poista" button, removes that review 
     public function deleteReview($id) {
         $re_model = new ReviewModel();
         $re_model->delete($id);

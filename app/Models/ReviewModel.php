@@ -8,7 +8,7 @@ use CodeIgniter\Model;
 
         protected $allowedFields = ['id', 'product_id', 'review', 'stars'];
 
-
+        // finds all revies with same product_id
         public function ShowReviews($id)
         {
             $this->table('review');
@@ -19,7 +19,8 @@ use CodeIgniter\Model;
 
             return $query->getResultArray();
         }
-
+        
+        //all reviews for admin user
         public function allReviews()
         {
             $this->table('review');
@@ -30,6 +31,7 @@ use CodeIgniter\Model;
             return $query->getResultArray();
         }
 
+        //finds that one review by id
         public function getReview($id)
         {
             $this->table('review');
