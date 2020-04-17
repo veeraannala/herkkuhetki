@@ -55,7 +55,7 @@ use CodeIgniter\Model;
             foreach ($keywords as $values) {
             $builder->orLike('name', $values,'both')
                     ->orLike('description',$values,'both')
-                    ->orlike('tag',$values);
+                    ->orlike('keywords',$values);
             }
             $query = $builder->get();
             return $query->getResultArray();
