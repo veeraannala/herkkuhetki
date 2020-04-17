@@ -122,7 +122,7 @@ class Admin extends BaseController
         //  if(!isset($_SESSION['username'])) {
         //      return redirect()->to('/admin/adminlogin');
         //  }
-
+        
         $data['categories'] = $this->categorymodel->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
 
@@ -185,7 +185,8 @@ class Admin extends BaseController
     
     public function addProduct() {
     //saves new product to the database. replaces empty image with imagenotfound-file
-         
+        
+
         $newproduct = [
             'name' => $this->request->getVar('name'),
             'price' => $this->request->getVar('price'),
@@ -199,16 +200,33 @@ class Admin extends BaseController
         if ($this->request->getVar('themecategory') !== "NULL") {
             $newproduct += ['theme_id' => $this->request->getVar('themecategory')];
         }
-    
-        if ($_FILES['image']['size'] > 0) {
+        if (!$this->validate([
+            // checks if new product name is unique
+            'name' => 'is_unique[product.name]'
+        ])) {
+            //error
+            $data['errorname'] = $this->validator->getErrors();
+            $data['categories'] = $this->categorymodel->getCategories();
+            $data['themecategories'] = $this->thememodel->getThemeCategories();
+            echo view('admin/adminHeader');
+            echo view('admin/updateProduct_view', $data);
+            echo view('admin/adminFooter');
+        }
+        else if ($_FILES['image']['size'] > 0) {
            if (!$this->validate([
             'image' => [
                 'uploaded[image]',
                 'mime_in[image,image/jpg,image/jpeg,image/gif,image/png]',
                 'max_size[image,4096]'
             ]
-        ])) {
-                //virhe
+            ])) {
+            // error
+            $data['errorimage'] = $this->validator->getErrors();
+            $data['categories'] = $this->categorymodel->getCategories();
+            $data['themecategories'] = $this->thememodel->getThemeCategories();
+            echo view('admin/adminHeader');
+            echo view('admin/updateProduct_view', $data);
+            echo view('admin/adminFooter');
             } else {
                 // works
                 $image = $this->request->getFile('image');
@@ -217,14 +235,15 @@ class Admin extends BaseController
                 $image->move($path);
 
                 $newproduct['image'] = 'images/' . $image->getName();
+                $this->prodmodel->save($newproduct);
+                return redirect()->to('/admin/updateProduct');
             } 
         } else {
             $newproduct['image'] = 'images/imagenotfound.png';
+            $this->prodmodel->save($newproduct);
+            return redirect()->to('/admin/updateProduct');
         }
 
-        $this->prodmodel->save($newproduct);
-
-        return redirect()->to('/admin/updateProduct');
     }
 
     public function deleteProduct($id) {
@@ -260,7 +279,6 @@ class Admin extends BaseController
             'name' => $this->request->getVar('newname'),
             'price' => $this->request->getVar('newprice'),
             'description' => $this->request->getVar('newdescription'),
-            'image' => $this->request->getFile('newimage'),
             'type' => $this->request->getVar('newtype'),
             'category_id' => $this->request->getVar('newcategory'),
             'theme_id' => $this->request->getVar('newthemecategory')
@@ -269,13 +287,57 @@ class Admin extends BaseController
         if ($data["theme_id"] === "NULL") {
             $data['theme_id'] = NULL;
         }
-        if ($this->request->getVar('newimage') === "") {
-            $data['image'] = 'images/imagenotfound';
+        
+        if (!$this->validate([
+            // checks if new product name is unique
+            'newname' => 'is_unique[product.name]'
+            ])) {
+            //error
+            $pagedata['errorname'] = $this->validator->getErrors();
+            $product = $this->prodmodel->getProduct($id);
+            $pagedata['product'] = $product[0];
+            $pagedata['categories'] = $this->categorymodel->getCategories();
+            $pagedata['themecategories'] = $this->thememodel->getThemeCategories();
+            $pagedata['id'] = $id;
+            echo view('admin/adminHeader');
+		    echo view('admin/alterProduct_view', $pagedata);
+            echo view('admin/adminFooter');
         }
+        else if ($_FILES['image']['size'] > 0) {
+            if (!$this->validate([
+             'image' => [
+                'uploaded[image]',
+                'mime_in[image,image/jpg,image/jpeg,image/gif,image/png]',
+                'max_size[image,4096]'
+                ]
+            ])) {
+                //error
+                $pagedata['errorimage'] = $this->validator->getErrors();
+                $product = $this->prodmodel->getProduct($id);
+                $pagedata['product'] = $product[0];
+                $pagedata['categories'] = $this->categorymodel->getCategories();
+                $pagedata['themecategories'] = $this->thememodel->getThemeCategories();
+                $pagedata['id'] = $id;
+                echo view('admin/adminHeader');
+		        echo view('admin/alterProduct_view', $pagedata);
+                echo view('admin/adminFooter');
+            } else {
+                 // works
+                $image = $this->request->getFile('image');
+                $path = APPPATH;
+                $path = str_replace('app','public/images',$path);
+                $image->move($path);
+ 
+                $data['image'] = 'images/' . $image->getName();
 
-        $this->prodmodel->update($id, $data);
-        return redirect()->to('/admin/editProduct');
-
+                $this->prodmodel->update($id, $data);
+                return redirect()->to('/admin/editProduct');
+             } 
+        } else {
+             //updates data without changing image
+            $this->prodmodel->update($id, $data);
+            return redirect()->to('/admin/editProduct');
+        }
 
     }
     public function showOrders() {
@@ -328,6 +390,8 @@ class Admin extends BaseController
 
     //prints all reviews to admin page
     public function editReview() {
+        $product_model = new ProductModel();
+        $data['products'] = $product_model->showProduct();
         $data['reviews'] = $this->reviewmodel->allReviews();
 
         echo view('admin/adminHeader');

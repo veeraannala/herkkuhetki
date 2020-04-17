@@ -36,19 +36,23 @@
 
             <input class="ml-3 mt-3" id="stars" type="radio" name="stars" <?php if (isset($stars) && $stars=="1") echo "checked";?> value="1">
             <i class="fa fa-star star" aria-hidden="true"></i>
+
             <input class="ml-3 mt-3" id="stars" type="radio" name="stars" <?php if (isset($stars) && $stars=="2") echo "checked";?> value="2">
             <i class="fa fa-star star" aria-hidden="true"></i>
             <i class="fa fa-star star" aria-hidden="true"></i>
+
             <input class="ml-3 mt-3" id="stars" type="radio" name="stars" <?php if (isset($stars) && $stars=="3") echo "checked";?> value="3">
             <i class="fa fa-star star" aria-hidden="true"></i>
             <i class="fa fa-star star" aria-hidden="true"></i>
             <i class="fa fa-star star" aria-hidden="true"></i>
-            <input class="ml-3 mt-3" id="stars" type="radio" name="stars" <?php if (isset($stars) && $stars=="3") echo "checked";?> value="4">
+
+            <input class="ml-3 mt-3" id="stars" type="radio" name="stars" <?php if (isset($stars) && $stars=="4") echo "checked";?> value="4">
             <i class="fa fa-star star" aria-hidden="true"></i>
             <i class="fa fa-star star" aria-hidden="true"></i>
             <i class="fa fa-star star" aria-hidden="true"></i>
             <i class="fa fa-star star" aria-hidden="true"></i>
-            <input class="ml-3 mt-3" id="stars" type="radio" name="stars" <?php if (isset($stars) && $stars=="3") echo "checked";?> value="5">
+
+            <input class="ml-3 mt-3" id="stars" type="radio" name="stars" <?php if (isset($stars) && $stars=="5") echo "checked";?> value="5">
             <i class="fa fa-star star" aria-hidden="true"></i>
             <i class="fa fa-star star" aria-hidden="true"></i>
             <i class="fa fa-star star" aria-hidden="true"></i>
@@ -64,8 +68,8 @@
             <div class="row"> 
               <div class="col-12">
                 <?php endforeach; ?>
+
                 <!-- Prints 3 reviews -->
-                
                 <h3>Arvostelut</h3>
                 <table class="table table-striped">
                         <th>Päivämäärä</th>
@@ -80,7 +84,7 @@
                 <tr>
                     <td><?= date_format (new DateTime($re['reviewDate']), 'd/m/Y');?></td>
                     <td><?=$re['review']?></td>
-                    <td><?= $re['stars']?> <i class="fa fa-star star" aria-hidden="true"></i></td>
+                    <td><?php for($j=0; $j < $re['stars']; $j++){print('<i class="fa fa-star star" aria-hidden="true">');}?></td>
                     </tr>
 
                 <?php endforeach; ?>

@@ -93,7 +93,7 @@ h4 {
   }
    .customercard{
       background-color:#FBD8DB !important;
-      font-weight: bold;
+      /*font-weight: bold;*/
   }
   .customercard h5 {
     font-weight: bold
@@ -139,3 +139,15 @@ span.required {
 .star {
     color:#E65959;
 }
+
+.ordertable {
+    border-left: 1px solid #FBD8DB;
+}
+
+ /*.ordertable td:first-child {
+   border-left: 1px solid #E65959;
+    border-right: 1px solid #E65959;
+}
+.ordertable tr:first-child td:first-child {
+    border-right: 1px solid #E65959 !important;
+}*/

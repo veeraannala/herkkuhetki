@@ -46,9 +46,9 @@
         </div>
         <div>
             <?php
-                if (isset($errormessage)) {
+                if (isset($message)) {
                     ?>
-            <p class="errormessage"><?=$errormessage?></p>
+            <p class="errormessage"><?=$message?></p>
             <?php
                 } 
             ?>

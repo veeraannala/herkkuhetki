@@ -2,7 +2,12 @@
     <div class="col-6 mb-3">
         <h1>Lisää tuotteita</h1>
 
-        <p>Lisää tuotteita</p>
+
+        <?php if(isset($errorname)) { ?>
+            <p class="errormessage">Virhe tuotteen lisäämisessä. Tuotteen nimi ei voi olla sama kuin jo olemassa olevalla tuotteella.</p>
+        <?php } else if(isset($errorimage)) {?>
+            <p class="errormessage">Virhe tuotteen lisäämisessä. Kuvan sallitut muodot ovat .JPG, .JPEG, .GIF, .PNG ja maksimikoko on 4MB.</p>
+        <?php } ?>
         
         <form method="post" enctype="multipart/form-data" action="<?= site_url('admin/addProduct/')?>">
             <div class="form-group">
@@ -11,7 +16,7 @@
             </div>
             <div class="form-group">
                 <label for="price">Tuotteen hinta €</label>
-                <input type="number" class="form-control" name="price" required>
+                <input type="number" class="form-control" name="price" step="0.01" value="0" required>
             </div>
             <div class="form-group">
                 <label for="type">Hinnan tyyppi</label>
@@ -34,7 +39,7 @@
             </div>
             <div class="form-group">
                 <label for="stock">Tuotteen varastomäärä</label>
-                <input type="number" class="form-control" name="stock" required>
+                <input type="number" class="form-control" name="stock" value="0" required>
             </div>
             <div class="form-group">
                 <label for="category">Tuotekategoria</label>

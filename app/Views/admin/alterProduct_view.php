@@ -2,8 +2,13 @@
 <div class="row">
     <div class="col-6 mb-3">
         <h1>Muokkaa tuotetta</h1>
+        <?php if(isset($errorname)) { ?>
+            <p class="errormessage">Virhe tuotteen lisäämisessä. Tuotteen nimi ei voi olla sama kuin jo olemassa olevalla tuotteella.</p>
+        <?php } else if(isset($errorimage)) {?>
+            <p class="errormessage">Virhe tuotteen lisäämisessä. Kuvan sallitut muodot ovat .JPG, .JPEG, .GIF, .PNG ja maksimikoko on 4MB.</p>
+        <?php } ?>
 
-        <form method="post" action="<?= site_url('admin/changeProduct/')?>">
+        <form method="post" enctype="multipart/form-data" action="<?= site_url('admin/changeProduct/')?>">
             <div class="form-group">
                 <label for="newname">Tuotteen nimi</label>
                 <input type="text" class="form-control" name="newname" value="<?= $product['name']?>" required>
@@ -37,8 +42,8 @@
                 <textarea class="form-control" name="newkeywords" rows="3" ><?= $product['keywords'] ?></textarea>
             </div>
             <div class="form-group">
-                <label for="newimage">Tuotteen kuva</label>
-                <input type="file" class="form-control-file" name="newimage">
+                <label for="image">Tuotteen kuva</label>
+                <input type="file" class="form-control-file" name="image">
             </div>
             <div class="form-group">
                 <label for="newcategory">Tuotekategoria</label>

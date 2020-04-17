@@ -41,8 +41,8 @@
 
                     </tr>
                     <script type="text/javascript">
-                    < ? php
-                    echo "var phpsum = '{$sum}';" ? >
+                    <?php
+                    echo "var phpsum = '{$sum}';" ?>
                     </script>
                     <tr>
                         <th>Summa yhteensä</th>
