@@ -93,8 +93,8 @@ class Login extends BaseController
             if ($loggedCustomer) {
                 array_push($_SESSION['customer'],$loggedCustomer->id);
                 print_r($_SESSION['customer']);
-                $data1['userdata'] = $this->customermodel->find($loggedCustomer->id);
-                print_r($data1);
+                $data['userdata'] = $this->customermodel->find($loggedCustomer->id);
+                //print_r($data1);
                 echo view('templates/header',$data);
 		        echo view('customerDetail_view',$data);
                 echo view('templates/footer'); 
