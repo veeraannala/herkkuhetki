@@ -36,18 +36,22 @@
 
             <input class="ml-3 mt-3" id="stars" type="radio" name="stars" <?php if (isset($stars) && $stars=="1") echo "checked";?> value="1">
             <i class="fa fa-star star" aria-hidden="true"></i>
+
             <input class="ml-3 mt-3" id="stars" type="radio" name="stars" <?php if (isset($stars) && $stars=="2") echo "checked";?> value="2">
             <i class="fa fa-star star" aria-hidden="true"></i>
             <i class="fa fa-star star" aria-hidden="true"></i>
+
             <input class="ml-3 mt-3" id="stars" type="radio" name="stars" <?php if (isset($stars) && $stars=="3") echo "checked";?> value="3">
             <i class="fa fa-star star" aria-hidden="true"></i>
             <i class="fa fa-star star" aria-hidden="true"></i>
             <i class="fa fa-star star" aria-hidden="true"></i>
+
             <input class="ml-3 mt-3" id="stars" type="radio" name="stars" <?php if (isset($stars) && $stars=="3") echo "checked";?> value="4">
             <i class="fa fa-star star" aria-hidden="true"></i>
             <i class="fa fa-star star" aria-hidden="true"></i>
             <i class="fa fa-star star" aria-hidden="true"></i>
             <i class="fa fa-star star" aria-hidden="true"></i>
+
             <input class="ml-3 mt-3" id="stars" type="radio" name="stars" <?php if (isset($stars) && $stars=="3") echo "checked";?> value="5">
             <i class="fa fa-star star" aria-hidden="true"></i>
             <i class="fa fa-star star" aria-hidden="true"></i>
@@ -64,8 +68,8 @@
             <div class="row"> 
               <div class="col-12">
                 <?php endforeach; ?>
+
                 <!-- Prints 3 reviews -->
-                
                 <h3>Arvostelut</h3>
                 <table class="table table-striped">
                         <th>Päivämäärä</th>
