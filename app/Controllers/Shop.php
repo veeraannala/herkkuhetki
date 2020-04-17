@@ -138,7 +138,7 @@ class Shop extends BaseController
 				echo view('templates/footer');
 			}
 		} else {
-			return redirect()->to('/shop/search_product'); 
+			return redirect()->to('/shop'); 
 		}
 
 	}
