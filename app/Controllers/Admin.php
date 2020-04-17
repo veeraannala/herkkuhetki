@@ -321,6 +321,7 @@ class Admin extends BaseController
             echo view('admin/adminFooter');
     }
 
+    //prints all reviews to admin page
     public function editReview() {
         $data['reviews'] = $this->reviewmodel->allReviews();
 
@@ -328,4 +329,12 @@ class Admin extends BaseController
         echo view('admin/editReview_view', $data);
         echo view('admin/adminFooter');
     }
+
+    public function deleteReview($id) {
+        $re_model = new ReviewModel();
+        $re_model->delete($id);
+
+        return redirect()->to(previous_url());
+    }
+    
 }
