@@ -7,7 +7,7 @@
         <div class="col-md-6">
         <?php
             if(isset($registermessage)) {
-                echo '<h3>'.$registermessage.'</h3>';
+                echo '<h3 class="registermessage">'.$registermessage.'</h3>';
             } else { ?>
             <h3>Rekisteröityneet asiakkaat</h3>
         <?php

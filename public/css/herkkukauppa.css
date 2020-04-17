@@ -36,6 +36,10 @@ body{
     font-size: larger;
     font-weight: bold;
 }
+.registermessage {
+    color:forestgreen
+    
+}
 
 h4 {
     color: black !important;

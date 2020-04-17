@@ -21,7 +21,7 @@
                     <input type="email" class="form-control" name="emailconfirm" placeholder="Sähköposti" required>
                 </div>
             </div>
-            <button type="submit" class="btn btn mb-2">Muuta</button>
+            <button type="submit" class="btn btn mb-2">Vahvista</button>
         </form>
         <div class="row">
             <div class="col-md-6">
@@ -48,7 +48,7 @@
                         required>
                 </div>
             </div>
-            <button type="submit" class="btn btn mb-2">Muuta</button>
+            <button type="submit" class="btn btn mb-2">Vahvista</button>
         </form>
     </div>
 </div>

@@ -77,14 +77,14 @@ class Customer extends BaseController
     public function customerEditDetail() {
         if(!isset($_SESSION['customer'])) {
             return redirect()->to('/customer/index');
-         }
-         else
-         {
-         $customerid = null;
-         foreach ($_SESSION['customer'] as $key => $value):
+        }
+        else
+        {
+        $customerid = null;
+        foreach ($_SESSION['customer'] as $key => $value):
                  $customerid = $value;
-         endforeach;
-         }
+        endforeach;
+        }
         $data['userdata'] = $this->customermodel->find($customerid);
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
@@ -92,6 +92,26 @@ class Customer extends BaseController
         echo view('templates/header',$data);
         echo view('customer/customerEditDetail_view');
         echo view('templates/footer'); 
+    }
+
+    public function customerUpdate() {
+        $validation =  \Config\Services::validation();
+        if(!isset($_SESSION['customer'])) {
+            return redirect()->to('/customer/index');
+        }
+        else
+        {
+        $customerid = null;
+        foreach ($_SESSION['customer'] as $key => $value):
+                 $customerid = $value;
+        endforeach;
+        }
+        if (!$this->validate($validation->getRuleGroup('customerRegisterValidate')))
+        {
+        }
+        $data = [
+
+        ];
     }
 
     public function customerRegistration() {

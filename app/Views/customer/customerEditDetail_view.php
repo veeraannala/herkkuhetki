@@ -36,7 +36,7 @@
           <input type="text" class="form-control" name="phone" placeholder="Puhelinnumero" value="<?=$userdata['phone']?>">
         </div>
       </div>
-      <button type="submit" class="btn btn mb-2">Muuta</button>
+      <button type="submit" class="btn btn mb-2">Vahvista</button>
     </form>
     <div class="row">
     </div>
