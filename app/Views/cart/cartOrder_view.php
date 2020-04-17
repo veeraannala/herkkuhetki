@@ -45,10 +45,23 @@
             <h4>Kirjaudu sisään</h4>
         </div>
         <div>
+            <?php
+                if (isset($errormessage)) {
+                    ?>
+            <p class="errormessage"><?=$errormessage?></p>
+            <?php
+                } 
+            ?>
+            <div>
+                <?=\Config\Services::validation()->listErrors(); ?>
+            </div>
+        </div>
+        <div>
             <form action="/cart/loginCheck" method="post">
+
                 <div class="form-group">
                     <label>Sähköposti</label><span class="required">*</span>
-                    <input class="form-control" name="username" placeholder="Sähköposti" maxlength="30">
+                    <input class="form-control" name="email" placeholder="Sähköposti" maxlength="30">
                 </div>
                 <div class="form-group">
                     <label>Salasana</label><span class="required">*</span>
@@ -61,7 +74,7 @@
             </form>
         </div>
         <div>
-        <?php print("<a href='/cart/custContact/'>Tilaa kirjautumatta</a>")?>
+            <?php print("<a href='/cart/custContact/'>Tilaa kirjautumatta</a>")?>
         </div>
 
     </div>

@@ -278,48 +278,45 @@ class Cart extends BaseController
         echo view('templates/footer');
     }
 
+    //Log in registered customer
     public function loginCheck() {
         $validation =  \Config\Services::validation();
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
+        $data['product'] = $this->prodmodel->ShowProduct();
+        $data['basketproducts'] = $this->prodmodel->getBasketproducts($_SESSION['basket']);
         
         if (!$this->validate($validation->getRuleGroup('customerLoginValidate')))
         {
-            
-
             echo view('templates/header',$data);
-		    echo view('customer_view');
+		    echo view('cartOrder_view');
             echo view('templates/footer');
         }
         else
         {
-            $loggedCustomer = $this->customermodel->loginCheck(
-                $this->request->getVar('email'),
-                $this->request->getVar('password')  
-            );
-            
-            if ($loggedCustomer) {
-                $_SESSION['customer'] = $loggedCustomer;
-                $userdata = [];
-                foreach ($_SESSION['customer'] as $values) {
-                    array_push($userdata, $values);
-                }
-                $data['userdata'] = $userdata;
-               
-                echo view('templates/header',$data);
-		        echo view('customerDetail_view',$data);
-                echo view('templates/footer'); 
-            
-            }
-            else {  
-                $data = [
-                'message' => 'sähköposti tai salasana on väärin'
-                ];
-               
-                echo view('templates/header',$data);
-		        echo view('customer_view',$data);
-                echo view('templates/footer');
-            }
+             $loggedCustomer = $this->customermodel->loginCheck(
+                 $this->request->getVar('email'),
+                 $this->request->getVar('password')
+             );
+
+             if ($loggedCustomer) {
+                $_SESSION['customer'] = array();
+                array_push($_SESSION['customer'],$loggedCustomer->id);
+                $data['customers'] = $this->customermodel->getCustomer();
+
+                 echo view('templates/header',$data);
+                 echo view('cartContact_view',$data);
+                 echo view('templates/footer');
+
+             }
+             else {
+
+                 $data['errormessage'] = 'Kirjautuminen epäonnistui';
+
+                 echo view('templates/header',$data);
+                 echo view('cartOrder_view',$data);
+                 echo view('templates/footer');
+             }
         }
     }
 

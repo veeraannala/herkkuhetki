@@ -167,6 +167,7 @@
             </div>
             <?php } else { ?>
             <div class="form-row">
+
             <?php 
                 $customer = ($_SESSION['customer']); 
                 $customer[0];
