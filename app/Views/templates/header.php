@@ -101,13 +101,13 @@
                 </form>
                 <?php if(isset($_SESSION['customer'])) { ?>
                  <div class="nav-item">
-                 <a href="<?php echo base_url('login/logout')?>"><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i>KIRJAUDU ULOS</a>
+                 <a href="<?php echo base_url('customer/logout')?>"><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i>KIRJAUDU ULOS</a>
                 </div>
                 <?php
                 }
                 else {
                 ?>
-                <a href="<?php echo base_url('login/index')?>"><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i>KIRJAUDU</a>
+                <a href="<?php echo base_url('customer/index')?>"><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i>KIRJAUDU</a>
                 <?php  
                 }
                 ?>

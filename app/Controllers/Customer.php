@@ -3,7 +3,7 @@ use App\Models\CategoryModel;
 use App\Models\ThemeModel;
 use App\Models\ProductModel;
 use App\Models\CustomerModel;
-class Login extends BaseController
+class Customer extends BaseController
 {
 
     private $model = null;
@@ -29,7 +29,7 @@ class Login extends BaseController
 		
 
 		echo view('templates/header',$data);
-		echo view('customer_view');
+		echo view('customer/customer_view');
         echo view('templates/footer');
 
     }
@@ -38,8 +38,60 @@ class Login extends BaseController
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         
         echo view('templates/header',$data);
-		echo view('customerRegister_view');
+		echo view('customer/customerRegister_view');
         echo view('templates/footer');
+    }
+    public function customerDetail() {
+        if(!isset($_SESSION['customer'])) {
+            return redirect()->to('/customer/index');
+        }
+        $data['categories'] = $this->model->getCategories();
+        $data['themecategories'] = $this->thememodel->getThemeCategories();
+        
+        echo view('templates/header',$data);
+		echo view('customer/customerDetail_view');
+        echo view('templates/footer'); 
+    }
+
+    public function customerEdit() {
+        if(!isset($_SESSION['customer'])) {
+           return redirect()->to('/customer/index');
+        }
+        else
+        {
+        $customerid = null;
+        foreach ($_SESSION['customer'] as $key => $value):
+                $customerid = $value;
+        endforeach;
+        }
+        $data['userdata'] = $this->customermodel->find($customerid);  
+        $data['categories'] = $this->model->getCategories();
+        $data['themecategories'] = $this->thememodel->getThemeCategories();
+            
+        echo view('templates/header',$data);
+        echo view('customer/customerEdit_view');
+        echo view('templates/footer');
+        
+    }
+
+    public function customerEditDetail() {
+        if(!isset($_SESSION['customer'])) {
+            return redirect()->to('/customer/index');
+         }
+         else
+         {
+         $customerid = null;
+         foreach ($_SESSION['customer'] as $key => $value):
+                 $customerid = $value;
+         endforeach;
+         }
+        $data['userdata'] = $this->customermodel->find($customerid);
+        $data['categories'] = $this->model->getCategories();
+        $data['themecategories'] = $this->thememodel->getThemeCategories();
+     
+        echo view('templates/header',$data);
+        echo view('customer/customerEditDetail_view');
+        echo view('templates/footer'); 
     }
 
     public function customerRegistration() {
@@ -51,7 +103,7 @@ class Login extends BaseController
         {
             
             echo view('templates/header',$data);
-            echo view('customerRegister_view');
+            echo view('customer/customerRegister_view');
             echo view('templates/footer');;
         }
         else
@@ -73,7 +125,7 @@ class Login extends BaseController
             $data['categories'] = $this->model->getCategories();
             $data['themecategories'] = $this->thememodel->getThemeCategories();
             echo view('templates/header',$data);
-            echo view('customer_view',$data);
+            echo view('customer/customer_view',$data);
             echo view('templates/footer');
         }
     }
@@ -89,7 +141,7 @@ class Login extends BaseController
             
 
             echo view('templates/header',$data);
-		    echo view('customer_view');
+		    echo view('customer/customer_view');
             echo view('templates/footer');
         }
         else
@@ -101,12 +153,11 @@ class Login extends BaseController
             
             if ($loggedCustomer) {
                 array_push($_SESSION['customer'],$loggedCustomer->id);
-                print_r($_SESSION['customer']);
                 $data['userdata'] = $this->customermodel->find($loggedCustomer->id);
-                //print_r($data1);
                 echo view('templates/header',$data);
-		        echo view('customerDetail_view',$data);
-                echo view('templates/footer'); 
+		        echo view('customer/customerDetail_view',$data);
+                echo view('templates/footer');
+                
             
             }
             else {  
@@ -116,7 +167,7 @@ class Login extends BaseController
                 $data['categories'] = $this->model->getCategories();
                 $data['themecategories'] = $this->thememodel->getThemeCategories();
                 echo view('templates/header',$data);
-		        echo view('customer_view',$data);
+		        echo view('customer/customer_view',$data);
                 echo view('templates/footer');
             }
         }

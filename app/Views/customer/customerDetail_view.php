@@ -1,7 +1,6 @@
 <div class="centerminheight customer">
     <div class="row col">
         <h1>Hei <?=$userdata['firstname']?></h1>
-        
     </div> 
     <div class="row">
         <div class="col-md-6">
@@ -15,7 +14,9 @@
                     <p>Postinumero: <?=$userdata['postcode']?></p> 
                     <p>Postitoimipaikka: <?=$userdata['town']?></p>
                     <p>Puhelinnumero: <?=$userdata['phone']?></p>
-                    <button class="btn mb-2">Muuta yhteystietoja</button>
+                    <form action="<?= site_url('customer/customerEdit/')?>">
+                    <button class="btn mb-2">Muuta yhteystietojasi</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -29,10 +30,5 @@
                 </div>
             </div>
         </div>
-        
-        
-        </div>
-
-        
     </div>
 </div>

@@ -22,7 +22,7 @@
                 echo $message;
             }
         ?>
-        <form action="<?= site_url('login/loginCheck/')?>" method="post">
+        <form action="<?= site_url('customer/loginCheck/')?>" method="post">
             <div class="form-group row">
                 <label for="inputEmail" class="col-sm-3 col-form-label pr-1">Sähköposti<span class="required">*</span></label>
                 <div class="col-sm-8">
@@ -42,7 +42,7 @@
         <h3>Uudet asiakkaat</h3>
         <hr>
         <p>Luomalla tilin pääset hallinnoimaan ja seuraamaan tilauksiasi</p>
-        <form action="<?=site_url('login/register')?>" method="post">
+        <form action="<?=site_url('customer/register')?>" method="post">
         <button class="btn" href="">Luo tili</button>
         </form>
         </div>
