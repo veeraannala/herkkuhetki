@@ -74,6 +74,9 @@ if (++$i == 1) break; } ?>
                     <td class="m-3"><?= anchor('admin/showOrder/' . $sortedmonthorder['id'], ' <button>Näytä tilaus</button>')?></td>
                     <td class="m-3"><?= anchor('admin/updateStatus/' . $sortedmonthorder['id'], ' <button>Muokkaa tilaa</button>')?></td>
                 </tr>            
-                <?php endforeach; ?>     
+                <?php endforeach; ?>
         </table>
+        <form method="post" action="<?= site_url('admin/showOrders/')?>">
+        <button class="btn btn-danger">Takaisin</button>
+        </form>
     </div>

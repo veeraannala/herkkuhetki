@@ -58,3 +58,8 @@ foreach ($orderdetails as $orderdetail) {
     </div>
     <h3 style="padding-left: 15px;">Tilauksen loppusumma: <?php echo number_format($total,2)?>€</h3>
 </div>
+<div>
+    <form method="post" action="<?= site_url('admin/showOrders/')?>">
+    <button class="btn btn-danger mb-2">Takaisin</button>
+    </form>
+</div>

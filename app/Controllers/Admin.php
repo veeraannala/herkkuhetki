@@ -47,6 +47,11 @@ class Admin extends BaseController
             echo view('admin/register_view');
             echo view('admin/adminFooter');
     }
+    public function adminorders(){
+        echo view('admin/adminHeader');
+        echo view('admin/orders_view');
+        echo view('admin/adminFooter');
+}
 
     public function adminRegistration() {
         $validation =  \Config\Services::validation();
@@ -319,13 +324,13 @@ class Admin extends BaseController
         $data['orders'] = $this->ordermodel->getOrders();
 
         echo view('admin/adminHeader');
-		echo view('admin/Orders_view', $data);
+		echo view('admin/orders_view', $data);
         echo view('admin/adminFooter');
     }
     public function showOrder($id) {
         $data['orderdetails'] = $this->ordermodel->getOrderDetails($id);
         echo view('admin/adminHeader');
-		echo view('admin/Order_view', $data);
+		echo view('admin/order_view', $data);
         echo view('admin/adminFooter');
     }
     public function updateStatus($id) {
@@ -363,11 +368,21 @@ class Admin extends BaseController
             echo view('admin/adminFooter');
     }
 
-    public function editReview($id) {
-        $data['reviews'] = $this->reviewmodel->ShowReviews($id);
+    //prints all reviews to admin page
+    public function editReview() {
+        $data['reviews'] = $this->reviewmodel->allReviews();
 
         echo view('admin/adminHeader');
         echo view('admin/editReview_view', $data);
         echo view('admin/adminFooter');
     }
+
+    // when you clik the "poista" button, removes that review 
+    public function deleteReview($id) {
+        $re_model = new ReviewModel();
+        $re_model->delete($id);
+
+        return redirect()->to(previous_url());
+    }
+    
 }

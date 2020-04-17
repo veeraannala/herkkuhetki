@@ -41,8 +41,8 @@
 
                     </tr>
                     <script type="text/javascript">
-                    <?php
-                        echo "var phpsum = '{$sum}';" ?>
+                    < ? php
+                    echo "var phpsum = '{$sum}';" ? >
                     </script>
                     <tr>
                         <th>Summa yhteensä</th>
@@ -87,6 +87,7 @@
         </div>
 
         <div class="col-6">
+            <?php if (!isset($_SESSION['customer'])) {?>
             <div>
                 <?=\Config\Services::validation()->listErrors(); ?>
             </div>
@@ -163,8 +164,69 @@
                 <div class="col-12">
                     <button type="submit" class="btn float-right" id="order">Tilaa tuotteet</button>
                 </div>
-
             </div>
+            <?php } else { ?>
+            <div class="form-row">
+            <?php 
+                $customer = ($_SESSION['customer']); 
+                $customer[0];
+                foreach ($customers as $cust):
+                    if ($cust['id'] === $customer[0]) {
+
+                        
+                ?>
+                <div class="form-group col-md-6">
+                    <label for="firstname">Etunimi</label>
+                    <input type="text" class="form-control" id="firstname" name="firstname" value="<?=$cust['firstname']?>"
+                        required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="lastname">Sukunimi</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" value="<?=$cust['lastname']?>"
+                        required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-12">
+                    <label for="email">Sähköpostiosoite</label>
+                    <input type="email" class="form-control" id="email" name="email" value="<?=$cust['email']?>"
+                        required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-12">
+                    <label for="phone">Puhelinnumero</label>
+                    <input type="text" class="form-control" id="phone" name="phone" value="<?=$cust['phone']?>"
+                        required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-12">
+                    <label for="address">Osoite</label>
+                    <input type="text" class="form-control" id="address" name="address" value="<?=$cust['address']?>" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="postcode">Postinumero</label>
+                    <input type="text" class="form-control" id="postcode" name="postcode" value="<?=$cust['postcode']?>"
+                        required>
+                </div>
+                <div class="form-group col-md-8">
+                    <label for="town">Postitoimipaikka</label>
+                    <input type="text" class="form-control" id="town" name="town" value="<?=$cust['town']?>"
+                        required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-12">
+                    <button type="submit" class="btn float-right" id="order">Tilaa tuotteet</button>
+                </div>
+            </div>
+            <?php 
+                }
+            endforeach;
+            } ?>
         </div>
     </form>
 </div>

@@ -31,4 +31,7 @@
                 </tr>            
                 <?php endforeach; ?>     
         </table>
+        <form method="post" action="<?= site_url('admin/showOrders/')?>">
+        <button class="btn btn-danger">Takaisin</button>
+        </form>
     </div>

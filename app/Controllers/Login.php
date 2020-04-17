@@ -46,9 +46,10 @@ class Login extends BaseController
         $validation =  \Config\Services::validation();
         $data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
-
+        
         if (!$this->validate($validation->getRuleGroup('customerRegisterValidate')))
         {
+            
             echo view('templates/header,',$data);
             echo view('customerRegister_view');
             echo view('templates/footer');;
@@ -56,14 +57,14 @@ class Login extends BaseController
         else
         {
             $this->customermodel->save([
+                'email' => $this->request->getVar('email'),
+                'password' => password_hash($this->request->getPost('password'),PASSWORD_DEFAULT),
                 'firstname' => $this->request->getVar('firstname'),
                 'lastname' => $this->request->getVar('lastname'),
                 'address' => $this->request->getVar('address'),
                 'postcode' => $this->request->getVar('postcode'),
                 'town' => $this->request->getVar('town'),
-                'email' => $this->request->getVar('email'),
-                'phone' => $this->request->getVar('phone'),
-                'password' => password_hash($this->request->getVar('password'),PASSWORD_DEFAULT),
+                'phone' => $this->request->getVar('phone')
             ]);
             return redirect()->to('/login/index');
         }
@@ -73,6 +74,7 @@ class Login extends BaseController
         $validation =  \Config\Services::validation();
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
+        $_SESSION['customer'] = array();
         
         if (!$this->validate($validation->getRuleGroup('customerLoginValidate')))
         {
@@ -90,13 +92,10 @@ class Login extends BaseController
             );
             
             if ($loggedCustomer) {
-                $_SESSION['customer'] = $loggedCustomer;
-                $userdata = [];
-                foreach ($_SESSION['customer'] as $values) {
-                    array_push($userdata, $values);
-                }
-                $data['userdata'] = $userdata;
-               
+                array_push($_SESSION['customer'],$loggedCustomer->id);
+                print_r($_SESSION['customer']);
+                $data['userdata'] = $this->customermodel->find($loggedCustomer->id);
+                //print_r($data1);
                 echo view('templates/header',$data);
 		        echo view('customerDetail_view',$data);
                 echo view('templates/footer'); 
@@ -104,9 +103,10 @@ class Login extends BaseController
             }
             else {  
                 $data = [
-                'message' => 'sähköposti tai salasana on väärin'
+                    'message' => 'Käyttäjänimi tai salasana on väärin'
                 ];
-               
+                $data['categories'] = $this->model->getCategories();
+                $data['themecategories'] = $this->thememodel->getThemeCategories();
                 echo view('templates/header',$data);
 		        echo view('customer_view',$data);
                 echo view('templates/footer');
