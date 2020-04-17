@@ -13,9 +13,9 @@
                     <td class="m-3"><?=$revi['product_id'] ?></td>
                     <td><?= date_format (new DateTime($revi['reviewDate']), 'd/m/Y');?></td>
                     <td class="m-3"><?=$revi['review'] ?></td>
-                    <td class="m-3"><?=$revi['stars'] ?></td>
-                    <td class="m-3"><?= anchor('admin/alterReview/' . $revi['id'], ' <button>Muokkaa</button>')?></td>
-                    <td class="m-3"><?= anchor('admin/deleteReview/' . $revi['id'], ' <button>Poista</button>')?></td>
+                    <td><?= $revi['stars']?> <i class="fa fa-star star" aria-hidden="true"></i></td>
+                    <td class="m-3"><?= anchor('admin/alterReview/' . $revi['product_id'], ' <button>Muokkaa</button>')?></td>
+                    <td class="m-3"><?= anchor('admin/deleteReview/' . $revi['product_id'], ' <button>Poista</button>')?></td>
                 </tr>
                 
               
