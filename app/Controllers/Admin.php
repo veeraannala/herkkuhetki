@@ -321,8 +321,8 @@ class Admin extends BaseController
             echo view('admin/adminFooter');
     }
 
-    public function editReview($id) {
-        $data['reviews'] = $this->reviewmodel->ShowReviews($id);
+    public function editReview() {
+        $data['reviews'] = $this->reviewmodel->allReviews();
 
         echo view('admin/adminHeader');
         echo view('admin/editReview_view', $data);
