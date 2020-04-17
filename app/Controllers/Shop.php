@@ -4,6 +4,7 @@ use App\Models\ThemeModel;
 use App\Models\ProductModel;
 use App\Models\NewsletterModel;
 use App\Models\ReviewModel;
+use App\Models\CustomerModel;
 
 class Shop extends BaseController
 {
@@ -21,6 +22,7 @@ class Shop extends BaseController
 		$this->prodmodel = new ProductModel();
 		$this->newsmodel = new NewsletterModel();
 		$this->reviewmodel = new ReviewModel();
+		$this->customermodel = new CustomerModel();
 	}
 
 	public function index()
@@ -46,6 +48,34 @@ class Shop extends BaseController
 		echo view('templates/header',$data);
 		echo view('gdprregister');
         echo view('templates/footer');
+	}
+
+	public function customerAccount() {
+		$data['categories'] = $this->model->getCategories();
+		$data['themecategories'] = $this->thememodel->getThemeCategories();
+		
+        if (isset($_SESSION['customer'])) {
+			$customerid=null;
+			$data['userdata'] = null;
+			foreach ($_SESSION['customer'] as $key => $value):
+				$customerid = $value;
+			endforeach;
+			$customers = $this->customermodel->getCustomer();
+			//print_r($customers);
+			foreach ($customers as $customer):
+				if ($customerid === $customer['id']) {
+                    $data['userdata'] = $customer;
+                }
+			endforeach;
+
+			echo view('templates/header',$data);
+			echo view('customerDetail_view',$data);
+			echo view('templates/footer'); 
+		
+
+        }else {
+			return redirect()->to('/login');
+		}
 	}
 
 	public function show_product($id)
