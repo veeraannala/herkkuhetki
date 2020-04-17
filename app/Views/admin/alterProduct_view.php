@@ -2,6 +2,11 @@
 <div class="row">
     <div class="col-6 mb-3">
         <h1>Muokkaa tuotetta</h1>
+        <?php if(isset($errorname)) { ?>
+            <p class="errormessage">Virhe tuotteen lisäämisessä. Tuotteen nimi ei voi olla sama kuin jo olemassa olevalla tuotteella.</p>
+        <?php } else if(isset($errorimage)) {?>
+            <p class="errormessage">Virhe tuotteen lisäämisessä. Kuvan sallitut muodot ovat .JPG, .JPEG, .GIF, .PNG ja maksimikoko on 4MB.</p>
+        <?php } ?>
 
         <form method="post" enctype="multipart/form-data" action="<?= site_url('admin/changeProduct/')?>">
             <div class="form-group">

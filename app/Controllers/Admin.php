@@ -122,8 +122,7 @@ class Admin extends BaseController
         //  if(!isset($_SESSION['username'])) {
         //      return redirect()->to('/admin/adminlogin');
         //  }
-        $data['error'] = null;
-        $data['errorName'] = null;
+        
         $data['categories'] = $this->categorymodel->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
 
@@ -187,8 +186,6 @@ class Admin extends BaseController
     public function addProduct() {
     //saves new product to the database. replaces empty image with imagenotfound-file
         
-        $data['error'] = null;
-        $data['errorName'] = null;
 
         $newproduct = [
             'name' => $this->request->getVar('name'),
@@ -208,7 +205,7 @@ class Admin extends BaseController
             'name' => 'is_unique[product.name]'
         ])) {
             //error
-            $data['errorName'] = "Virhe tuotteen lisäämisessä. Tuotteella ei voi olla samaa nimeä kuin jollain toisella tuotteella";
+            $data['errorname'] = $this->validator->getErrors();
             $data['categories'] = $this->categorymodel->getCategories();
             $data['themecategories'] = $this->thememodel->getThemeCategories();
             echo view('admin/adminHeader');
@@ -222,9 +219,9 @@ class Admin extends BaseController
                 'mime_in[image,image/jpg,image/jpeg,image/gif,image/png]',
                 'max_size[image,4096]'
             ]
-        ])) {
+            ])) {
             // error
-            $data['error'] = "Virhe tuotteen lisäämisessä. Kuva voi olla max 4MB ja muodossa .JPG, .JPEG, .GIF tai .PNG";
+            $data['errorimage'] = $this->validator->getErrors();
             $data['categories'] = $this->categorymodel->getCategories();
             $data['themecategories'] = $this->thememodel->getThemeCategories();
             echo view('admin/adminHeader');
@@ -291,33 +288,56 @@ class Admin extends BaseController
             $data['theme_id'] = NULL;
         }
         
-        if ($_FILES['image']['size'] > 0) {
+        if (!$this->validate([
+            // checks if new product name is unique
+            'newname' => 'is_unique[product.name]'
+            ])) {
+            //error
+            $pagedata['errorname'] = $this->validator->getErrors();
+            $product = $this->prodmodel->getProduct($id);
+            $pagedata['product'] = $product[0];
+            $pagedata['categories'] = $this->categorymodel->getCategories();
+            $pagedata['themecategories'] = $this->thememodel->getThemeCategories();
+            $pagedata['id'] = $id;
+            echo view('admin/adminHeader');
+		    echo view('admin/alterProduct_view', $pagedata);
+            echo view('admin/adminFooter');
+        }
+        else if ($_FILES['image']['size'] > 0) {
             if (!$this->validate([
              'image' => [
-                 'uploaded[image]',
-                 'mime_in[image,image/jpg,image/jpeg,image/gif,image/png]',
-                 'max_size[image,4096]'
-             ]
-         ])) {
-                 //virhe
-             } else {
+                'uploaded[image]',
+                'mime_in[image,image/jpg,image/jpeg,image/gif,image/png]',
+                'max_size[image,4096]'
+                ]
+            ])) {
+                //error
+                $pagedata['errorimage'] = $this->validator->getErrors();
+                $product = $this->prodmodel->getProduct($id);
+                $pagedata['product'] = $product[0];
+                $pagedata['categories'] = $this->categorymodel->getCategories();
+                $pagedata['themecategories'] = $this->thememodel->getThemeCategories();
+                $pagedata['id'] = $id;
+                echo view('admin/adminHeader');
+		        echo view('admin/alterProduct_view', $pagedata);
+                echo view('admin/adminFooter');
+            } else {
                  // works
-                 $image = $this->request->getFile('image');
-                 $path = APPPATH;
-                 $path = str_replace('app','public/images',$path);
-                 $image->move($path);
+                $image = $this->request->getFile('image');
+                $path = APPPATH;
+                $path = str_replace('app','public/images',$path);
+                $image->move($path);
  
-                 $data['image'] = 'images/' . $image->getName();
+                $data['image'] = 'images/' . $image->getName();
 
-                 $this->prodmodel->update($id, $data);
+                $this->prodmodel->update($id, $data);
+                return redirect()->to('/admin/editProduct');
              } 
-         } else {
+        } else {
+             //updates data without changing image
             $this->prodmodel->update($id, $data);
-         }
-
-        
-        return redirect()->to('/admin/editProduct');
-
+            return redirect()->to('/admin/editProduct');
+        }
 
     }
     public function showOrders() {
