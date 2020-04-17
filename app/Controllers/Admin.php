@@ -47,6 +47,11 @@ class Admin extends BaseController
             echo view('admin/register_view');
             echo view('admin/adminFooter');
     }
+    public function adminorders(){
+        echo view('admin/adminHeader');
+        echo view('admin/orders_view');
+        echo view('admin/adminFooter');
+}
 
     public function adminRegistration() {
         $validation =  \Config\Services::validation();
@@ -277,13 +282,13 @@ class Admin extends BaseController
         $data['orders'] = $this->ordermodel->getOrders();
 
         echo view('admin/adminHeader');
-		echo view('admin/Orders_view', $data);
+		echo view('admin/orders_view', $data);
         echo view('admin/adminFooter');
     }
     public function showOrder($id) {
         $data['orderdetails'] = $this->ordermodel->getOrderDetails($id);
         echo view('admin/adminHeader');
-		echo view('admin/Order_view', $data);
+		echo view('admin/order_view', $data);
         echo view('admin/adminFooter');
     }
     public function updateStatus($id) {

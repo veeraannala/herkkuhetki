@@ -3,7 +3,7 @@
         <h1>Tehdyt tilaukset:</h1>
         <div style="display: flex;">
         <form class="mr-4" style="float:left; width:30%;" method="post" action="<?= site_url('admin/sortbystatus/')?>">
-            <div class="form-group style="margin-bottom: 0rem;">
+            <div class="form-group" style="margin-bottom: 0rem;">
                 <p>Rajaa tilan mukaan:
                 <select class="form-control" name="status"></p>
                     <option disabled selected>Valitse tila</option>
