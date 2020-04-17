@@ -17,6 +17,14 @@ use CodeIgniter\Model;
 
             return $query->getResultArray();
         }
+
+        public function getCustomer() {
+            $builder = $this->table("customer");
+            $query = $builder->get();
+
+            return $query->getResultArray();
+        }
+
         // Returns user data when user log in.
         public function loginCheck($email,$password) {
             $this->where('email', $email);

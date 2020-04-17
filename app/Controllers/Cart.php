@@ -106,9 +106,9 @@ class Cart extends BaseController
             echo view('cart/cartOrder_view');
             echo view('templates/footer');
         } else {
-            
+            $data['customers'] = $this->customermodel->getCustomer();
             echo view('templates/header', $data);
-            echo view('cart/cartContact_view');
+            echo view('cart/cartContact_view',$data);
             echo view('templates/footer');
         }
     }

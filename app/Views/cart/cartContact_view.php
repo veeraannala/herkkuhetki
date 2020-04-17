@@ -167,47 +167,54 @@
             </div>
             <?php } else { ?>
             <div class="form-row">
-            <?php print_r($_SESSION['customer']); ?>
+            <?php 
+                $customer = ($_SESSION['customer']); 
+                $customer[0];
+                foreach ($customers as $cust):
+                    if ($cust['id'] === $customer[0]) {
+
+                        
+                ?>
                 <div class="form-group col-md-6">
                     <label for="firstname">Etunimi</label>
-                    <input type="text" class="form-control" id="firstname" name="firstname" 
+                    <input type="text" class="form-control" id="firstname" name="firstname" value="<?=$cust['firstname']?>"
                         required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="lastname">Sukunimi</label>
-                    <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Sukunimi"
+                    <input type="text" class="form-control" id="lastname" name="lastname" value="<?=$cust['lastname']?>"
                         required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-12">
                     <label for="email">Sähköpostiosoite</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Sähköpostiosoite"
+                    <input type="email" class="form-control" id="email" name="email" value="<?=$cust['email']?>"
                         required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-12">
                     <label for="phone">Puhelinnumero</label>
-                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Puhelinnumero"
+                    <input type="text" class="form-control" id="phone" name="phone" value="<?=$cust['phone']?>"
                         required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-12">
                     <label for="address">Osoite</label>
-                    <input type="text" class="form-control" id="address" name="address" placeholder="Osoite" required>
+                    <input type="text" class="form-control" id="address" name="address" value="<?=$cust['address']?>" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="postcode">Postinumero</label>
-                    <input type="text" class="form-control" id="postcode" name="postcode" placeholder="Postinumero"
+                    <input type="text" class="form-control" id="postcode" name="postcode" value="<?=$cust['postcode']?>"
                         required>
                 </div>
                 <div class="form-group col-md-8">
                     <label for="town">Postitoimipaikka</label>
-                    <input type="text" class="form-control" id="town" name="town" placeholder="Postitoimipaikka"
+                    <input type="text" class="form-control" id="town" name="town" value="<?=$cust['town']?>"
                         required>
                 </div>
             </div>
@@ -216,7 +223,10 @@
                     <button type="submit" class="btn float-right" id="order">Tilaa tuotteet</button>
                 </div>
             </div>
-            <?php } ?>
+            <?php 
+                }
+            endforeach;
+            } ?>
         </div>
     </form>
 </div>
