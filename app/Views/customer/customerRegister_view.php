@@ -2,7 +2,7 @@
     <div>
     <?=\Config\Services::validation()->listErrors(); ?>
     </div>
-  <form action="<?= site_url('login/customerRegistration/')?>" method="post">
+  <form action="<?= site_url('customer/customerRegistration/')?>" method="post">
     <div class="form-row mt-2">
         <div class="form-group col-sm-6 col-lg-3">
           <label for="email">Sähköposti<span class="required">*</span></label>
@@ -15,8 +15,8 @@
           <input type="password" class="form-control" name="password" placeholder="Salasana" required>
         </div>
         <div class="form-group col-sm-6 col-lg-3">
-          <label for="inputPassword4">Salasana uudestaan<span class="required">*</span></label>
-          <input type="password" class="form-control" name="passconfirm" placeholder="Salasana uudestaan" required>
+          <label for="inputPassword4">Vahvista salasana<span class="required">*</span></label>
+          <input type="password" class="form-control" name="passconfirm" placeholder="Vahvista salasana" required>
         </div>
     </div>
     <div class="form-row">
@@ -42,7 +42,7 @@
     <div class="form-row">
     <div class="form-group col-sm-6 col-lg-3">
         <label for="town">Postitoimipaikka<span class="required">*</span></label>
-        <input type="text" class="form-control" name="town" placeholder="Postitoimipaikka">
+        <input type="text" class="form-control" name="town" placeholder="Postitoimipaikka" required>
       </div>
       <div class="form-group col-sm-6 col-lg-3">
           <label for="phone">Puhelin</label>
