@@ -45,7 +45,7 @@
             <h4>Kirjaudu sisään</h4>
         </div>
         <div>
-            <form action="/" method="post">
+            <form action="/cart/loginCheck" method="post">
                 <div class="form-group">
                     <label>Sähköposti</label><span class="required">*</span>
                     <input class="form-control" name="username" placeholder="Sähköposti" maxlength="30">

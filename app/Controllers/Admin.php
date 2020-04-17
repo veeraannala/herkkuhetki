@@ -4,6 +4,7 @@ use App\Models\CategoryModel;
 use App\Models\ProductModel;
 use App\Models\ThemeModel;
 use App\Models\OrderModel;
+use App\Models\ReviewModel;
 
 class Admin extends BaseController
 {
@@ -13,6 +14,7 @@ class Admin extends BaseController
     private $prodmodel = null;
     private $adminmodel = null;
     private $ordermodel = null;
+    private $reviewmodel = null;
 
 
     public function __construct() {
@@ -23,6 +25,7 @@ class Admin extends BaseController
         $this->prodmodel = new ProductModel();
         $this->adminmodel = new AdminModel();
         $this->ordermodel = new OrderModel();
+        $this->reviewmodel = new ReviewModel();
     }
     
     public function index() {
@@ -317,4 +320,22 @@ class Admin extends BaseController
             echo view('admin/sortedordersbymonth',$data);
             echo view('admin/adminFooter');
     }
+
+    //prints all reviews to admin page
+    public function editReview() {
+        $data['reviews'] = $this->reviewmodel->allReviews();
+
+        echo view('admin/adminHeader');
+        echo view('admin/editReview_view', $data);
+        echo view('admin/adminFooter');
+    }
+
+    // when you clik the "poista" button, removes that review 
+    public function deleteReview($id) {
+        $re_model = new ReviewModel();
+        $re_model->delete($id);
+
+        return redirect()->to(previous_url());
+    }
+    
 }

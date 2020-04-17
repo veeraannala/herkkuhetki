@@ -50,6 +50,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?=site_url('admin/showOrders/')?>">Tilaukset</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?=site_url('admin/editReview/')?>">Arvostelut</a>
+                    </li>
 
 
             </div>
