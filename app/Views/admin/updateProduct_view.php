@@ -2,7 +2,13 @@
     <div class="col-6 mb-3">
         <h1>Lisää tuotteita</h1>
 
-        <p>Lisää tuotteita</p>
+
+        <?php if ($error !== null) {?>
+            <p class="errormessage"><?=$error ?></p>
+        <?php } ?>
+        <?php if ($errorName !== null) {?>
+            <p class="errormessage"><?=$errorName ?></p>
+        <?php } ?>
         
         <form method="post" enctype="multipart/form-data" action="<?= site_url('admin/addProduct/')?>">
             <div class="form-group">
