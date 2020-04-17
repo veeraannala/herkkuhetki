@@ -5,6 +5,7 @@ use App\Models\ProductModel;
 use App\Models\NewsletterModel;
 use App\Models\ReviewModel;
 use App\Models\CustomerModel;
+use App\Models\OrderModel;
 
 class Shop extends BaseController
 {
@@ -12,6 +13,8 @@ class Shop extends BaseController
 	private $thememodel = null;
 	private $prodmodel = null;
 	private $reviewmodel = null;
+	private $customermodel = null;
+	private $ordermodel = null;
 
 	public function __construct()
 	{
@@ -23,6 +26,7 @@ class Shop extends BaseController
 		$this->newsmodel = new NewsletterModel();
 		$this->reviewmodel = new ReviewModel();
 		$this->customermodel = new CustomerModel();
+		$this->ordermodel = new OrderModel();
 	}
 
 	public function index()
@@ -57,6 +61,7 @@ class Shop extends BaseController
         if (isset($_SESSION['customer'])) {
 			$customerid=null;
 			$data['userdata'] = null;
+			$data['orders'] = $this->ordermodel->getOrders();
 			foreach ($_SESSION['customer'] as $key => $value):
 				$customerid = $value;
 			endforeach;

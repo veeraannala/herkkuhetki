@@ -1,8 +1,8 @@
 <div class="centerminheight customer">
     <div class="row col">
         <h1>Hei <?=$userdata['firstname']?></h1>
-        
-    </div> 
+
+    </div>
     <div class="row">
         <div class="col-md-6">
             <hr>
@@ -12,7 +12,7 @@
                     <p>Nimi: <?=$userdata['firstname']. ' '. $userdata['lastname']?></p>
                     <p>Sähköposti: <?=$userdata['email']?></p>
                     <p>Osoite: <?=$userdata['address']?></p>
-                    <p>Postinumero: <?=$userdata['postcode']?></p> 
+                    <p>Postinumero: <?=$userdata['postcode']?></p>
                     <p>Postitoimipaikka: <?=$userdata['town']?></p>
                     <p>Puhelinnumero: <?=$userdata['phone']?></p>
                     <button class="btn mb-2">Muuta yhteystietoja</button>
@@ -24,15 +24,47 @@
             <div class="card customercard mb-3 col-12">
                 <div class="card-body text-dark ">
                     <h5 class="card-title">Edelliset tilauksesi</h5>
-                   
-                    <button class="btn mb-2">Katsele tilauksia</button>
+                    <table class="table table-striped table-sm">
+                        <tr>
+                            <th>Tilauspäivämäärä</th>
+                            <th>Tila</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+
+                        <?php foreach ($orders as $order): 
+
+                        if ($order['customer_id'] === $userdata['id']) {
+                            ?>
+                        <tr>
+
+                            <td class="m-3"><?=$order['orderDate'] ?></td>
+                            <td class="m-3">
+                            <?php
+                            if ($order['status'] === 'shipped') {
+                                 $order['status'] = 'Toimitettu';
+                            }
+                            if ($order['status'] === 'ordered') {
+                                $order['status'] = 'Tilattu';
+                            }
+                            if ($order['status'] === 'paid') {
+                                $order['status'] = 'Maksettu';
+                            } ?><?=$order['status'] ?></td>
+                            <td class="m-3">
+                                <?= anchor('login/showOrder/' . $order['id'], ' <button>Näytä tilaus</button>')?></td>
+                           
+                        </tr>
+                        <?php
+                        }
+                    endforeach; ?>
+                    </table>
                 </div>
             </div>
         </div>
-        
-        
-        </div>
 
-        
+
     </div>
+
+
+
 </div>

@@ -3,6 +3,7 @@ use App\Models\CategoryModel;
 use App\Models\ThemeModel;
 use App\Models\ProductModel;
 use App\Models\CustomerModel;
+use App\Models\OrderModel;
 class Login extends BaseController
 {
 
@@ -10,6 +11,7 @@ class Login extends BaseController
 	private $thememodel = null;
 	private $prodmodel = null;
     private $customermodel = null;
+    private $ordermodel = null;
     
 
     public function __construct() {
@@ -19,6 +21,7 @@ class Login extends BaseController
 		$this->thememodel = new ThemeModel();
         $this->prodmodel = new ProductModel();
         $this->customermodel = new CustomerModel();
+        $this->ordermodel = new OrderModel();
 
     }
 
@@ -101,13 +104,24 @@ class Login extends BaseController
             
             if ($loggedCustomer) {
                 array_push($_SESSION['customer'],$loggedCustomer->id);
-                print_r($_SESSION['customer']);
-                $data['userdata'] = $this->customermodel->find($loggedCustomer->id);
+
+                $data['orders'] = $this->ordermodel->getOrders();
                 //print_r($data1);
+                $data['userdata'] = null;
+                foreach ($_SESSION['customer'] as $key => $value):
+                    $customerid = $value;
+                endforeach;
+                $customers = $this->customermodel->getCustomer();
+                //print_r($customers);
+                foreach ($customers as $customer):
+                    if ($customerid === $customer['id']) {
+                        $data['userdata'] = $customer;
+                    }
+                endforeach;
+    
                 echo view('templates/header',$data);
-		        echo view('customerDetail_view',$data);
+                echo view('customerDetail_view',$data);
                 echo view('templates/footer'); 
-            
             }
             else {  
                 $data = [
@@ -120,6 +134,15 @@ class Login extends BaseController
                 echo view('templates/footer');
             }
         }
+    }
+
+    public function showOrder($id) {
+        $data['categories'] = $this->model->getCategories();
+        $data['themecategories'] = $this->thememodel->getThemeCategories();
+        $data['orderdetails'] = $this->ordermodel->getOrderDetails($id);
+        echo view('templates/header',$data);
+        echo view('customerorder_view', $data);
+        echo view('templates/footer');
     }
 
     public function logout() {

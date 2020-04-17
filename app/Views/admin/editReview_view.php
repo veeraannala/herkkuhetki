@@ -21,7 +21,8 @@
                         <td><?=$prod['name']?></td>
                         <td><?= date_format (new DateTime($revi['reviewDate']), 'd/m/Y H:i:s');?></td>
                         <td class="m-3"><?=$revi['review'] ?></td>
-                        <td><?= $revi['stars']?> <i class="fa fa-star star" aria-hidden="true"></i></td>
+                        
+                        <td><?php for($j=0; $j < $revi['stars']; $j++){print('<i class="fa fa-star star" aria-hidden="true">');}?></td>
                         <td class="m-3"><?= anchor('admin/deleteReview/' . $revi['id'], ' <button>Poista</button>')?></td>
                     </tr>
                     
