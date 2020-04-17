@@ -15,7 +15,7 @@
           <input type="password" class="form-control" name="password" placeholder="Salasana" required>
         </div>
         <div class="form-group col-sm-6 col-lg-3">
-          <label for="inputPassword4">Salasana<span class="required">*</span></label>
+          <label for="inputPassword4">Salasana uudestaan<span class="required">*</span></label>
           <input type="password" class="form-control" name="passconfirm" placeholder="Salasana uudestaan" required>
         </div>
     </div>

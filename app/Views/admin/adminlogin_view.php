@@ -2,12 +2,12 @@
     <div class="col-md-4">
             <div>
             <?=\Config\Services::validation()->listErrors(); ?>
+            </div>
             <?php
             if(isset($message)) {
                 echo $message;
             }
             ?>
-            </div>
             <form action="/admin/admincheck" method="post">
                 <div class="form-group">
                     <label>Adminkäyttäjä</label><span class="required">*</span>

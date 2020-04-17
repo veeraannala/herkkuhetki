@@ -125,7 +125,7 @@ class Shop extends BaseController
 			
 			# lähetetään taulukko $keywords searchLike metodille.
 			$data['searchresult'] = $this->prodmodel->searchLike($keywords);
-			$data1['keywords'] = $keywords;
+			
 			
 			if (!empty($data)) {
 			echo view('templates/header',$data);
