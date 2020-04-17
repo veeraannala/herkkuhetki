@@ -27,8 +27,8 @@
 
     <div class="col-md-6">
         <h3>Maksa tästä:</h3>
-        <form class="row" method="post" action="<?= site_url('cart/payconfirm/')?>">
-            <button class="btn" href="cart/payconfirm">Klik</button>
+        <form class="row" method="post" action="<?= site_url('cart/payconfirm/' . $orderid)?>">
+            <button class="btn">Klik</button>
         </form>
     </div>
 
