@@ -35,6 +35,7 @@ class Shop extends BaseController
             $_SESSION['basket'] = array();
 		} 
 		
+		$data['title'] = "Herkkuhetki";
 		$data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
 		$data['product'] = $this->prodmodel->ShowProduct();
@@ -47,6 +48,7 @@ class Shop extends BaseController
 
 	public function gdprregister(){
 
+		$data['title'] = "Herkkuhetki";
 		$data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
 		echo view('templates/header',$data);
@@ -60,6 +62,7 @@ class Shop extends BaseController
 	{
 		//Shows detailed information of one product. 
 		 
+		$data['title'] = "Herkkuhetki";
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
 		$data['product'] = $this->prodmodel->getProduct($id);
@@ -101,6 +104,7 @@ class Shop extends BaseController
 	public function show_methods()
 	{
 
+		$data['title'] = "Herkkuhetki";
 		$data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
 		echo view('templates/header',$data);
@@ -126,6 +130,7 @@ class Shop extends BaseController
 	*/
 	public function search_product(){
 
+		$data['title'] = "Herkkuhetki - haku";
 		$data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
 		$data['product'] = $this->prodmodel->ShowProduct();
@@ -165,6 +170,7 @@ class Shop extends BaseController
 	//adds email to newsletter database
 	public function addToNewsletter(){
 
+		$data['title'] = "Uutiskirje";
 		$data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
 		//$data['product'] = $this->prodmodel->ShowProduct();
@@ -190,6 +196,7 @@ class Shop extends BaseController
 	//saves new review to database
 	public function review($id) {
 		
+		$data['title'] = "Herkkuhetki";
 		$data['product'] = $this->prodmodel->getProduct($id);
 		$id = $this->prodmodel->showProduct($id);
 		
@@ -204,6 +211,7 @@ class Shop extends BaseController
 	// gets information of all reviews 
 	public function showReview($product_id) {
 
+		$data['title'] = "Herkkuhetki";
 		$data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
 		$data['review'] = $this->reviewmodel->ShowReviews($product_id);

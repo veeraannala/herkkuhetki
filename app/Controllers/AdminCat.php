@@ -27,6 +27,7 @@ class AdminCat extends BaseController
 
     public function updateCategory()
     {
+        $data['title'] = "Ylläpito - muokkaa kategoriaa";
         //For category update. Shows all categories and gives a change to update, delete or add new categories.
         //If cannot delete, gives an error message.
         
@@ -36,7 +37,7 @@ class AdminCat extends BaseController
 
         $data['categories'] = $this->categorymodel->getCategories();
        
-        echo view('admin/adminHeader');
+        echo view('admin/adminHeader', $data);
         echo view('admin/updateCategory_view', $data);
         echo view('admin/adminFooter');
     }
@@ -44,11 +45,11 @@ class AdminCat extends BaseController
     public function updateCat($id)
     {
         //Shows one category to update name and parent category
-
+        $data['title'] = "Ylläpito - muokkaa kategoriaa";
         $data['categories'] = $this->categorymodel->getCategories();
         $data['id'] = $id;
 
-        echo view('admin/adminHeader');
+        echo view('admin/adminHeader', $data);
         echo view('admin/updateCat_view', $data);
         echo view('admin/adminFooter');
     }
@@ -70,7 +71,7 @@ class AdminCat extends BaseController
     public function deleteCat($categoryID)
     {
         //Deletes chosen category or gives an error message if cannot delete
-
+        $data['title'] = "Ylläpito - poista kategoria";
         $data['categories'] = $this->categorymodel->getCategories();
         try {
             $category_model = new CategoryModel();
@@ -78,7 +79,7 @@ class AdminCat extends BaseController
             return redirect()->to('/admin/updateCategory');
         } catch (\Exception $e) {
             $data['errormessage'] = ($e->getMessage());
-            echo view('admin/adminHeader');
+            echo view('admin/adminHeader', $data);
             echo view('admin/updateCategory_view', $data);
             echo view('admin/adminFooter');
         }
@@ -87,11 +88,11 @@ class AdminCat extends BaseController
     public function insertCat($parentid)
     {
         // Shows view where user gives name to new subcategory
-
+        $data['title'] = "Ylläpito - lisää kategoria";
         $data['categories'] = $this->categorymodel->getCategories();
         $data['id'] = $parentid;
 
-        echo view('admin/adminHeader');
+        echo view('admin/adminHeader', $data);
         echo view('admin/insertCat_view', $data);
         echo view('admin/adminFooter');
     }

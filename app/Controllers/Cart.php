@@ -25,6 +25,7 @@ class Cart extends BaseController
         if (!isset($_SESSION['basket'])) {
             $_SESSION['basket'] = array();
         }
+        $data['title'] = "Ostoskori";
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         $data['product'] = $this->prodmodel->ShowProduct();
@@ -93,7 +94,8 @@ class Cart extends BaseController
 
     //shows all products, and gives user choice to log in or order without logging in. If user is already logged in, skips this stage
     public function checkout()
-    {            
+    {          
+        $data['title'] = "Tilaus";  
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         $data['product'] = $this->prodmodel->ShowProduct();
@@ -106,6 +108,7 @@ class Cart extends BaseController
             echo view('cart/cartOrder_view');
             echo view('templates/footer');
         } else {
+            $data['title'] = "Tilaus";
             $data['customers'] = $this->customermodel->getCustomer();
             echo view('templates/header', $data);
             echo view('cart/cartContact_view',$data);
@@ -116,6 +119,7 @@ class Cart extends BaseController
     //shows all products, total sum and a form for user to give delivery information
     public function custContact()
     {
+        $data['title'] = "Tilaus";
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         $data['product'] = $this->prodmodel->ShowProduct();
@@ -135,6 +139,7 @@ class Cart extends BaseController
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         $data['product'] = $this->prodmodel->ShowProduct();
         $data['basketproducts'] = $this->prodmodel->getBasketproducts($_SESSION['basket']);
+        $data['title'] = "Tilattu";
 
         $sum = 0;
         foreach ($data['basketproducts'] as $product):
@@ -235,6 +240,7 @@ class Cart extends BaseController
 
     public function payconfirm($orderid)
     {
+        $data['title'] = "Tilaus";
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         $data['product'] = $this->prodmodel->ShowProduct();
@@ -252,6 +258,7 @@ class Cart extends BaseController
     //Log in registered customer
     public function loginCheck() {
         $validation =  \Config\Services::validation();
+        $data['title'] = "Ostoskori";
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         $data['product'] = $this->prodmodel->ShowProduct();      
@@ -279,7 +286,7 @@ class Cart extends BaseController
 
             }
             else {
-
+                $data['title'] = "Kirjautuminen epäonnistui";
                 $data['message'] = 'Kirjautuminen epäonnistui';
 
                 echo view('templates/header',$data);

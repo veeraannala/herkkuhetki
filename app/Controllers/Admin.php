@@ -32,34 +32,39 @@ class Admin extends BaseController
         // if(!isset($_SESSION['username'])) {
         //  return redirect()->to('/admin/adminlogin');
         // }
-        echo view('admin/adminHeader');
+        $data['title'] =  "Ylläpito";
+        echo view('admin/adminHeader', $data);
         echo view('admin/admin_view');
         echo view('admin/adminFooter');
     }
 
     public function adminlogin() {
-        echo view('admin/adminHeader');
+        $data['title'] = "Ylläpito - kirjautuminen";
+        echo view('admin/adminHeader', $data);
         echo view('admin/adminlogin_view');
         echo view('admin/adminFooter');
     }
     public function adminregister(){
-            echo view('admin/adminHeader');
-            echo view('admin/register_view');
-            echo view('admin/adminFooter');
+        $data['title'] = "Ylläpito - rekisteröidy";
+        echo view('admin/adminHeader', $data);
+        echo view('admin/register_view');
+        echo view('admin/adminFooter');
     }
     public function adminorders(){
-        echo view('admin/adminHeader');
+        $data['title'] = "Ylläpito - tilaukset";
+        echo view('admin/adminHeader', $data);
         echo view('admin/orders_view');
         echo view('admin/adminFooter');
 }
 
     public function adminRegistration() {
+        $data['title'] = "Ylläpito - rekisteröidy";
         $validation =  \Config\Services::validation();
         //$adminmodel = new AdminModel();
 
         if (!$this->validate($validation->getRuleGroup('adminregistervalidate')))
         {
-            echo view('admin/adminHeader');
+            echo view('admin/adminHeader', $data);
             echo view('admin/register_view');
             echo view('admin/adminFooter');
         }
@@ -69,13 +74,14 @@ class Admin extends BaseController
                 'username' => $this->request->getVar('username'),
                 'password' => password_hash($this->request->getPost('password'),PASSWORD_DEFAULT)
             ]);
-            echo view('admin/adminHeader');
+            echo view('admin/adminHeader', $data);
             echo view('admin/success_view');
             echo view('admin/adminFooter');
         }
     }
 
     public function adminCheck() {
+        $data['title'] = "Ylläpito - kirjautuminen";
         $validation =  \Config\Services::validation();
         //$adminmodel = new AdminModel();
         
@@ -83,7 +89,7 @@ class Admin extends BaseController
         {
             
 
-            echo view('admin/adminHeader');
+            echo view('admin/adminHeader', $data);
             echo view('admin/adminlogin_view');
             echo view('admin/adminFooter');
         }
@@ -104,7 +110,7 @@ class Admin extends BaseController
                 'message' => 'Käyttäjänimi tai salasana on väärin'
                 ];
                
-                echo view('admin/adminHeader');
+                echo view('admin/adminHeader', $data);
                 echo view('admin/adminlogin_view',$data);
                 echo view('admin/adminFooter');
             }
@@ -122,11 +128,11 @@ class Admin extends BaseController
         //  if(!isset($_SESSION['username'])) {
         //      return redirect()->to('/admin/adminlogin');
         //  }
-        
+        $data['title'] = "Ylläpito - lisää tuotteita";
         $data['categories'] = $this->categorymodel->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
 
-        echo view('admin/adminHeader');
+        echo view('admin/adminHeader', $data);
         echo view('admin/updateProduct_view', $data);
         echo view('admin/adminFooter');
         
@@ -135,15 +141,17 @@ class Admin extends BaseController
     public function editProduct() {
 
         //shows all products in one view
+        $data['title'] = "Ylläpito - muokkaa tuotteita";
         $data['products'] = $this->prodmodel->getProductsCat();
         $data['categories'] = $this->categorymodel->getParentCategories();
 
-        echo view('admin/adminHeader');
+        echo view('admin/adminHeader', $data);
         echo view('admin/editProduct_view', $data);
         echo view('admin/adminFooter');
     }
 
     public function editAmount() {
+        $data['title'] = "Ylläpito - tuotteiden määrä";
         $category_model = new CategoryModel();
         $product_model = new ProductModel();
         $theme_model = new ThemeModel();
@@ -151,18 +159,19 @@ class Admin extends BaseController
         $data['products'] = $product_model->showProduct();
 
         //prints views for page + takes the data to the page
-        echo view('admin/adminHeader');
+        echo view('admin/adminHeader', $data);
         echo view('admin/editAmount_view', $data);
         echo view('admin/adminFooter');
     }
 
     public function updateAmo($id) {
         // gets product and its information form product models function
+        $data['title'] = "Ylläpito - tuotteiden määrä";
         $data['products'] = $this->prodmodel->showProduct();
         $data['id'] = $id;
 
         //prints views for page + takes the data to the page
-        echo view('admin/adminHeader');
+        echo view('admin/adminHeader', $data);
 		echo view('admin/updateAmount_view', $data);
         echo view('admin/adminFooter');
 
@@ -185,7 +194,7 @@ class Admin extends BaseController
     
     public function addProduct() {
     //saves new product to the database. replaces empty image with imagenotfound-file
-        
+        $data['title'] = "Ylläpito - lisää tuote";
 
         $newproduct = [
             'name' => $this->request->getVar('name'),
@@ -205,10 +214,11 @@ class Admin extends BaseController
             'name' => 'is_unique[product.name]'
         ])) {
             //error
+            $data['title'] = "Ylläpito - lisää tuote";
             $data['errorname'] = $this->validator->getErrors();
             $data['categories'] = $this->categorymodel->getCategories();
             $data['themecategories'] = $this->thememodel->getThemeCategories();
-            echo view('admin/adminHeader');
+            echo view('admin/adminHeader', $data);
             echo view('admin/updateProduct_view', $data);
             echo view('admin/adminFooter');
         }
@@ -221,10 +231,11 @@ class Admin extends BaseController
             ]
             ])) {
             // error
+            $data['title'] = "Ylläpito - lisää tuote";
             $data['errorimage'] = $this->validator->getErrors();
             $data['categories'] = $this->categorymodel->getCategories();
             $data['themecategories'] = $this->thememodel->getThemeCategories();
-            echo view('admin/adminHeader');
+            echo view('admin/adminHeader', $data);
             echo view('admin/updateProduct_view', $data);
             echo view('admin/adminFooter');
             } else {
@@ -236,12 +247,12 @@ class Admin extends BaseController
 
                 $newproduct['image'] = 'images/' . $image->getName();
                 $this->prodmodel->save($newproduct);
-                return redirect()->to('/admin/updateProduct');
+                return redirect()->to('/admin/editProduct');
             } 
         } else {
             $newproduct['image'] = 'images/imagenotfound.png';
             $this->prodmodel->save($newproduct);
-            return redirect()->to('/admin/updateProduct');
+            return redirect()->to('/admin/editProduct');
         }
 
     }
@@ -260,13 +271,14 @@ class Admin extends BaseController
     
     public function alterProduct($id) {
         //gets chosen product's information from the database so it can be changed
+        $data['title'] = "Ylläpito - muokkaa tuotetta";
         $product = $this->prodmodel->getProduct($id);
         $data['product'] = $product[0];
         $data['categories'] = $this->categorymodel->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         $data['id'] = $id;
 
-        echo view('admin/adminHeader');
+        echo view('admin/adminHeader', $data);
 		echo view('admin/alterProduct_view', $data);
         echo view('admin/adminFooter');
     }
@@ -274,6 +286,7 @@ class Admin extends BaseController
     
     public function changeProduct() {
     //changes product information in the database
+        $data['title'] = "Ylläpito - muokkaa tuotetta";
         $id = $this->request->getVar('id');
         $data = [
             'name' => $this->request->getVar('newname'),
@@ -293,13 +306,14 @@ class Admin extends BaseController
             'newname' => 'is_unique[product.name]'
             ])) {
             //error
+            $data['title'] = "Ylläpito - muuta tuotetta";
             $pagedata['errorname'] = $this->validator->getErrors();
             $product = $this->prodmodel->getProduct($id);
             $pagedata['product'] = $product[0];
             $pagedata['categories'] = $this->categorymodel->getCategories();
             $pagedata['themecategories'] = $this->thememodel->getThemeCategories();
             $pagedata['id'] = $id;
-            echo view('admin/adminHeader');
+            echo view('admin/adminHeader', $data);
 		    echo view('admin/alterProduct_view', $pagedata);
             echo view('admin/adminFooter');
         }
@@ -312,13 +326,14 @@ class Admin extends BaseController
                 ]
             ])) {
                 //error
+                $data['title'] = "Ylläpito - muokkaa tuotetta";
                 $pagedata['errorimage'] = $this->validator->getErrors();
                 $product = $this->prodmodel->getProduct($id);
                 $pagedata['product'] = $product[0];
                 $pagedata['categories'] = $this->categorymodel->getCategories();
                 $pagedata['themecategories'] = $this->thememodel->getThemeCategories();
                 $pagedata['id'] = $id;
-                echo view('admin/adminHeader');
+                echo view('admin/adminHeader', $data);
 		        echo view('admin/alterProduct_view', $pagedata);
                 echo view('admin/adminFooter');
             } else {
@@ -341,23 +356,26 @@ class Admin extends BaseController
 
     }
     public function showOrders() {
+        $data['title'] = "Ylläpito - tilaukset";
         $data['orders'] = $this->ordermodel->getOrders();
 
-        echo view('admin/adminHeader');
+        echo view('admin/adminHeader', $data);
 		echo view('admin/orders_view', $data);
         echo view('admin/adminFooter');
     }
     public function showOrder($id) {
+        $data['title'] = "Ylläpito - tilaus";
         $data['orderdetails'] = $this->ordermodel->getOrderDetails($id);
-        echo view('admin/adminHeader');
+        echo view('admin/adminHeader', $data);
 		echo view('admin/order_view', $data);
         echo view('admin/adminFooter');
     }
     public function updateStatus($id) {
+        $data['title'] = "Ylläpito - tilaukset tila";
         $data['orderstatus'] = $this->ordermodel->getOrderStatus($id);
         $data['testit'] = $this->ordermodel->getstatus();
         $data['id'] = $id;
-        echo view('admin/adminHeader');
+        echo view('admin/adminHeader', $data);
 		echo view('admin/changestatus_view.php', $data);
         echo view('admin/adminFooter');
     }
@@ -370,31 +388,34 @@ class Admin extends BaseController
         return redirect()->to('/admin/showOrders');
     }
     public function sortbystatus () {
+        $data1['title'] = "Ylläpito - tilaukset";
         $data = [
             'status' => $this->request->getVar('status')
         ];
         $data['sortedorders'] = $this->ordermodel->SortOrders($data);
-        echo view('admin/adminHeader');
+        echo view('admin/adminHeader', $data1);
 		echo view('admin/sortedorders',$data);
         echo view('admin/adminFooter');
     }
     public function sortbymonth() {
+        $data1['title'] = "Ylläpito - tilaukset";
         $data = [
             'month' => $this->request->getVar('month')
         ];
             $data['sortedorderbymonth'] = $this->ordermodel->SortOrdersbyMonth($data);
-            echo view('admin/adminHeader');
+            echo view('admin/adminHeader', $data1);
             echo view('admin/sortedordersbymonth',$data);
             echo view('admin/adminFooter');
     }
 
     //prints all reviews to admin page
     public function editReview() {
+        $data['title'] = "Ylläpito - arvostelut";
         $product_model = new ProductModel();
         $data['products'] = $product_model->showProduct();
         $data['reviews'] = $this->reviewmodel->allReviews();
 
-        echo view('admin/adminHeader');
+        echo view('admin/adminHeader', $data);
         echo view('admin/editReview_view', $data);
         echo view('admin/adminFooter');
     }

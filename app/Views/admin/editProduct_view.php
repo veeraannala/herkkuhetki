@@ -2,6 +2,10 @@
     <div class="col">
         <h1>Muokkaa tuotteita</h1>
 
+        <div class="mb-3">
+            <a href="<?=site_url('admin/updateProduct/')?>">Lisää uusi tuote</a>
+        </div>
+
         <?php foreach ($categories as $category):
         ?>
             <h2><?=$category['name'] ?></h2>
