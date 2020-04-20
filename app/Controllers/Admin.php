@@ -128,7 +128,7 @@ class Admin extends BaseController
         //  if(!isset($_SESSION['username'])) {
         //      return redirect()->to('/admin/adminlogin');
         //  }
-        $data['title'] = "Ylläpito - muokkaa tuotetta";
+        $data['title'] = "Ylläpito - lisää tuotteita";
         $data['categories'] = $this->categorymodel->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
 
