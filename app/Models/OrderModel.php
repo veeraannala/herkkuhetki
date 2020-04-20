@@ -42,7 +42,8 @@ use CodeIgniter\Model;
             $query = $builder->get();
             return $query->getResultArray();
         }
-public function SortOrdersbyMonth($data) {
+
+        public function SortOrdersbyMonth($data) {
             $builder = $this->table("orders");
             $builder->select("orders.id as id, status, MONTH(orderDate), orderDate, customer_id, delivery, customer.id as customerid, firstname, lastname");
             $builder->join("Customer", "orders.customer_id = customer.id", "inner");
@@ -50,13 +51,47 @@ public function SortOrdersbyMonth($data) {
             $query = $builder->get();
             return $query->getResultArray();
         }
-        //Returns last order's id number
-        public function getOrderId() {
-            $builder = $this->table("orders");
-            $builder->select("max(id)");
-            $query = $builder->get();
 
-            return $query->getResultArray();
+        public function saveOrder($customer, $order, $cart) {
+            
+            $this->db->transStart();
+            $order['customer_id'] = $this->saveCustomer($customer);
+            if (isset($customer['id'])) {
+                $order['customer_id'] = $customer['id']; 
+            }
+            $this->save($order);
+            $orderid = $this->insertID();
+            $this->saveOrderdetail($orderid, $cart);
+            $this->db->transComplete();
+
+            if ($this->transStatus() === FALSE) {
+                $this->db->transRollback();
+                return null;
+            } else {
+                return $orderid;
+            }
+
         }
+
+        //Saves customer to database
+        private function saveCustomer($customer){
+            
+            $customermodel = new CustomerModel();
+            $customermodel->save($customer);
+            return $this->insertID();
+        }
+
+        //Saves Order details to database
+        private function saveOrderdetail($orderid, $cart){
+            $orderdetailmodel = new OrderdetailModel();
+            foreach ($cart as $item => $value) {
+                $orderdetailmodel->save([
+                    'product_id' => $item,
+                    'order_id' => $orderid,
+                    'amount' => $value
+                ]);
+            }
+        }
+
 }
     

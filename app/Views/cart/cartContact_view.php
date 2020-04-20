@@ -87,6 +87,13 @@
         </div>
 
         <div class="col-6">
+        <?php
+                if (isset($ordererror)) {
+                    ?>
+            <p class="errormessage"><?=$ordererror?></p>
+            <?php
+                } 
+            ?>
             <?php if (!isset($_SESSION['customer'])) {?>
             <div>
                 <?=\Config\Services::validation()->listErrors(); ?>
