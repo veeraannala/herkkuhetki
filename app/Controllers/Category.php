@@ -26,4 +26,18 @@ class Category extends BaseController
         echo view('shop/category_view', $data);
         echo view('templates/footer');
     }
+    public function sortBy($id) {
+        $model = new CategoryModel();
+        $thememodel = new ThemeModel();
+        $prodmodel = new ProductModel();
+        $method = $this->request->getVar('parameter');
+        $data['title'] = "Herkkuhetki";
+		$data['categories'] = $model->getCategories();
+		$data['themecategories'] = $thememodel->getThemeCategories();
+        $data['product'] = $prodmodel->sortProductsby($method);
+        $data['id'] = $id;
+        echo view('templates/header', $data);
+        echo view('shop/category_view', $data);
+        echo view('templates/footer');
+	}
 }

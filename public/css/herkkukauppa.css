@@ -144,6 +144,18 @@ span.required {
 .ordertable {
     border-left: 1px solid #FBD8DB;
 }
+.card-body {
+    padding: 0px;
+}
+.card-body h5 {
+    padding-top: 5px;
+    font-size: 20px;
+}
+.card {
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-bottom: 7px;
+}
 
  /*.ordertable td:first-child {
    border-left: 1px solid #E65959;

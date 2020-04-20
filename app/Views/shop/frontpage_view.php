@@ -40,12 +40,3 @@
     Selaa tuotteita ja osta niin paljon kuin lompakko sallii!</p>
   </div>
 </div>
-
-<div class="row">
-  <div class="form-group col-3 mb-0 mt-2">
-    <select id="inputState" class="form-control text-center">
-      <option selected>Järjestä</option>
-      <option>...</option>
-    </select>
-  </div>
-</div>
