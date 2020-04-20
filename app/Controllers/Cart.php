@@ -139,6 +139,7 @@ class Cart extends BaseController
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         $data['product'] = $this->prodmodel->ShowProduct();
         $data['basketproducts'] = $this->prodmodel->getBasketproducts($_SESSION['basket']);
+        $data['customers'] = $this->customermodel->getCustomer();
         $data['title'] = "Tilattu";
 
         $sum = 0;
@@ -225,12 +226,13 @@ class Cart extends BaseController
             $this->clear();
             $data['payment'] = $this->request->getVar('payment');
             $data['delivery'] = $this->request->getVar('delivery');
+            
             $data['orderid'] = $orderid;
             echo view('templates/header', $data);
             echo view('cart/payOrder_view', $data);
             echo view('templates/footer');
         } else {
-            $data['ordererror'] = 'Tilaus epäonnistui';
+            $data['ordererror'] = $_SESSION['error'];
             echo view('templates/header', $data);
             echo view('cart/cartContact_view', $data);
             echo view('templates/footer');

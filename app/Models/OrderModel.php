@@ -61,14 +61,20 @@ use CodeIgniter\Model;
             }
             $this->save($order);
             $orderid = $this->insertID();
-            $this->saveOrderdetail($orderid, $cart);
-            $this->db->transComplete();
 
-            if ($this->transStatus() === FALSE) {
+            if ($this->saveOrderdetail($orderid, $cart) === FALSE){
                 $this->db->transRollback();
-                return null;
+                return false;
             } else {
-                return $orderid;
+                $this->db->transComplete();
+
+                if ($this->transStatus() === false) {
+                    $this->db->transRollback();
+                    $_SESSION['error'] = 'Tilaus epäonnistui, yritä uudelleen!'; 
+                    return null;
+                } else {
+                    return $orderid;
+                }
             }
 
         }
@@ -85,12 +91,41 @@ use CodeIgniter\Model;
         private function saveOrderdetail($orderid, $cart){
             $orderdetailmodel = new OrderdetailModel();
             foreach ($cart as $item => $value) {
-                $orderdetailmodel->save([
+                if ($this->updateAmount($item, $value) === true) {
+                    $orderdetailmodel->save([
                     'product_id' => $item,
                     'order_id' => $orderid,
                     'amount' => $value
                 ]);
+                } else {
+                    
+                    return false;
+                }
             }
+            return true;
+        }
+
+        private function updateAmount($id, $amount) {
+            
+            $productmodel = New ProductModel();
+            $product = $productmodel->getProduct($id);
+                foreach ($product as $prod) {
+                    $name = $prod['name'];
+                    $stock = $prod['stock'];
+                }
+           if($stock >= $amount){
+               $amount = $stock - $amount;
+               $product = [
+                   'id' => $id,
+                   'stock' => $amount
+               ];
+                $productmodel->save($product);
+                return true;
+            } else {
+                $_SESSION['error'] = 'Tuotetta ' . $name . ' ei ole tarpeeksi varastossa'; 
+                return false;
+            }
+        
         }
 
 }
