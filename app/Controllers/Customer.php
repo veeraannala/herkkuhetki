@@ -141,12 +141,8 @@ class Customer extends BaseController
                 'town' => $this->request->getVar('town'),
                 'phone' => $this->request->getVar('phone')
             ]);
-            $data = [
-            'registermessage' => 'Voit nyt kirjautua sisään'
-            ];
-            
-            $data['categories'] = $this->model->getCategories();
-            $data['themecategories'] = $this->thememodel->getThemeCategories();
+            $data['registermessage'] = 'Voit nyt kirjautua sisään';
+
             echo view('templates/header', $data);
             echo view('customer/customer_view', $data);
             echo view('templates/footer');
