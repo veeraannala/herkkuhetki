@@ -27,6 +27,16 @@ $(document).ready(function(){
              $("#sum").html(sum.toFixed(2) + ' €');          
         }
    });
+
+   $("#updateCustInfo").change(function(){
+     if ($(this).prop('checked') === true) {
+        $("#updateCustForm").show(); 
+     }
+      else {
+        $("#updateCustForm").hide(); 
+           
+     }
+});
     
  });
  
