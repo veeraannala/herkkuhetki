@@ -239,7 +239,7 @@ class Customer extends BaseController
             echo view('customer/customerDetail_view', $data);
             echo view('templates/footer');
         } else {
-            return redirect()->to('/login');
+            return redirect()->to('/customer');
         }
     }
 }

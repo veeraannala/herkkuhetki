@@ -50,7 +50,6 @@ $routes->get('admin/updateAmount_view(:segment)', 'Admin::updateAm/$1');
 
 $routes->get('shop/AllReviews_view(:segment)', 'Shop::showReview/$1');
 
-$routes->get('login', 'Login::index');
 
 /**
  * --------------------------------------------------------------------
