@@ -22,7 +22,7 @@ class Category extends BaseController
         $data['product'] = $prodmodel->ShowProduct();
         $data['id'] = $id;
         echo view('templates/header', $data);
-        echo view('category_view', $data);
+        echo view('shop/category_view', $data);
         echo view('templates/footer');
     }
 }

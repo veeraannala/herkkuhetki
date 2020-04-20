@@ -40,8 +40,8 @@ class Shop extends BaseController
 		$data['product'] = $this->prodmodel->ShowProduct();
 
 		echo view('templates/header',$data);
-		echo view('front_page');
-		echo view('product', $data);
+		echo view('shop/frontpage_view');
+		echo view('shop/frontpageproduct_view', $data);
         echo view('templates/footer');
 	}
 
@@ -50,38 +50,11 @@ class Shop extends BaseController
 		$data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
 		echo view('templates/header',$data);
-		echo view('gdprregister');
+		echo view('shop/gdprregister');
         echo view('templates/footer');
 	}
 
-	public function customerAccount() {
-		$data['categories'] = $this->model->getCategories();
-		$data['themecategories'] = $this->thememodel->getThemeCategories();
-		
-        if (isset($_SESSION['customer'])) {
-			$customerid=null;
-			$data['userdata'] = null;
-			$data['orders'] = $this->ordermodel->getOrders();
-			foreach ($_SESSION['customer'] as $key => $value):
-				$customerid = $value;
-			endforeach;
-			$customers = $this->customermodel->getCustomer();
-			//print_r($customers);
-			foreach ($customers as $customer):
-				if ($customerid === $customer['id']) {
-                    $data['userdata'] = $customer;
-                }
-			endforeach;
-
-			echo view('templates/header',$data);
-			echo view('customer/customerDetail_view',$data);
-			echo view('templates/footer'); 
-		
-
-        }else {
-			return redirect()->to('/login');
-		}
-	}
+	
 
 	public function show_product($id)
 	{
@@ -107,20 +80,20 @@ class Shop extends BaseController
             endforeach;
             if (($stock[0]-$amount) < 1) {
                 echo view('templates/header', $data);
-                echo view('product_outstock', $data);
+                echo view('product/product_outstock', $data);
                 echo view('templates/footer');
             } else {
                 echo view('templates/header', $data);
-            	echo view('product_instock', $data);
+            	echo view('product/product_instock', $data);
             	echo view('templates/footer');
             }
         } else if ($stock < 1) {
             echo view('templates/header', $data);
-            echo view('product_outstock', $data);
+            echo view('product/product_outstock', $data);
             echo view('templates/footer');
         } else {
             echo view('templates/header', $data);
-            echo view('product_instock', $data);
+            echo view('product/product_instock', $data);
             echo view('templates/footer');
         }
     }
@@ -131,7 +104,7 @@ class Shop extends BaseController
 		$data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
 		echo view('templates/header',$data);
-		echo view('method_view');
+		echo view('shop/method_view');
         echo view('templates/footer');
 	}
 
@@ -173,12 +146,12 @@ class Shop extends BaseController
 			
 			if (!empty($data)) {
 			echo view('templates/header',$data);
-			echo view('search_view',$data);
+			echo view('shop/search_view',$data);
 			echo view('templates/footer');
 
 			} else {
 				echo view('templates/header',$data);
-				echo view('searchfail_view');
+				echo view('shop/searchfail_view');
 				echo view('templates/footer');
 			}
 		} else {
@@ -209,7 +182,7 @@ class Shop extends BaseController
 		}
 
 		echo view('templates/header', $data);
-		echo view('newsletter_view', $data);
+		echo view('shop/newsletter_view', $data);
 		echo view('templates/footer');
 
 	}
@@ -236,7 +209,7 @@ class Shop extends BaseController
 		$data['review'] = $this->reviewmodel->ShowReviews($product_id);
 
 		echo view('templates/header', $data);
-		echo view('AllReviews_view', $data);
+		echo view('product/AllReviews_view', $data);
 		echo view('templates/footer');
 	}
 }
