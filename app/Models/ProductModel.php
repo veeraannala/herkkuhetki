@@ -72,5 +72,20 @@ use CodeIgniter\Model;
 
             return $query->getResultArray();
         }
-
+        public function sortProductsby($method)
+        {
+            $builder = $this->table("product");
+            $builder->select("id, name, image, stock, type, price, keywords, category_id, theme_id" );
+            if ($method == 1){
+            $builder->orderBy('price', 'ASC');
+            }
+            if ($method == 2){
+            $builder->orderBy('price', 'DESC');    
+            }
+            if ($method == 3){
+                $builder->orderBy('name', 'ASC');    
+                }
+            $query = $this->get();
+            return $query->getResultArray();
+        }
     }

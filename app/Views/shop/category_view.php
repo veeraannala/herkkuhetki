@@ -1,14 +1,17 @@
 
+<form method="post" action="<?= site_url('category/sortby') . '/' . $id ?>">
 <div class="row">
   <div class="form-group col-3 mb-0 mt-2">
-    <select id="inputState" class="form-control text-center">
-      <option selected>Järjestä</option>
-      <option>...</option>
+    <select id="inputState" class="form-control text-center" name="parameter">
+    <option selected disabled>Järjestele:</option>
+      <option value=1>Halvimmat ensin</option>
+      <option value=2>Kalleimmat ensin</option>
+      <option value=3>Tuotenimi</option>
     </select>
+    <button class="mt-2 btn btn-danger">Järjestä!</button>
   </div>
 </div>
-
-
+</form>
 <div class="row">
 <?php foreach ($product as $prod): ?>
     <?php if ($id === $prod['category_id'] || $id === $prod['theme_id']) { ?>
