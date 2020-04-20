@@ -71,7 +71,7 @@ foreach ($orderdetails as $orderdetail) {
             <h3 class="float-right">Tilauksen loppusumma: <?php echo number_format($total,2)?>€</h3>
         </div>
         <div class="col-12">
-            <form method="post" action="<?= site_url('/Shop/customerAccount')?>">
+            <form method="post" action="<?= site_url('/Customer/customerAccount')?>">
                 <button class="float-right btn btn-danger mb-2">Takaisin</button>
             </form>
         </div>
