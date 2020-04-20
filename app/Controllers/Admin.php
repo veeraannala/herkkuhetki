@@ -247,12 +247,12 @@ class Admin extends BaseController
 
                 $newproduct['image'] = 'images/' . $image->getName();
                 $this->prodmodel->save($newproduct);
-                return redirect()->to('/admin/updateProduct');
+                return redirect()->to('/admin/editProduct');
             } 
         } else {
             $newproduct['image'] = 'images/imagenotfound.png';
             $this->prodmodel->save($newproduct);
-            return redirect()->to('/admin/updateProduct');
+            return redirect()->to('/admin/editProduct');
         }
 
     }
