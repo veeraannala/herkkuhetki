@@ -1,11 +1,12 @@
 <div class="centerminheight customer row">
-    <div>
-        <?=\Config\Services::validation()->listErrors(); ?>
-    </div>
+    
     <div class="col-md-6">
         <h2>Muuta Sähköposti-osoitettasi</h2>
         <hr>
-        <form action="<?= site_url('')?>" method="post">
+        <div class="row">
+        <?=\Config\Services::validation()->listErrors(); ?>
+        </div>
+        <form action="<?= site_url('customer/customerEmailUpdate')?>" method="post">
             <div class="row mt-2">
               <div class="col-md-8">
                   <p>Nykyinen sähköpostiosoitteesi on: <?=$userdata['email']?></p>
@@ -32,7 +33,7 @@
     <div class="col-md-6">
     <h2>Muuta salasanaasi</h2>
         <hr>
-        <form action="<?= site_url('')?>" method="post">
+        <form action="<?= site_url('customer/customerPasswordUpdate')?>" method="post">
             <div class="form-row">
                 <div class="form-group col-md-8 ">
                     <label for="password">Vanha salasana<span class="required">*</span></label>
@@ -40,7 +41,7 @@
                 </div>
                 <div class="form-group col-md-8">
                     <label for="password">Uusi salasana<span class="required">*</span></label>
-                    <input type="password" class="form-control" name="password" placeholder="Salasana" required>
+                    <input type="password" class="form-control" name="newpassword" placeholder="Salasana" required>
                 </div>
                 <div class="form-group col-md-8">
                     <label for="inputPassword4">Vahvista uusi salasana<span class="required">*</span></label>

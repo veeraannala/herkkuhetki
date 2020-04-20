@@ -38,6 +38,19 @@ use CodeIgniter\Model;
             }
                     return null;
         }
+        public function PasswordCheck($customerid,$password) {
+            $this->where('id', $customerid);
+            $query = $this->get();
+            $row = $query->getRow();
+            if($row) {
+                if(password_verify($password,$row->password)) {
+                    return $row->password;
+                }
+            }
+                    return null;
+        }
+
+        
             
 
     }

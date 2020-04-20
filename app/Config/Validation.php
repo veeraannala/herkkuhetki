@@ -147,8 +147,10 @@ class Validation
 				'min_length' => 'Sähköpostiosoite on liian lyhyt.',
 				'max_length' => 'Sähköpostiosoite on liian pitkä.',
 				'valid_email' => 'Syötä sähköposti oikeassa muodossa.'
+				
 			]
 		],
+		
 		'password' => [
 			'label' => 'password',
 			'rules' => 'required|min_length[8]|max_length[30]',
@@ -232,6 +234,56 @@ class Validation
 			]
 		]
 	];
+
+	public $customerEmailValidate = [
+		'newemail' =>  [
+			'label' => 'newemail',
+			'rules' => 'required|min_length[2]|max_length[100]|valid_email',
+			'errors' => [
+				'required' => 'Sähköpostiosoite on pakollinen.',
+				'min_length' => 'Sähköpostiosoite on liian lyhyt.',
+				'max_length' => 'Sähköpostiosoite on liian pitkä.',
+				'valid_email' => 'Syötä sähköposti oikeassa muodossa.'
+			]
+		],
+
+		'emailconfirm' =>  [
+			'label' => 'emailconfirm',
+			'rules' => 'required|min_length[2]|max_length[100]|valid_email|required|matches[newemail]',
+			'errors' => [
+				'required' => 'Sähköpostiosoite on pakollinen.',
+				'min_length' => 'Sähköpostiosoite on liian lyhyt.',
+				'max_length' => 'Sähköpostiosoite on liian pitkä.',
+				'valid_email' => 'Syötä sähköposti oikeassa muodossa.',
+				'matches' => 'Sähköpostien pitää vastata toisiaan.'
+			]
+		],
+		
+
+	];
+
+	public $customerPasswordValidate = [
+		
+		'newpassword' => [
+			'label' => 'newpassword',
+			'rules' => 'required|min_length[8]|max_length[30]',
+			'errors' => [
+				'required' => 'Salasana on pakollinen.',
+				'min_length' => 'Salasana on liian lyhyt.'
+			]
+		],
+		'passconfirm' => [
+			'label' => 'passconfirm',
+			'rules' => 'required|matches[newpassword]',
+			'errors' => [
+				'required' => 'Salasana pitää syöttää uudestaan.',
+				'matches' => 'Salasanojen pitää vastata toisiaan.'
+			]
+		]
+
+
+	];
+
 
 	
 

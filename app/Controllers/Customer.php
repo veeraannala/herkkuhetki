@@ -23,7 +23,6 @@ class Customer extends BaseController
         $this->prodmodel = new ProductModel();
         $this->customermodel = new CustomerModel();
         $this->ordermodel = new OrderModel();
-
     }
 
     public function index() {
@@ -49,8 +48,17 @@ class Customer extends BaseController
         if(!isset($_SESSION['customer'])) {
             return redirect()->to('/customer/index');
         }
+        else
+        {
+        $customerid = null;
+        foreach ($_SESSION['customer'] as $key => $value):
+                 $customerid = $value;
+        endforeach;
+        }
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
+        $data['userdata'] = $this->customermodel->find($customerid);
+        $data['orders'] = $this->ordermodel->getOrders();
         
         echo view('templates/header',$data);
 		echo view('customer/customerDetail_view');
@@ -94,13 +102,13 @@ class Customer extends BaseController
         $data['themecategories'] = $this->thememodel->getThemeCategories();
      
         echo view('templates/header',$data);
-        echo view('customer/customerEditDetail_view');
+        echo view('customer/customerEditDetail_view',$data);
         echo view('templates/footer'); 
     }
 
-    public function customerUpdate() {
-        
+    public function customerEmailUpdate() {
         $validation =  \Config\Services::validation();
+        
         if(!isset($_SESSION['customer'])) {
             return redirect()->to('/customer/index');
         }
@@ -115,32 +123,86 @@ class Customer extends BaseController
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         $data['userdata'] = $this->customermodel->find($customerid);
         $data['orders'] = $this->ordermodel->getOrders();
-        $user = array();
-        $user = $this->customermodel->find($customerid);
-        print $user['email'];
-
-        $newEmail = $this->request->getVar('newemail');
-
-        if (!$this->validate($validation->getRuleGroup('customerRegisterValidate')))
-        {
-            echo view('templates/header',$data);
-            echo view('customer/customerDetail_view');
-            echo view('templates/footer');;  
-        }
         
+        if (!$this->validate($validation->getRuleGroup('customerEmailValidate'))) {
+            echo view('templates/header',$data);
+            echo view('customer/customerEdit_view');
+            echo view('templates/footer');  
+        } else
+        {
+            $user = array();
+            $user = $this->customermodel->find($customerid);
+            $Email = $this->request->getVar('newemail');
 
-        $this->customermodel->save([
-            'id' => $customerid,
-            'email' => $this->request->getVar('email'),
-            'password' => password_hash($this->request->getPost('password'),PASSWORD_DEFAULT),
-            'firstname' => $this->request->getVar('firstname'),
-            'lastname' => $this->request->getVar('lastname'),
-            'address' => $this->request->getVar('address'),
-            'postcode' => $this->request->getVar('postcode'),
-            'town' => $this->request->getVar('town'),
-            'phone' => $this->request->getVar('phone')
+            $this->customermodel->save([
+                'id' => $customerid,
+                'email' => $Email
+            ]);
+            
+            return redirect()->to('/customer/customerDetail');
+            
+            
+        
+            // $this->customermodel->save([
+            //     'id' => $customerid,
+            //     'firstname' => $this->request->getVar('firstname'),
+            //     'lastname' => $this->request->getVar('lastname'),
+            //     'address' => $this->request->getVar('address'),
+            //     'postcode' => $this->request->getVar('postcode'),
+            //     'town' => $this->request->getVar('town'),
+            //     'phone' => $this->request->getVar('phone')
 
-        ]);
+            // ]);
+        }
+    }
+    public function customerPasswordUpdate() {
+        $validation =  \Config\Services::validation();
+        
+        if(!isset($_SESSION['customer'])) {
+            return redirect()->to('/customer/index');
+        }
+        else
+        {
+        $customerid = null;
+        foreach ($_SESSION['customer'] as $key => $value):
+                 $customerid = $value;
+        endforeach;
+        }
+        $data['categories'] = $this->model->getCategories();
+        $data['themecategories'] = $this->thememodel->getThemeCategories();
+        $data['userdata'] = $this->customermodel->find($customerid);
+        $data['orders'] = $this->ordermodel->getOrders();
+        
+        if (!$this->validate($validation->getRuleGroup('customerPasswordValidate'))) {
+            echo view('templates/header',$data);
+            echo view('customer/customerEdit_view');
+            echo view('templates/footer');  
+        } else
+        {
+            $user = $this->customermodel->find($customerid);
+            //print $user['password'];
+            $OldPassword = $this->customermodel->PasswordCheck(
+                $customerid,
+                $this->request->getVar('oldpassword') 
+            );
+            
+            
+            if ($OldPassword === $user['password']) {
+                 $this->customermodel->save([
+                     'id' => $customerid,
+                     'password' => password_hash($this->request->getPost('newpassword'),PASSWORD_DEFAULT)
+                 ]);
+            }
+            $data['message'] = 'Salasanasi on nyt vaihdettu';
+            echo view('templates/header',$data);
+            echo view('customer/customerDetail_view',$data);
+            echo view('templates/footer');
+            //return redirect()->to('/customer/customerDetail');
+
+            
+            
+            
+        } 
     }
 
     public function customerRegistration() {
@@ -169,7 +231,7 @@ class Customer extends BaseController
             ]);
             $data = [
             'registermessage' => 'Voit nyt kirjautua sisään'
-            ];
+];
             
             $data['categories'] = $this->model->getCategories();
             $data['themecategories'] = $this->thememodel->getThemeCategories();
@@ -202,6 +264,7 @@ class Customer extends BaseController
                 $this->request->getVar('password')  
             );
             
+            
             if ($loggedCustomer) {
                 array_push($_SESSION['customer'],$loggedCustomer->id);
 
@@ -224,9 +287,8 @@ class Customer extends BaseController
                 echo view('templates/footer'); 
             }
             else {  
-                $data = [
-                    'message' => 'Käyttäjänimi tai salasana on väärin'
-                ];
+                $data['message'] = 'Käyttäjänimi tai salasana on väärin';
+                
                 $data['categories'] = $this->model->getCategories();
                 $data['themecategories'] = $this->thememodel->getThemeCategories();
                 echo view('templates/header',$data);

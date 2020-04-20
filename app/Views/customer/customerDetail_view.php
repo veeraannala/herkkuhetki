@@ -1,6 +1,13 @@
 <div class="centerminheight customer">
-    <div class="row col">
+    <div class="row">
+        <div class="col-md-6">
         <h1>Hei <?=$userdata['firstname']?></h1>
+        </div>
+        <div class="col-md-6">
+        <?php if(isset($message)) { ?>
+            <?='<h3 class="registermessage">'.$message.'</h3>';?>
+        <?php } ?>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-6">
