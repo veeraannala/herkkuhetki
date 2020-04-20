@@ -14,7 +14,7 @@
             <div class="form-row mt-2">
                 <div class="form-group col-md-8">
                     <label for="email">Uusi Sähköposti<span class="required">*</span></label>
-                    <input type="email" class="form-control" name="email" placeholder="Sähköposti" required>
+                    <input type="email" class="form-control" name="newemail" placeholder="Sähköposti" required>
                 </div>
                 <div class="form-group col-md-8">
                     <label for="email">vahvista uusi Sähköposti<span class="required">*</span></label>

@@ -99,6 +99,7 @@ class Customer extends BaseController
     }
 
     public function customerUpdate() {
+        
         $validation =  \Config\Services::validation();
         if(!isset($_SESSION['customer'])) {
             return redirect()->to('/customer/index');
@@ -110,12 +111,36 @@ class Customer extends BaseController
                  $customerid = $value;
         endforeach;
         }
+        $data['categories'] = $this->model->getCategories();
+        $data['themecategories'] = $this->thememodel->getThemeCategories();
+        $data['userdata'] = $this->customermodel->find($customerid);
+        $data['orders'] = $this->ordermodel->getOrders();
+        $user = array();
+        $user = $this->customermodel->find($customerid);
+        print $user['email'];
+
+        $newEmail = $this->request->getVar('newemail');
+
         if (!$this->validate($validation->getRuleGroup('customerRegisterValidate')))
         {
+            echo view('templates/header',$data);
+            echo view('customer/customerDetail_view');
+            echo view('templates/footer');;  
         }
-        $data = [
+        
 
-        ];
+        $this->customermodel->save([
+            'id' => $customerid,
+            'email' => $this->request->getVar('email'),
+            'password' => password_hash($this->request->getPost('password'),PASSWORD_DEFAULT),
+            'firstname' => $this->request->getVar('firstname'),
+            'lastname' => $this->request->getVar('lastname'),
+            'address' => $this->request->getVar('address'),
+            'postcode' => $this->request->getVar('postcode'),
+            'town' => $this->request->getVar('town'),
+            'phone' => $this->request->getVar('phone')
+
+        ]);
     }
 
     public function customerRegistration() {
@@ -153,6 +178,8 @@ class Customer extends BaseController
             echo view('templates/footer');
         }
     }
+
+    
 
     public function loginCheck() {
         $validation =  \Config\Services::validation();
