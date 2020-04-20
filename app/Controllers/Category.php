@@ -17,6 +17,7 @@ class Category extends BaseController
         $thememodel = new ThemeModel();
         $prodmodel = new ProductModel();
         
+        $data['title'] = "kategoriat";
         $data['categories'] = $model->getCategories();
         $data['themecategories'] = $thememodel->getThemeCategories();
         $data['product'] = $prodmodel->ShowProduct();

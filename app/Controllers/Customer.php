@@ -27,6 +27,7 @@ class Customer extends BaseController
 
     public function index()
     {
+        $data['title'] = "Kirjaudu";
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         
@@ -37,6 +38,7 @@ class Customer extends BaseController
     }
     public function register()
     {
+        $data['title'] = "Rekisteröidy";
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         
@@ -49,6 +51,7 @@ class Customer extends BaseController
         if (!isset($_SESSION['customer'])) {
             return redirect()->to('/customer/index');
         }
+        $data['title'] = "Tiedot";
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         
@@ -67,6 +70,7 @@ class Customer extends BaseController
                 $customerid = $value;
             endforeach;
         }
+        $data['title'] = "Muokkaa tietoja";
         $data['userdata'] = $this->customermodel->find($customerid);
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
@@ -86,6 +90,7 @@ class Customer extends BaseController
                  $customerid = $value;
             endforeach;
         }
+        $data['title'] = "Muokkaa tietoja";
         $data['userdata'] = $this->customermodel->find($customerid);
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
@@ -116,6 +121,7 @@ class Customer extends BaseController
     public function customerRegistration()
     {
         $validation =  \Config\Services::validation();
+        $data['title'] = "Rekisteröidy";
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         
@@ -150,6 +156,7 @@ class Customer extends BaseController
     public function loginCheck()
     {
         $validation =  \Config\Services::validation();
+        $data['title'] = "Kirjaudu sisään";
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         $_SESSION['customer'] = array();
@@ -188,6 +195,7 @@ class Customer extends BaseController
                 $data = [
                     'message' => 'Käyttäjänimi tai salasana on väärin'
                 ];
+                $data['title'] = "Kirjaudu";
                 $data['categories'] = $this->model->getCategories();
                 $data['themecategories'] = $this->thememodel->getThemeCategories();
                 echo view('templates/header', $data);
@@ -199,6 +207,7 @@ class Customer extends BaseController
 
     public function showOrder($id)
     {
+        $data['title'] = "Tilaus";
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         $data['orderdetails'] = $this->ordermodel->getOrderDetails($id);
@@ -217,6 +226,7 @@ class Customer extends BaseController
 
     public function customerAccount()
     {
+        $data['title'] = "Omat tiedot";
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
     
