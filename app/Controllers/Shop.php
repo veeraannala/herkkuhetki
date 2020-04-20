@@ -74,7 +74,7 @@ class Shop extends BaseController
 			endforeach;
 
 			echo view('templates/header',$data);
-			echo view('customerDetail_view',$data);
+			echo view('customer/customerDetail_view',$data);
 			echo view('templates/footer'); 
 		
 
