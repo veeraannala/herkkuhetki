@@ -37,6 +37,7 @@ $routes->get('cart/insert', 'Cart::insert');
 $routes->get('cart/clear', 'Cart::clear');
 $routes->get('cart/updateAmount(:segment)', 'Cart::upDateAmount/$1');
 $routes->get('category', 'Category::index/$1');
+$routes->get('category/allProducts', 'Category::allProducts/$1');
 $routes->get('/', 'Admin::index');
 //$routes->get('adminlogin', 'Admin::adminlogin');
 $routes->get('methods/index', 'Methods::index');
@@ -50,7 +51,6 @@ $routes->get('admin/updateAmount_view(:segment)', 'Admin::updateAm/$1');
 
 $routes->get('shop/AllReviews_view(:segment)', 'Shop::showReview/$1');
 
-$routes->get('login', 'Login::index');
 
 /**
  * --------------------------------------------------------------------

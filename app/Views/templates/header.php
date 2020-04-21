@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('/css/navigation.css'); ?>">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <title></title>
+    <title><?= $title ?></title>
 </head>
 
 <body>
@@ -56,6 +56,8 @@
                               } ?>
 
                         <?php endforeach; ?>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="<?= site_url('category/allProducts/' . $category['parentID']) ?>">Kaikki</a>
                         </div>
                     </li>
                     <?php } 
@@ -72,7 +74,9 @@
                           <a class="dropdown-item" href=<?=site_url('category/index/' . $themes['id'])?>><?=$themes['name']?></a>
                           
                       <?php endforeach; ?>
-                            
+                        <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="<?= site_url('category/allProducts/' . $category['parentID']) ?>">Kaikki</a>
+                        
                         
                         
                         </div>

@@ -1,6 +1,5 @@
-<div class="centerminheight customer">
-    <div class="row">
-        <div class="col-md-6">
+<div class="mt-3 centerminheight customer">
+    <div class="row col">
         <h1>Hei <?=$userdata['firstname']?></h1>
         </div>
         <div class="col-md-6">
@@ -63,7 +62,7 @@
                                 $order['status'] = 'Maksettu';
                             } ?><?=$order['status'] ?></td>
                             <td class="m-3">
-                                <?= anchor('login/showOrder/' . $order['id'], ' <button>Näytä tilaus</button>')?></td>
+                                <?= anchor('customer/showOrder/' . $order['id'], ' <button>Näytä tilaus</button>')?></td>
                            
                         </tr>
                         <?php

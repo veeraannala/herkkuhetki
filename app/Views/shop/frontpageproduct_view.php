@@ -1,7 +1,19 @@
+<form method="post" action="<?= site_url('shop/sortby')?>">
+<div class="row">
+  <div class="form-group col-3 mb-0 mt-2">
+    <select id="inputState" class="form-control text-center" name="parameter">
+    <option selected disabled>Järjestele:</option>
+      <option value=1>Halvimmat ensin</option>
+      <option value=2>Kalleimmat ensin</option>
+      <option value=3>Tuotenimi</option>
+    </select>
+    <button class="mt-2 btn btn-danger">Järjestä!</button>
+  </div>
+</div>
+</form>
 <div class="row">
     <?php
   $i = 0;
-  shuffle($product);
   foreach ($product as $prod):{
   $i++;
   if ($i > 8) {

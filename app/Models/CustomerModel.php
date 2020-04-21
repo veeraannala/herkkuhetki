@@ -7,17 +7,8 @@ use CodeIgniter\Model;
     {
         protected $table     = 'customer';
         protected $primaryKey = 'id';
+        protected $allowedFields = ['firstname','lastname','address','postcode','town','email','phone','password'];
         
-        protected $allowedFields = ['id','firstname','lastname','address','postcode','town','email','phone','password'];
-        
-        //Returns last customer's id number
-        public function getCustId() {
-            $builder = $this->table("customer");
-            $builder->select("max(id)");
-            $query = $builder->get();
-
-            return $query->getResultArray();
-        }
 
         public function getCustomer() {
             $builder = $this->table("customer");

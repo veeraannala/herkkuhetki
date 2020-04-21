@@ -87,6 +87,13 @@
         </div>
 
         <div class="col-6">
+            <?php
+                if (isset($ordererror)) {
+                    ?>
+            <p class="errormessage"><?=$ordererror?></p>
+            <?php
+                } 
+            ?>
             <?php if (!isset($_SESSION['customer'])) {?>
             <div>
                 <?=\Config\Services::validation()->listErrors(); ?>
@@ -166,57 +173,75 @@
                 </div>
             </div>
             <?php } else { ?>
-            <div class="form-row">
 
             <?php 
                 $customer = ($_SESSION['customer']); 
                 $customer[0];
                 foreach ($customers as $cust):
-                    if ($cust['id'] === $customer[0]) {
-
-                        
+                    if ($cust['id'] === $customer[0]) {                
                 ?>
-                <div class="form-group col-md-6">
-                    <label for="firstname">Etunimi</label>
-                    <input type="text" class="form-control" id="firstname" name="firstname" value="<?=$cust['firstname']?>"
-                        required>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="lastname">Sukunimi</label>
-                    <input type="text" class="form-control" id="lastname" name="lastname" value="<?=$cust['lastname']?>"
-                        required>
-                </div>
-            </div>
+
+
             <div class="form-row">
-                <div class="form-group col-12">
-                    <label for="email">Sähköpostiosoite</label>
-                    <input type="email" class="form-control" id="email" name="email" value="<?=$cust['email']?>"
-                        required>
+                <div class="form-group col-md-12">
+                    <p>Nimi: <?=$cust['firstname']?> <?=$cust['lastname']?></p>
+                    <p>Sähköpostiosoite: <?=$cust['email']?></p>
+                    <p>Puhelinnumero: <?=$cust['phone']?></p>
+                    <p>Osoite: <?=$cust['address']?>, <?=$cust['postcode']?> <?=$cust['town']?></p>
                 </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input updateCustInfo" type="checkbox" name="updateCustInfo" id="updateCustInfo" value="1">
+                    <label class="form-check-label" for="updateCustInfo">Muuta yhteystietoja</label>
+                </div>
+
+
             </div>
-            <div class="form-row">
-                <div class="form-group col-12">
-                    <label for="phone">Puhelinnumero</label>
-                    <input type="text" class="form-control" id="phone" name="phone" value="<?=$cust['phone']?>"
-                        required>
+            <div class="not_visible" id="updateCustForm">
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="firstname">Etunimi</label>
+                        <input type="text" class="form-control" id="firstname" name="firstname"
+                            value="<?=$cust['firstname']?>" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="lastname">Sukunimi</label>
+                        <input type="text" class="form-control" id="lastname" name="lastname"
+                            value="<?=$cust['lastname']?>" required>
+                    </div>
                 </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-12">
-                    <label for="address">Osoite</label>
-                    <input type="text" class="form-control" id="address" name="address" value="<?=$cust['address']?>" required>
+                <div class="form-row">
+                    <div class="form-group col-12">
+                        <label for="email">Sähköpostiosoite</label>
+                        <input type="email" class="form-control" id="email" name="email" value="<?=$cust['email']?>"
+                            required>
+                    </div>
                 </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label for="postcode">Postinumero</label>
-                    <input type="text" class="form-control" id="postcode" name="postcode" value="<?=$cust['postcode']?>"
-                        required>
+                <div class="form-row">
+                    <div class="form-group col-12">
+                        <label for="phone">Puhelinnumero</label>
+                        <input type="text" class="form-control" id="phone" name="phone" value="<?=$cust['phone']?>"
+                            required>
+                    </div>
                 </div>
-                <div class="form-group col-md-8">
-                    <label for="town">Postitoimipaikka</label>
-                    <input type="text" class="form-control" id="town" name="town" value="<?=$cust['town']?>"
-                        required>
+                <div class="form-row">
+                    <div class="form-group col-12">
+                        <label for="address">Osoite</label>
+                        <input type="text" class="form-control" id="address" name="address"
+                            value="<?=$cust['address']?>" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="postcode">Postinumero</label>
+                        <input type="text" class="form-control" id="postcode" name="postcode"
+                            value="<?=$cust['postcode']?>" required>
+                    </div>
+                    <div class="form-group col-md-8">
+                        <label for="town">Postitoimipaikka</label>
+                        <input type="text" class="form-control" id="town" name="town" value="<?=$cust['town']?>"
+                            required>
+                    </div>
                 </div>
             </div>
             <div class="form-row">

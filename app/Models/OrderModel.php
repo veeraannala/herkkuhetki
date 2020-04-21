@@ -42,7 +42,8 @@ use CodeIgniter\Model;
             $query = $builder->get();
             return $query->getResultArray();
         }
-public function SortOrdersbyMonth($data) {
+
+        public function SortOrdersbyMonth($data) {
             $builder = $this->table("orders");
             $builder->select("orders.id as id, status, MONTH(orderDate), orderDate, customer_id, delivery, customer.id as customerid, firstname, lastname");
             $builder->join("Customer", "orders.customer_id = customer.id", "inner");
@@ -50,13 +51,82 @@ public function SortOrdersbyMonth($data) {
             $query = $builder->get();
             return $query->getResultArray();
         }
-        //Returns last order's id number
-        public function getOrderId() {
-            $builder = $this->table("orders");
-            $builder->select("max(id)");
-            $query = $builder->get();
 
-            return $query->getResultArray();
+        public function saveOrder($customer, $order, $cart) {
+            
+            $this->db->transStart();
+            $order['customer_id'] = $this->saveCustomer($customer);
+            if (isset($customer['id'])) {
+                $order['customer_id'] = $customer['id']; 
+            }
+            $this->save($order);
+            $orderid = $this->insertID();
+
+            if ($this->saveOrderdetail($orderid, $cart) === FALSE){
+                $this->db->transRollback();
+                return false;
+            } else {
+                $this->db->transComplete();
+
+                if ($this->transStatus() === false) {
+                    $this->db->transRollback();
+                    $_SESSION['error'] = 'Tilaus epäonnistui, yritä uudelleen!'; 
+                    return null;
+                } else {
+                    return $orderid;
+                }
+            }
+
         }
+
+        //Saves customer to database
+        private function saveCustomer($customer){
+            
+            $customermodel = new CustomerModel();
+            $customermodel->save($customer);
+            return $this->insertID();
+        }
+
+        //Saves Order details to database
+        private function saveOrderdetail($orderid, $cart){
+            $orderdetailmodel = new OrderdetailModel();
+            foreach ($cart as $item => $value) {
+                if ($this->updateAmount($item, $value) === true) {
+                    $orderdetailmodel->save([
+                    'product_id' => $item,
+                    'order_id' => $orderid,
+                    'amount' => $value
+                ]);
+                } else {
+                    
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private function updateAmount($id, $amount) {
+            
+            $productmodel = New ProductModel();
+            $product = $productmodel->getProduct($id);
+                foreach ($product as $prod) {
+                    $name = $prod['name'];
+                    $stock = $prod['stock'];
+                }
+           if($stock >= $amount){
+               $amount = $stock - $amount;
+               $product = [
+                   'id' => $id,
+                   'stock' => $amount
+               ];
+                $productmodel->save($product);
+                return true;
+            } else {
+                $_SESSION['error'] = 'Tuotetta ' . $name . ' ei ole tarpeeksi varastossa'; 
+                return false;
+            }
+        
+        }
+
 }
     
