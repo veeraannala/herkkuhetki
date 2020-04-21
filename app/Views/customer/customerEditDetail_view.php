@@ -1,11 +1,12 @@
-<div class="mt-3 centerminheight customer row">
-  <div>
-    <?=\Config\Services::validation()->listErrors(); ?>
-  </div>
+<div class="centerminheight customer row">
+  
   <div class="col-md-6">
     <h2>Muuta Tietojasi</h2>
+    <div class="row">
+    <?=\Config\Services::validation()->listErrors(); ?>
+  </div>
     <hr>
-    <form action="<?= site_url('')?>" method="post">
+    <form action="<?= site_url('customer/customerDetailUpdate')?>" method="post">
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="firstname">Etunimi<span class="required">*</span></label>
