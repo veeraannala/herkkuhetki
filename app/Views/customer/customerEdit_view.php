@@ -3,6 +3,11 @@
     <div class="col-md-6">
         <h2>Muuta Sähköposti-osoitettasi</h2>
         <hr>
+        <div class="row col-12">
+        <?php if(isset($emailmessage)) { ?>
+            <?='<h3 class="errormessage">'.$emailmessage.'</h3>';?>
+        <?php } ?>
+        </div>
         <div class="row">
         <?=\Config\Services::validation()->listErrors(); ?>
         </div>
@@ -33,6 +38,11 @@
     <div class="col-md-6">
     <h2>Muuta salasanaasi</h2>
         <hr>
+        <div class="row col-12">
+        <?php if(isset($message)) { ?>
+            <?='<h3 class="errormessage">'.$message.'</h3>';?>
+        <?php } ?>
+        </div>
         <form action="<?= site_url('customer/customerPasswordUpdate')?>" method="post">
             <div class="form-row">
                 <div class="form-group col-md-8 ">

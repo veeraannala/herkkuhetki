@@ -14,7 +14,11 @@
             <hr>
             <div class="card customercard mb-3 col-12">
                 <div class="card-body text-dark ">
+                    <?php if(!isset($infomessage)) { ?>
                     <h5 class="card-title">Yhteystietosi</h5>
+                    <?php } else { ?>
+                    <?='<h5 class="card-title registermessage">Yhteystietosi '.$infomessage.'</h5>'?>
+                    <?php } ?>
                     <p>Nimi: <?=$userdata['firstname']. ' '. $userdata['lastname']?></p>
                     <p>Sähköposti: <?=$userdata['email']?></p>
                     <p>Osoite: <?=$userdata['address']?></p>
@@ -70,7 +74,6 @@
             </div>
         </div>
     </div>
-
-
-
 </div>
+
+

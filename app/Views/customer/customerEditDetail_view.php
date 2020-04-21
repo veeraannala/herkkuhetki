@@ -5,7 +5,7 @@
   <div class="col-md-6">
     <h2>Muuta Tietojasi</h2>
     <hr>
-    <form action="<?= site_url('customer/customerUpdate')?>" method="post">
+    <form action="<?= site_url('customer/customerDetailUpdate')?>" method="post">
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="firstname">Etunimi<span class="required">*</span></label>

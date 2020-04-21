@@ -6,8 +6,9 @@
     <div class="row">
         <div class="col-md-6">
         <?php
-            if(isset($registermessage)) {
-                echo '<h3 class="registermessage">'.$registermessage.'</h3>';
+            if(isset($registermessage)) { ?>
+                <?='<h3 class="registermessage">'.$registermessage.'</h3>';?>
+            <?php
             } else { ?>
             <h3>Rekisteröityneet asiakkaat</h3>
         <?php
@@ -18,9 +19,10 @@
         <?=\Config\Services::validation()->listErrors(); ?>
         </div>
         <?php
-            if(isset($message)) {
-                echo $message;
-            }
+            if(isset($message)) { ?>
+                <?='<h3 class="errormessage">'.$message.'</h3>';?>
+        <?php
+        }
         ?>
         <form action="<?= site_url('customer/loginCheck/')?>" method="post">
             <div class="form-group row">
