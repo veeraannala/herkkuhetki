@@ -50,6 +50,12 @@
       </div>
     </div>
     <button type="submit" class="btn btn mb-2">Rekisteröidy</button>
-  </form> 
+  </form>
+  <?php
+  if (isset($ordererror)) { ?>
+    <p class="errormessage"><?=$ordererror?></p>
+  <?php
+  } 
+  ?> 
 </div>
 

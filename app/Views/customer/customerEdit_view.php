@@ -6,6 +6,12 @@
         <?php if(isset($emailmessage)) { ?>
             <?='<h3 class="errormessage">'.$emailmessage.'</h3>';?>
         <?php } ?>
+        <?php
+        if (isset($ordererror)) { ?>
+        <p class="errormessage"><?=$ordererror?></p>
+        <?php
+        } 
+        ?> 
         </div>
         <div class="">
         <?=\Config\Services::validation()->listErrors(); ?>
