@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row mt-3">
     <div class="col">
-        <h1>Muokkaa tuotteiden arvosteluja</h1>
+        <h3>Muokkaa tuotteiden arvosteluja</h3>
         <!-- prints reviews to table -->
         <table class="table table-striped table-sm">
 

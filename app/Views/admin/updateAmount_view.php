@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mt-s">
     <div class="col">
     <?php foreach ($products as $product): ?>
         
