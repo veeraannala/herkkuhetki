@@ -15,6 +15,7 @@
                     </div>
                     <div class="col">
                         <input type="number" class="form-control" id="newAmount" name="newAmount"></input>
+                        <input value="<?=$product['stock']?>" type="hidden" class="form-control" id="newAmount" name="oldAmount"></input>
                     </div>
                 </div>
                 <button>Muokkaa</button>

@@ -182,7 +182,7 @@ class Admin extends BaseController
         $id = $this->request->getVar('id');
         // changes amount of products in stock
         $data = [
-            'stock' => $this->request->getVar('newAmount')
+            'stock' => $this->request->getVar('newAmount') +  $this->request->getVar('oldAmount')
         ];
         // checks which products amount its gonna change
         $this->prodmodel->update($id, $data);
