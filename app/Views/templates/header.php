@@ -56,6 +56,8 @@
                               } ?>
 
                         <?php endforeach; ?>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="<?= site_url('category/allProducts/' . $category['parentID']) ?>">Kaikki</a>
                         </div>
                     </li>
                     <?php } 
@@ -72,7 +74,9 @@
                           <a class="dropdown-item" href=<?=site_url('category/index/' . $themes['id'])?>><?=$themes['name']?></a>
                           
                       <?php endforeach; ?>
-                            
+                        <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="<?= site_url('category/allProducts/' . $category['parentID']) ?>">Kaikki</a>
+                        
                         
                         
                         </div>
