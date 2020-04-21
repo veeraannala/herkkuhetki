@@ -165,21 +165,21 @@ class Cart extends BaseController
                     endforeach;
                     $customer = [
                         'id' => $customerid,
-                        'firstname' => $this->request->getVar('firstname'),
-                        'lastname' => $this->request->getVar('lastname'),
-                        'address' => $this->request->getVar('address'),
+                        'firstname' => ucfirst($this->request->getVar('firstname')),
+                        'lastname' => ucfirst($this->request->getVar('lastname')),
+                        'address' => ucfirst($this->request->getVar('address')),
                         'postcode' => $this->request->getVar('postcode'),
-                        'town' => $this->request->getVar('town'),
+                        'town' => strtoupper($this->request->getVar('town')),
                         'email' => $this->request->getVar('email'),
                         'phone' => $this->request->getVar('phone')
                     ];
                 } else {
                     $customer = [
-                        'firstname' => $this->request->getVar('firstname'),
-                        'lastname' => $this->request->getVar('lastname'),
-                        'address' => $this->request->getVar('address'),
+                        'firstname' => ucfirst($this->request->getVar('firstname')),
+                        'lastname' => ucfirst($this->request->getVar('lastname')),
+                        'address' => ucfirst($this->request->getVar('address')),
                         'postcode' => $this->request->getVar('postcode'),
-                        'town' => $this->request->getVar('town'),
+                        'town' => strtoupper($this->request->getVar('town')),
                         'email' => $this->request->getVar('email'),
                         'phone' => $this->request->getVar('phone')
                 ];
@@ -193,11 +193,11 @@ class Cart extends BaseController
                     echo view('templates/footer');
                 } else {
                     $customer = [
-                        'firstname' => $this->request->getVar('firstname'),
-                        'lastname' => $this->request->getVar('lastname'),
-                        'address' => $this->request->getVar('address'),
+                        'firstname' => ucfirst($this->request->getVar('firstname')),
+                        'lastname' => ucfirst($this->request->getVar('lastname')),
+                        'address' => ucfirst($this->request->getVar('address')),
                         'postcode' => $this->request->getVar('postcode'),
-                        'town' => $this->request->getVar('town'),
+                        'town' => strtoupper($this->request->getVar('town')),
                         'email' => $this->request->getVar('email'),
                         'phone' => $this->request->getVar('phone'),
                         'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
