@@ -1,4 +1,4 @@
-<div class="mt-3 centerminheight customer">
+<div class="centerminheight customer">
     <div class="row col">
         <h1>Kirjaudu</h1>
         

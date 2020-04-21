@@ -16,7 +16,7 @@
         <form action="<?= site_url('customer/customerEmailUpdate')?>" method="post">
             <div class="row mt-2">
               <div class="col-md-8">
-                  <p>Nykyinen sähköpostiosoitteesi on: <?=$userdata['email']?></p>
+                  <p class="customer">Nykyinen sähköpostiosoitteesi on: <?=$userdata['email']?></p>
               </div> 
             </div>
             <div class="form-row mt-2">
@@ -25,8 +25,8 @@
                     <input type="email" class="form-control" name="newemail" placeholder="Sähköposti" required>
                 </div>
                 <div class="form-group col-md-8">
-                    <label for="email">vahvista uusi Sähköposti<span class="required">*</span></label>
-                    <input type="email" class="form-control" name="emailconfirm" placeholder="Sähköposti" required>
+                    <label for="email">Vahvista uusi sähköposti<span class="required">*</span></label>
+                    <input type="email" class="form-control" name="emailconfirm" placeholder="Vahvista sähköposti" required>
                 </div>
             </div>
             <button type="submit" class="btn btn mb-2">Vahvista</button>
@@ -53,7 +53,7 @@
                 </div>
                 <div class="form-group col-md-8">
                     <label for="password">Uusi salasana<span class="required">*</span></label>
-                    <input type="password" class="form-control" name="newpassword" placeholder="Salasana" required>
+                    <input type="password" class="form-control" name="newpassword" placeholder=" Uusi salasana" required>
                 </div>
                 <div class="form-group col-md-8">
                     <label for="inputPassword4">Vahvista uusi salasana<span class="required">*</span></label>

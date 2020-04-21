@@ -141,6 +141,7 @@ class Customer extends BaseController
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         $data['userdata'] = $this->customermodel->find($customerid);
         $data['orders'] = $this->ordermodel->getOrders();
+        $data['title'] = "Muokkaa tietoja";
         
         if (!$this->validate($validation->getRuleGroup('customerEmailValidate'))) {
             echo view('templates/header',$data);
@@ -190,6 +191,7 @@ class Customer extends BaseController
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         $data['userdata'] = $this->customermodel->find($customerid);
         $data['orders'] = $this->ordermodel->getOrders();
+        $data['title'] = "Muokkaa tietoja";
         
         if (!$this->validate($validation->getRuleGroup('customerPasswordValidate'))) {
             echo view('templates/header',$data);
@@ -240,6 +242,7 @@ class Customer extends BaseController
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         $data['userdata'] = $this->customermodel->find($customerid);
         $data['orders'] = $this->ordermodel->getOrders();
+        $data['title'] = "Muokkaa tietoja";
         
         if (!$this->validate($validation->getRuleGroup('customerDetailValidate'))) {
             echo view('templates/header',$data);
