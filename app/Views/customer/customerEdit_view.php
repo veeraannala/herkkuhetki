@@ -1,7 +1,4 @@
 <div class="mt-3 centerminheight customer row">
-    <div>
-        <?=\Config\Services::validation()->listErrors(); ?>
-    </div>
     <div class="col-md-6">
         <h2>Muuta Sähköposti-osoitettasi</h2>
         <hr>
@@ -10,7 +7,7 @@
             <?='<h3 class="errormessage">'.$emailmessage.'</h3>';?>
         <?php } ?>
         </div>
-        <div class="row">
+        <div class="">
         <?=\Config\Services::validation()->listErrors(); ?>
         </div>
         <form action="<?= site_url('customer/customerEmailUpdate')?>" method="post">
