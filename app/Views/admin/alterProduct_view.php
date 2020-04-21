@@ -1,7 +1,7 @@
 <?php helper('form'); ?>
-<div class="row">
+<div class="row mt-3">
     <div class="col-6 mb-3">
-        <h1>Muokkaa tuotetta</h1>
+        <h3>Muokkaa tuotetta</h3>
         <?php if(isset($errorname)) { ?>
             <p class="errormessage">Virhe tuotteen lisäämisessä. Tuotteen nimi ei voi olla sama kuin jo olemassa olevalla tuotteella.</p>
         <?php } else if(isset($errorimage)) {?>

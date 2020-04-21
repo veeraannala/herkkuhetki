@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row mt-3">
     <div class="col">
-        <h1>Muokkaa tuotteiden määrää varastossa</h1>
+        <h3>Muokkaa tuotteiden määrää varastossa</h3>
 
         <table class="table table-striped table-sm">
         <!-- Fetches product info from controller-->
@@ -9,9 +9,9 @@
             
                 <tr>
                    <!-- print product name --> 
-                    <th><?=$product['name']?></th>
+                    <td><?=$product['name']?></td>
                     <!-- print product amount in stock -->
-                    <th><?=$product['stock']?></th>
+                    <td><?=$product['stock']?></td>
                     <!-- Button that goes through function updateAmo which changes products amount in stock -->
                     <td><?= anchor('admin/updateAmo/' . $product['id'], ' <button>Muuta</button>')?></td>
                     

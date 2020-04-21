@@ -1,6 +1,6 @@
 <div class="mt-3 centerminheight customer row">
     <div class="col-md-6">
-        <h2>Muuta Sähköposti-osoitettasi</h2>
+        <h2>Muuta sähköpostiosoitettasi</h2>
         <hr>
         <div class="row col-12">
         <?php if(isset($emailmessage)) { ?>
@@ -24,7 +24,7 @@
             </div>
             <div class="form-row mt-2">
                 <div class="form-group col-md-8">
-                    <label for="email">Uusi Sähköposti<span class="required">*</span></label>
+                    <label for="email">Uusi sähköposti<span class="required">*</span></label>
                     <input type="email" class="form-control" name="newemail" placeholder="Sähköposti" required>
                 </div>
                 <div class="form-group col-md-8">

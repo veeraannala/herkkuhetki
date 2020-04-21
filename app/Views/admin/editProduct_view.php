@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row mt-3">
     <div class="col">
-        <h1>Muokkaa tuotteita</h1>
+        <h3>Muokkaa tuotteita</h3>
 
         <div class="mb-3">
             <a href="<?=site_url('admin/updateProduct/')?>">Lisää uusi tuote</a>
