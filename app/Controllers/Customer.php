@@ -158,6 +158,17 @@ class Customer extends BaseController
                 echo view('customer/customerEdit_view',$data);
                 echo view('templates/footer');
             }
+            #if email exits. Sends error message.
+            $customers = $this->customermodel->getCustomer();
+            foreach ($customers as $cust):
+                if ($cust['email'] === $this->request->getVar('newemail') && $cust['password'] != null) {
+                    $data['ordererror'] = 'Sähköpostiosoite on jo rekisteröity.';
+                    echo view('templates/header',$data);
+                    echo view('customer/customerEdit_view',$data);
+                    echo view('templates/footer');
+                    exit();
+                }
+            endforeach;
 
             $this->customermodel->save([
                 'id' => $customerid,
@@ -281,8 +292,20 @@ class Customer extends BaseController
             echo view('templates/header', $data);
             echo view('customer/customerRegister_view');
             echo view('templates/footer');
-            ;
+        
         } else {
+
+            $customers = $this->customermodel->getCustomer();
+            foreach ($customers as $cust):
+                if ($cust['email'] === $this->request->getVar('email') && $cust['password'] != null) {
+                    $data['ordererror'] = 'Sähköpostiosoite on jo rekisteröity. <a href="/Customer/customerAccount">Kirjaudu sisään.</a>';
+                    echo view('templates/header',$data);
+                    echo view('customer/customerRegister_view',$data);
+                    echo view('templates/footer');
+                    exit();
+                }
+            endforeach;
+
             $this->customermodel->save([
                 'email' => $this->request->getVar('email'),
                 'password' => password_hash($this->request->getPost('password'),PASSWORD_DEFAULT),

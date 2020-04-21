@@ -54,5 +54,12 @@
   <form method="post" action="<?= site_url('/customer')?>">
         <button class="btn back-button3 btn-danger">Takaisin</button>
         </form>
+  </form>
+  <?php
+  if (isset($ordererror)) { ?>
+    <p class="errormessage"><?=$ordererror?></p>
+  <?php
+  } 
+  ?> 
 </div>
 
