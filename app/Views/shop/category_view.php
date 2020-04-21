@@ -1,7 +1,7 @@
 
 <form method="post" action="<?= site_url('category/sortby') . '/' . $id ?>">
 <div class="row">
-  <div class="form-group col-3 mb-0 mt-2">
+<div class="form-group col-lg-4 col-md-5 col-sm-4 mb-0 mt-2">
     <select id="inputState" class="form-control text-center" name="parameter">
     <option selected disabled>Järjestele:</option>
       <option value=1>Halvimmat ensin</option>

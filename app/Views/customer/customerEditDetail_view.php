@@ -39,6 +39,9 @@
       </div>
       <button type="submit" class="btn btn mb-2">Vahvista</button>
     </form>
+    <form method="post" action="<?= site_url('/customer/customerEdit/')?>">
+        <button class="btn back-button2 btn-danger">Takaisin</button>
+        </form>
     <div class="row">
     </div>
   </div>

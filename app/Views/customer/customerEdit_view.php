@@ -60,5 +60,8 @@
             </div>
             <button type="submit" class="btn btn mb-2">Vahvista</button>
         </form>
+        <form style="display: block;" method="post" action="<?= site_url('/Customer/customerAccount/')?>">
+        <button class="btn back-button1 btn-danger">Takaisin</button>
+        </form>
     </div>
 </div>

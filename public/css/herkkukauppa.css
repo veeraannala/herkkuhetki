@@ -164,3 +164,18 @@ span.required {
 .ordertable tr:first-child td:first-child {
     border-right: 1px solid #E65959 !important;
 }*/
+.back-button1 {
+    position: relative;
+    left: 88px;
+    bottom: 46px;
+}
+.back-button2 {
+    position: relative;
+    left: 88px;
+    bottom: 46px;
+}
+.back-button3 {
+    position: relative;
+    left: 116px;
+    bottom: 46px;
+}

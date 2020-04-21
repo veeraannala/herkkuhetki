@@ -51,5 +51,8 @@
     </div>
     <button type="submit" class="btn btn mb-2">Rekisteröidy</button>
   </form> 
+  <form method="post" action="<?= site_url('/customer')?>">
+        <button class="btn back-button3 btn-danger">Takaisin</button>
+        </form>
 </div>
 
