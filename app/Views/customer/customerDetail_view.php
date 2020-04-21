@@ -1,4 +1,4 @@
-<div class="centerminheight customer">
+<div class="mt-3 centerminheight customer">
     <div class="row">
         <div class="col-md-6">
         <h1>Hei <?=$userdata['firstname']?></h1>

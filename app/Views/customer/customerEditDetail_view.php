@@ -1,4 +1,4 @@
-<div class="centerminheight customer row">
+<div class="mt-3 centerminheight customer row">
   
   <div class="col-md-6">
     <h2>Muuta Tietojasi</h2>
