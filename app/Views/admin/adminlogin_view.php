@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mt-3">
     <div class="col-md-4">
             <div>
             <?=\Config\Services::validation()->listErrors(); ?>

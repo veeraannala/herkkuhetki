@@ -1,4 +1,4 @@
-<div class="centerminheight2">
+<div class="centerminheight2 mt-3">
 <table class="table table-striped table-sm">
         <tr>
             <th>Etunimi</th>

@@ -1,1 +1,1 @@
-<h1>rekisteröinti onnistui</h1>
+<h3 class="mt-3">Rekisteröinti onnistui</h3>

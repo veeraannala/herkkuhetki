@@ -2,7 +2,7 @@
 $i = 0;
 foreach ($orderdetails as $orderdetail) {
 ?>
-<h3>Lisätietoja tilauksesta</h3>
+<h3 class="mt-3">Lisätietoja tilauksesta</h3>
 <p>Tilauksen id: <?=$orderdetail['id'] ?></p>
 <?php
             if (++$i == 1) break;

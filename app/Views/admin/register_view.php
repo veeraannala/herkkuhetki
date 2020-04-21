@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mt-s">
     <div class="col-md-4">
             <div>
             <?=\Config\Services::validation()->listErrors(); ?>
@@ -27,7 +27,7 @@
                 maxlength="30">
             </div>
             <div>
-                <button class="btn btn mb-2">rekisteröidy</button>
+                <button class="btn btn mb-2">Rekisteröidy</button>
             </div>
         </form>
     </div>
