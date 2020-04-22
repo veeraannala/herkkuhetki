@@ -357,7 +357,7 @@ class Customer extends BaseController
                     $customerid = $value;
                 endforeach;
                 $customers = $this->customermodel->getCustomer();
-                //print_r($customers);
+                
                 foreach ($customers as $customer):
                     if ($customerid === $customer['id']) {
                         $data['userdata'] = $customer;

@@ -4,10 +4,11 @@
             <?=\Config\Services::validation()->listErrors(); ?>
             </div>
             <?php
-            if(isset($message)) {
-                echo $message;
-            }
-            ?>
+            if (isset($message)) { ?>
+            <p class="errormessage"><?=$message?></p>
+            <?php
+            } 
+            ?> 
             <form action="/admin/admincheck" method="post">
                 <div class="form-group">
                     <label>Adminkäyttäjä</label><span class="required">*</span>
@@ -28,7 +29,6 @@
                 <button class="btn btn mb-2">Kirjaudu Adminina</button>
                 </div>
             <form action="/admin/admincheck" method="post">
-            <div><?= anchor('admin/adminregister','Rekisteröi admin') ?>
         </div>
         
     </div>   

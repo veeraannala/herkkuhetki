@@ -156,3 +156,5 @@ insert into orderdetail (order_id, product_id, amount) values (2,11,2);
 insert into orderdetail (order_id, product_id, amount) values (2,8,3);
 insert into orderdetail (order_id, product_id, amount) values (2,2,1);
 insert into orderdetail (order_id, product_id, amount) values (2,9,1);
+
+insert into adminUser (username, password) values ('adminuser','$2y$10$C.oNQKoCZE/lXMZ3TGmqIeM1ZsDb1U0ztL0XIEnTTxwxMNjN3b/di')
