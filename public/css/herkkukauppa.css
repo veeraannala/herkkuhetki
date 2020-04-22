@@ -48,7 +48,7 @@ h4 {
 
 .table-striped tr:nth-of-type(odd) {
     background-color: rgb(251,216,219,0.25) !important;
-  }
+}
 
 .btn {
     color: white;
@@ -77,29 +77,34 @@ h4 {
         height:300px;
     }
     
-  }
+}
 @media (max-width: 767px) {
   
     .carousel {
         display: none;
     }
     
-  }
-  .centerminheight {
-      min-height: 415px;
-  }
-  .customer label {
-      font-weight: bold;
-  }
-   .customercard{
-      background-color:rgb(251,216,219,0.25);
-      
-      /*font-weight: bold;*/
-  }
-  .customercard h5 {
+}
+.centerminheight {
+    min-height: 415px;
+}
+
+.customer label {
+    font-weight: bold;
+}
+
+.customercard{
+    background-color:rgb(251,216,219,0.25);
+    /*font-weight: bold;*/
+}
+
+.customercard h5 {
     font-weight: bold
-  }
-    
+}
+
+.header {
+    opacity: 100%;
+}
 
 .result {
     font-weight: 600;
