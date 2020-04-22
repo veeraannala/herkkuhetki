@@ -101,9 +101,6 @@ h4 {
   }
     
 
-  .header {
-      opacity: 100%;
-  } 
 .result {
     font-weight: 600;
     font-size: 20px;
@@ -178,4 +175,8 @@ span.required {
     position: relative;
     left: 116px;
     bottom: 46px;
+}
+
+.pic {
+    max-height: 300px;
 }
