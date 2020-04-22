@@ -20,10 +20,10 @@
                 maxlength="30">
             </div>
             <div class="form-group">
-                <label>Salasana uudestaan</label><span class="required">*</span>
+                <label>Vahvista salasana</label><span class="required">*</span>
                 <input class="form-control"
                 name="passconfirm" type="password"
-                placeholder="Syötä salasana uudestaan"
+                placeholder="Vahvista salasana"
                 maxlength="30">
             </div>
             <div>
