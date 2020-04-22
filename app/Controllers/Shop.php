@@ -112,20 +112,19 @@ class Shop extends BaseController
 	}
 
 	/*
-	tämän function tarkoitus on:
-	-etsiä tuotteita annetuilla hakusanoilla. Annettuja hakusanoja verrataan tuotteiden nimikenttiin
-	ja kuvauksiin ja tuotteen tageihin
+	
+	the purpose of this function is:
+	-find products with given keywords. The keywords given are compared with the name of the product, description or tag.
 
-	-esimerkkihakuja:
+	-example keywords:
 	- "suklaa"
-	- "suklaa*" ei tuettu
+	- "suklaa*" not allowed
 	- "suklaa karkki"
 	
-	specsi
-	-kaikki hakulausekkeessa esiintyvät erikoismerkit hylätään/ei käsitellä
-	ps. ainakaan merkin; ¤ poisto ei toimi toistaiseksi. Selvitellään.
-	-mikäli hakulausekkeessa on useampi kuin yksi sana: tulee kaikkien yksittäisten hakusanojen löytyä
-	tuotteen nimestä, kuvauksesta tai tagista.
+	specs
+	-All special characters in the search query are rejected / not processed
+	-if there is more than one word in the search term: all individual keywords must be found
+	product name, description, or tag.
 	*/
 	public function search_product(){
 
@@ -135,16 +134,16 @@ class Shop extends BaseController
 		$data['product'] = $this->prodmodel->ShowProduct();
 
 		$searchQuery = $this->request->getVar('search',FILTER_SANITIZE_STRING);
-		//echo $searchQuery;
+		
 		if(!empty($searchQuery)) {
-			# muutetaan annettu haku pieniksi kirjaimiksi.
+			# change the given search to lowercase.
 			$searchQuery = mb_convert_case($searchQuery, MB_CASE_LOWER, "UTF-8");
-			# parsitaan ylimääräiset merkit.
+			# remove special characters.
 			$searchQuery = preg_replace('/[^A-Öa-ö0-9]+/', ',', $searchQuery);
-			# Luodaan sanoista taulukko.
+			# Create array of keywords
 			$keywords = explode(',', $searchQuery);
 			
-			# lähetetään taulukko $keywords searchLike metodille.
+			# send array to searchLike method.
 			$data['searchresult'] = $this->prodmodel->searchLike($keywords);
 			
 			
@@ -159,7 +158,7 @@ class Shop extends BaseController
 				echo view('templates/footer');
 			}
 		} else {
-			//return redirect()->to('/shop'); 
+			return redirect()->to('/shop'); 
 		}
 
 	}
