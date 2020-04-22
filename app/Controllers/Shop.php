@@ -160,11 +160,8 @@ class Shop extends BaseController
 		} else {
 			return redirect()->to('/shop'); 
 		}
-
 	}
-		 
 	
-
 	//adds email to newsletter database
 	public function addToNewsletter(){
 
