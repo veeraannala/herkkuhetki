@@ -233,9 +233,19 @@ class Shop extends BaseController
 		$data['title'] = "Tietoa meistä";
 		$data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
-		
+
 		echo view('templates/header', $data);
         echo view('shop/aboutUs_view');
+        echo view('templates/footer');
+	}
+
+	public function contactInfo() {
+		$data['title'] = "Yhteystiedot";
+		$data['categories'] = $this->model->getCategories();
+		$data['themecategories'] = $this->thememodel->getThemeCategories();
+		
+		echo view('templates/header', $data);
+        echo view('shop/contact_view');
         echo view('templates/footer');
 	}
 }

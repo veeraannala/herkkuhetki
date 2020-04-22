@@ -7,7 +7,7 @@
           <!-- By pressing the link you can browse payment and delivery terms -->
           <p class="mb-1"><a href="<?= site_url('/Shop/show_methods') ?>">Maksu- ja toimitusehdot</a></p>
           <p class="mb-1"><a href="<?= site_url('/Shop/aboutUs') ?>">Tietoa meistä</a></p>
-          <p class="mb-1"><a href="#">Yhteystiedot</a></p>
+          <p class="mb-1"><a href="<?= site_url('/Shop/contactInfo') ?>">Yhteystiedot</a></p>
           <p class="mb-1"><a href="<?= site_url('/Shop/gdprregister') ?>">Rekisteriseloste</a></p>
         </div>
 

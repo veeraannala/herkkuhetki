@@ -11,7 +11,7 @@
         <p>Herkkuhetki on tehty rakkaudella ja siihen on upotettu monen monta tuntia, niin monta
          että koodarimme ovat tuskin poistuneet kotoaan! Lopputuloksena on ihana, Suomen karkkiskenen valtaa havitteleva (ja sen ansaitseva) karkkikauppa.</p>
     </div>
-    <div class="col-md-6 mt-5 mb-3 text-center">
+    <div class="col-md-6 mt-3 mb-3 text-center">
         <img src="/../images/dragon.png" alt="" class="pic">
     </div>
 
