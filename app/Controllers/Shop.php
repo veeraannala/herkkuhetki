@@ -228,4 +228,14 @@ class Shop extends BaseController
         echo view('shop/frontpageproduct_view.php', $data);
         echo view('templates/footer');
 	}
+
+	public function aboutUs() {
+		$data['title'] = "Tietoa meistä";
+		$data['categories'] = $this->model->getCategories();
+		$data['themecategories'] = $this->thememodel->getThemeCategories();
+		
+		echo view('templates/header', $data);
+        echo view('shop/aboutUs_view');
+        echo view('templates/footer');
+	}
 }
