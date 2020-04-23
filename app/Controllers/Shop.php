@@ -33,8 +33,8 @@ class Shop extends BaseController
 	{
 		if (!isset($_SESSION['basket'])) {
             $_SESSION['basket'] = array();
-		} 
-		
+		}
+
 		$data['title'] = "Herkkuhetki";
 		$data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
@@ -56,12 +56,12 @@ class Shop extends BaseController
         echo view('templates/footer');
 	}
 
-	
+
 
 	public function show_product($id)
 	{
-		//Shows detailed information of one product. 
-		 
+		//Shows detailed information of one product.
+
 		$data['title'] = "Herkkuhetki";
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
@@ -70,7 +70,7 @@ class Shop extends BaseController
 		foreach ($data['product'] as $prod):
             if ($prod['id'] == $id) {
 				$stock = $prod['stock'];
-				
+
             }
             endforeach;
         if (is_array($_SESSION['basket'])) {
@@ -112,16 +112,16 @@ class Shop extends BaseController
 	}
 
 	/*
-	
+
 	the purpose of this function is:
 	-find products with given keywords. The keywords given are compared with the name of the product, description or tag.
 
-	-example keywords:
+	-Example keywords:
 	- "suklaa"
 	- "suklaa*" not allowed
 	- "suklaa karkki"
-	
-	specs
+
+	Specs
 	-All special characters in the search query are rejected / not processed
 	-if there is more than one word in the search term: all individual keywords must be found
 	product name, description, or tag.
@@ -134,19 +134,19 @@ class Shop extends BaseController
 		$data['product'] = $this->prodmodel->ShowProduct();
 
 		$searchQuery = $this->request->getVar('search',FILTER_SANITIZE_STRING);
-		
+
 		if(!empty($searchQuery)) {
-			# change the given search to lowercase.
+			# Change the given search to lowercase.
 			$searchQuery = mb_convert_case($searchQuery, MB_CASE_LOWER, "UTF-8");
-			# remove special characters.
+			# Remove special characters.
 			$searchQuery = preg_replace('/[^A-Öa-ö0-9]+/', ',', $searchQuery);
-			# Create array of keywords
+			# Create array of keywords.
 			$keywords = explode(',', $searchQuery);
-			
-			# send array to searchLike method.
+
+			# Send array to searchLike method.
 			$data['searchresult'] = $this->prodmodel->searchLike($keywords);
-			
-			
+
+
 			if (!empty($data)) {
 			echo view('templates/header',$data);
 			echo view('shop/search_view',$data);
@@ -158,10 +158,10 @@ class Shop extends BaseController
 				echo view('templates/footer');
 			}
 		} else {
-			return redirect()->to('/shop'); 
+			return redirect()->to('/shop');
 		}
 	}
-	
+
 	//adds email to newsletter database
 	public function addToNewsletter(){
 
@@ -190,12 +190,12 @@ class Shop extends BaseController
 
 	//saves new review to database
 	public function review($id) {
-		
+
 		$data['title'] = "Herkkuhetki";
 		$data['product'] = $this->prodmodel->getProduct($id);
 		$id = $this->prodmodel->showProduct($id);
-		
-		$this->reviewmodel->save([		
+
+		$this->reviewmodel->save([
 			'product_id' => $this->request->getVar('id'),
 			'review' => $this->request->getVar('review'),
 			'stars' => $this->request->getVar('stars')
@@ -203,7 +203,7 @@ class Shop extends BaseController
 		return redirect()->to(previous_url());
 		}
 
-	// gets information of all reviews 
+	// gets information of all reviews
 	public function showReview($product_id) {
 
 		$data['title'] = "Herkkuhetki";
@@ -243,7 +243,7 @@ class Shop extends BaseController
 		$data['title'] = "Yhteystiedot";
 		$data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
-		
+
 		echo view('templates/header', $data);
         echo view('shop/contact_view');
         echo view('templates/footer');

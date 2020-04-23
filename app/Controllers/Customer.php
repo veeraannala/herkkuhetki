@@ -12,7 +12,6 @@ class Customer extends BaseController
     private $prodmodel = null;
     private $customermodel = null;
     private $ordermodel = null;
-    
 
     public function __construct()
     {
@@ -24,30 +23,32 @@ class Customer extends BaseController
         $this->customermodel = new CustomerModel();
         $this->ordermodel = new OrderModel();
     }
-    #loads customer login view
+
+    #shows customer login page.
     public function index() {
 
-		$data['categories'] = $this->model->getCategories();
-		$data['themecategories'] = $this->thememodel->getThemeCategories();
+    		$data['categories'] = $this->model->getCategories();
+    		$data['themecategories'] = $this->thememodel->getThemeCategories();
         $data['title'] = "Kirjaudu";
 
         echo view('templates/header', $data);
         echo view('customer/customer_view');
         echo view('templates/footer');
     }
-    #loads register view
+
+    #shows customer register page.
     public function register() {
 
         $data['title'] = "Rekisteröidy";
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
-        
+
         echo view('templates/header', $data);
         echo view('customer/customerRegister_view');
         echo view('templates/footer');
     }
 
-    #loads customers detail page.
+    #shows customers detail page.
     public function customerDetail() {
         # if logged customer, gets user id from session array.
         if(!isset($_SESSION['customer'])) {
@@ -66,7 +67,7 @@ class Customer extends BaseController
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         $data['userdata'] = $this->customermodel->find($customerid);
         $data['orders'] = $this->ordermodel->getOrders();
-        
+
         echo view('templates/header', $data);
         echo view('customer/customerDetail_view');
         echo view('templates/footer');
@@ -86,17 +87,17 @@ class Customer extends BaseController
             endforeach;
         }
 
-        $data['userdata'] = $this->customermodel->find($customerid);  
+        $data['userdata'] = $this->customermodel->find($customerid);
         $data['title'] = "Muokkaa tietoja";
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
-            
+
         echo view('templates/header', $data);
         echo view('customer/customerEdit_view');
         echo view('templates/footer');
     }
 
-    # Loads view where customer can update details (firstname, lastname, address etc.)
+    # shows page where customer can update details (firstname, lastname, address etc.)
     public function customerEditDetail() {
         # if logged customer, gets user id from session array.
         if(!isset($_SESSION['customer'])) {
@@ -110,18 +111,16 @@ class Customer extends BaseController
             endforeach;
         }
 
-
-
-    
         $data['title'] = "Muokkaa tietoja";
         $data['userdata'] = $this->customermodel->find($customerid);
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
-     
+
         echo view('templates/header',$data);
         echo view('customer/customerEditDetail_view',$data);
-        echo view('templates/footer'); 
+        echo view('templates/footer');
     }
+
     # Updates customer email address
     public function customerEmailUpdate() {
         $validation =  \Config\Services::validation();
@@ -142,14 +141,14 @@ class Customer extends BaseController
         $data['userdata'] = $this->customermodel->find($customerid);
         $data['orders'] = $this->ordermodel->getOrders();
         $data['title'] = "Muokkaa tietoja";
-        
+
         if (!$this->validate($validation->getRuleGroup('customerEmailValidate'))) {
             echo view('templates/header',$data);
             echo view('customer/customerEdit_view');
-            echo view('templates/footer');  
+            echo view('templates/footer');
         } else
         {
-            #if new email is same than before. Sends errormessage
+            # if new email is same than before. Sends errormessage
             $newEmail = $this->request->getVar('newemail');
             $user = $this->customermodel->find($customerid);
             if ($newEmail === $user['email']) {
@@ -158,7 +157,7 @@ class Customer extends BaseController
                 echo view('customer/customerEdit_view',$data);
                 echo view('templates/footer');
             }
-            #if email exits. Sends error message.
+            # if email exits in database. Sends error message.
             $customers = $this->customermodel->getCustomer();
             foreach ($customers as $cust):
                 if ($cust['email'] === $this->request->getVar('newemail') && $cust['password'] != null) {
@@ -183,6 +182,7 @@ class Customer extends BaseController
                 echo view('templates/footer');
         }
     }
+
     # Updates customer password.
     public function customerPasswordUpdate() {
         $validation =  \Config\Services::validation();
@@ -203,11 +203,11 @@ class Customer extends BaseController
         $data['userdata'] = $this->customermodel->find($customerid);
         $data['orders'] = $this->ordermodel->getOrders();
         $data['title'] = "Muokkaa tietoja";
-        
+
         if (!$this->validate($validation->getRuleGroup('customerPasswordValidate'))) {
             echo view('templates/header',$data);
             echo view('customer/customerEdit_view');
-            echo view('templates/footer');  
+            echo view('templates/footer');
         } else
         {
             #finds customer details from database.
@@ -215,11 +215,11 @@ class Customer extends BaseController
             #returns custmers password from database.
             $oldPassword = $this->customermodel->PasswordCheck(
                 $customerid,
-                $this->request->getVar('oldpassword') 
+                $this->request->getVar('oldpassword')
             );
-            # Tähän tehdään vielä ominaisuus että käyttäjä ei voi vaihtaa salasanaa uudestaan samaksi.
-            # if passwords are same, saves a new password. Else sends errormessage. 
+            # if passwords are same, saves a new password. Else sends errormessage.
             if ($oldPassword === $user['password']) {
+              # saves customer new password to database.
                  $this->customermodel->save([
                      'id' => $customerid,
                      'password' => password_hash($this->request->getPost('newpassword'),PASSWORD_DEFAULT)
@@ -235,8 +235,9 @@ class Customer extends BaseController
                 echo view('customer/customerEdit_view',$data);
                 echo view('templates/footer');
             }
-        } 
+        }
     }
+
     # Updates customers details (firstname,lastname, address etc.)
     public function customerDetailUpdate() {
         $validation =  \Config\Services::validation();
@@ -254,13 +255,14 @@ class Customer extends BaseController
         $data['userdata'] = $this->customermodel->find($customerid);
         $data['orders'] = $this->ordermodel->getOrders();
         $data['title'] = "Muokkaa tietoja";
-        
+
         if (!$this->validate($validation->getRuleGroup('customerDetailValidate'))) {
             echo view('templates/header',$data);
             echo view('customer/customerEditDetail_view');
-            echo view('templates/footer');  
+            echo view('templates/footer');
         } else
         {
+            # saves customer updated details to database.
              $this->customermodel->save([
                 'id' => $customerid,
                 'firstname' => ucfirst($this->request->getVar('firstname')),
@@ -271,28 +273,27 @@ class Customer extends BaseController
                 'phone' => $this->request->getVar('phone')
 
             ]);
-            # Gives to user a message and loads new details.
-            $data['infomessage'] = 'on nyt päivitetty.';
-            $data['userdata'] = $this->customermodel->find($customerid);
+              # Gives to user a message and loads new details.
+                $data['infomessage'] = 'on nyt päivitetty.';
+                $data['userdata'] = $this->customermodel->find($customerid);
                 echo view('templates/header',$data);
                 echo view('customer/customerDetail_view',$data);
                 echo view('templates/footer');
         }
-        
     }
-
+    # validates and saves customer details to database.
     public function customerRegistration()
     {
         $validation =  \Config\Services::validation();
         $data['title'] = "Rekisteröidy";
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
-        
+
         if (!$this->validate($validation->getRuleGroup('customerRegisterValidate'))) {
             echo view('templates/header', $data);
             echo view('customer/customerRegister_view');
             echo view('templates/footer');
-        
+
         } else {
 
             $customers = $this->customermodel->getCustomer();
@@ -305,7 +306,7 @@ class Customer extends BaseController
                     exit();
                 }
             endforeach;
-
+            # Saves details to database.
             $this->customermodel->save([
                 'email' => $this->request->getVar('email'),
                 'password' => password_hash($this->request->getPost('password'),PASSWORD_DEFAULT),
@@ -317,7 +318,7 @@ class Customer extends BaseController
                 'phone' => $this->request->getVar('phone')
             ]);
             $data['registermessage'] = 'Voit nyt kirjautua sisään.';
-            
+
             $data['categories'] = $this->model->getCategories();
             $data['themecategories'] = $this->thememodel->getThemeCategories();
             echo view('templates/header',$data);
@@ -326,8 +327,7 @@ class Customer extends BaseController
         }
     }
 
-    
-
+    # Validates and checks whether the login information is correct.
     public function loginCheck()
     {
         $validation =  \Config\Services::validation();
@@ -335,7 +335,7 @@ class Customer extends BaseController
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         $_SESSION['customer'] = array();
-        
+
         if (!$this->validate($validation->getRuleGroup('customerLoginValidate'))) {
             echo view('templates/header', $data);
             echo view('customer/customer_view');
@@ -345,30 +345,30 @@ class Customer extends BaseController
                 $this->request->getVar('email'),
                 $this->request->getVar('password')
             );
-            
-            
+            # if customer is logged in push id to session array.
             if ($loggedCustomer) {
                 array_push($_SESSION['customer'], $loggedCustomer->id);
-
+                # loads customer orders.
                 $data['orders'] = $this->ordermodel->getOrders();
-                //print_r($data1);
                 $data['userdata'] = null;
+
                 foreach ($_SESSION['customer'] as $key => $value):
                     $customerid = $value;
                 endforeach;
+                # Loads customer details from database and send them to detail page.
                 $customers = $this->customermodel->getCustomer();
-                
+
                 foreach ($customers as $customer):
                     if ($customerid === $customer['id']) {
                         $data['userdata'] = $customer;
                     }
                 endforeach;
-    
+
                 echo view('templates/header',$data);
                 echo view('customer/customerDetail_view',$data);
-                echo view('templates/footer'); 
+                echo view('templates/footer');
             }
-            else {  
+            else {
                 $data['message'] = 'Käyttäjänimi tai salasana on väärin:';
                 $data['title'] = "Kirjaudu";
                 $data['categories'] = $this->model->getCategories();
@@ -391,20 +391,17 @@ class Customer extends BaseController
         echo view('templates/footer');
     }
 
-    public function logout()
-    {
+    public function logout() {
         session_destroy();
         return redirect()->to('/shop');
     }
-
-
 
     public function customerAccount()
     {
         $data['title'] = "Omat tiedot";
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
-    
+
         if (isset($_SESSION['customer'])) {
             $customerid=null;
             $data['userdata'] = null;

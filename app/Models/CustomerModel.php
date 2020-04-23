@@ -8,7 +8,7 @@ use CodeIgniter\Model;
         protected $table     = 'customer';
         protected $primaryKey = 'id';
         protected $allowedFields = ['firstname','lastname','address','postcode','town','email','phone','password'];
-        
+
 
         public function getCustomer() {
             $builder = $this->table("customer");
@@ -17,7 +17,7 @@ use CodeIgniter\Model;
             return $query->getResultArray();
         }
 
-        // Returns user data when user log in.
+        # Returns user data when user log in.
         public function loginCheck($email,$password) {
             $this->where('email', $email);
             $query = $this->get();
@@ -29,6 +29,7 @@ use CodeIgniter\Model;
             }
                     return null;
         }
+        # Returns users password.
         public function PasswordCheck($customerid,$password) {
             $this->where('id', $customerid);
             $query = $this->get();
@@ -40,8 +41,4 @@ use CodeIgniter\Model;
             }
                     return null;
         }
-
-        
-            
-
     }

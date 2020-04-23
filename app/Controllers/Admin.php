@@ -27,7 +27,7 @@ class Admin extends BaseController
         $this->ordermodel = new OrderModel();
         $this->reviewmodel = new ReviewModel();
     }
-    
+
     public function index() {
         // if(!isset($_SESSION['username'])) {
         // return redirect()->to('/admin/adminlogin');
@@ -37,7 +37,7 @@ class Admin extends BaseController
         echo view('admin/admin_view');
         echo view('admin/adminFooter');
     }
-
+		//Shows admin login page.
     public function adminlogin() {
         // if(!isset($_SESSION['username'])) {
         // return redirect()->to('/admin/adminlogin');
@@ -47,6 +47,7 @@ class Admin extends BaseController
         echo view('admin/adminlogin_view');
         echo view('admin/adminFooter');
     }
+		//Shows admin register page.
     public function adminregister(){
         // if(!isset($_SESSION['username'])) {
         // return redirect()->to('/admin/adminlogin');
@@ -56,6 +57,7 @@ class Admin extends BaseController
         echo view('admin/register_view');
         echo view('admin/adminFooter');
     }
+
     public function adminorders(){
         //if(!isset($_SESSION['username'])) {
         //return redirect()->to('/admin/adminlogin');
@@ -65,14 +67,14 @@ class Admin extends BaseController
         echo view('admin/orders_view');
         echo view('admin/adminFooter');
 }
-
+		//validates and saves admin user to database.
     public function adminRegistration() {
         //if(!isset($_SESSION['username'])) {
         //return redirect()->to('/admin/adminlogin');
         //}
         $data['title'] = "Ylläpito - rekisteröidy";
         $validation =  \Config\Services::validation();
-        
+
 
         if (!$this->validate($validation->getRuleGroup('adminregistervalidate')))
         {
@@ -91,11 +93,11 @@ class Admin extends BaseController
             echo view('admin/adminFooter');
         }
     }
-
+		// Validates and checks whether the login information is correct.
     public function adminCheck() {
         $data['title'] = "Ylläpito - kirjautuminen";
         $validation =  \Config\Services::validation();
-        
+
         if (!$this->validate($validation->getRuleGroup('adminloginvalidate')))
         {
             echo view('admin/adminHeader', $data);
@@ -106,12 +108,12 @@ class Admin extends BaseController
         {
             $adminUser = $this->adminmodel->admincheck(
                 $this->request->getVar('username'),
-                $this->request->getVar('password')  
+                $this->request->getVar('password')
             );
-            
+
             if ($adminUser) {
                 $_SESSION['username'] =  $adminUser;
-                return redirect()->to('/admin'); 
+                return redirect()->to('/admin');
             }
             else {
                 $data['message'] = 'Käyttäjänimi tai salasana on väärin.';
@@ -121,13 +123,13 @@ class Admin extends BaseController
             }
         }
     }
-
+		//logout adminuser.
     public function logout() {
         session_destroy();
         return redirect()->to('/admin/adminlogin');
     }
 
-   
+
 
     public function updateProduct() {
         //if(!isset($_SESSION['username'])) {
@@ -140,9 +142,9 @@ class Admin extends BaseController
         echo view('admin/adminHeader', $data);
         echo view('admin/updateProduct_view', $data);
         echo view('admin/adminFooter');
-        
+
     }
-    
+
     public function editProduct() {
         //shows all products in one view
         //if(!isset($_SESSION['username'])) {
@@ -207,7 +209,7 @@ class Admin extends BaseController
 
     }
 
-    
+
     public function addProduct() {
     //saves new product to the database. replaces empty image with imagenotfound-file
         // if(!isset($_SESSION['username'])) {
@@ -267,7 +269,7 @@ class Admin extends BaseController
                 $newproduct['image'] = 'images/' . $image->getName();
                 $this->prodmodel->save($newproduct);
                 return redirect()->to('/admin/editProduct');
-            } 
+            }
         } else {
             $newproduct['image'] = 'images/imagenotfound.png';
             $this->prodmodel->save($newproduct);
@@ -282,14 +284,14 @@ class Admin extends BaseController
         //}
         $product_model = new ProductModel();
         $product_model->delete($id);
-        
+
 
 
 		return redirect()->to('/admin/editProduct');
 
     }
 
-    
+
     public function alterProduct($id) {
         //gets chosen product's information from the database so it can be changed
         //if(!isset($_SESSION['username'])) {
@@ -307,7 +309,7 @@ class Admin extends BaseController
         echo view('admin/adminFooter');
     }
 
-    
+
     public function changeProduct() {
     //changes product information in the database
         //if(!isset($_SESSION['username'])) {
@@ -327,10 +329,10 @@ class Admin extends BaseController
         if ($data["theme_id"] === "NULL") {
             $data['theme_id'] = NULL;
         }
-        
+
         if (!$this->validate([
             // checks if new product name is unique
-            
+
             'newname' => 'is_unique[product.name]'
             ])) {
             //error
@@ -370,12 +372,12 @@ class Admin extends BaseController
                 $path = APPPATH;
                 $path = str_replace('app','public/images',$path);
                 $image->move($path);
- 
+
                 $data['image'] = 'images/' . $image->getName();
 
                 $this->prodmodel->update($id, $data);
                 return redirect()->to('/admin/editProduct');
-             } 
+             }
         } else {
              //updates data without changing image
             $this->prodmodel->update($id, $data);
@@ -466,7 +468,7 @@ class Admin extends BaseController
         echo view('admin/adminFooter');
     }
 
-    // when you clik the "poista" button, removes that review 
+    // when you clik the "poista" button, removes that review
     public function deleteReview($id) {
         //if(!isset($_SESSION['username'])) {
         //return redirect()->to('/admin/adminlogin');
@@ -476,5 +478,5 @@ class Admin extends BaseController
 
         return redirect()->to(previous_url());
     }
-    
+
 }
