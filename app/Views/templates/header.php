@@ -36,7 +36,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
 
-                    <?php foreach ($categories as $category): 
+                    <?php foreach ($categories as $category):
                         if ($category['parentID'] === null) {
                             ?>
 
@@ -48,7 +48,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php foreach ($categories as $subcategory):
-                            
+
                               if ($subcategory['parentID'] === $category['categoryID']) {
                                   ?>
                             <a class="dropdown-item" href="<?=site_url('category/index/' . $subcategory['categoryID'])?>" ><?=$subcategory['name']?></a>
@@ -60,7 +60,7 @@
                         <a class="dropdown-item" href="<?= site_url('category/allProducts/' . $category['parentID']) ?>">Kaikki</a>
                         </div>
                     </li>
-                    <?php } 
+                    <?php }
                         endforeach; ?>
 
                     <li class="nav-item dropdown">
@@ -72,13 +72,13 @@
 
                         <?php foreach ($themecategories as $themes): ?>
                           <a class="dropdown-item" href=<?=site_url('category/index/' . $themes['id'])?>><?=$themes['name']?></a>
-                          
+
                       <?php endforeach; ?>
                         <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="<?= site_url('category/allProducts/' . $category['parentID']) ?>">Kaikki</a>
-                        
-                        
-                        
+
+
+
                         </div>
                     </li>
                 </ul>
@@ -92,15 +92,19 @@
                     </div>
                 </form>
                 <?php if(!empty($_SESSION['customer'])) { ?>
-                 <div class="nav-item">
-                 <a href="<?php echo base_url('customer/logout')?>"><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i>KIRJAUDU ULOS</a>
+                <div class="nav-item">
+                  <a href="<?php echo base_url('customer/customerAccount')?>"><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i></a>
+                  <a href="<?php echo base_url('customer/logout')?>">KIRJAUDU ULOS</a>
                 </div>
                 <?php
                 }
                 else {
-                ?>
-                <a href="<?php echo base_url('customer/index')?>"><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i>KIRJAUDU</a>
-                <?php  
+                ?>  
+                <div class="nav-item">
+                  <a href="<?php echo base_url('customer/index')?>"><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i></a>
+                  <a href="<?php echo base_url('customer/index')?>">KIRJAUDU</a>
+                </div>
+                <?php
                 }
                 ?>
                 <?php
