@@ -1,11 +1,11 @@
-<div class="mt-3">
+<div>
 <?php
 $i = 0;
 $delivery= null;
 foreach ($orderdetails as $orderdetail) {
     $delivery= $orderdetail['delivery'];
 ?>
-    <h3>Lisätietoja tilauksesta</h3>
+    <h3 class="mt-3">Lisätietoja tilauksesta</h3>
     <p>Tilausnumero: <?=$orderdetail['id'] ?></p>
     <?php
       if (++$i == 1) break;

@@ -1,9 +1,9 @@
-<div class="mt-3 centerminheight customer">
+<div class="centerminheight customer">
   <div>
     <?=\Config\Services::validation()->listErrors(); ?>
   </div>
   <form action="<?= site_url('customer/customerRegistration/')?>" method="post">
-    <div class="form-row mt-2">
+    <div class="form-row">
         <div class="form-group col-sm-6 col-lg-3">
           <label for="email">Sähköposti<span class="required">*</span></label>
           <input type="email" class="form-control" name="email" placeholder="Sähköposti" required>

@@ -1,6 +1,6 @@
-<div class="mt-3 centerminheight customer row">
+<div class="centerminheight customer row">
   <div class="col-md-6">
-    <h2>Muuta sähköpostiosoitettasi</h2>
+    <h2  class="mt-3">Muuta sähköpostiosoitettasi</h2>
     <hr>
       <div class="row col-12">
         <?php if(isset($emailmessage)) { ?>
