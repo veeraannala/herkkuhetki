@@ -18,6 +18,6 @@
     <div class="col-md-12 text-center">
         <h4>Tekijät</h4>
 
-        <p>Veera Annala, Emmi Laine, Maria Martin, Miikkael Peltokorpi ja Jonne Tuohimaa</p>
+        <p>Veera Annala, Emmi Laine, Maria Martin, Miikkael Peltokorpi & Jonne Tuohimaa</p>
     </div>
 </div>
