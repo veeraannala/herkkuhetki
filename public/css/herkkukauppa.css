@@ -68,23 +68,6 @@ h4 {
 .fa-shopping-cart {
     font-size: 34.5px !important;
 }
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-  
-    .carousel {
-        height: 300px;
-    }
-    .carousel-item img {
-        height:300px;
-    }
-    
-}
-@media (max-width: 767px) {
-  
-    .carousel {
-        display: none;
-    }
-    
-}
 .centerminheight {
     min-height: 415px;
 }
@@ -184,4 +167,32 @@ span.required {
 
 .pic {
     max-height: 300px;
+}
+@media (min-width: 768px) and (max-width: 1199px) and (orientation: landscape) {
+    ul li a {
+        font-size: 14px;
+        padding-right: 3px !important;
+        padding-left: 3px !important;
+    }
+  }
+@media (min-width: 481px) and (max-width: 991px) {
+    .card-body h5 {
+        font-size: 17px;
+    }
+    .carousel {
+        display: none;
+    }
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+    .card-body h5 {
+        font-size: 15px;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .carousel {
+        height: 300px;
+    }
+    .carousel-item img {
+        height:300px;
+    } 
 }

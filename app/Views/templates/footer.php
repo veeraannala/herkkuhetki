@@ -23,7 +23,7 @@
           <form method="post" action="<?= site_url('shop/addToNewsletter/')?>">
             <div class="form-group">
               <label for="email">Sähköpostiosoite:</label>
-              <input type="email" class="form-control" name="email" placeholder="Syötä sähköpostiosoitteesi">
+              <input type="email" class="form-control text-center" name="email" placeholder="Syötä sähköpostiosoitteesi">
             </div>
             <button type="submit" class="btn">Tilaa</button>
           </form>

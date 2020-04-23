@@ -216,15 +216,12 @@ class Shop extends BaseController
 		echo view('templates/footer');
 	}
 	public function sortBy() {
-        $model = new CategoryModel();
-        $thememodel = new ThemeModel();
-        $prodmodel = new ProductModel();
         $method = $this->request->getVar('parameter');
         $data['title'] = "Herkkuhetki";
-		$data['categories'] = $model->getCategories();
-		$data['themecategories'] = $thememodel->getThemeCategories();
-        $data['product'] = $prodmodel->sortProductsby($method);
-        echo view('templates/header', $data);
+		$data['categories'] = $this->model->getCategories();
+		$data['themecategories'] = $this->thememodel->getThemeCategories();
+        $data['product'] = $this->prodmodel->sortProductsby($method);
+		echo view('templates/header', $data);
         echo view('shop/frontpageproduct_view.php', $data);
         echo view('templates/footer');
 	}
