@@ -113,5 +113,23 @@ use CodeIgniter\Model;
 
             return $query->getResultArray();
         }
+        public function sortProductsby2($id, $method)
+        {
+            $builder = $this->table("product");
+            $builder->select("id , product.name , price , image , stock, type, category_id as category, parentID");
+            $builder->join("productCategory", "product.category_ID = productCategory.categoryID");
+            $builder->where("parentID", $id);
+            if ($method == 1){
+            $builder->orderBy('price', 'ASC');
+            }
+            if ($method == 2){
+            $builder->orderBy('price', 'DESC');
+            }
+            if ($method == 3){
+                $builder->orderBy('name', 'ASC');
+                }
+            $query = $this->get();
+            return $query->getResultArray();
+        }
 
     }

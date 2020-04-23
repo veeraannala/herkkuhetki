@@ -69,4 +69,33 @@ class Category extends BaseController
         echo view('shop/ThemeProduct_view', $data);
         echo view('templates/footer');
     }
+    public function sortallThemeproducts() {
+        $model = new CategoryModel();
+        $prodmodel = new ProductModel();
+        $thememodel = new ThemeModel();
+        $method = $this->request->getVar('parameter');
+        $data['title'] = "Herkkuhetki";
+        $data['categories'] = $model->getCategories();
+        $data['themecategories'] = $thememodel->getThemeCategories();
+        $data['product'] = $prodmodel->getThemeProducts();
+        $data['product'] = $prodmodel->sortProductsby($method);
+        echo view('templates/header', $data);
+        echo view('shop/ThemeProduct_view', $data);
+        echo view('templates/footer');
+    }
+    public function sortallProducts($id) {
+        $model = new CategoryModel();
+        $prodmodel = new ProductModel();
+        $thememodel = new ThemeModel();
+        $method = $this->request->getVar('parameter');
+        $data['title'] = "Herkkuhetki";
+        $data['categories'] = $model->getCategories();
+        $data['themecategories'] = $thememodel->getThemeCategories();
+        $data['product'] = $prodmodel->getParentid($id);
+        $data['id'] = $id;
+        $data['product'] = $prodmodel->sortProductsby2($id,$method);
+        echo view('templates/header', $data);
+        echo view('shop/CatProducts_view', $data);
+        echo view('templates/footer');
+    }
 }
