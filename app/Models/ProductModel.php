@@ -10,8 +10,8 @@ use CodeIgniter\Model;
         /*protected $returnType = 'array';*/
 
         protected $allowedFields = ['id','name','price','description','image','stock','type', 'keywords', 'category_id','theme_id'];
-        
-    
+
+
         // gets only one certain product
         public function getProduct($id)
         {
@@ -48,7 +48,7 @@ use CodeIgniter\Model;
             $query = $builder->get();
             return $query->getResultArray();
         }
-        
+        # Gets keywords as parameter. Returns products that have keyword in name, description or tag.
         public function searchLike( array $keywords) {
             $db = db_connect();
             $builder = $this->table("product");
@@ -60,7 +60,7 @@ use CodeIgniter\Model;
             $query = $builder->get();
             return $query->getResultArray();
         }
-        
+
         public function getProductsCat() {
             // gets products and their categories and themecategories joined
             $builder = $this->table("product");
@@ -80,10 +80,10 @@ use CodeIgniter\Model;
             $builder->orderBy('price', 'ASC');
             }
             if ($method == 2){
-            $builder->orderBy('price', 'DESC');    
+            $builder->orderBy('price', 'DESC');
             }
             if ($method == 3){
-                $builder->orderBy('name', 'ASC');    
+                $builder->orderBy('name', 'ASC');
                 }
             $query = $this->get();
             return $query->getResultArray();

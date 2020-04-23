@@ -17,7 +17,7 @@ use CodeIgniter\Model;
             return $query->getResultArray();
         }
 
-        // Returns user data when user log in.
+        # Returns user data when user log in.
         public function loginCheck($email,$password) {
             $this->where('email', $email);
             $query = $this->get();
@@ -29,7 +29,7 @@ use CodeIgniter\Model;
             }
                     return null;
         }
-        // Returns users password.
+        # Returns users password.
         public function PasswordCheck($customerid,$password) {
             $this->where('id', $customerid);
             $query = $this->get();
