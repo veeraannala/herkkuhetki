@@ -46,7 +46,7 @@ a:hover {
 }
 
 div.dropdown-menu a:hover {
-    color: #E65959; 
+    color: #E65959;
 }
 div.dropdown-menu a {
     font-weight: normal !important;
@@ -59,6 +59,10 @@ div.dropdown-menu a {
     background-color: #FBD8DB !important;
     border-color:#6c0909 !important;
     color:#6c0909;
+}
+.searchHeader {
+  font-family: 'Merriweather Sans', sans-serif;
+  color: #6c0909
 }
 
 .search button:hover {

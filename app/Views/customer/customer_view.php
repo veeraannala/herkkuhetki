@@ -42,9 +42,9 @@
         <div class="col-md-6">
           <h3>Uudet asiakkaat</h3>
           <hr>
-          <p>Luomalla tilin pääset hallinnoimaan ja seuraamaan tilauksiasi</p>
+          <p>Luomalla tilin pääset hallinnoimaan ja seuraamaan tilauksiasi.</p>
             <form action="<?=site_url('customer/register')?>" method="post">
-              <button class="btn" href="">Luo tili</button>
+              <button class="btn mb-2" href="">Luo tili</button>
             </form>
         </div>
     </div>
