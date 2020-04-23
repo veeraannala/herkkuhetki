@@ -1,7 +1,7 @@
-<!-- Prints products in the same main category -->
+<!-- Prints products that have theme category-->
 <div class="row">
 <?php foreach ($product as $prod): ?>
-    <?php if ($id === $prod['parentID']) { ?>
+    <?php if ($prod['theme_id'] != NULL) { ?>
     <div class="col-lg-3 col-md-4 col-6 card mt-3 mb-1">
       <a href="<?=site_url('shop/show_product/' . $prod['id'])?>" ><img class="img-fluid" src="<?=base_url($prod['image'])?>">
     <div class="card-body text-center">

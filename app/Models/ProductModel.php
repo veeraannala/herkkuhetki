@@ -88,4 +88,24 @@ use CodeIgniter\Model;
             $query = $this->get();
             return $query->getResultArray();
         }
+        // get products with specific main category
+        public function getParentid($id) {
+            $builder = $this->table("product");
+            $builder->select("id , product.name , price , image , stock, type, category_id as category, parentID");
+            $builder->join("productCategory", "product.category_ID = productCategory.categoryID");
+            $builder->where("parentID", $id);
+            $query = $builder->get();
+
+            return $query->getResultArray();
+        }
+        // get products that have theme category
+        public function getThemeProducts() {
+            $builder = $this->table("product");
+            $builder->select("id , product.name , price , image , stock, type, category_id as category, theme_id");
+            $builder->where("theme_id !=", NULL);
+            $query = $builder->get();
+
+            return $query->getResultArray();
+        }
+
     }
