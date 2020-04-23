@@ -36,7 +36,7 @@
       </div>
       <div class="form-group col-sm-6 col-lg-3">
         <label for="postcode">Postinumero<span class="required">*</span></label>
-        <input type="text" class="form-control" name="postcode" placeholder="Postinumero" required>
+        <input type="text" class="form-control" name="postcode" placeholder="Postinumero" maxlength="5" required>
       </div>
     </div>
     <div class="form-row">
