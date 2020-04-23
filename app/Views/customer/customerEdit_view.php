@@ -1,4 +1,4 @@
-<div class="mt-3 centerminheight customer row">
+<div class="pt-3 centerminheight customer row">
   <div class="col-md-6">
     <h2>Muuta sähköpostiosoitettasi</h2>
     <hr>

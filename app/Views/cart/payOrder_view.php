@@ -1,4 +1,4 @@
-<div class=" mt-5 mb-5">
+<div class="centerminheight pt-3 pb-5">
     <div class="col-md-6">
         <h3>Valitsemasi maksupalvelu: </h3>
 
