@@ -48,7 +48,13 @@ use CodeIgniter\Model;
             $query = $builder->get();
             return $query->getResultArray();
         }
-        # Gets keywords as parameter. Returns products that have keyword in name, description or tag.
+        /**
+        * Gets keywords as parameter. Returns products that have keyword in name, description or tag.
+        * @param array $keywords - what user types to search input.
+        *
+        *
+        * @return $query search result.
+        */
         public function searchLike( array $keywords) {
             $db = db_connect();
             $builder = $this->table("product");

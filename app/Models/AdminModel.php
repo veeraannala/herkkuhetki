@@ -6,7 +6,14 @@ use CodeIgniter\Model;
 
         protected $table = 'adminuser';
         protected $allowedFields = ['username', 'password'];
-        
+
+     /**
+     * Checks, is adminuser password right
+     * @param $username admins username.
+     * @param $password admins password
+     *
+     * @return $row->username from database.
+     */
     public function admincheck($username,$password) {
         $this->where('username', $username);
         $query = $this->get();
@@ -18,9 +25,5 @@ use CodeIgniter\Model;
             }
             return null;
         }
-
-
-        
-
 }
 ?>

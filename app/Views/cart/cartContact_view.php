@@ -1,5 +1,5 @@
-<div class=" mt-5 mb-5">
-    <form class="row" method="post" action="<?= site_url('cart/saveOrder/')?>">
+<div>
+    <form class="centerminheight row pt-3 pb-3 " method="post" action="<?= site_url('cart/saveOrder/')?>">
         <div class="col-md-6">
             <div>
 

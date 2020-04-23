@@ -142,7 +142,6 @@ class Shop extends BaseController
 			$searchQuery = preg_replace('/[^A-Öa-ö0-9]+/', ',', $searchQuery);
 			# Create array of keywords.
 			$keywords = explode(',', $searchQuery);
-
 			# Send array to searchLike method.
 			$data['searchresult'] = $this->prodmodel->searchLike($keywords);
 

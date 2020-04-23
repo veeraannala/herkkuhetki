@@ -1,4 +1,4 @@
-<div class="row mt-5 mb-5">
+<div class="centerminheight row pt-3 pb-5">
     <div class="col-md-6">
         <table class="table table-striped table-sm">
             <tr>

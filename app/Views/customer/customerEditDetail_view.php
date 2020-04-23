@@ -1,6 +1,6 @@
-<div class="mt-3 centerminheight customer row">
+<div class="centerminheight customer row">
   <div class="col-md-6">
-    <h2>Muuta tietojasi</h2>
+    <h2 class="pt-3">Muuta tietojasi</h2>
     <div class="row">
       <?=\Config\Services::validation()->listErrors(); ?>
     </div>

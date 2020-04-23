@@ -24,7 +24,7 @@ class Customer extends BaseController
         $this->ordermodel = new OrderModel();
     }
 
-    #shows customer login page.
+    # Shows customer login page.
     public function index() {
 
     		$data['categories'] = $this->model->getCategories();
@@ -36,7 +36,7 @@ class Customer extends BaseController
         echo view('templates/footer');
     }
 
-    #shows customer register page.
+    # Shows customer register page.
     public function register() {
 
         $data['title'] = "Rekisteröidy";
@@ -73,7 +73,7 @@ class Customer extends BaseController
         echo view('templates/footer');
     }
 
-    #Loads view where customer can edit email address or password
+    # Loads view where customer can edit email address or password
     public function customerEdit() {
         # if logged customer, gets user id from session array.
         if(!isset($_SESSION['customer'])) {
@@ -306,7 +306,6 @@ class Customer extends BaseController
                     exit();
                 }
             endforeach;
-            # Saves details to database.
             $this->customermodel->save([
                 'email' => $this->request->getVar('email'),
                 'password' => password_hash($this->request->getPost('password'),PASSWORD_DEFAULT),
@@ -345,10 +344,9 @@ class Customer extends BaseController
                 $this->request->getVar('email'),
                 $this->request->getVar('password')
             );
-            # if customer is logged in push id to session array.
+            # if customer is logged in. Push id to session array.
             if ($loggedCustomer) {
                 array_push($_SESSION['customer'], $loggedCustomer->id);
-                # loads customer orders.
                 $data['orders'] = $this->ordermodel->getOrders();
                 $data['userdata'] = null;
 
@@ -394,7 +392,7 @@ class Customer extends BaseController
             echo view('templates/footer');
         }
     }
-    
+
 
     public function logout() {
         session_destroy();
