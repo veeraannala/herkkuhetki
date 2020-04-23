@@ -203,14 +203,19 @@ class Customer extends BaseController
 
     public function showOrder($id)
     {
-        $data['title'] = "Tilaus";
-        $data['categories'] = $this->model->getCategories();
-        $data['themecategories'] = $this->thememodel->getThemeCategories();
-        $data['orderdetails'] = $this->ordermodel->getOrderDetails($id);
-        echo view('templates/header', $data);
-        echo view('customer/customerorder_view', $data);
-        echo view('templates/footer');
+        if (!isset($_SESSION['customer'])) {
+            return redirect()->to('/customer/index');
+        } else {
+            $data['title'] = "Tilaus";
+            $data['categories'] = $this->model->getCategories();
+            $data['themecategories'] = $this->thememodel->getThemeCategories();
+            $data['orderdetails'] = $this->ordermodel->getOrderDetails($id);
+            echo view('templates/header', $data);
+            echo view('customer/customerorder_view', $data);
+            echo view('templates/footer');
+        }
     }
+    
 
     public function logout()
     {
