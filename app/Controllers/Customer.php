@@ -225,7 +225,7 @@ class Customer extends BaseController
                      'password' => password_hash($this->request->getPost('newpassword'),PASSWORD_DEFAULT)
                  ]);
 
-                $data['message'] = 'Salasanasi on nyt vaihdettu';
+                $data['passwordmessage'] = 'Salasanasi on nyt vaihdettu.';
                 echo view('templates/header',$data);
                 echo view('customer/customerDetail_view',$data);
                 echo view('templates/footer');

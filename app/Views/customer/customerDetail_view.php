@@ -14,6 +14,9 @@
             <hr>
             <div class="card customercard mb-3 col-12">
                 <div class="card-body text-dark ">
+                    <?php if(isset($passwordmessage)) { ?>
+                    <?='<h5 class="card-title registermessage mb-0">'.$passwordmessage.'</h5>'?>
+                    <?php } ?>
                     <?php if(!isset($infomessage)) { ?>
                     <h5 class="card-title">Yhteystietosi</h5>
                     <?php } else { ?>
