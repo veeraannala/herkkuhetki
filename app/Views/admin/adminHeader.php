@@ -53,6 +53,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?=site_url('admin/editReview/')?>">Arvostelut</a>
                     </li>
+                    <li>
+                        <a class="nav-link" href="<?=site_url('admin/adminregister/')?>">Rekisteröi admin</a>
+                    </li>
 
 
             </div>

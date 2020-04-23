@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mt-3 ">
 <div class="col-12">
 <h2>Adminsivut</h2>
 <div class="row m-3">

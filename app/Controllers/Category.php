@@ -39,5 +39,21 @@ class Category extends BaseController
         echo view('templates/header', $data);
         echo view('shop/category_view', $data);
         echo view('templates/footer');
-	}
+    }
+    
+    public function allProducts($parentID) {
+        $model = new CategoryModel();
+        $prodmodel = new ProductModel();
+        $thememodel = new ThemeModel();
+
+        $data['title'] = "Herkkuhetki";
+        $data['categories'] = $model->getCategories();
+        $data['themecategories'] = $thememodel->getThemeCategories();
+        $data['product'] = $prodmodel->ShowProduct();
+        //$data['parentID'] = $parentID;
+        //$data['id'] = $id;
+        echo view('templates/header', $data);
+        echo view('shop/CatProducts_view', $data);
+        echo view('templates/footer');
+    }
 }

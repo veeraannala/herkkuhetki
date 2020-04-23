@@ -33,8 +33,8 @@ class Shop extends BaseController
 	{
 		if (!isset($_SESSION['basket'])) {
             $_SESSION['basket'] = array();
-		} 
-		
+		}
+
 		$data['title'] = "Herkkuhetki";
 		$data['categories'] = $this->model->getCategories();
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
@@ -56,12 +56,12 @@ class Shop extends BaseController
         echo view('templates/footer');
 	}
 
-	
+
 
 	public function show_product($id)
 	{
-		//Shows detailed information of one product. 
-		 
+		//Shows detailed information of one product.
+
 		$data['title'] = "Herkkuhetki";
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
@@ -70,7 +70,7 @@ class Shop extends BaseController
 		foreach ($data['product'] as $prod):
             if ($prod['id'] == $id) {
 				$stock = $prod['stock'];
-				
+
             }
             endforeach;
         if (is_array($_SESSION['basket'])) {
@@ -112,20 +112,19 @@ class Shop extends BaseController
 	}
 
 	/*
-	tämän function tarkoitus on:
-	-etsiä tuotteita annetuilla hakusanoilla. Annettuja hakusanoja verrataan tuotteiden nimikenttiin
-	ja kuvauksiin ja tuotteen tageihin
 
-	-esimerkkihakuja:
+	the purpose of this function is:
+	-find products with given keywords. The keywords given are compared with the name of the product, description or tag.
+
+	-Example keywords:
 	- "suklaa"
-	- "suklaa*" ei tuettu
+	- "suklaa*" not allowed
 	- "suklaa karkki"
-	
-	specsi
-	-kaikki hakulausekkeessa esiintyvät erikoismerkit hylätään/ei käsitellä
-	ps. ainakaan merkin; ¤ poisto ei toimi toistaiseksi. Selvitellään.
-	-mikäli hakulausekkeessa on useampi kuin yksi sana: tulee kaikkien yksittäisten hakusanojen löytyä
-	tuotteen nimestä, kuvauksesta tai tagista.
+
+	Specs
+	-All special characters in the search query are rejected / not processed
+	-if there is more than one word in the search term: all individual keywords must be found
+	product name, description, or tag.
 	*/
 	public function search_product(){
 
@@ -135,19 +134,19 @@ class Shop extends BaseController
 		$data['product'] = $this->prodmodel->ShowProduct();
 
 		$searchQuery = $this->request->getVar('search',FILTER_SANITIZE_STRING);
-		//echo $searchQuery;
+
 		if(!empty($searchQuery)) {
-			# muutetaan annettu haku pieniksi kirjaimiksi.
+			# Change the given search to lowercase.
 			$searchQuery = mb_convert_case($searchQuery, MB_CASE_LOWER, "UTF-8");
-			# parsitaan ylimääräiset merkit.
+			# Remove special characters.
 			$searchQuery = preg_replace('/[^A-Öa-ö0-9]+/', ',', $searchQuery);
-			# Luodaan sanoista taulukko.
+			# Create array of keywords.
 			$keywords = explode(',', $searchQuery);
-			
-			# lähetetään taulukko $keywords searchLike metodille.
+
+			# Send array to searchLike method.
 			$data['searchresult'] = $this->prodmodel->searchLike($keywords);
-			
-			
+
+
 			if (!empty($data)) {
 			echo view('templates/header',$data);
 			echo view('shop/search_view',$data);
@@ -159,12 +158,9 @@ class Shop extends BaseController
 				echo view('templates/footer');
 			}
 		} else {
-			//return redirect()->to('/shop'); 
+			return redirect()->to('/shop');
 		}
-
 	}
-		 
-	
 
 	//adds email to newsletter database
 	public function addToNewsletter(){
@@ -194,12 +190,12 @@ class Shop extends BaseController
 
 	//saves new review to database
 	public function review($id) {
-		
+
 		$data['title'] = "Herkkuhetki";
 		$data['product'] = $this->prodmodel->getProduct($id);
 		$id = $this->prodmodel->showProduct($id);
-		
-		$this->reviewmodel->save([		
+
+		$this->reviewmodel->save([
 			'product_id' => $this->request->getVar('id'),
 			'review' => $this->request->getVar('review'),
 			'stars' => $this->request->getVar('stars')
@@ -207,7 +203,7 @@ class Shop extends BaseController
 		return redirect()->to(previous_url());
 		}
 
-	// gets information of all reviews 
+	// gets information of all reviews
 	public function showReview($product_id) {
 
 		$data['title'] = "Herkkuhetki";
@@ -230,6 +226,26 @@ class Shop extends BaseController
         $data['product'] = $prodmodel->sortProductsby($method);
         echo view('templates/header', $data);
         echo view('shop/frontpageproduct_view.php', $data);
+        echo view('templates/footer');
+	}
+
+	public function aboutUs() {
+		$data['title'] = "Tietoa meistä";
+		$data['categories'] = $this->model->getCategories();
+		$data['themecategories'] = $this->thememodel->getThemeCategories();
+
+		echo view('templates/header', $data);
+        echo view('shop/aboutUs_view');
+        echo view('templates/footer');
+	}
+
+	public function contactInfo() {
+		$data['title'] = "Yhteystiedot";
+		$data['categories'] = $this->model->getCategories();
+		$data['themecategories'] = $this->thememodel->getThemeCategories();
+
+		echo view('templates/header', $data);
+        echo view('shop/contact_view');
         echo view('templates/footer');
 	}
 }

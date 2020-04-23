@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mt-3">
     <div class="col-6 mb-3">
         <h1>Lisää tuotteita</h1>
 

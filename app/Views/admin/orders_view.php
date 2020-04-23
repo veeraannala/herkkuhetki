@@ -1,6 +1,6 @@
-<div class="row">
+<div class="row mt-3">
     <div class="col-12">
-        <h1>Tehdyt tilaukset:</h1>
+        <h3>Tehdyt tilaukset:</h3>
         <div style="display: flex;">
         <form class="mr-4" style="float:left; width:30%;" method="post" action="<?= site_url('admin/sortbystatus/')?>">
             <div class="form-group" style="margin-bottom: 0rem;">

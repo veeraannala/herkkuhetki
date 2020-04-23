@@ -1,9 +1,9 @@
-<div class="centerminheight2">
+<div class="centerminheight2 mt-3">
 <?php
 $i = 0;
 foreach ($sortedorderbymonth as $sortedmonthorder) {
 ?>
-<h2>Kuukauden 
+<h>Kuukauden 
 <?php
     if ($sortedmonthorder['MONTH(orderDate)'] == 1) {
         $sortedmonthorder['MONTH(orderDate)'] = 'tammikuu';
@@ -41,7 +41,7 @@ foreach ($sortedorderbymonth as $sortedmonthorder) {
     if ($sortedmonthorder['MONTH(orderDate)'] == 12) {
         $sortedmonthorder['MONTH(orderDate)'] = 'joulukuu';
     }
-?><?= $sortedmonthorder['MONTH(orderDate)'] ?> tilaukset:</h2>
+?><?= $sortedmonthorder['MONTH(orderDate)'] ?> tilaukset:</h3>
 <?php
 if (++$i == 1) break; } ?>
 <table class="table table-striped table-sm">

@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mt-s">
     <div class="col">
     <?php foreach ($products as $product): ?>
         
@@ -15,6 +15,7 @@
                     </div>
                     <div class="col">
                         <input type="number" class="form-control" id="newAmount" name="newAmount"></input>
+                        <input value="<?=$product['stock']?>" type="hidden" class="form-control" id="newAmount" name="oldAmount"></input>
                     </div>
                 </div>
                 <button>Muokkaa</button>

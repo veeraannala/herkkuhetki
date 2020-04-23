@@ -17,6 +17,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     <div class="container header">
         <div class="row">
             <div class="col-md-3 d-flex justify-content-center">
@@ -38,6 +39,28 @@
                         <ul class="navbar-nav mr-auto">
 
                             <?php foreach ($categories as $category): 
+=======
+<div class="container header">
+<div class="row">
+    <div class="col-md-3 d-flex justify-content-center">
+      <a href="<?php echo base_url()?>"><img src="/../images/logo.png" alt="logo"></a>
+    </div>
+    <div class="col-md-9 text-center align-self-center d-none d-sm-block">
+      <h2 class="mainheader">Tervetuloa herkkujen maailmaan!</h2>
+    </div>
+    <div class="container navv">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+                    <?php foreach ($categories as $category):
+>>>>>>> e2464f8fe7d670b3aa1b16d5099a126d12ed20fc
                         if ($category['parentID'] === null) {
                             ?>
 
@@ -46,10 +69,17 @@
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <?=$category['name']?>
 
+<<<<<<< HEAD
                                 </a>
                                 <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
                                     <?php foreach ($categories as $subcategory):
                             
+=======
+                        </a>
+                        <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
+                            <?php foreach ($categories as $subcategory):
+
+>>>>>>> e2464f8fe7d670b3aa1b16d5099a126d12ed20fc
                               if ($subcategory['parentID'] === $category['categoryID']) {
                                   ?>
                                     <a class="dropdown-item"
@@ -57,6 +87,7 @@
                                     <?php
                               } ?>
 
+<<<<<<< HEAD
                                     <?php endforeach; ?>
                                 </div>
                             </li>
@@ -114,6 +145,58 @@
                         <a href="<?php echo base_url('customer/index')?>"><i class="fa fa-2x fa-user mr-2"
                                 aria-hidden="true"></i>KIRJAUDU</a>
                         <?php  
+=======
+                        <?php endforeach; ?>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="<?= site_url('category/allProducts/' . $category['parentID']) ?>">Kaikki</a>
+                        </div>
+                    </li>
+                    <?php }
+                        endforeach; ?>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            TEEMAKARKIT
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                        <?php foreach ($themecategories as $themes): ?>
+                          <a class="dropdown-item" href=<?=site_url('category/index/' . $themes['id'])?>><?=$themes['name']?></a>
+
+                      <?php endforeach; ?>
+                        <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="<?= site_url('category/allProducts/' . $category['parentID']) ?>">Kaikki</a>
+
+
+
+                        </div>
+                    </li>
+                </ul>
+                <form action="/shop/search_product" class="form-inline" method="get">
+                    <div class="input-group search mr-2">
+                        <input type="text" class="form-control" name="search" value="" minlength="4" placeholder="Etsi tuotteita" aria-label="etsi"
+                            aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-danger"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </form>
+                <?php if(!empty($_SESSION['customer'])) { ?>
+                <div class="nav-item">
+                  <a href="<?php echo base_url('customer/customerAccount')?>"><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i></a>
+                  <a href="<?php echo base_url('customer/logout')?>">KIRJAUDU ULOS</a>
+                </div>
+                <?php
+                }
+                else {
+                ?>  
+                <div class="nav-item">
+                  <a href="<?php echo base_url('customer/index')?>"><i class="fa fa-2x fa-user mr-2" aria-hidden="true"></i></a>
+                  <a href="<?php echo base_url('customer/index')?>">KIRJAUDU</a>
+                </div>
+                <?php
+>>>>>>> e2464f8fe7d670b3aa1b16d5099a126d12ed20fc
                 }
                 ?>
                         <?php
@@ -128,5 +211,11 @@
                     </div>
                 </nav>
             </div>
+<<<<<<< HEAD
 
     <div class="container">
+=======
+        </nav>
+    </div>
+    <div class="container">
+>>>>>>> e2464f8fe7d670b3aa1b16d5099a126d12ed20fc

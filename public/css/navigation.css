@@ -1,49 +1,43 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Princess+Sofia&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&display=swap');
-/* ------------Navigation------------- */
+
+/* ------------NAVIGATION AND HEADER------------- */
 div.navv {
     padding-left: 0;
     padding-right:0;
-    
 }
 
-nav.navbar{
+nav.navbar {
 background-color: #FBD8DB !important;
-
-
 }
 
-
-.show{
+.show {
     background-color: #FBD8DB !important;
     border: none;
-      
 }
 
-a
- {
+a {
     font-weight: bold !important;
     font-family: 'Merriweather Sans', sans-serif;
     font-size: 16px;
     color:#6c0909;
 }
-a:hover
-{ 
+
+a:hover {
     color:#6c0909;
     color:#E65959;
     text-decoration: none;
 }
 
-#navbarDropdown{
+#navbarDropdown {
    color:#6c0909;
    text-transform: uppercase;
 }
 
 #navbarDropdown:hover {
-    color:#E65959;  
-} 
-
+    color:#E65959;
+}
 
 .mainheader {
     font-family: 'Princess Sofia', cursive;
@@ -54,45 +48,39 @@ a:hover
 div.dropdown-menu a:hover {
     color: #E65959; 
 }
-div.dropdown-menu a{
+div.dropdown-menu a {
     font-weight: normal !important;
     background-color: #FBD8DB !important;
     color: #6c0909
-    
-    
 }
 
-.search button{
+/* ------------SEARCH----------- */
+.search button {
     background-color: #FBD8DB !important;
     border-color:#6c0909 !important;
     color:#6c0909;
 }
 
-.search button:hover{
+.search button:hover {
     background-color: #E65959 !important;
-    
-
-} 
-.search input{
+}
+.search input {
     border-color:#6c0909 !important;
     background-color: #FBD8DB !important;
     font-family: 'Merriweather Sans', sans-serif;
     border-radius: 0px;
     color:#6c0909 !important;
-    
     font-size: 18px;
-    
-     
 }
 
-.search input::placeholder{
+.search input::placeholder {
     color:#6c0909;
     font-family: 'Merriweather Sans', sans-serif;
     font-size: 18px;
 }
 
 .fa-shopping-cart {
-    color:#6c0909;  
+    color:#6c0909;
 }
 .fa-shopping-cart:hover {
     color:#E65959;
@@ -111,5 +99,3 @@ div.dropdown-menu a{
 .footer div p a:hover {
    color: #E65959;
 }
-
-  

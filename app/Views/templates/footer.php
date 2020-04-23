@@ -6,8 +6,8 @@
           <p class="mb-1"><a href="<?= site_url('/Customer/customerAccount') ?>">Oma tili</a></p>
           <!-- By pressing the link you can browse payment and delivery terms -->
           <p class="mb-1"><a href="<?= site_url('/Shop/show_methods') ?>">Maksu- ja toimitusehdot</a></p>
-          <p class="mb-1"><a href="#">Tietoa meistä</a></p>
-          <p class="mb-1"><a href="#">Yhteystiedot</a></p>
+          <p class="mb-1"><a href="<?= site_url('/Shop/aboutUs') ?>">Tietoa meistä</a></p>
+          <p class="mb-1"><a href="<?= site_url('/Shop/contactInfo') ?>">Yhteystiedot</a></p>
           <p class="mb-1"><a href="<?= site_url('/Shop/gdprregister') ?>">Rekisteriseloste</a></p>
         </div>
 
@@ -25,7 +25,7 @@
               <label for="email">Sähköpostiosoite:</label>
               <input type="email" class="form-control" name="email" placeholder="Syötä sähköpostiosoitteesi">
             </div>
-            <button type="submit" class="btn">Submit</button>
+            <button type="submit" class="btn">Tilaa</button>
           </form>
         </div>
       </div>

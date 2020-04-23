@@ -9,8 +9,7 @@ use CodeIgniter\Model;
         protected $returnType = 'array';
 
         protected $allowedFields = ['id', 'name'];
-        
-    
+
 
         public function getThemeCategories()
         {
@@ -20,5 +19,4 @@ use CodeIgniter\Model;
 
             return $query->getResultArray();
         }
-        
     }

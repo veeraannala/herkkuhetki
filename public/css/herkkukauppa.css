@@ -48,7 +48,7 @@ h4 {
 
 .table-striped tr:nth-of-type(odd) {
     background-color: rgb(251,216,219,0.25) !important;
-  }
+}
 
 .btn {
     color: white;
@@ -77,33 +77,35 @@ h4 {
         height:300px;
     }
     
-  }
+}
 @media (max-width: 767px) {
   
     .carousel {
         display: none;
     }
     
-  }
-  .centerminheight {
-      min-height: 415px;
-  }
-  .customer label {
-      font-weight: bold;
-  }
-   .customercard{
-      background-color:rgb(251,216,219,0.25);
-      
-      /*font-weight: bold;*/
-  }
-  .customercard h5 {
-    font-weight: bold
-  }
-    
+}
+.centerminheight {
+    min-height: 415px;
+}
 
-  .header {
-      opacity: 100%;
-  } 
+.customer label {
+    font-weight: bold;
+}
+
+.customercard{
+    background-color:rgb(251,216,219,0.25);
+    /*font-weight: bold;*/
+}
+
+.customercard h5 {
+    font-weight: bold
+}
+
+.header {
+    opacity: 100%;
+}
+
 .result {
     font-weight: 600;
     font-size: 20px;
@@ -164,3 +166,22 @@ span.required {
 .ordertable tr:first-child td:first-child {
     border-right: 1px solid #E65959 !important;
 }*/
+.back-button1 {
+    position: relative;
+    left: 88px;
+    bottom: 46px;
+}
+.back-button2 {
+    position: relative;
+    left: 88px;
+    bottom: 46px;
+}
+.back-button3 {
+    position: relative;
+    left: 116px;
+    bottom: 46px;
+}
+
+.pic {
+    max-height: 300px;
+}

@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mt-s">
     <div class="col-md-4">
             <div>
             <?=\Config\Services::validation()->listErrors(); ?>
@@ -20,14 +20,14 @@
                 maxlength="30">
             </div>
             <div class="form-group">
-                <label>Salasana uudestaan</label><span class="required">*</span>
+                <label>Vahvista salasana</label><span class="required">*</span>
                 <input class="form-control"
                 name="passconfirm" type="password"
-                placeholder="Syötä salasana uudestaan"
+                placeholder="Vahvista salasana"
                 maxlength="30">
             </div>
             <div>
-                <button class="btn btn mb-2">rekisteröidy</button>
+                <button class="btn btn mb-2">Rekisteröidy</button>
             </div>
         </form>
     </div>

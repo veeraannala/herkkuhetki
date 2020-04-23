@@ -13,12 +13,12 @@ use CodeIgniter\Model;
         $row = $query->getRow();
             if($row) {
                 if(password_verify($password,$row->password)) {
-                    return $row;
+                    return $row->username;
                 }
             }
             return null;
         }
-        
+
 
         
 
