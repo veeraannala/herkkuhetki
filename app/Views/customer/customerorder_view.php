@@ -1,5 +1,5 @@
 <div>
-<?php
+    <?php
 $i = 0;
 $delivery= null;
 foreach ($orderdetails as $orderdetail) {
@@ -11,36 +11,41 @@ foreach ($orderdetails as $orderdetail) {
       if (++$i == 1) break;
     } ?>
     <div class="row">
-      <div class="col-md-4 col-sm-12" style="padding-right: 0px;">
-        <table class="table table-striped table-sm">
-            <?php
+        <div class="col-md-4 col-sm-12" style="padding-right: 0px;">
+            <table class="table table-striped table-sm">
+                <?php
             $i = 0;
             foreach ($orderdetails as $orderdetail) {
             ?>
-              <tr>
-                  <td>Nimi: <?=$orderdetail['firstname'] ?> <?=$orderdetail['lastname'] ?></td>
-              </tr>
-              <tr>
-                  <td>Osoite: <?=$orderdetail['address'] ?></td>
-              </tr>
-              <tr>
-                  <td>Postinumero: <?=$orderdetail['postcode'] ?></td>
-              </tr>
-              <tr>
-                  <td>Kaupunki: <?=$orderdetail['town'] ?></td>
-              </tr>
-              <tr>
-                  <td>Sähköpostiosoite: <a href="mailto:<?=$orderdetail['email'] ?>"
-                  target="_top"><?=$orderdetail['email'] ?></a></td>
-              </tr>
-              <tr>
-                  <td>Puhelinnumero: <?=$orderdetail['phone'] ?></td>
-              </tr>
-              <?php
+                <tr>
+                    <td>Nimi: </td>
+                    <td><?=$orderdetail['firstname'] ?> <?=$orderdetail['lastname'] ?></td>
+                </tr>
+                <tr>
+                    <td>Osoite: </td>
+                    <td><?=$orderdetail['address'] ?></td>
+                </tr>
+                <tr>
+                    <td>Postinumero: </td>
+                    <td><?=$orderdetail['postcode'] ?></td>
+                </tr>
+                <tr>
+                    <td>Kaupunki: </td>
+                    <td><?=$orderdetail['town'] ?></td>
+                </tr>
+                <tr>
+                    <td>Sähköpostiosoite: </td>
+                    <td><a href="mailto:<?=$orderdetail['email'] ?>" target="_top"><?=$orderdetail['email'] ?></a></td>
+                </tr>
+                <tr>
+                    <td>Puhelinnumero: </td>
+                    <td><?=$orderdetail['phone'] ?></td>
+                </tr>
+                <?php
               if (++$i == 1) break;
               } ?>
-          </table>
-      </div>
+            </table>
+        </div>
         <div class="col-md-8 col-sm-12" style="padding-left: 0px;">
             <table class="table table-striped table-sm ordertable">
                 <th>Tuote</th>
@@ -58,11 +63,19 @@ foreach ($orderdetails as $orderdetail) {
                 <?php
         $total += $orderdetail['määrä'] * $orderdetail['price'];
      endforeach;?>
+
                 <tr>
+                    <?php if($delivery === 'P') { ?>
                     <th>Postikulut</th>
-                    <td><?php if($delivery === 'P') { $total += 5.9;} ?></td>
-                    <td><?php if($delivery === 'P') {print('5.90€');} ?></td>
+                    <td> <?php $total += 5.9; ?></td>
+                    <td>5.90€</td>
+                    <?php } else {?>
+                    <th>Nouto varastolta</th>
+                    <td></td>
+                    <td></td>
+                    <?php } ?>
                 </tr>
+
             </table>
         </div>
     </div>

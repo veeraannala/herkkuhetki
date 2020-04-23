@@ -20,7 +20,7 @@ use CodeIgniter\Model;
         }
         public function getOrderDetails($id) {
             $builder = $this->table("orders");
-            $builder->select("orders.id, product.name, amount AS määrä, price, type, status,firstname,lastname,phone, address, postcode, town, email, delivery");
+            $builder->select("orders.id, product.name, amount AS määrä, price, type, status,firstname,lastname,phone, address, postcode, town, email, delivery, orderDate");
             $builder->join("Customer", "orders.customer_id = customer.id", "inner");
             $builder->join("orderdetail", "orders.id = orderdetail.order_id", "inner");
             $builder->join("product","orderdetail.product_id = product.id");

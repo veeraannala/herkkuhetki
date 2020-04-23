@@ -46,6 +46,7 @@ class Shop extends BaseController
         echo view('templates/footer');
 	}
 
+	//Shows gdpr information
 	public function gdprregister(){
 
 		$data['title'] = "Herkkuhetki";

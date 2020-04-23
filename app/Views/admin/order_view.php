@@ -3,7 +3,7 @@ $i = 0;
 foreach ($orderdetails as $orderdetail) {
 ?>
 <h3 class="mt-3">Lisätietoja tilauksesta</h3>
-<p>Tilauksen id: <?=$orderdetail['id'] ?></p>
+<p>Tilausnumero: <?=$orderdetail['id'] ?></p>
 <?php
             if (++$i == 1) break;
             } ?>
@@ -14,52 +14,62 @@ foreach ($orderdetails as $orderdetail) {
             $i = 0;
             foreach ($orderdetails as $orderdetail) {
             ?>
-                <tr>
+            <tr>
                 <td>Nimi: <?=$orderdetail['firstname'] ?> <?=$orderdetail['lastname'] ?></td>
-                </tr>
-                <tr>
+            </tr>
+            <tr>
                 <td>Osoite: <?=$orderdetail['address'] ?></td>
-                </tr>
-                <tr>
+            </tr>
+            <tr>
                 <td>Postinumero: <?=$orderdetail['postcode'] ?></td>
-                </tr>
-                <tr>
+            </tr>
+            <tr>
                 <td>Kaupunki: <?=$orderdetail['town'] ?></td>
-                </tr>
-                <tr>
-                <td>Sähköpostiosoite: <a href="mailto:<?=$orderdetail['email'] ?>" target="_top"><?=$orderdetail['email'] ?></a></td>
-                </tr>
-                <tr>
+            </tr>
+            <tr>
+                <td>Sähköpostiosoite: <a href="mailto:<?=$orderdetail['email'] ?>"
+                        target="_top"><?=$orderdetail['email'] ?></a></td>
+            </tr>
+            <tr>
                 <td>Puhelinnumero: <?=$orderdetail['phone'] ?></td>
-                </tr>
+            </tr>
+            <tr>
+                <td>Toimitustapa:
+                    <?php if($orderdetail['delivery'] === 'P') {?>
+                    Posti
+                    <?php } else{ ?>
+                    Nouto
+                    <?php } ?>
+                </td>
+            </tr>
             <?php
             if (++$i == 1) break;
             } ?>
         </table>
     </div>
-        <div class="col-md-8 col-sm-12" style="padding-left: 0px;">
-            <table class="table table-striped table-sm">
-                <th>Tuote</th>
-                <th>Määrä</th>
-                <th>Hinta</th>
-        <?php
+    <div class="col-md-8 col-sm-12" style="padding-left: 0px;">
+        <table class="table table-striped table-sm">
+            <th>Tuote</th>
+            <th>Määrä</th>
+            <th>Hinta</th>
+            <?php
         $total = 0;
         foreach ($orderdetails as $orderdetail):
         ?>
-                <tr>
+            <tr>
                 <td><?=$orderdetail['name'] ?></td>
                 <td><?=$orderdetail['määrä'] . " x " .$orderdetail['type'] ?></td>
                 <td><?php $yhteensä =  $orderdetail['price'] * $orderdetail['määrä']?><?=$yhteensä?>€</td>
-                </tr>
-        <?php
+            </tr>
+            <?php
         $total += $orderdetail['määrä'] * $orderdetail['price'];
-     endforeach;?> 
+     endforeach;?>
         </table>
     </div>
     <h3 style="padding-left: 15px;">Tilauksen loppusumma: <?php echo number_format($total,2)?>€</h3>
 </div>
 <div>
     <form method="post" action="<?= site_url('admin/showOrders/')?>">
-    <button class="btn btn-danger mb-2">Takaisin</button>
+        <button class="btn btn-danger mb-2">Takaisin</button>
     </form>
 </div>

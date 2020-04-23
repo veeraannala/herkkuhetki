@@ -240,12 +240,14 @@ class Cart extends BaseController
                 
     }
 
+    
     public function payconfirm($orderid)
     {
         $data['title'] = "Tilaus";
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         $data['product'] = $this->prodmodel->ShowProduct();
+        $data['id'] = $orderid;
         $data1 = [
             'id'       => $orderid,
             'status' => 'paid'
@@ -255,6 +257,13 @@ class Cart extends BaseController
         echo view('templates/header', $data);
         echo view('cart/payconfirm', $data);
         echo view('templates/footer');
+    }
+
+    public function getReceipt($id) {
+        $data['orderdetails'] = $this->ordermodel->getOrderDetails($id);
+        $data['title'] = 'Kuitti ostoksistasi';
+
+        echo view('cart/receipt', $data);
     }
 
     //Log in registered customer
