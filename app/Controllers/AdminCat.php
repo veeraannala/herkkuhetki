@@ -26,30 +26,27 @@ class AdminCat extends BaseController
     }
 
     public function updateCategory()
-    {   //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        //}
+    {
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $data['title'] = "Ylläpito - muokkaa kategoriaa";
         //For category update. Shows all categories and gives a change to update, delete or add new categories.
         //If cannot delete, gives an error message.
-        
-        // if(!isset($_SESSION['username'])) {
-        //     return redirect()->to('/admin/adminlogin');
-        // }
 
         $data['categories'] = $this->categorymodel->getCategories();
-       
+
         echo view('admin/adminHeader', $data);
         echo view('admin/updateCategory_view', $data);
         echo view('admin/adminFooter');
     }
 
     public function updateCat($id)
-    {  
+    {
         //Shows one category to update name and parent category
-        //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        //}
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $data['title'] = "Ylläpito - muokkaa kategoriaa";
         $data['categories'] = $this->categorymodel->getCategories();
         $data['id'] = $id;
@@ -60,11 +57,11 @@ class AdminCat extends BaseController
     }
 
     public function update()
-    { 
+    {
         //Updates name and parentID for chosen category
-        //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        //}
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $id = $this->request->getVar('id');
         $data = [
             'name' => $this->request->getVar('newname'),
@@ -78,9 +75,9 @@ class AdminCat extends BaseController
     public function deleteCat($categoryID)
     {
         //Deletes chosen category or gives an error message if cannot delete
-        //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        //}
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $data['title'] = "Ylläpito - poista kategoria";
         $data['categories'] = $this->categorymodel->getCategories();
         try {
@@ -98,9 +95,9 @@ class AdminCat extends BaseController
     public function insertCat($parentid)
     {
         // Shows view where user gives name to new subcategory
-        //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        //}
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $data['title'] = "Ylläpito - lisää kategoria";
         $data['categories'] = $this->categorymodel->getCategories();
         $data['id'] = $parentid;
@@ -113,9 +110,9 @@ class AdminCat extends BaseController
     public function addCat()
     {
         // Inserts new category with chosen parentID.
-        //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        //}
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         if ($this->request->getVar('parentid') === 'NULL') {
             $this->categorymodel->save([
                 'name' => $this->request->getVar('name'),
