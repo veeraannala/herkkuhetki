@@ -1,7 +1,7 @@
 <div class="centerminheight customer">
-    <div class="row">
+    <div class="pt-3 row">
         <div class="col-md-6">
-          <h1 class="mt-3">Hei <?=$userdata['firstname']?></h1>
+          <h1>Hei <?=$userdata['firstname']?></h1>
         </div>
         <div class="col-md-6">
           <?php if(isset($message)) { ?>

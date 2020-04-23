@@ -1,6 +1,6 @@
 <div class="centerminheight customer">
     <div class="row col">
-        <h1 class="mt-3" >Kirjaudu</h1>
+        <h1 class="pt-3" >Kirjaudu</h1>
     </div>
     <div class="row">
         <div class="col-md-6">
