@@ -29,9 +29,9 @@ class Admin extends BaseController
     }
 
     public function index() {
-        // if(!isset($_SESSION['username'])) {
-        // return redirect()->to('/admin/adminlogin');
-        // }
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $data['title'] =  "Ylläpito";
         echo view('admin/adminHeader', $data);
         echo view('admin/admin_view');
@@ -39,9 +39,7 @@ class Admin extends BaseController
     }
 		//Shows admin login page.
     public function adminlogin() {
-        // if(!isset($_SESSION['username'])) {
-        // return redirect()->to('/admin/adminlogin');
-        // }
+
         $data['title'] = "Ylläpito - kirjautuminen";
         echo view('admin/adminHeader', $data);
         echo view('admin/adminlogin_view');
@@ -49,9 +47,9 @@ class Admin extends BaseController
     }
 		//Shows admin register page.
     public function adminregister(){
-        // if(!isset($_SESSION['username'])) {
-        // return redirect()->to('/admin/adminlogin');
-        // }
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $data['title'] = "Ylläpito - rekisteröidy";
         echo view('admin/adminHeader', $data);
         echo view('admin/register_view');
@@ -59,9 +57,9 @@ class Admin extends BaseController
     }
 
     public function adminorders(){
-        //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        //}
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $data['title'] = "Ylläpito - tilaukset";
         echo view('admin/adminHeader', $data);
         echo view('admin/orders_view');
@@ -69,9 +67,9 @@ class Admin extends BaseController
 }
 		//validates and saves admin user to database.
     public function adminRegistration() {
-        //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        //}
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $data['title'] = "Ylläpito - rekisteröidy";
         $validation =  \Config\Services::validation();
 
@@ -132,9 +130,9 @@ class Admin extends BaseController
 
 
     public function updateProduct() {
-        //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        //}
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $data['title'] = "Ylläpito - lisää tuotteita";
         $data['categories'] = $this->categorymodel->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
@@ -147,9 +145,9 @@ class Admin extends BaseController
 
     public function editProduct() {
         //shows all products in one view
-        //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        //}
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $data['title'] = "Ylläpito - muokkaa tuotteita";
         $data['products'] = $this->prodmodel->getProductsCat();
         $data['categories'] = $this->categorymodel->getParentCategories();
@@ -160,9 +158,9 @@ class Admin extends BaseController
     }
 
     public function editAmount() {
-        //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        //}
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $data['title'] = "Ylläpito - tuotteiden määrä";
         $category_model = new CategoryModel();
         $product_model = new ProductModel();
@@ -178,9 +176,9 @@ class Admin extends BaseController
 
     public function updateAmo($id) {
         //gets product and its information form product models function
-        //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        // }
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $data['title'] = "Ylläpito - tuotteiden määrä";
         $data['products'] = $this->prodmodel->showProduct();
         $data['id'] = $id;
@@ -194,9 +192,9 @@ class Admin extends BaseController
 
     public function update2() {
         // gets only one certain products id
-        //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        //}
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $id = $this->request->getVar('id');
         // changes amount of products in stock
         $data = [
@@ -212,9 +210,9 @@ class Admin extends BaseController
 
     public function addProduct() {
     //saves new product to the database. replaces empty image with imagenotfound-file
-        // if(!isset($_SESSION['username'])) {
-        // return redirect()->to('/admin/adminlogin');
-        // }
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $data['title'] = "Ylläpito - lisää tuote";
 
         $newproduct = [
@@ -279,9 +277,9 @@ class Admin extends BaseController
     }
 
     public function deleteProduct($id) {
-        //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        //}
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $product_model = new ProductModel();
         $product_model->delete($id);
 
@@ -294,9 +292,9 @@ class Admin extends BaseController
 
     public function alterProduct($id) {
         //gets chosen product's information from the database so it can be changed
-        //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        //}
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $data['title'] = "Ylläpito - muokkaa tuotetta";
         $product = $this->prodmodel->getProduct($id);
         $data['product'] = $product[0];
@@ -312,9 +310,9 @@ class Admin extends BaseController
 
     public function changeProduct() {
     //changes product information in the database
-        //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        //}
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $data['title'] = "Ylläpito - muokkaa tuotetta";
         $id = $this->request->getVar('id');
         $data = [
@@ -386,9 +384,9 @@ class Admin extends BaseController
 
     }
     public function showOrders() {
-        //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        //}
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $data['title'] = "Ylläpito - tilaukset";
         $data['orders'] = $this->ordermodel->getOrders();
 
@@ -397,9 +395,9 @@ class Admin extends BaseController
         echo view('admin/adminFooter');
     }
     public function showOrder($id) {
-        //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        //}
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $data['title'] = "Ylläpito - tilaus";
         $data['orderdetails'] = $this->ordermodel->getOrderDetails($id);
         echo view('admin/adminHeader', $data);
@@ -407,9 +405,9 @@ class Admin extends BaseController
         echo view('admin/adminFooter');
     }
     public function updateStatus($id) {
-        //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        //}
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $data['title'] = "Ylläpito - tilaukset tila";
         $data['orderstatus'] = $this->ordermodel->getOrderStatus($id);
         $data['testit'] = $this->ordermodel->getstatus();
@@ -419,9 +417,9 @@ class Admin extends BaseController
         echo view('admin/adminFooter');
     }
     public function updatestat() {
-        //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        //}
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $id = $this->request->getVar('id');
         $data = [
             'status' => $this->request->getVar('newstatus')
@@ -429,20 +427,23 @@ class Admin extends BaseController
         $this->ordermodel->update($id, $data);
         return redirect()->to('/admin/showOrders');
     }
-    public function sortbystatus () {
+    public function sortbystatus() {
+				if(!isset($_SESSION['username'])) {
+				return redirect()->to('/admin/adminlogin');
+				}
         $data1['title'] = "Ylläpito - tilaukset";
         $data = [
             'status' => $this->request->getVar('status')
         ];
         $data['sortedorders'] = $this->ordermodel->SortOrders($data);
         echo view('admin/adminHeader', $data1);
-		echo view('admin/sortedorders',$data);
+				echo view('admin/sortedorders',$data);
         echo view('admin/adminFooter');
     }
     public function sortbymonth() {
-        //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        //}
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $data1['title'] = "Ylläpito - tilaukset";
         $data = [
             'month' => $this->request->getVar('month')
@@ -455,9 +456,9 @@ class Admin extends BaseController
 
     //prints all reviews to admin page
     public function editReview() {
-        //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        //}
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $data['title'] = "Ylläpito - arvostelut";
         $product_model = new ProductModel();
         $data['products'] = $product_model->showProduct();
@@ -470,9 +471,9 @@ class Admin extends BaseController
 
     // when you clik the "poista" button, removes that review
     public function deleteReview($id) {
-        //if(!isset($_SESSION['username'])) {
-        //return redirect()->to('/admin/adminlogin');
-        //}
+        if(!isset($_SESSION['username'])) {
+        return redirect()->to('/admin/adminlogin');
+        }
         $re_model = new ReviewModel();
         $re_model->delete($id);
 
