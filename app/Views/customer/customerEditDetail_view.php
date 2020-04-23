@@ -23,7 +23,7 @@
         </div>
         <div class="form-group col-md-6">
           <label for="postcode">Postinumero<span class="required">*</span></label>
-          <input type="text" class="form-control" name="postcode" placeholder="Postinumero" value="<?=$userdata['postcode']?>" required>
+          <input type="text" class="form-control" name="postcode" placeholder="Postinumero" maxlength="5" value="<?=$userdata['postcode']?>" required>
         </div>
       </div>
       <div class="form-row">

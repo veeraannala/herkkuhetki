@@ -1,4 +1,4 @@
-<div class="pt-3">
+<div class="pt-3 pb-3">
     <p>Rekisteri- ja tietosuojaseloste
         Tämä on Herkkuhetken henkilötietolain (10 ja 24 §) ja EU:n yleisen tietosuoja-asetuksen (GDPR) mukainen
         rekisteri-
