@@ -40,8 +40,8 @@ class Category extends BaseController
         echo view('shop/category_view', $data);
         echo view('templates/footer');
     }
-    
-    public function allProducts($parentID) {
+    // get products with specific main category and send it to page  
+    public function allProducts($id) {
         $model = new CategoryModel();
         $prodmodel = new ProductModel();
         $thememodel = new ThemeModel();
@@ -49,11 +49,24 @@ class Category extends BaseController
         $data['title'] = "Herkkuhetki";
         $data['categories'] = $model->getCategories();
         $data['themecategories'] = $thememodel->getThemeCategories();
-        $data['product'] = $prodmodel->ShowProduct();
-        //$data['parentID'] = $parentID;
-        //$data['id'] = $id;
+        $data['product'] = $prodmodel->getParentid($id);
+        $data['id'] = $id;
         echo view('templates/header', $data);
         echo view('shop/CatProducts_view', $data);
+        echo view('templates/footer');
+    }
+    // get products that have theme category and send it to page
+    public function allThemeProducts() {
+        $model = new CategoryModel();
+        $prodmodel = new ProductModel();
+        $thememodel = new ThemeModel();
+
+        $data['title'] = "Herkkuhetki";
+        $data['categories'] = $model->getCategories();
+        $data['themecategories'] = $thememodel->getThemeCategories();
+        $data['product'] = $prodmodel->getThemeProducts();
+        echo view('templates/header', $data);
+        echo view('shop/ThemeProduct_view', $data);
         echo view('templates/footer');
     }
 }

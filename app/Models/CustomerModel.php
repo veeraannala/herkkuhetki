@@ -17,7 +17,13 @@ use CodeIgniter\Model;
             return $query->getResultArray();
         }
 
-        # Returns user data when user log in.
+        /**
+        * Checks, is customer password right
+        * @param $email customers email.
+        * @param $password customers password
+        *
+        * @return $row customers details from database.
+        */
         public function loginCheck($email,$password) {
             $this->where('email', $email);
             $query = $this->get();
@@ -29,7 +35,13 @@ use CodeIgniter\Model;
             }
                     return null;
         }
-        # Returns users password.
+        /**
+        * Checks, is customers password right
+        * @param $username admins username.
+        * @param $password admins password
+        * this function is used where user changes details.
+        * @return $row->password - customers "old" password from database.
+        */
         public function PasswordCheck($customerid,$password) {
             $this->where('id', $customerid);
             $query = $this->get();
