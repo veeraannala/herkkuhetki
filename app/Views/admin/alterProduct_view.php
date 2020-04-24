@@ -11,7 +11,8 @@
         <form method="post" enctype="multipart/form-data" action="<?= site_url('admin/changeProduct/')?>">
             <div class="form-group">
                 <label for="newname">Tuotteen nimi</label>
-                <input type="text" class="form-control" name="newname" value="<?= $product['name']?>" required>
+                <input type="text" class="form-control" name="newname" value="<?= $product['name']?>" maxlength="255" required>
+                <small id="nameHelp" class="form-text text-muted">Tuotenimen on oltava yksilöllinen</small>
             </div>
             <div class="form-group">
                 <label for="newprice">Tuotteen hinta €</label>
@@ -44,6 +45,7 @@
             <div class="form-group">
                 <label for="image">Tuotteen kuva</label>
                 <input type="file" class="form-control-file" name="image">
+                <small id="imageHelp" class="form-text text-muted">Hyväksytyt tiedostomuodot .JPG, .JPEG, .GIF ja .PNG. Maksimikoko 4MB.</small>
             </div>
             <div class="form-group">
                 <label for="newcategory">Tuotekategoria</label>

@@ -35,7 +35,7 @@ create table product (
   name varchar(255) not null unique,
   price decimal(5,2) not null,
   description text,
-  image varchar(50),
+  image varchar(255),
   stock int not null,
   type enum('kpl', '100 g') not null,
   keywords text,
@@ -125,7 +125,7 @@ insert into themecategory (name) values ('Halloween');
 insert into themecategory (name) values ('Ystävänpäivä');
 
 insert into product (name,price,description,image,stock,type,keywords,category_id, theme_id) values ('Irtosalmiakki',1.45,'Väkevä ja kova salmiakki. Kestävimmälläkin uroolla nousee vesi silmiin tätä imeskellessä. Ei heikoille!','images/irtosalmiakki.jpg', 67,'100 g', 'irtokarkit, salmiakit',4,NULL);
-insert into product (name,price,description,image,stock,type,keywords,category_id, theme_id) values ('Kirpeä hedelmä',1.65,'Aivot räjäyttävä kirpeä hedelmäkaramelli. Tätä maistaessasi tiedät, miltä tuntuu avaruuskävelyllä ilman avaruuspukua.','images/kirpeähedelmä.jpg', 643,'100 g', 'irtokarkit, kirpeät',5,1002);
+insert into product (name,price,description,image,stock,type,keywords,category_id, theme_id) values ('Kirpeä hedelmä',1.65,'Aivot räjäyttävä kirpeä hedelmäkaramelli. Tätä maistaessasi tiedät, miltä tuntuu avaruuskävelyllä ilman avaruuspukua.','images/kirpeahedelma.jpg', 643,'100 g', 'irtokarkit, kirpeät',5,1002);
 insert into product (name,price,description,image,stock,type,keywords,category_id, theme_id) values ('Extrakova karkki',1.65,'Älä puraise, jos hampaasi ovat sinulle mieluisat.','images/kovakarkki.jpg', 3,'100 g', 'irtokarkit, kovat karkit', 6,NULL);
 insert into product (name,price,description,image,stock,type,keywords,category_id, theme_id) values ('Pehmeä tuorelaku',1.85,'Laita suuhusi tämä pilvenpehmoinen lakritsi niin mietit, oletko kuollut ja taivaassa, niin herkullista se on.','images/lakut.jpg', 34,'100 g', 'irtokarkit, lakut, lakritsit', 7,NULL);
 insert into product (name,price,description,image,stock,type,keywords,category_id, theme_id) values ('Vaaleanpunaiset sydämet',1.15,'Makeaa, pehmeää sokeria. Jos haluat ostaa rakkaallesi romanttisen lahjan, tässä hyvä valinta','images/vaahtokarkki.jpg', 39,'100 g', 'irtokarkit, vaahtokarkit',8,1003);

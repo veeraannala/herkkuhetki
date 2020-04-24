@@ -60,7 +60,7 @@
                                     <?php endforeach; ?>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item"
-                                        href="<?= site_url('category/allProducts/' . $category['categoryID']) ?>">Kaikki</a>
+                                        href="<?= site_url('category/allProducts/' . $category['categoryID']) ?>"><?=$category['name']?></a>
                                 </div>
                             </li>
                             <?php }
@@ -80,7 +80,7 @@
                                     <?php endforeach; ?>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item"
-                                        href="<?= site_url('category/allThemeProducts/') ?>">Kaikki</a>
+                                        href="<?= site_url('category/allThemeProducts/') ?>">Teemakarkit</a>
 
 
 
