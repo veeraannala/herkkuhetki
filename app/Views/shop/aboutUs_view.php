@@ -12,7 +12,7 @@
          että koodarimme ovat tuskin poistuneet kotoaan! Lopputuloksena on ihana, Suomen karkkiskenen valtaa havitteleva (ja sen ansaitseva) karkkikauppa.</p>
     </div>
     <div class="col-md-6 mt-3 mb-3 text-center">
-        <img src="/../images/dragon.png" alt="" class="pic">
+        <img src="/../images/dragon.png" alt="" class="img-fluid pic">
     </div>
 
     <div class="col-md-12 text-center">
