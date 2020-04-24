@@ -20,25 +20,25 @@ body{
     margin-top: 25px;
     margin-bottom: 25px;
 }
-    
+
 .carousel-item img {
     height:400px;
     object-fit: cover;
 }
 
-  
+
 .fa-shopping-cart {
     color: black;
 }
 
 .errormessage {
-    color:#E65959; 
+    color:#E65959;
     font-size: larger;
     font-weight: bold;
 }
 .registermessage {
     color:forestgreen
-    
+
 }
 
 h4 {
@@ -63,6 +63,10 @@ h4 {
 .form-control:focus {
     border-color: #E65959 !important;
     box-shadow: 0 0 5px rgba(230, 89, 89, 1) !important;
+}
+.inputerror {
+  border-color: #E65959 !important;
+  color: #E65959 !important;
 }
 
 .fa-shopping-cart {
@@ -194,5 +198,5 @@ span.required {
     }
     .carousel-item img {
         height:300px;
-    } 
+    }
 }

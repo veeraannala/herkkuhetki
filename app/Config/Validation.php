@@ -58,9 +58,9 @@ class Validation
 			]
 		]
 	];
-	
 
-	
+
+
 	public $adminloginvalidate = [
 		'username' => [
 			'label' => 'Username',
@@ -147,10 +147,10 @@ class Validation
 				'min_length' => 'Sähköpostiosoite on liian lyhyt.',
 				'max_length' => 'Sähköpostiosoite on liian pitkä.',
 				'valid_email' => 'Syötä sähköposti oikeassa muodossa.'
-				
+
 			]
 		],
-		
+
 		'password' => [
 			'label' => 'password',
 			'rules' => 'required|min_length[8]|max_length[30]',
@@ -211,6 +211,15 @@ class Validation
 				'min_length' => 'Postitoimipaikka on liian lyhyt.',
 				'max_length' => 'Postitoimipaikka on liian pitkä.',
 			]
+		],
+		'phone' =>  [
+			'label' => 'phone',
+			'rules' => 'alpha_numeric_punct|min_length[2]|max_length[30]',
+			'errors' => [
+				'alpha_numeric_punct' => 'Syötä puhelinnumero numeromuodossa.',
+				'min_length' => 'Puhelinnumero on liian lyhyt.',
+				'max_length' => 'Puhelinnumero on liian pitkä.',
+			]
 		]
 	];
 
@@ -251,19 +260,19 @@ class Validation
 			'label' => 'emailconfirm',
 			'rules' => 'required|min_length[2]|max_length[100]|valid_email|required|matches[newemail]',
 			'errors' => [
-				'required' => 'Sähköpostiosoite on pakollinen.',
+				'required' => 'Sähköpostin vahvistus on pakollinen.',
 				'min_length' => 'Sähköpostiosoite on liian lyhyt.',
 				'max_length' => 'Sähköpostiosoite on liian pitkä.',
 				'valid_email' => 'Syötä sähköposti oikeassa muodossa.',
 				'matches' => 'Sähköpostien pitää vastata toisiaan.'
 			]
 		],
-		
+
 
 	];
 
 	public $customerPasswordValidate = [
-		
+
 		'newpassword' => [
 			'label' => 'newpassword',
 			'rules' => 'required|min_length[8]|max_length[30]',
@@ -329,11 +338,20 @@ class Validation
 				'min_length' => 'Postitoimipaikka on liian lyhyt.',
 				'max_length' => 'Postitoimipaikka on liian pitkä.',
 			]
+		],
+		'phone' =>  [
+			'label' => 'phone',
+			'rules' => 'alpha_numeric_punct|min_length[2]|max_length[30]',
+			'errors' => [
+				'alpha_numeric_punct' => 'Syötä puhelinnumero numeromuodossa.',
+				'min_length' => 'Puhelinnumero on liian lyhyt.',
+				'max_length' => 'Puhelinnumero on liian pitkä.',
+			]
 		]
 	];
 
 
-	
+
 
 	//--------------------------------------------------------------------//
 }
