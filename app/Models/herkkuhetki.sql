@@ -141,8 +141,8 @@ insert into product (name,price,description,image,stock,type,keywords,category_i
 insert into product (name,price,description,image,stock,type,keywords,category_id, theme_id) values ('Konvehtirasia',3.56,'Sisältää erilaisia suklaakonvehteja. Suurin osa niistä on todennäköisiä sellaisia, joista et tykkää.','images/suklaarasia.jpg', 67,'kpl', 'suklaat, konvehdit', 18, 1000);
 insert into product (name,price,description,image,stock,type,keywords,category_id, theme_id) values ('Tepolla on asiaa',1000.0,'Koska Teppo soitti Jounille.','images/tepollaonasiaa.png', 1,'kpl', 'teppo', 12, NULL); 
 
-insert into customer (firstname,lastname,address,postcode,town,email,phone) values ('Teppo','Mattinen','Jounintie 12','90100', 'Oulu','teppo@jouni.fi', 0401234567); 
-insert into customer (firstname,lastname,address,postcode,town,email,phone) values ('Matti','Tepponen','Jounintie 12','90100', 'Oulu','teppo@jouni.fi', 0401234567);
+insert into customer (firstname,lastname,address,postcode,town,email,phone) values ('Teppo','Mattinen','Jounintie 12','90100', 'Oulu','teppo@jouni.fi', '0401234567'); 
+insert into customer (firstname,lastname,address,postcode,town,email,phone) values ('Matti','Tepponen','Jounintie 12','90100', 'Oulu','teppo@jouni.fi', '0401234567');
 insert into orders (status, orderDate, customer_id,delivery) values ('ordered',CURRENT_TIMESTAMP,1,'P');
 insert into orders (status, orderDate, customer_id,delivery) values ('shipped',CURRENT_TIMESTAMP,2,'N');
 insert into orders (status, orderDate, customer_id,delivery) values ('paid',CURRENT_TIMESTAMP,2,'N');
