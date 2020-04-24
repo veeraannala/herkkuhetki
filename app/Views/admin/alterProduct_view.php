@@ -11,7 +11,7 @@
         <form method="post" enctype="multipart/form-data" action="<?= site_url('admin/changeProduct/')?>">
             <div class="form-group">
                 <label for="newname">Tuotteen nimi</label>
-                <input type="text" class="form-control" name="newname" value="<?= $product['name']?>" required>
+                <input type="text" class="form-control" name="newname" value="<?= $product['name']?>" maxlength="255" required>
             </div>
             <div class="form-group">
                 <label for="newprice">Tuotteen hinta €</label>

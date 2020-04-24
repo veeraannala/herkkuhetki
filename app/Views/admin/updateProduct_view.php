@@ -12,7 +12,7 @@
         <form method="post" enctype="multipart/form-data" action="<?= site_url('admin/addProduct/')?>">
             <div class="form-group">
                 <label for="name">Tuotteen nimi</label>
-                <input type="text" class="form-control" name="name" required>
+                <input type="text" class="form-control" name="name" maxlength="255" required>
             </div>
             <div class="form-group">
                 <label for="price">Tuotteen hinta €</label>
