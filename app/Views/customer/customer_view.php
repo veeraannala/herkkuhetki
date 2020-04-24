@@ -37,7 +37,9 @@
                   <div class="col-sm-8">
                       <input type="password" class="form-control <?php if ($validation->hasError('password')
                       ||isset($message)) echo 'inputerror'?>" name="password" placeholder="Salasana">
-                      <i class="fa fa-eye input-group-text" id="passwordeye" aria-hidden="true"></i>
+                      <div class="input-group-append">
+                          <i class="fa fa-eye input-group-text" id="passwordeye" aria-hidden="true"></i>
+                      </div>
                       <div class="feedback">
                        <!-- Tähän validatemessaget jos ehtii. -->
                       </div>
