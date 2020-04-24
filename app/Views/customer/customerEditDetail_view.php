@@ -2,7 +2,7 @@
   <?php $validation =  \Config\Services::validation();?>
   <div class="col-md-6">
     <h2 class="pt-3">Muuta tietojasi</h2>
-    <div class="row">
+    <div class="row pt-2">
       <?=\Config\Services::validation()->listErrors(); ?>
     </div>
     <hr>

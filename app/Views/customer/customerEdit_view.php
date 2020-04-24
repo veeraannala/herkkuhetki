@@ -62,7 +62,7 @@
           <div class="form-row">
               <div class="form-group col-md-8 ">
                 <label for="password">Vanha salasana<span class="required">*</span></label>
-                <input type="password" class="form-control<?php if (isset($message)) echo 'inputerror'?>" name="oldpassword" placeholder="Salasana" required>
+                <input type="password" class="form-control <?php if(isset($message)) echo 'inputerror'?>" name="oldpassword" placeholder="Salasana" required>
               </div>
               <div class="form-group col-md-8">
                 <label for="password">Uusi salasana<span class="required">*</span></label>
@@ -71,7 +71,8 @@
               </div>
               <div class="form-group col-md-8">
                 <label for="inputPassword4">Vahvista uusi salasana<span class="required">*</span></label>
-                <input type="password" class="form-control" name="newpassword" name="passconfirm" placeholder="Vahvista salasana" required>
+                <input type="password" class="form-control <?php if ($validation->hasError('newpassword')||$validation->hasError('passconfirm')
+                ||isset($message)) echo 'inputerror'?>" name="passconfirm" placeholder="Vahvista salasana" required>
               </div>
           </div>
             <button type="submit" class="btn btn mb-2">Vahvista</button>

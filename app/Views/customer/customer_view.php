@@ -27,13 +27,13 @@
               <div class="form-group row">
                   <label for="inputEmail" class="col-sm-3 col-form-label pr-1">Sähköposti<span class="required">*</span></label>
                   <div class="col-sm-8">
-                      <input type="text" class="form-control" name="email">
+                      <input type="text" class="form-control" name="email" placeholder="Sähköposti">
                   </div>
               </div>
               <div class="form-group row">
                   <label for="inputPassword3" class="col-sm-3 col-form-label">Salasana<span class="required">*</span></label>
                   <div class="col-sm-8">
-                      <input type="password" class="form-control" name="password">
+                      <input type="password" class="form-control" name="password" placeholder="Salasana">
                   </div>
               </div>
               <button class="btn">Kirjaudu sisään</button>

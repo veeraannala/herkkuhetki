@@ -135,6 +135,15 @@ class Validation
 				'max_length' => 'Sähköpostiosoite on liian pitkä.',
 				'valid_email' => 'Syötä sähköposti oikeassa muodossa.'
 			]
+		],
+		'phone' =>  [
+			'label' => 'phone',
+			'rules' => 'alpha_numeric_punct|min_length[2]|max_length[30]',
+			'errors' => [
+				'alpha_numeric_punct' => 'Syötä puhelinnumero numeromuodossa.',
+				'min_length' => 'Puhelinnumero on liian lyhyt.',
+				'max_length' => 'Puhelinnumero on liian pitkä.',
+			]
 		]
 	];
 
@@ -150,7 +159,6 @@ class Validation
 
 			]
 		],
-
 		'password' => [
 			'label' => 'password',
 			'rules' => 'required|min_length[8]|max_length[30]',
@@ -272,7 +280,6 @@ class Validation
 	];
 
 	public $customerPasswordValidate = [
-
 		'newpassword' => [
 			'label' => 'newpassword',
 			'rules' => 'required|min_length[8]|max_length[30]',
@@ -289,8 +296,6 @@ class Validation
 				'matches' => 'Salasanojen pitää vastata toisiaan.'
 			]
 		]
-
-
 	];
 
 	public $customerDetailValidate = [

@@ -1,8 +1,10 @@
 <div class="centerminheight customer">
   <?php $validation =  \Config\Services::validation();?>
-  <div class="row col">
+  <div class="row col pt-2">
     <?=\Config\Services::validation()->listErrors(); ?>
   </div>
+  <h3>Rekisteröidy</h3>
+  <hr>
   <form action="<?= site_url('customer/customerRegistration/')?>" method="post">
     <div class="pt-3 form-row">
         <div class="form-group col-sm-6 col-lg-3">
@@ -14,12 +16,12 @@
     <div class="form-row">
         <div class="form-group col-sm-6 col-lg-3">
           <label for="password">Salasana<span class="required">*</span></label>
-          <input type="password" class="form-control <?php if ($validation->hasError('password','passconfirm')) echo 'inputerror'?>"
+          <input type="password" class="form-control <?php if ($validation->hasError('password')||$validation->hasError('passconfirm')) echo 'inputerror'?>"
            name="password" placeholder="Salasana" required>
         </div>
         <div class="form-group col-sm-6 col-lg-3">
           <label for="inputPassword4">Vahvista salasana<span class="required">*</span></label>
-          <input type="password" class="form-control <?php if ($validation->hasError('password','passconfirm')) echo 'inputerror'?>"
+          <input type="password" class="form-control <?php if ($validation->hasError('password')||$validation->hasError('passconfirm')) echo 'inputerror'?>"
            name="passconfirm" placeholder="Vahvista salasana" required>
         </div>
     </div>
