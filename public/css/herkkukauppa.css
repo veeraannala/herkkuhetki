@@ -40,6 +40,10 @@ body{
     color:forestgreen
 
 }
+.feedback {
+  color:#E65959;
+  font-size: 14px;
+}
 
 h4 {
     color: black !important;

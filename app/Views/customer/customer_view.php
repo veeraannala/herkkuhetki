@@ -1,4 +1,5 @@
 <div class="centerminheight customer">
+    <?php $validation =  \Config\Services::validation();?>
     <div class="row col">
         <h1 class="pt-3" >Kirjaudu</h1>
     </div>
@@ -27,13 +28,18 @@
               <div class="form-group row">
                   <label for="inputEmail" class="col-sm-3 col-form-label pr-1">Sähköposti<span class="required">*</span></label>
                   <div class="col-sm-8">
-                      <input type="text" class="form-control" name="email" placeholder="Sähköposti">
+                      <input type="text" class="form-control <?php if ($validation->hasError('email')
+                      ||isset($message)) echo 'inputerror'?>" name="email" placeholder="Sähköposti">
                   </div>
               </div>
               <div class="form-group row">
                   <label for="inputPassword3" class="col-sm-3 col-form-label">Salasana<span class="required">*</span></label>
                   <div class="col-sm-8">
-                      <input type="password" class="form-control" name="password" placeholder="Salasana">
+                      <input type="password" class="form-control <?php if ($validation->hasError('password')
+                      ||isset($message)) echo 'inputerror'?>" name="password" placeholder="Salasana">
+                      <div class="feedback">
+                       <!-- Tähän validatemessaget jos ehtii. -->
+                      </div>
                   </div>
               </div>
               <button class="btn">Kirjaudu sisään</button>
