@@ -65,8 +65,13 @@
                 </div>
                 <div class="form-group">
                     <label>Salasana</label><span class="required">*</span>
-                    <input class="form-control" name="password" type="password" placeholder="Syötä salasana"
-                        maxlength="30">
+                    <div class="input-group">
+                        <input class="form-control" name="password" id="password" type="password" placeholder="Syötä salasana"
+                            maxlength="30">
+                        <div class="input-group-append">
+                            <i class="fa fa-eye input-group-text" id="passwordeye" aria-hidden="true"></i>
+                        </div>
+                    </div>
                 </div>
                 <div>
                     <button class="btn btn mb-2">Kirjaudu</button>

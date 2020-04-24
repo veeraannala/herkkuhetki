@@ -152,13 +152,23 @@
                 <div class="not_visible form-group col-12" id="passwordshow">
                     <div class="form-group col-md-8">
                         <label for="password">Salasana</label>
-                        <input type="password" class="form-control" id="password" name="password"
-                            placeholder="Salasana">
+                        <div class="input-group">
+                        <input class="form-control" name="password" id="password" type="password" placeholder="Syötä salasana"
+                            maxlength="30">
+                        <div class="input-group-append">
+                            <i class="fa fa-eye input-group-text" id="passwordeye" aria-hidden="true"></i>
+                        </div>
+                    </div>
                     </div>
                     <div class="form-group col-md-8">
                         <label for="passconfirm">Varmista salasana</label>
+                        <div class="input-group">
                         <input type="password" class="form-control" id="passconfirm" name="passconfirm"
                             placeholder="Salasana">
+                            <div class="input-group-append">
+                            <i class="fa fa-eye input-group-text" id="passconfeye" aria-hidden="true"></i>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>

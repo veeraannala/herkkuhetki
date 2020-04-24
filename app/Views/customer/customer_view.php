@@ -33,7 +33,13 @@
               <div class="form-group row">
                   <label for="inputPassword3" class="col-sm-3 col-form-label">Salasana<span class="required">*</span></label>
                   <div class="col-sm-8">
-                      <input type="password" class="form-control" name="password">
+                  <div class="input-group">
+                        <input class="form-control" name="password" id="password" type="password"
+                            maxlength="30">
+                        <div class="input-group-append">
+                            <i class="fa fa-eye input-group-text" id="passwordeye" aria-hidden="true"></i>
+                        </div>
+                    </div>
                   </div>
               </div>
               <button class="btn">Kirjaudu sisään</button>
