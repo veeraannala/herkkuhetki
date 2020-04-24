@@ -327,8 +327,15 @@ class Admin extends BaseController
         if ($data["theme_id"] === "NULL") {
             $data['theme_id'] = NULL;
         }
+        $product = $this->prodmodel->getProduct($id);
+        $name = null;
+        foreach ($product as $prod) {
+            $name = $prod['name'];
+        }
 
-        if (!$this->validate([
+       
+        if ($this->request->getVar('newname') != $name && !$this->validate([
+            
             // checks if new product name is unique
 
             'newname' => 'is_unique[product.name]'
