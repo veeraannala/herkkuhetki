@@ -134,7 +134,7 @@ class Shop extends BaseController
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
 		$data['product'] = $this->prodmodel->ShowProduct();
 
-		$searchQuery = $this->request->getVar('search',FILTER_SANITIZE_STRING);
+		$searchQuery = $this->request->getVar('search',FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_HIGH);
 
 		if(!empty($searchQuery)) {
 			# Change the given search to lowercase.
@@ -143,6 +143,7 @@ class Shop extends BaseController
 			$searchQuery = preg_replace('/[^A-Öa-ö0-9]+/', ',', $searchQuery);
 			# Create array of keywords.
 			$keywords = explode(',', $searchQuery);
+			print_r($keywords);
 			# Send array to searchLike method.
 			$data['searchresult'] = $this->prodmodel->searchLike($keywords);
 
