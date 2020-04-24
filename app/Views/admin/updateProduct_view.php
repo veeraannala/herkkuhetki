@@ -1,5 +1,5 @@
 <div class="row mt-3">
-    <div class="col-6 mb-3">
+    <div class="col-lg-6 mb-3 col-md-8">
         <h1>Lisää tuotteita</h1>
 
 
