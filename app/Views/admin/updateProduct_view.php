@@ -13,6 +13,7 @@
             <div class="form-group">
                 <label for="name">Tuotteen nimi</label>
                 <input type="text" class="form-control" name="name" maxlength="255" required>
+                <small id="nameHelp" class="form-text text-muted">Tuotenimen on oltava yksilöllinen.</small>
             </div>
             <div class="form-group">
                 <label for="price">Tuotteen hinta €</label>
@@ -36,6 +37,7 @@
             <div class="form-group">
                 <label for="image">Tuotteen kuva</label>
                 <input type="file" class="form-control-file" name="image">
+                <small id="imageHelp" class="form-text text-muted">Hyväksytyt tiedostomuodot .JPG, .JPEG, .GIF ja .PNG. Maksimikoko 4MB.</small>
             </div>
             <div class="form-group">
                 <label for="stock">Tuotteen varastomäärä</label>

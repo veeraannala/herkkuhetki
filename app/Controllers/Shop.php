@@ -227,6 +227,7 @@ class Shop extends BaseController
         echo view('templates/footer');
 	}
 
+	// shows about us -page
 	public function aboutUs() {
 		$data['title'] = "Tietoa meistä";
 		$data['categories'] = $this->model->getCategories();
@@ -236,7 +237,7 @@ class Shop extends BaseController
         echo view('shop/aboutUs_view');
         echo view('templates/footer');
 	}
-
+	// shows contact information page
 	public function contactInfo() {
 		$data['title'] = "Yhteystiedot";
 		$data['categories'] = $this->model->getCategories();
