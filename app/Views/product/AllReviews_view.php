@@ -1,4 +1,4 @@
-<h3 class="mt-4">Kaikki tuotteen arvostelut</h3>
+<h3 class="p-3 pl-5">Kaikki tuotteen arvostelut</h3>
 
         <div class="row"> 
               <div class="col-12 col-lg-9">
@@ -26,3 +26,5 @@
 
                 <?php endforeach; ?>
                 </table>
+               </div>
+        </div>
