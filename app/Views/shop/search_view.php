@@ -42,6 +42,6 @@
   </div>
 <?php endforeach; ?>
 <?php } else { ?>
-     <?= "<h3 class='ml-3'>Haulla ei löytynyt tuloksia.</h3>";
+     <?= "<h3 class='ml-3 mt-5'>Haulla ei löytynyt tuloksia.</h3>";
     } ?>
 </div>
