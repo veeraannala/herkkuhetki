@@ -12,7 +12,7 @@
         </div>
 
         <div class="col-md-4 text-center mt-3 pb-4">
-          <a href="<?php echo base_url()?>"><img src="/../images/logo.png" alt="logo"></a>
+          <a href="<?php echo base_url()?>"><img src="/../images/logo.png" alt="logo" draggable="false"></a>
         </div>
 
         <div class="col-md-4 text-center mt-3 pb-4">

@@ -20,7 +20,7 @@
     <div class="container header">
         <div class="row">
             <div class="col-md-3 d-flex justify-content-center">
-                <a href="<?php echo base_url()?>"><img src="/../images/logo.png" alt="logo"></a>
+                <a href="<?php echo base_url()?>"><img src="/../images/logo.png" alt="logo" draggable="false"></a>
             </div>
             <div class="col-md-9 text-center align-self-center d-none d-sm-block">
                 <h2 class="mainheader">Tervetuloa herkkujen maailmaan!</h2>
