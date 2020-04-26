@@ -76,20 +76,23 @@ class Shop extends BaseController
             endforeach;
         if (is_array($_SESSION['basket'])) {
             $amount = 0;
-            foreach ($_SESSION['basket'] as $key => $value):
+			foreach ($_SESSION['basket'] as $key => $value):
+				
             if ($value == $id) {
 				$amount++;
             }
-            endforeach;
-            if (($stock[0]-$amount) < 1) {
-                echo view('templates/header', $data);
+			endforeach;
+			
+            if (($stock-$amount) < 1) {
+				echo view('templates/header', $data);
                 echo view('product/product_outstock', $data);
                 echo view('templates/footer');
             } else {
-                echo view('templates/header', $data);
+				echo view('templates/header', $data);
             	echo view('product/product_instock', $data);
             	echo view('templates/footer');
-            }
+			}
+			
         } else if ($stock < 1) {
             echo view('templates/header', $data);
             echo view('product/product_outstock', $data);
