@@ -32,8 +32,9 @@ if(is_array($basketproducts))
                         <label for="updAmount">Muuta määrää:</label>
                     </div>
                     <div class="col">
-                        <input class="form-control" id="updAmount" name="updAmount" type="number" step="1" value="0"
-                            min="-<?= $amount?>" max="<?=$product['stock']-$amount?>">
+                        <input class="form-control" id="updAmount" name="updAmount" type="number" step="1" value="<?=$amount?>"
+                            min="0" max="<?=$product['stock']?>">
+                        <input name="oldAmount" value="<?=$amount?>" hidden>
                     </div>
                     <div class="col">
                         <button class="btn mt-1 float-right">Päivitä</button>

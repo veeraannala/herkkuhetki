@@ -1,5 +1,5 @@
 <div class="row justify-content-center">
-<h2 class="mt-2 searchHeader">Hakusi tulos:</h2>
+<h2 class="pt-3 searchHeader">Hakusi tulos:</h2>
 </div>
 <div class="row">
 <?php if ($searchresult != array()) { ?>
@@ -42,6 +42,6 @@
   </div>
 <?php endforeach; ?>
 <?php } else { ?>
-     <?= "<h3 class='ml-3 mt-5'>Haulla ei löytynyt tuloksia.</h3>";
+     <?= "<h3 class='pl-3 pt-5'>Haulla ei löytynyt tuloksia.</h3>";
     } ?>
 </div>
