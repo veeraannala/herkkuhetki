@@ -380,9 +380,12 @@ class Customer extends BaseController
 
     public function showOrder($id)
     {
-        if (!isset($_SESSION['customer'])) {
-            return redirect()->to('/customer/index');
-        } else {
+      $customerOrders = $this->ordermodel->find($id);
+      foreach ($_SESSION['customer'] as $key => $value):
+          $customerid = $value;
+      endforeach;
+
+        if (isset($_SESSION['customer']) && $customerOrders['customer_id'] === $customerid) {
             $data['title'] = "Tilaus";
             $data['categories'] = $this->model->getCategories();
             $data['themecategories'] = $this->thememodel->getThemeCategories();
@@ -390,7 +393,10 @@ class Customer extends BaseController
             echo view('templates/header', $data);
             echo view('customer/customerorder_view', $data);
             echo view('templates/footer');
+        } else {
+            return redirect()->to('/customer/index');
         }
+
     }
 
 
