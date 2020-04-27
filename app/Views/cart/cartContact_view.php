@@ -19,7 +19,7 @@
                         $amount++;
                         $sum += $product['price'];
                     }
-                
+
                 endforeach;
             ?>
                     <tr>
@@ -29,7 +29,7 @@
 
                     </tr>
                     <?php
-    
+
             $order[$product['id']] = $amount;
             endforeach;
             $_SESSION['order'] = $order;
@@ -92,7 +92,7 @@
                     ?>
             <p class="errormessage"><?=$ordererror?></p>
             <?php
-                } 
+                }
             ?>
             <?php if (!isset($_SESSION['customer'])) {?>
             <div>
@@ -184,11 +184,11 @@
             </div>
             <?php } else { ?>
 
-            <?php 
-                $customer = ($_SESSION['customer']); 
+            <?php
+                $customer = ($_SESSION['customer']);
                 $customer[0];
                 foreach ($customers as $cust):
-                    if ($cust['id'] === $customer[0]) {                
+                    if ($cust['id'] === $customer[0]) {
                 ?>
 
 
@@ -259,7 +259,7 @@
                     <button type="submit" class="btn float-right" id="order">Tilaa tuotteet</button>
                 </div>
             </div>
-            <?php 
+            <?php
                 }
             endforeach;
             } ?>
