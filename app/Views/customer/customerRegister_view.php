@@ -1,10 +1,10 @@
 <div class="centerminheight customer">
   <?php $validation =  \Config\Services::validation();?>
+  <h3>Rekisteröidy</h3>
+  <hr>
   <div class="row col pt-2">
     <?=\Config\Services::validation()->listErrors(); ?>
   </div>
-  <h3>Rekisteröidy</h3>
-  <hr>
   <form action="<?= site_url('customer/customerRegistration/')?>" method="post">
     <div class="pt-3 form-row">
         <div class="form-group col-sm-6 col-lg-3">
