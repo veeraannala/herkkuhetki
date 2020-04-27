@@ -143,8 +143,9 @@ class Admin extends BaseController
 
     }
 
+    //shows all products in one view
     public function editProduct() {
-        //shows all products in one view
+        
         if(!isset($_SESSION['username'])) {
         return redirect()->to('/admin/adminlogin');
         }
@@ -209,9 +210,9 @@ class Admin extends BaseController
 
     }
 
-
-    public function addProduct() {
     //saves new product to the database. replaces empty image with imagenotfound-file
+    public function addProduct() {
+    
         if(!isset($_SESSION['username'])) {
         return redirect()->to('/admin/adminlogin');
         }
@@ -291,9 +292,9 @@ class Admin extends BaseController
 
     }
 
-
+    //gets chosen product's information from the database so it can be changed
     public function alterProduct($id) {
-        //gets chosen product's information from the database so it can be changed
+        
         if(!isset($_SESSION['username'])) {
         return redirect()->to('/admin/adminlogin');
         }
@@ -309,9 +310,8 @@ class Admin extends BaseController
         echo view('admin/adminFooter');
     }
 
-
-    public function changeProduct() {
     //changes product information in the database
+    public function changeProduct() {
         if(!isset($_SESSION['username'])) {
         return redirect()->to('/admin/adminlogin');
         }
