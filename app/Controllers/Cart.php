@@ -20,6 +20,7 @@ class Cart extends BaseController
         $this->orderdetailmodel = new OrderdetailModel();
     }
 
+    // cart view where is empty cart view or customer can browse chosen products
     public function index()
     {
         if (!isset($_SESSION['basket'])) {
@@ -40,6 +41,7 @@ class Cart extends BaseController
         echo view('templates/footer');
     }
 
+    // inserts product to cart
     public function insert()
     {
         if (!isset($_SESSION['basket'])) {
