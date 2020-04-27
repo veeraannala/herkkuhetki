@@ -12,12 +12,12 @@
         <form method="post" enctype="multipart/form-data" action="<?= site_url('admin/addProduct/')?>">
             <div class="form-group">
                 <label for="name">Tuotteen nimi</label>
-                <input type="text" class="form-control" name="name" maxlength="255" required>
+                <input type="text" class="form-control" name="name" value="<?php if(isset($_POST['name'])) echo $_POST['name']; ?>" maxlength="255" required>
                 <small id="nameHelp" class="form-text text-muted">Tuotenimen on oltava yksilöllinen.</small>
             </div>
             <div class="form-group">
                 <label for="price">Tuotteen hinta €</label>
-                <input type="number" class="form-control" name="price" step="0.01" value="0" required>
+                <input type="number" class="form-control" name="price" value="<?php if(isset($_POST['price'])) echo $_POST['price']; else echo "0" ?>" step="0.01" required>
             </div>
             <div class="form-group">
                 <label for="type">Hinnan tyyppi</label>
@@ -28,11 +28,11 @@
             </div>
             <div class="form-group">
                 <label for="description">Tuotteen kuvaus</label>
-                <textarea class="form-control" name="description" rows="3"></textarea>
+                <textarea class="form-control" name="description" rows="3"><?php if(isset($_POST['description'])) echo $_POST['description']; ?></textarea>
             </div>
             <div class="form-group">
                 <label for="keywords">Tuotteen avainsanat</label>
-                <textarea class="form-control" name="keywords" rows="1"></textarea>
+                <textarea class="form-control" name="keywords" rows="1"><?php if(isset($_POST['keywords'])) echo $_POST['keywords']; ?></textarea>
             </div>
             <div class="form-group">
                 <label for="image">Tuotteen kuva</label>
@@ -41,7 +41,7 @@
             </div>
             <div class="form-group">
                 <label for="stock">Tuotteen varastomäärä</label>
-                <input type="number" class="form-control" name="stock" value="0" required>
+                <input type="number" class="form-control" name="stock" value="<?php if(isset($_POST['stock'])) echo $_POST['stock']; else echo "0"?>" required>
             </div>
             <div class="form-group">
                 <label for="category">Tuotekategoria</label>

@@ -11,12 +11,12 @@
         <form method="post" enctype="multipart/form-data" action="<?= site_url('admin/changeProduct/')?>">
             <div class="form-group">
                 <label for="newname">Tuotteen nimi</label>
-                <input type="text" class="form-control" name="newname" value="<?= $product['name']?>" maxlength="255" required>
+                <input type="text" class="form-control" name="newname" value="<?php if(isset($_POST['newname'])) echo $_POST['newname']; else echo $product['name']?>" maxlength="255" required>
                 <small id="nameHelp" class="form-text text-muted">Tuotenimen on oltava yksilöllinen</small>
             </div>
             <div class="form-group">
                 <label for="newprice">Tuotteen hinta €</label>
-                <input type="number" class="form-control" name="newprice" step="0.01" value="<?= $product['price']?>" required>
+                <input type="number" class="form-control" name="newprice" step="0.01" value="<?php if(isset($_POST['newprice'])) echo $_POST['newprice']; else echo $product['price']?>" required>
             </div>
             <div class="form-group">
                 <label for="newtype">Hinnan tyyppi</label>
@@ -36,11 +36,11 @@
 
             <div class="form-group">
                 <label for="newdescription">Tuotteen kuvaus</label>
-                <textarea class="form-control" name="newdescription" rows="3" ><?= $product['description'] ?></textarea>
+                <textarea class="form-control" name="newdescription" rows="3" ><?php if(isset($_POST['newdescription'])) echo $_POST['newdescription']; else echo $product['description'] ?></textarea>
             </div>
             <div class="form-group">
                 <label for="newkeywords">Tuotteen avainsanat</label>
-                <textarea class="form-control" name="newkeywords" rows="3" ><?= $product['keywords'] ?></textarea>
+                <textarea class="form-control" name="newkeywords" rows="3" ><?php if(isset($_POST['newkeywords'])) echo $_POST['newkeywords']; else echo $product['keywords'] ?></textarea>
             </div>
             <div class="form-group">
                 <label for="image">Tuotteen kuva</label>
