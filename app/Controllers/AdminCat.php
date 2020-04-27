@@ -24,15 +24,16 @@ class AdminCat extends BaseController
         $this->adminmodel = new AdminModel();
         $this->ordermodel = new OrderModel();
     }
-
+    
+    //For category update. Shows all categories and gives a change to update, delete or add new categories.
+    //If cannot delete, gives an error message.
     public function updateCategory()
     {
         if(!isset($_SESSION['username'])) {
         return redirect()->to('/admin/adminlogin');
         }
         $data['title'] = "Ylläpito - muokkaa kategoriaa";
-        //For category update. Shows all categories and gives a change to update, delete or add new categories.
-        //If cannot delete, gives an error message.
+        
 
         $data['categories'] = $this->categorymodel->getCategories();
 
@@ -41,9 +42,10 @@ class AdminCat extends BaseController
         echo view('admin/adminFooter');
     }
 
+    //Shows one category to update name and parent category
     public function updateCat($id)
     {
-        //Shows one category to update name and parent category
+        
         if(!isset($_SESSION['username'])) {
         return redirect()->to('/admin/adminlogin');
         }
@@ -56,9 +58,10 @@ class AdminCat extends BaseController
         echo view('admin/adminFooter');
     }
 
+    //Updates name and parentID for chosen category
     public function update()
     {
-        //Updates name and parentID for chosen category
+        
         if(!isset($_SESSION['username'])) {
         return redirect()->to('/admin/adminlogin');
         }
@@ -71,10 +74,10 @@ class AdminCat extends BaseController
         return redirect()->to('/admin/updateCategory');
     }
 
-
+    //Deletes chosen category or gives an error message if cannot delete
     public function deleteCat($categoryID)
     {
-        //Deletes chosen category or gives an error message if cannot delete
+        
         if(!isset($_SESSION['username'])) {
         return redirect()->to('/admin/adminlogin');
         }
@@ -92,9 +95,10 @@ class AdminCat extends BaseController
         }
     }
 
+    // Shows view where adminuser gives name to new subcategory
     public function insertCat($parentid)
     {
-        // Shows view where user gives name to new subcategory
+        
         if(!isset($_SESSION['username'])) {
         return redirect()->to('/admin/adminlogin');
         }
@@ -107,9 +111,10 @@ class AdminCat extends BaseController
         echo view('admin/adminFooter');
     }
 
+    // Inserts new category with chosen parentID.
     public function addCat()
     {
-        // Inserts new category with chosen parentID.
+        
         if(!isset($_SESSION['username'])) {
         return redirect()->to('/admin/adminlogin');
         }

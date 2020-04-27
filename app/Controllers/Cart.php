@@ -40,6 +40,7 @@ class Cart extends BaseController
         echo view('templates/footer');
     }
 
+    //Inserts new product to cart
     public function insert()
     {
         if (!isset($_SESSION['basket'])) {
@@ -135,7 +136,7 @@ class Cart extends BaseController
 
     //Collect users contact information and save order, order detail and customer to the database.
     public function saveOrder()
-    { //print_r($_SESSION['customer']);
+    { 
         $data['categories'] = $this->model->getCategories();
         $data['themecategories'] = $this->thememodel->getThemeCategories();
         $data['product'] = $this->prodmodel->ShowProduct();
@@ -159,6 +160,7 @@ class Cart extends BaseController
                 echo view('templates/header', $data);
                 echo view('cart/cartContact_view');
                 echo view('templates/footer');
+                exit();
             } else {
                 if(isset($_SESSION['customer'])) {
                     foreach ($_SESSION['customer'] as $key => $value):
@@ -188,12 +190,12 @@ class Cart extends BaseController
                 }
             }
         } else {
-                if (!$this->validate($validation->getRuleGroup('customerValidate')) || !$this->validate($validation->getRuleGroup('customerRegisterValidate'))) {
-                    echo view('templates/header', $data);
-                    echo view('cart/cartContact_view');
-                    echo view('templates/footer');
-                } else {
-                    $customer = [
+            if (!$this->validate($validation->getRuleGroup('customerValidate')) || !$this->validate($validation->getRuleGroup('customerRegisterValidate'))) {
+                echo view('templates/header', $data);
+                echo view('cart/cartContact_view');
+                echo view('templates/footer');
+            } else {
+                $customer = [
                         'firstname' => ucfirst($this->request->getVar('firstname')),
                         'lastname' => ucfirst($this->request->getVar('lastname')),
                         'address' => ucfirst($this->request->getVar('address')),
@@ -203,9 +205,9 @@ class Cart extends BaseController
                         'phone' => $this->request->getVar('phone'),
                         'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
                     ];
-                }
-                $customers = $this->customermodel->getCustomer();
-                foreach ($customers as $cust):
+            }
+            $customers = $this->customermodel->getCustomer();
+            foreach ($customers as $cust):
                     if ($cust['email'] === $this->request->getVar('email') && $cust['password'] != null) {
                         $data['ordererror'] = 'Sähköpostiosoite on jo rekisteröity. <a href="/Customer/customerAccount">Kirjaudu sisään.</a>';
                         echo view('templates/header', $data);
@@ -214,7 +216,7 @@ class Cart extends BaseController
                         exit();
                     }
                     
-                endforeach;
+            endforeach;
         }
         $orderstatus = [
             'status' => 'ordered',
@@ -241,7 +243,7 @@ class Cart extends BaseController
                 
     }
 
-    
+    //Shows a view where customer can pay the order
     public function payconfirm($orderid)
     {
         $data['title'] = "Tilaus";
