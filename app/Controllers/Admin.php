@@ -157,6 +157,7 @@ class Admin extends BaseController
         echo view('admin/adminFooter');
     }
 
+    // Shows products and their amount in stock
     public function editAmount() {
         if(!isset($_SESSION['username'])) {
         return redirect()->to('/admin/adminlogin');
@@ -174,6 +175,7 @@ class Admin extends BaseController
         echo view('admin/adminFooter');
     }
 
+    // shows view where admin can edit amount of product in stock
     public function updateAmo($id) {
         //gets product and its information form product models function
         if(!isset($_SESSION['username'])) {
