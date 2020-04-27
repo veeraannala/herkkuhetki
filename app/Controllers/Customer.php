@@ -401,7 +401,7 @@ class Customer extends BaseController
 
 
     public function logout() {
-        session_destroy();
+        $_SESSION['customer'] = null;
         return redirect()->to('/shop');
     }
 

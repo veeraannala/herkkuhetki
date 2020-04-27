@@ -75,7 +75,8 @@ class Cart extends BaseController
     public function updateAmount($id)
     {
         //Updates the amount of chosen product in the cart.
-        $amount = $this->request->getVar('updAmount');
+        $amount = $this->request->getVar('updAmount') - $this->request->getVar('oldAmount');
+        
         if ($amount < 0) {
             for ($i=0; $i > $amount; $i--) {
                 $basketid=array_search($id, $_SESSION['basket']);
