@@ -9,8 +9,8 @@ use App\Models\ReviewModel;
 class Admin extends BaseController
 {
 
-	private $categorymodel = null;
-	private $thememodel = null;
+		private $categorymodel = null;
+		private $thememodel = null;
     private $prodmodel = null;
     private $adminmodel = null;
     private $ordermodel = null;
@@ -20,8 +20,9 @@ class Admin extends BaseController
     public function __construct() {
         $session = \Config\Services::session();
         $session->start();
+
         $this->categorymodel = new CategoryModel();
-		$this->thememodel = new ThemeModel();
+				$this->thememodel = new ThemeModel();
         $this->prodmodel = new ProductModel();
         $this->adminmodel = new AdminModel();
         $this->ordermodel = new OrderModel();
@@ -37,7 +38,7 @@ class Admin extends BaseController
         echo view('admin/admin_view');
         echo view('admin/adminFooter');
     }
-		//Shows admin login page.
+		// Shows admin login page.
     public function adminlogin() {
 
         $data['title'] = "Ylläpito - kirjautuminen";
@@ -45,7 +46,7 @@ class Admin extends BaseController
         echo view('admin/adminlogin_view');
         echo view('admin/adminFooter');
     }
-		//Shows admin register page.
+		// Shows admin register page.
     public function adminregister(){
         if(!isset($_SESSION['username'])) {
         return redirect()->to('/admin/adminlogin');
@@ -71,9 +72,8 @@ class Admin extends BaseController
         return redirect()->to('/admin/adminlogin');
         }
         $data['title'] = "Ylläpito - rekisteröidy";
+
         $validation =  \Config\Services::validation();
-
-
         if (!$this->validate($validation->getRuleGroup('adminregistervalidate')))
         {
             echo view('admin/adminHeader', $data);
@@ -94,8 +94,8 @@ class Admin extends BaseController
 		// Validates and checks whether the login information is correct.
     public function adminCheck() {
         $data['title'] = "Ylläpito - kirjautuminen";
-        $validation =  \Config\Services::validation();
 
+        $validation =  \Config\Services::validation();
         if (!$this->validate($validation->getRuleGroup('adminloginvalidate')))
         {
             echo view('admin/adminHeader', $data);
@@ -123,7 +123,7 @@ class Admin extends BaseController
     }
 		//logout adminuser.
     public function logout() {
-        session_destroy();
+        $_SESSION['username'] = null;
         return redirect()->to('/admin/adminlogin');
     }
 
@@ -140,7 +140,6 @@ class Admin extends BaseController
         echo view('admin/adminHeader', $data);
         echo view('admin/updateProduct_view', $data);
         echo view('admin/adminFooter');
-
     }
 
     //shows all products in one view
@@ -188,9 +187,8 @@ class Admin extends BaseController
 
         //prints views for page + takes the data to the page
         echo view('admin/adminHeader', $data);
-		echo view('admin/updateAmount_view', $data);
+				echo view('admin/updateAmount_view', $data);
         echo view('admin/adminFooter');
-
     }
 
     public function update2() {
@@ -207,7 +205,6 @@ class Admin extends BaseController
         $this->prodmodel->update($id, $data);
         // redirects admin to page where all the products are printed
         return redirect()->to('/admin/editAmount');
-
     }
 
     //saves new product to the database. replaces empty image with imagenotfound-file
@@ -276,7 +273,6 @@ class Admin extends BaseController
             $this->prodmodel->save($newproduct);
             return redirect()->to('/admin/editProduct');
         }
-
     }
 
     public function deleteProduct($id) {
@@ -285,11 +281,7 @@ class Admin extends BaseController
         }
         $product_model = new ProductModel();
         $product_model->delete($id);
-
-
-
-		return redirect()->to('/admin/editProduct');
-
+				return redirect()->to('/admin/editProduct');
     }
 
     //gets chosen product's information from the database so it can be changed
@@ -306,7 +298,7 @@ class Admin extends BaseController
         $data['id'] = $id;
 
         echo view('admin/adminHeader', $data);
-		echo view('admin/alterProduct_view', $data);
+				echo view('admin/alterProduct_view', $data);
         echo view('admin/adminFooter');
     }
 
@@ -335,9 +327,9 @@ class Admin extends BaseController
             $name = $prod['name'];
         }
 
-       
+
         if ($this->request->getVar('newname') != $name && !$this->validate([
-            
+
             // checks if new product name is unique
 
             'newname' => 'is_unique[product.name]'
@@ -350,8 +342,9 @@ class Admin extends BaseController
             $pagedata['categories'] = $this->categorymodel->getCategories();
             $pagedata['themecategories'] = $this->thememodel->getThemeCategories();
             $pagedata['id'] = $id;
+
             echo view('admin/adminHeader', $data);
-		    echo view('admin/alterProduct_view', $pagedata);
+		    		echo view('admin/alterProduct_view', $pagedata);
             echo view('admin/adminFooter');
         }
         else if ($_FILES['image']['size'] > 0) {
@@ -370,8 +363,9 @@ class Admin extends BaseController
                 $pagedata['categories'] = $this->categorymodel->getCategories();
                 $pagedata['themecategories'] = $this->thememodel->getThemeCategories();
                 $pagedata['id'] = $id;
+
                 echo view('admin/adminHeader', $data);
-		        echo view('admin/alterProduct_view', $pagedata);
+		        		echo view('admin/alterProduct_view', $pagedata);
                 echo view('admin/adminFooter');
             } else {
                  // works
@@ -400,9 +394,10 @@ class Admin extends BaseController
         $data['orders'] = $this->ordermodel->getOrders();
 
         echo view('admin/adminHeader', $data);
-		echo view('admin/orders_view', $data);
+				echo view('admin/orders_view', $data);
         echo view('admin/adminFooter');
     }
+
     public function showOrder($id) {
         if(!isset($_SESSION['username'])) {
         return redirect()->to('/admin/adminlogin');
@@ -410,9 +405,10 @@ class Admin extends BaseController
         $data['title'] = "Ylläpito - tilaus";
         $data['orderdetails'] = $this->ordermodel->getOrderDetails($id);
         echo view('admin/adminHeader', $data);
-		echo view('admin/order_view', $data);
+				echo view('admin/order_view', $data);
         echo view('admin/adminFooter');
     }
+
     public function updateStatus($id) {
         if(!isset($_SESSION['username'])) {
         return redirect()->to('/admin/adminlogin');
@@ -422,9 +418,10 @@ class Admin extends BaseController
         $data['testit'] = $this->ordermodel->getstatus();
         $data['id'] = $id;
         echo view('admin/adminHeader', $data);
-		echo view('admin/changestatus_view.php', $data);
+				echo view('admin/changestatus_view.php', $data);
         echo view('admin/adminFooter');
     }
+
     public function updatestat() {
         if(!isset($_SESSION['username'])) {
         return redirect()->to('/admin/adminlogin');
@@ -436,6 +433,7 @@ class Admin extends BaseController
         $this->ordermodel->update($id, $data);
         return redirect()->to('/admin/showOrders');
     }
+
     public function sortbystatus() {
 				if(!isset($_SESSION['username'])) {
 				return redirect()->to('/admin/adminlogin');
@@ -449,6 +447,7 @@ class Admin extends BaseController
 				echo view('admin/sortedorders',$data);
         echo view('admin/adminFooter');
     }
+
     public function sortbymonth() {
         if(!isset($_SESSION['username'])) {
         return redirect()->to('/admin/adminlogin');
@@ -488,5 +487,4 @@ class Admin extends BaseController
 
         return redirect()->to(previous_url());
     }
-
 }

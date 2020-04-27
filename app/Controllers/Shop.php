@@ -64,8 +64,8 @@ class Shop extends BaseController
 		//Shows detailed information of one product.
 
 		$data['title'] = "Herkkuhetki";
-        $data['categories'] = $this->model->getCategories();
-        $data['themecategories'] = $this->thememodel->getThemeCategories();
+    $data['categories'] = $this->model->getCategories();
+    $data['themecategories'] = $this->thememodel->getThemeCategories();
 		$data['product'] = $this->prodmodel->getProduct($id);
 		$data['review'] = $this->reviewmodel->ShowReviews($id);
 		foreach ($data['product'] as $prod):
@@ -77,12 +77,12 @@ class Shop extends BaseController
         if (is_array($_SESSION['basket'])) {
             $amount = 0;
 			foreach ($_SESSION['basket'] as $key => $value):
-				
+
             if ($value == $id) {
 				$amount++;
             }
 			endforeach;
-			
+
             if (($stock-$amount) < 1) {
 				echo view('templates/header', $data);
                 echo view('product/product_outstock', $data);
@@ -92,7 +92,7 @@ class Shop extends BaseController
             	echo view('product/product_instock', $data);
             	echo view('templates/footer');
 			}
-			
+
         } else if ($stock < 1) {
             echo view('templates/header', $data);
             echo view('product/product_outstock', $data);
@@ -116,7 +116,6 @@ class Shop extends BaseController
 	}
 
 	/*
-
 	the purpose of this function is:
 	-find products with given keywords. The keywords given are compared with the name of the product, description or tag.
 
@@ -137,29 +136,26 @@ class Shop extends BaseController
 		$data['themecategories'] = $this->thememodel->getThemeCategories();
 		$data['product'] = $this->prodmodel->ShowProduct();
 
-		$searchQuery = $this->request->getVar('search',FILTER_SANITIZE_STRING,FILTER_FLAG_STRIP_HIGH);
-
+		$searchQuery = $this->request->getVar('search',FILTER_SANITIZE_STRING,FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+		$value = 0;
 		if(!empty($searchQuery)) {
 			# Change the given search to lowercase.
 			$searchQuery = mb_convert_case($searchQuery, MB_CASE_LOWER, "UTF-8");
-			# Remove special characters.
+			# Remove special characters and numbers.
 			$searchQuery = preg_replace('/[^A-Öa-ö0-9]+/', ',', $searchQuery);
 			# Create array of keywords.
-			$keywords = explode(',', $searchQuery);
+			$keywords = explode(',',$searchQuery);
 			# Send array to searchLike method.
+			$key = 0;
+				if (!isset($keywords[$key]) || $keywords[$key] == "" || is_null($keywords[$key]) )
+				{
+					return redirect()->to('/shop');
+				}
 			$data['searchresult'] = $this->prodmodel->searchLike($keywords);
-
-
-			if (!empty($data)) {
 			echo view('templates/header',$data);
 			echo view('shop/search_view',$data);
 			echo view('templates/footer');
 
-			} else {
-				echo view('templates/header',$data);
-				echo view('shop/searchfail_view');
-				echo view('templates/footer');
-			}
 		} else {
 			return redirect()->to('/shop');
 		}

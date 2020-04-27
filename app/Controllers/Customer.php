@@ -48,7 +48,7 @@ class Customer extends BaseController
         echo view('templates/footer');
     }
 
-    #shows customers detail page.
+    # shows customers detail page.
     public function customerDetail() {
         # if logged customer, gets user id from session array.
         if(!isset($_SESSION['customer'])) {
